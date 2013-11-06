@@ -9,8 +9,8 @@ function carregarGraphico() {
     chart1 = new cfx.Chart();
     chart1.getAnimations().getLoad().setEnabled(true);
     
-    chart1.getAxisY().setMin(500);
-    chart1.getAxisY().setMax(2000);
+    chart1.getAxisY().setMin(0);
+    chart1.getAxisY().setMax(10);
     
     series1 = chart1.getSeries().getItem(0);
     series2 = chart1.getSeries().getItem(1);
@@ -22,12 +22,12 @@ function carregarGraphico() {
     data.setPoints(10);
     
     data = [
-        { "Month": "Jan", "Bikes": 1800, "Parts": 1300 },
-        { "Month": "Feb", "Bikes": 1760, "Parts": 900 },
-        { "Month": "Mar", "Bikes": 1740, "Parts": 970 },
-        { "Month": "Apr", "Bikes": 1750, "Parts": 1010},
-        { "Month": "May", "Bikes": 1810, "Parts": 1070 },
-        { "Month": "Jun", "Bikes": 1920, "Parts": 1180 }
+        { "Mês": "Jan", "Andando": 1, "Correndo": 2 },
+        { "Mês": "Feb", "Andando": 1, "Correndo": 3 },
+        { "Mês": "Mar", "Andando": 2, "Correndo": 5 },
+        { "Mês": "Apr", "Andando": 4, "Correndo": 6 },
+        { "Mês": "May", "Andando": 5, "Correndo": 10 },
+        { "Mês": "Jun", "Andando": 6, "Correndo": 10 }
     ];
     chart1.setDataSource(data);
     divHolder = document.getElementById('grafico');
