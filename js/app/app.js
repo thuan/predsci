@@ -3,9 +3,7 @@ var chart1;
 
 function carregarGraphico() {
     "use strict";
-    var series1, series2, data, db, divHolder;
-    
-    
+    var series1, series2, data, db, divHolder;   
     chart1 = new cfx.Chart();
     chart1.getAnimations().getLoad().setEnabled(true);
     
