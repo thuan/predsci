@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<title>Predictive Science - Thuan examples</title>
 	<link rel="stylesheet" type="text/css" href="css/jChartFX%20Palettes/mocha.css">
-	<script type="text/javascript" src="js/jschartfx/jchartfx.system.js"></script>
-    <script type="text/javascript" src="js/jschartfx/jchartfx.coreBasic.js"></script>
-    <script type="text/javascript" src="js/jschartfx/jchartfx.animation.js"></script>
+	<script type="text/javascript" src="js/jchartfx/jchartfx.system.js"></script>
+    <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
+    <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
 
 	<style type="text/css">
 
