@@ -10,7 +10,7 @@ function carregarGraphico() {
     chart1.getAnimations().getLoad().setEnabled(true);
     
     chart1.getAxisY().setMin(0);
-    chart1.getAxisY().setMax(10);
+    chart1.getAxisY().setMax(20);
     
     series1 = chart1.getSeries().getItem(0);
     series2 = chart1.getSeries().getItem(1);
@@ -22,12 +22,12 @@ function carregarGraphico() {
     data.setPoints(10);
     
     data = [
-        { "Mês": "Jan", "Andando": 1, "Correndo": 2 },
-        { "Mês": "Feb", "Andando": 1, "Correndo": 3 },
-        { "Mês": "Mar", "Andando": 2, "Correndo": 5 },
-        { "Mês": "Apr", "Andando": 4, "Correndo": 6 },
-        { "Mês": "May", "Andando": 5, "Correndo": 10 },
-        { "Mês": "Jun", "Andando": 6, "Correndo": 10 }
+        { "Mês": "Jan", "Alcool (km/l)": 15.9, "Gasolina(km/l)": 10.2 },
+        { "Mês": "Fev", "Alcool (km/l)": 12.3, "Gasolina(km/l)": 11.1 },
+        { "Mês": "Mar", "Alcool (km/l)": 12.6, "Gasolina(km/l)": 10.2 },
+        { "Mês": "Abr", "Alcool (km/l)": 11.9, "Gasolina(km/l)": 10 },
+        { "Mês": "Mai", "Alcool (km/l)": 10.3, "Gasolina(km/l)": 10.6 },
+        { "Mês": "Jun", "Alcool (km/l)": 10.8, "Gasolina(km/l)": 9.8 }
     ];
     chart1.setDataSource(data);
     divHolder = document.getElementById('grafico');
