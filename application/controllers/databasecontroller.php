@@ -4,6 +4,11 @@ class DatabaseController extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->view('welcome_message', $data, FALSE);
+	}
+
+	public function inserirDados()
+	{
 		$this->load->library('Mongo_db', $config);
 		$this->$config->insert('dbpredsci', array('England','Scotland'));
 	}
