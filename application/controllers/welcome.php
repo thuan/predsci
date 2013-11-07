@@ -17,9 +17,18 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	 
 	public function index()
 	{
 		$this->load->view('welcome_message');
+		$qb = \MongoQB\Builder(array(
+            'dsn'   =>  'mongodb://predsci:predsci@emma.mongohq.com:10046/predsci'
+        );
+		$qb->insert('collectionName', [
+            'name'  =>  'Alex',
+            'age'   =>  22,
+            'likes' =>  ['whisky', 'gin']
+        ]);
 	}
 }
 
