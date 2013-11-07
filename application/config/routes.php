@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-$route['dbinsert'] = "databasecontroller"
+$route['dbinsert'] = "databasecontroller";
 
 
 /* End of file routes.php */
