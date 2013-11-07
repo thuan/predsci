@@ -21,16 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
-		
-		$qb = \MongoQB\Builder(array(
-            'dsn'   =>  'mongodb://predsci:predsci@paulo.mongohq.com:10033/sand'
-        );
-        
-        $qb->insert('dbtest', [
-            'name'  =>  'Alex',
-            'age'   =>  22,
-            'likes' =>  ['whisky', 'gin']
-        ]);
+		$this->load->library('mongo_db');
 	}
 }
 
