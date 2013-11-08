@@ -19,8 +19,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
 		$this->load->library('mongo_db');
+		$this->load->view('welcome_message');
 	}
 }
 
