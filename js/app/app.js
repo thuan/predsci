@@ -9,8 +9,8 @@ function carregarGraphico() {
     
     chart1.getAxisY().setMin(0);
     chart1.getAxisY().setMax(14000);
-    chart1.getLegendBox().setVisible(true);
     chart1.getAllSeries.setStackedStyle(cfx.Stacked.Normal);
+    chart1.getLegendBox().setVisible(true);
     chart1.setGallery(cfx.Gallery.Bar);
     
     data = chart1.getData();
