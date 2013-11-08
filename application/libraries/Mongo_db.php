@@ -67,7 +67,7 @@ class Mongo_db
 	 * @var mixed
 	 * @access private
 	 */
-	private $_host = array('localhost:27017');
+	private $_host = array('paulo.mongohq.com:10064');
 	
 	/**
 	 * Database user.
