@@ -21,8 +21,7 @@ function carregarGraphico() {
     data.setSeries(3);
     data.setPoints(10);
 
-    data = $.getJSON('http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitorsentiment/crosstab?limit=5&period=week&callback=jQuery17206924738397356123_1383938511329&_=1383938532983
-');
+    data = $.getJSON('http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json');
     
     chart1.setDataSource(data);
     divHolder = document.getElementById('grafico');
