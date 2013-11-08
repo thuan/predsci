@@ -10,7 +10,7 @@ function carregarGraphico() {
     chart1.getAxisY().setMin(0);
     chart1.getAxisY().setMax(14000);
     chart1.setGallery(cfx.Gallery.Bar);
-    data = $.getJSON('http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json');
+    data = $.getJSON('https://dataclips.heroku.com/fcroecrluhwltbjinstfqmwyneex.json');
     chart1.setDataSource(data);
     
     divHolder = document.getElementById('grafico');
