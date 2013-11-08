@@ -21,12 +21,8 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->library('mongo_db');
 		$this->load->view('welcome_message');
-		$this->mongo_db
-		->insert('country', array(
-    		"Answer" : "NO",
-    		"Female" : 102,
-    		"Male" : 123
-		));
+		$post = array('title' => 'Test post');
+        $this->mongo_db->insert($post);
 	}
 }
 
