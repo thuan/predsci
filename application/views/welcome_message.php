@@ -8,7 +8,12 @@
 	<script type="text/javascript" src="js/jchartfx/jchartfx.system.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
-
+    <script type="text/javascript">
+        $(window).load(function (e) {
+            buildChart();
+            ps_graphDefinitions.buildChart('grafico');
+        });
+    </script>
 	<style type="text/css">
 
 	::selection{ background-color: #E13300; color: white; }
