@@ -1,29 +1,46 @@
-/*global cfx:false, document:false, $:false, window:false*/
-var chart1;
+/*
+*
+* Defines all graphs
+*
+*/
+/*global cfx:false, document:false, UILayout:false, window:false, jQuery:false*/
 
-function carregarGraphico() {
-    "use strict";
-    var data, divHolder;
-    chart1 = new cfx.Chart();
-    data = chart1.getData();
-    data.setSeries(3);
-    data.setPoints(10);
+(function (ps_graphDefinitions, $, undefined) {
+
+    ps_graphDefinitions.jsonData = [
+        { "Month": "AT&T", "Positive": 542, "Neutral": 88, "Negative": 20 },
+        { "Month": "IBM", "Positive": 348, "Neutral": 71, "Negative": 11 },
+        { "Month": "Kore", "Positive": 35, "Neutral": 0, "Negative": 0 },
+        { "Month": "Verizon", "Positive": 621, "Neutral": 88, "Negative": 26}
+    ];
+
+
+    ps_graphDefinitions.buildChart = function(sElementName)
+    {
+
+        var objChart, data, divHolder;
+
+        objChart = new cfx.Chart();
+        objChart.getAnimations().getLoad().setEnabled(true);
+
+        objChart.setGallery(cfx.Gallery.Bar);
         
-    data = [{ "Month": "AT&T", "Positive": 542, "Neutral": 88, "Negative": 20 },
-            { "Month": "IBM", "Positive": 348, "Neutral": 71, "Negative": 11 },
-            { "Month": "Kore", "Positive": 35, "Neutral": 0, "Negative": 0 },
-            { "Month": "Verizon", "Positive": 621, "Neutral": 88, "Negative": 26}
-        ];
-    
-    chart1.getAnimations().getLoad().setEnabled(true);
-    chart1.getAxisY().setMin(0);
-    chart1.getAxisY().setMax(14000);
-    chart1.getAllSeries.setStackedStyle(cfx.Stacked.Normal);
-    chart1.getLegendBox().setVisible(true);
-    chart1.setGallery(cfx.Gallery.Bar);
-    chart1.setDataSource(data);
-    divHolder = document.getElementById('grafico');
-    chart1.create(divHolder);
-}
+        data = objChart.getData();
+        data.setSeries(3);
+        data.setPoints(10);
+        objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
+        objChart.getLegendBox().setVisible(true);
 
-window.onload = carregarGraphico;
+        //UILayout.CreateTitle(objChart, "Volume & Sentiment");
+
+        data = ps_graphDefinitions.jsonData;
+        
+        objChart.setDataSource(data);
+        divHolder = document.getElementById(sElementName);
+        objChart.create(divHolder);
+
+        UILayout.RemoveWidgetGradient();
+    };
+
+
+}(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery ));
