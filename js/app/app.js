@@ -3,7 +3,7 @@
 * Defines all graphs
 *
 */
-/*global cfx:false, document:false, UILayout:false, window:false, jQuery:false*/
+/*global cfx:false, document:false, UILayout:false, window:false, jQuery:false, console:false*/
 
 (function (ps_graphDefinitions, $, undefined) {
 
@@ -14,10 +14,10 @@
         { "Month": "Verizon", "Positive": 621, "Neutral": 88, "Negative": 26}
     ];
 
-    ps_graphDefinitions.buildChart = function(sElementName)
+    ps_graphDefinitions.buildChart = function(jsonObject)
     {
 
-        var objChart, data, divHolder;
+        var objChart, data, ajaxData;
 
         objChart = new cfx.Chart();
         objChart.getAnimations().getLoad().setEnabled(true);
@@ -35,10 +35,23 @@
         data = ps_graphDefinitions.jsonData;
         
         objChart.setDataSource(data);
-        divHolder = document.getElementById(sElementName);
-        objChart.create(divHolder);
+        
+       $.ajax({
+            url: ("js/app/jsonObject.json"),
+            data: ajaxData,
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType : "json",
+            success: function (result) {
+                objChart.setDataSource(result.d);
+            },
+            error: function (xhr, txt, err) {
+                console.log("error connecting to data: " + txt);            }
+        });
+        //divHolder = document.getElementById(sElementName);
+        objChart.create(jsonObject);
 
-        UILayout.RemoveWidgetGradient();
+        //UILayout.RemoveWidgetGradient();
     };
 
 
