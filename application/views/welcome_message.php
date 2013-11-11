@@ -10,7 +10,6 @@
     <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
     <script type="text/javascript">
         $(window).load(function (e) {
-            buildChart();
             ps_graphDefinitions.buildChart('grafico');
         });
     </script>

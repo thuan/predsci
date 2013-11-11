@@ -14,7 +14,6 @@
         { "Month": "Verizon", "Positive": 621, "Neutral": 88, "Negative": 26}
     ];
 
-
     ps_graphDefinitions.buildChart = function(sElementName)
     {
 
