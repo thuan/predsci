@@ -9,6 +9,16 @@
     <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
     <script type="text/javascript">
+        //Depreciated because we moved to new endpoint
+        var APItrendingtopicskeywords = "";
+        var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/topics/multitime?period=week&limit=5";
+        console.log("API: Trending Topics: " + APItrendingtopics);
+
+        var APIgettoptweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=1&period=day&period_count=7&limit=20";
+    console.log("API: Top Tweets: " + APIgettoptweets);
+    var APItwitterfollowers = "/livecache/vzw_twitter_followers_1d.json";
+    console.log("API: Twitter Followers: " + APItwitterfollowers);
+
         $(window).load(function (e) {
             ps_graphDefinitions.buildChart('grafico');
         });
