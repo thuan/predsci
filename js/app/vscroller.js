@@ -159,8 +159,6 @@ var interval = new Array();
                     $('#' + settings.unique).css("max-height", parentHeight);
                 });
 
-
-
                 function scroll() {
 
                     $('.arrow-up, .arrow-down').addClass('disabled');

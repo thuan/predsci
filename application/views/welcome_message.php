@@ -10,6 +10,9 @@
     <script type="text/javascript" src="js/jchartfx/jchartfx.system.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
+    <script type="text/javascript" src="js/app/app.js"></script>
+    <script type="text/javascript" src="js/app/vscroller.js"></script>
+    <script type="text/javascript" src="js/app/twitter_stream.js"></script>
     <script type="text/javascript">
         var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/topics/multitime?period=week&limit=5";
         console.log("API: Trending Topics: " + APItrendingtopics);
@@ -113,9 +116,8 @@
                 </div>
                 <div class="news-wrapper" id="vscroller" style="height: 285px;">
                     <div class="arrow-up"></div>
-
                 </div>
-                <!--<div class="hidden-desktop onscreendatacard"></div>-->
+
                 <div class="arrow-down tn"></div>
                 <div class="footing roundlow"></div>
                 <div class="timelabel"></div>
@@ -126,7 +128,5 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="js/app/app.js"></script>
-<script type="text/javascript" src="js/app/vscroller.js"></script>
-<script type="text/javascript" src="js/app/twitter_stream.js"></script>
+
 </html>
