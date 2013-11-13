@@ -4,7 +4,7 @@ $(function () {
         id: "pscroller",
         view: "",
         api: ajaxCalls.getTwitterStreamAPI,
-        dataURL: "ajax",
+        dataURL: ajaxCalls.getTwitterStreamAPI,
         function: ps_graphDefinitions.buildTwitterStream,
         legend: false
     };

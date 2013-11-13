@@ -5,7 +5,7 @@
  *
  */
 
-(function (ps_utilities, $, undefined ){
+(function (ps_utilities, $, undefined) {
 
     ps_utilities.loadData = function (arrayData)
     {
@@ -13,7 +13,7 @@
             type: 'GET',
             cache: true,
             data: "",
-            url: ajaxCalls.getTwitterStreamAPI,
+            url: arrayData.dataURL,
             dataType: 'json',
             success: function(dataResponse) {
                 ps_graphDefinitions.jsonData = dataResponse;
