@@ -16,9 +16,10 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700' rel='stylesheet' type='text/css'>
 
     <script src="/js/ajaxCalls.js"></script>
+    <script src="/js/tweetFeed.js"></script>
     <script src="/js/ps_utilities.js"></script>
     <script src="/js/ps_graphdefinitions.js"></script>
-    <script src="/js/tweetFeed.js"></script>
+    
 
     <script src="/lib/jquery/jquery-ui.js"></script>
 
