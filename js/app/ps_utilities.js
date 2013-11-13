@@ -19,8 +19,9 @@
                 ps_graphDefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
             },
-            error: function(e) { console.log(ajaxCalls.getTwitterStreamAPI); },
-            json: 'json'
+            error: function(jqXHR, textStatus, errorThrown) { 
+                console.log(errorThrown); 
+                console.log(textStatus);
         });
     };
 
