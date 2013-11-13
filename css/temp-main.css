@@ -1,0 +1,412 @@
+body
+{
+    border: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+
+/*******************************
+*
+* Login
+*
+*******************************/
+
+
+#login_body
+{
+    background: #0e0e0e url(/images/simple_dashed.png);
+}
+
+
+#login_title
+{
+    margin: 100px auto 0 auto;
+    width: 180px;
+    color: #666;
+    font-weight: normal;
+    text-align: center;
+}
+
+
+#login
+{
+    color: #fff;
+    position: relative;
+    width: 300px;
+    margin: 20px auto 0 auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #151515;
+    padding: 20px 0 1px 0;
+    border: 1px solid #1e1e1e;
+}
+
+#login input
+{
+    margin: 8px 40px;
+}
+
+
+/*******************************
+*
+* Navigation
+*
+*******************************/
+
+
+#navigation
+{
+    width: 100%;
+    height: 30px;
+
+}
+
+
+#navigation_background
+{
+    margin: 20px 0;
+    width: 100%;
+}
+
+
+
+
+
+
+/*******************************
+*
+* Dashboard Pages
+*
+*******************************/
+
+
+#main_body
+{
+    background-image: url(/images/ps_neutral.png);
+}
+
+#main_info
+{
+    margin: 0 auto;
+    width: 95%;
+}
+
+#main_info h1
+{
+    color: #0081c2;
+}
+
+#image_data
+{
+    background: #FFF;
+}
+
+#image_data select
+{
+    width: 150px;
+    height: 25px;
+    font-size: .8em;
+    margin: 2px 3px 0 0;
+}
+
+
+#form_holder
+{
+    position: relative;
+    float: left;
+    padding: 0 10px 0 10px;
+    width: 200px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff;
+    margin: 0 20px 0 0;
+    background: #afc6d1;
+}
+
+
+
+#form_holder form input, #form_holder form select
+{
+    width: 93%;
+}
+
+
+#widget_holder
+{
+    position: relative;
+    float: left;
+    width: 260px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff;
+    margin: 0 20px 0 0;
+    padding: 0 0 10px 0;
+}
+
+#widget_holder .muted, #dashboard_holder .muted
+{
+    margin: 0px 0 0 10px;
+}
+
+
+.widget_container
+{
+    cursor: pointer;
+
+}
+
+
+#widget_holder .widget_container, #dashboard_holder .widget_container
+{
+    margin: 0 10px 10px 0;
+    float: left;
+    height: 130px;
+    width: 100px;
+}
+
+
+.widget_container p
+{
+    text-align: center;
+    font-size: .8em;
+    line-height: 12px;
+    color: #777;
+}
+
+
+
+.widget_container img
+{
+    height: 100px;
+}
+
+.widget_container select
+{
+    width: 100px;
+    height: 10px;
+    font-size: .7em;
+    margin: 3px 0 0 0;
+}
+
+
+
+#widget_list
+{
+    float: left;
+    width: 240px;
+    height: 480px;
+    margin: 10px 0 0 10px;
+    overflow: auto;
+}
+
+#widget_holder h4
+{
+    margin: 10px;
+}
+
+
+#dashboard_list
+{
+    float: left;
+    width: 580px;
+    height: 480px;
+    margin: 10px 0 0 10px;
+    overflow: auto;
+}
+
+
+#dashboard_holder
+{
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0;
+    width: 600px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff;
+}
+
+#dashboard_holder h4
+{
+    margin: 10px;
+}
+
+
+/*******************************
+*
+* Dashboard
+*
+*******************************/
+
+#dashboard_body
+{
+    background: #942a25;
+}
+
+#dashboard_content
+{
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+#dashboard_content .widget_holder
+{
+    float: left;
+    width: 350px;
+    height: 350px;
+}
+
+#dashboard_selector
+{
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+#navbar_holder
+{
+    width: 100%;
+}
+
+
+
+#main_table_container
+{
+    width: 97%;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+
+
+.dataTables_wrapper
+{
+
+    width: 100%;
+}
+
+table.dataTable tr.odd td.sorting_1
+{
+    background-color: #f9f9f9;
+}
+
+table.dataTable tr.even td.sorting_1 {
+    background-color: #fff;
+}
+
+
+
+.dataTables_length, .dataTables_filter, .dataTables_info
+{
+    color: #000;
+    margin-bottom: 10px;
+
+}
+
+.pagination ul>.disabled>span, .pagination ul>.disabled>a, .pagination ul>.disabled>a:hover, .pagination ul>.disabled>a:focus
+{
+    color: #ddd;
+    cursor: default;
+    background-color: #fff;
+}
+
+.dataTables_filter
+{
+    right: 0px;
+    margin-bottom: 5px;
+}
+
+.dataTables_length
+{
+    margin-top: 8px;
+}
+
+.table-bordered th
+{
+    border-bottom: none !important;
+}
+
+table.dataTable tfoot th
+{
+
+    border-top: 1px #ddd solid;
+}
+
+table.dataTable td
+{
+    padding: 3px 50px;
+}
+
+.table th, .table td
+{
+    vertical-align: middle;
+}
+
+#div_pie_chart
+{
+    width: 1050px !important;
+}
+
+
+.jchartfx .Title {
+    fill: #000;
+    font-size: 9pt;
+}
+
+/* Widget Background */
+
+.jchartfx .Border
+{
+    fill: none;
+}
+
+/* Widget Outline */
+
+
+.jchartfx path
+{
+    stroke: none !important;
+}
+
+.jchartfx .AxisText
+{
+    fill: #000;
+}
+
+.jchartfx
+{
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+/*
+
+.jchartfx path:nth-child(2), .jchartfx path:nth-child(4)
+{
+    fill: none !important;
+    background-color: none !important;
+    stroke: none !important;
+    background: none !important;
+}
+
+.LegendItem path
+{
+    display: none !important;
+}
+
+*/
+
+
+
+
+
+
+
