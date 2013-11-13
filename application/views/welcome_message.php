@@ -6,6 +6,7 @@
     <title>Predictive Science - Thuan examples</title>
     <link rel="stylesheet" type="text/css" href="css/jChartFX%20Palettes/mocha.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/pscroller.css">
     <script type="text/javascript" src="js/jquery/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.system.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
