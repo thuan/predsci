@@ -10,11 +10,11 @@
     ps_utilities.loadData = function (arrayData)
     {
         $.ajax({
-            type: 'GET',
-            cache: true,
+            dataType: 'jsonp',
             data: "",
             url: arrayData.dataURL,
-            dataType: 'json',
+            jsonp: 'callback',
+            jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
                 ps_graphDefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
