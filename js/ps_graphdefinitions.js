@@ -118,6 +118,27 @@
             adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
+         // Twitter Stream
+    $(".div_upperArrow").on('click',function () {
+        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html()!=="") build.moveTweetForwordByOne();
+    });
+    
+    $(".div_downArrow").on('click',function () {
+        if ($(this).attr('status') !== "disabled"&&$(".div_tweetsMain").html()!=="") build.moveTweetBackByOne();
+    });
+    
+    var scrollTwitTimer = window.setInterval(function () {
+        if ($(".div_tweetsMain").html()!=="") {
+            build.moveTweetBackByOne();
+            build.moveTweetBackByOne_admin();
+        }
+    }, 10000);
+    
+    var getTweetDataTimer = window.setInterval(function () {
+        ps_graphDefinitions.buildTwitterStream();
+        ps_graphDefinitions.buildTwitterStreamUserData();
+        }, 60000);
+        
         $("#div_tweeterStream").on('click', function () {
 
             $("#div_tweeterStream").attr('isclicked', '1');
@@ -130,26 +151,29 @@
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
                     $(".modal-body div#div_upperArrow").click(function () {
-                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") moveTweetForwordByOne();
+                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") build.moveTweetForwordByOne();
                     });
 
                     $(".modal-body div#div_downArrow").click(function () {
-                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") moveTweetBackByOne();
+                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") build.moveTweetBackByOne();
                     });
                     $(".modal-body div#div_upperArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() !== "") moveTweetForwordByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() !== "") build.moveTweetForwordByOne_admin();
                     });
 
                     $(".modal-body div#div_downArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() !== "") moveTweetBackByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() !== "") build.moveTweetBackByOne_admin();
                     });
+
                 }
             });
         });
+        
         $('#myModal').on('hidden', function () {
             $('#myModal').unbind('show');
             $("#div_tweeterStream").attr('isclicked', '0');
         });
+        
     };
     
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {
