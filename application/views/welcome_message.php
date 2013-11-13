@@ -97,19 +97,6 @@
                 <div class="news-wrapper" id="pscroller" style="height: 285px; max-height: none;">
                     <div class="arrow-up"></div>
                     
-                    <div class="news-contents-wrapper">
-                        <div class="news-contents">
-                            
-                        
-                            
-                            
-                            
-                           
-                            
-                            
-                            
-                        </div>
-                    </div>
                 </div>
                 <!--<div class="hidden-desktop onscreendatacard"></div>-->
                 <div class="arrow-down tn"></div>
