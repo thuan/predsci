@@ -17,6 +17,7 @@
 
     <script src="/js/ps_utilities.js"></script>
     <script src="/js/ps_graphdefinitions.js"></script>
+    <script src="/js/tweetFeed.js"></script>
 
     <script src="/lib/jquery/jquery-ui.js"></script>
 
@@ -52,7 +53,6 @@
     <link href="/css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet" />
 
 
-
-    <script language="javascript" src="/js/app.js" type="text/javascript"></script>
+    
 
 </head>
