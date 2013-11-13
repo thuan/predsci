@@ -11,10 +11,10 @@
     <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
     <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
     <script type="text/javascript" src="js/app/ajaxCalls.js"></script>
-    <script type="text/javascript" src="js/app/twitterStream.js"></script>
-    <script type="text/javascript" src="js/app/pscroller.js"></script>
     <script type="text/javascript" src="js/app/ps_utilities.js"></script>
     <script type="text/javascript" src="js/app/ps_graphdefinitions.js"></script>
+    <script type="text/javascript" src="js/app/twitterStream.js"></script>
+    <script type="text/javascript" src="js/app/pscroller.js"></script>
     
     <style type="text/css">
         ::selection{ background-color: #E13300; color: white; }
