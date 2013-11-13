@@ -10,19 +10,17 @@
     ps_utilities.loadData = function (arrayData)
     {
         $.ajax({
-            dataType: 'jsonp',
+            type: 'GET',
+            cache: true,
             data: "",
             url: arrayData.dataURL,
-            jsonp: 'callback',
-            jsonpCallback: 'jsonpCallback',
+            dataType: 'json',
             success: function(dataResponse) {
                 ps_graphDefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
             },
-            error: function(jqXHR, textStatus, errorThrown) { 
-                console.log(errorThrown); 
-                console.log(textStatus);
-            }
+            error: function(e) { console.log(ajaxCalls.getTwitterStreamAPI); },
+            json: 'json'
         });
     };
 
