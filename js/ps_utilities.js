@@ -34,8 +34,22 @@
             json: 'json'
          });
     };
-
-
-
+    
+    ps_utilities.loadJsonpData = function (arrayData)
+    {
+        $.ajax({
+            dataType: 'jsonp',
+            data: "",
+            url: arrayData.dataURL,
+            jsonp: 'callback',
+            jsonpCallback: 'jsonpCallback',
+            success: function(dataResponse) {
+                ps_graphDefinitions.jsonData = dataResponse;
+                arrayData.function(arrayData);
+            },
+            error: function(e) { console.log('Error making request'); },
+            json: 'json'
+        });
+    };
 
 }(window.ps_utilities = window.ps_utilities || {}, jQuery));
