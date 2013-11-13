@@ -74,10 +74,10 @@
                         
             date = new Date();
             tweetStreamHtml = "";
-            statusCount = sElementName.statuses.length;
+            statusCount = ps_graphDefinitions.jsonData.statuses.length;
 
-            userName = sElementName.tag_names;
-            tweetData = sElementName.statuses;
+            userName = ps_graphDefinitions.jsonData.tag_names;
+            tweetData = ps_graphDefinitions.jsonData.statuses;
             console.log(statusCount);
 
             divIndex = 0;
