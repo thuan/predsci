@@ -3,7 +3,7 @@ var interval = new Array();
 
 (function ($) {
     $.fn.extend({
-        vscroller: function (options) {
+        pscroller: function (options) {
             var settings = $.extend({
                 speed: 1000,
                 stay: 0,
