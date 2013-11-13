@@ -55,6 +55,6 @@
     <link href="/css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet" />
 
 
-    
+    <script src="/js/app.js"></script>
 
 </head>
