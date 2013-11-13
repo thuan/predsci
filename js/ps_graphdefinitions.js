@@ -46,8 +46,10 @@
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {}
 
     ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-        var build, rank, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml;
-
+        var build, totalNumberOfTweet, totalNumberOfTweet_admin, rank, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml;
+        totalNumberOfTweet = 20;
+        totalNumberOfTweet_admin = 15;
+        
         build = {
             timeDifference: function (start) {
                 var startDate, endDate, diff, hours, minutes;
