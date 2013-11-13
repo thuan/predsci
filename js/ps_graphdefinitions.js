@@ -31,7 +31,7 @@
         totalNumberOfTweet = 20;
         totalNumberOfTweet_admin = 15;
         
-         build = {
+        build = {
             timeDifference: function (start) {
                 var startDate, endDate, diff, hours, minutes;
                 startDate = new Date(start);
@@ -53,7 +53,7 @@
                 });
                 return data;
             },
-            moveTweetForwordByOne: function () {
+            moveTweetForwordByOne: function() {
                 if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
                     sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
                     for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -65,7 +65,7 @@
                     }
                 }
             },
-            moveTweetBackByOne: function () {
+            moveTweetBackByOne: function() {
                 if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
                     sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
                     for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -91,6 +91,33 @@
             }
         };
         
+        date = new Date();
+        tweetStreamHtml = "";
+        statusCount = ps_graphDefinitions.jsonData.statuses.length;
+
+        userName = ps_graphDefinitions.jsonData.tag_names;
+        tweetData = ps_graphDefinitions.jsonData.statuses;
+
+        divIndex = 0;
+        adminHtml = "";
+
+        for (i = 0; i < statusCount; i++) {
+            //rank          = tweetData[i].rank;
+            screen_name = tweetData[i].screen_name;
+            status_text = tweetData[i].status_text;
+            img_url = tweetData[i].img_url;
+            tweetTime = tweetData[i].status_time_str;
+            status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
+
+            if (divIndex === 0) {
+                sessionStorage.presentTopTweetIndex = 0;
+                sessionStorage.presentTopTweetIndex_admin = 0;
+            }
+            
+            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
+            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
+            divIndex += 1;
+        }
         $("#div_tweeterStream").on('click', function () {
 
             $("#div_tweeterStream").attr('isclicked', '1');
@@ -116,14 +143,15 @@
                     $(".modal-body div#div_downArrow_admin").click(function () {
                         if ($(".div_tweetsMain_admin").html() !== "") moveTweetBackByOne_admin();
                     });
-
                 }
             });
-
         });
-        
+        $('#myModal').on('hidden', function () {
+            $('#myModal').unbind('show');
+            $("#div_tweeterStream").attr('isclicked', '0');
+        });
     };
-
+    
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {
     
     };
