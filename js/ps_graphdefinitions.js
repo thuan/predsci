@@ -31,19 +31,19 @@
         objChart.create(divHolder);
 
         // UILayout.RemoveWidgetGradient();
-    }
+    },
 
     ps_graphDefinitions.buildPieChart = function (sElementName) {
 
-    }
+    },
 
     ps_graphDefinitions.buildBarChart = function (sElementName) {
 
-    }
+    },
 
-    ps_graphDefinitions.buildLineChart = function (sElementName) {}
+    ps_graphDefinitions.buildLineChart = function (sElementName) {},
 
-    ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {}
+    ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {},
 
     ps_graphDefinitions.buildTwitterStream = function (sElementName) {
         var build, totalNumberOfTweet, totalNumberOfTweet_admin, rank, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml;
@@ -81,7 +81,7 @@
                         $('div[index="' + index + '"]').animate({
                             "top": top + "px"
                         }, 500, function () {
-
+                        
                         });
                     }
                 }
@@ -146,15 +146,15 @@
         $(".div_tweetsMain").html(tweetStreamHtml);
 
         $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetForwordByOne();
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") build.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetBackByOne();
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") build.moveTweetBackByOne();
         });
 
         var scrollTwitTimer = window.setInterval(function () {
-            if ($(".div_tweetsMain").html() != "") {
+            if ($(".div_tweetsMain").html() !== "") {
                 build.moveTweetBackByOne();
                 build.moveTweetBackByOne_admin();
             }
@@ -177,18 +177,18 @@
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
                     $(".modal-body div#div_upperArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") moveTweetForwordByOne();
                     });
 
                     $(".modal-body div#div_downArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") moveTweetBackByOne();
                     });
                     $(".modal-body div#div_upperArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") moveTweetForwordByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() !== "") moveTweetForwordByOne_admin();
                     });
 
                     $(".modal-body div#div_downArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") moveTweetBackByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() !== "") moveTweetBackByOne_admin();
                     });
 
                 }
@@ -200,8 +200,8 @@
             $("#div_tweeterStream").attr('isclicked', '0');
         })
         // Finished Twitter Stream
-    }
+    },
 
-    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
+    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {},
 
 }(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
