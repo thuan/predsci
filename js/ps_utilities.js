@@ -29,6 +29,7 @@
         $.ajax({
             dataType: 'jsonp',
             url: arrayData.dataURL,
+            contentType: "application/json",
             crossDomain: true,
             jsonp: 'callback',
             jsonpCallback: 'jsonpCallback',

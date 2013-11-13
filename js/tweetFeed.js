@@ -6,6 +6,6 @@ $(function () {
         legend: false
     };
 
-    new ps_utilities.loadJsonpData(tweetStream.data);
+    new ps_utilities.loadJsonpData(tweetStream);
 
 });
