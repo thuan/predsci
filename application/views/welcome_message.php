@@ -66,25 +66,6 @@
             </div>
 
 
-
-            <div class="widget_container_holder"><div class="widget_stealth"></div>
-                <div class="widget_label">
-
-                    <h3 class="pull-left">Twitter Stream<br>
-                        <small>Tweets mentioning Verizon Wireless</small>
-                    </h3>
-
-                    <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless."><i class="icon-info-sign icon-white"></i></a>
-                        <a id="launch-app" href="javascript:UILayout.WidgetLaunch('div_pie_chart')"><i class="icon-resize-full icon-white"></i></a>
-
-                    </div>
-
-                </div>
-                <div class="widget_holder" id="div_multi_chart3"></div>
-            </div>
-
-
             <!-- Twitter Stream div Starts -->
             <div class="widget_container_holder_long">
                 <div class="widget_label">
