@@ -24,7 +24,6 @@
     <script language="javascript" src="/lib/bootstrap/jquery.dataTables.min.js" type="text/javascript"></script>
     <script language="javascript" src="/lib/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
     <script language="javascript" src="/js/buttons.js" type="text/javascript"></script>
-    <script language="javascript" src="/js/UILayout.js" type="text/javascript"></script>
     <script language="javascript" src="/js/DataTable.js" type="text/javascript"></script>
 
 

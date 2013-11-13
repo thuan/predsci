@@ -102,7 +102,6 @@
             }
             $(".div_tweetsMain").html(tweetStreamHtml);
         }
-    }
 
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
 
