@@ -31,10 +31,6 @@
             </div>
 
 
-
-            <div class="widget_container_holder">
-
-
             <div class="widget_container_holder">
 
                 <div class="widget_label">
@@ -108,9 +104,6 @@
             </div>
             <!-- Twitter stream div Ends -->
 
-
-
-        </div>
 
         <!-- end of widgets -->
 
