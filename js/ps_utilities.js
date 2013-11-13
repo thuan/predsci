@@ -16,19 +16,8 @@
             url: "/" + arrayData.dataURL,
             dataType: 'json',
             success: function(dataResponse) {
-
-                //TODO
-                /*
-                * dataResponse is coming in as extra parameters with comma separated
-                * Need to not use eval. In the psgraphdefinitions need to add a success
-                * event to load the rest of the function
-                *
-                */
-
                 psgraphdefinitions.jsonData = dataResponse;
-
-                eval(arrayData.function + "('" + arrayData.div_location + "')");
-
+                arrayData.function(arrayData);
             },
             error: function() { console.log('Error making request'); },
             json: 'json'
@@ -41,6 +30,7 @@
             dataType: 'jsonp',
             data: "",
             url: arrayData.dataURL,
+            crossDomain: true,
             jsonp: 'callback',
             jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
