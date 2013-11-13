@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/app/ps_graphdefinitions.js"></script>
     <script type="text/javascript" src="js/app/twitterStream.js"></script>
     <script type="text/javascript" src="js/app/pscroller.js"></script>
-    
+
     <style type="text/css">
         ::selection{ background-color: #E13300; color: white; }
         	::moz-selection{ background-color: #E13300; color: white; }
@@ -79,13 +79,45 @@
 <body>
     <div id="container">
         <div id="body">
+            <div class="widget span4 visible-desktop hidden-ipad roundlow roundhigh">
+                <div class="heading clearfix roundhigh">
                     <h3 class="pull-left">Twitter Stream
-                        <br />
+                        <br>
                         <small>Tweets mentioning Verizon Wireless</small>
                     </h3>
+                    <div class="pull-right">
+                        <span class="label label-info ttip_t hidden-phone hidden-tablet has-icon" oldtitle="A stream of tweets related to Verizon Wireless." aria-describedby="ui-tooltip-15">info</span>
+                        <span class="expandbtn label label-error hidden-tablet hidden-phone has-icon">
+                            <a data-toggle="modal" data-backdrop="static" href="#modal-vscroller" id="expand_influencers" class="label visible-desktop" title="Click for expanded view.">expand</a>
+                        </span>
+                        <span class="refreshbtn label label-success ttip_t has-icon" oldtitle="refresh this widget">refresh</span>
+                    </div>
                 </div>
-                <div id="pscroller" style="height: 285px;">
+                <div class="news-wrapper" id="pscroller" style="height: 285px; max-height: none;">
+                    <div class="arrow-up"></div>
+                    
+                    <div class="news-contents-wrapper">
+                        <div class="news-contents">
+                            
+                        
+                            
+                            
+                            
+                           
+                            
+                            
+                            
+                        </div>
+                    </div>
                 </div>
+                <!--<div class="hidden-desktop onscreendatacard"></div>-->
+                <div class="arrow-down tn"></div>
+                <div class="footing roundlow"></div>
+                <div class="timelabel"></div>
+            </div>
+            
+
+
             <div id="grafico" style="width:600px;height:400px"></div>
             <p class="footer">Page rendered in
                 <strong>{elapsed_time}</strong>seconds</p>
