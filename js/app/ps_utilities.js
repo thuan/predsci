@@ -13,7 +13,7 @@
             type: 'GET',
             cache: true,
             data: "",
-            url: ajaxCalls.APIgettweets2,
+            url: ajaxCalls.getTwitterStreamAPI,
             dataType: 'json',
             success: function(dataResponse) {
                 ps_graphDefinitions.jsonData = dataResponse;
