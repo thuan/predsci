@@ -28,12 +28,12 @@
     {
         $.ajax({
             dataType: 'jsonp',
+            data: "",
             url: arrayData.dataURL,
-            contentType: "application/json",
-            crossDomain: true,
             jsonp: 'callback',
             jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
+                console.log(dataResponse);
                 ps_graphDefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
             },
