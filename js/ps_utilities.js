@@ -28,7 +28,6 @@
     {
         $.ajax({
             dataType: 'jsonp',
-            data: "",
             url: arrayData.dataURL,
             crossDomain: true,
             jsonp: 'callback',
@@ -38,7 +37,6 @@
                 arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
-            json: 'json'
         });
     };
 
