@@ -61,8 +61,6 @@ $(document).ready(function () {
 
     $("#div_tweeterStream").on('click',function() {
 
-
-
         $("#div_tweeterStream").attr('isclicked','1');
 
         $('#twitterStreamModal').on('shown', function () {

@@ -103,7 +103,6 @@
             moveTweetBackByOne_admin: function () {
                 if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
                     sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
-
                     for (var index = 0; index < totalNumberOfTweet_admin; index++) {
                         var top = parseInt($('div[index_admin="' + index + '"]').css('top'));
                         top = top + 80;

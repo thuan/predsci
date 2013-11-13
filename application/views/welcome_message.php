@@ -4,10 +4,6 @@
     include_once ("inc/navigation.php");
 ?>
 
-
-
-
-
 <body id="dashboard_body">
 
     <?php include_once ("inc/navigation.php"); ?>
@@ -24,12 +20,6 @@
         </div>
 
         <div id="dashboard_content">
-
-            <div class="metric-ticker">
-                <div class="widget">
-                </div>
-            </div>
-
 
             <div class="widget_container_holder">
 
@@ -66,31 +56,7 @@
             </div>
 
 
-            <!-- Twitter Stream div Starts -->
-            <div class="widget_container_holder_long">
-                <div class="widget_label">
-
-                    <h3 class="pull-left">Top Tweets<br>
-                        <small>Most Engaging Verizon Wireless Tweets</small>
-                    </h3>
-
-                    <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
-                        <a href="#" id="launch-app"><i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i></a>
-
-                    </div>
-
-                </div>
-                <div id="topTweets"></div>
-            </div>
-            <!-- Twitter stream div Ends -->
-
-
         <!-- end of widgets -->
-
-
-
-
 
 
         <!-- Modal Starts -->
@@ -104,7 +70,6 @@
             </div>
         </div>
         <!-- Modal Ends -->
-
 
 
 
