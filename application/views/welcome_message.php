@@ -5,12 +5,26 @@
     <meta charset="utf-8">
     <title>Predictive Science - Thuan examples</title>
     <link rel="stylesheet" type="text/css" href="css/jChartFX%20Palettes/mocha.css">
+    
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css" />
+    
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/pscroller.css">
-    <script type="text/javascript" src="js/jquery/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/jchartfx/jchartfx.system.js"></script>
-    <script type="text/javascript" src="js/jchartfx/jchartfx.coreBasic.js"></script>
-    <script type="text/javascript" src="js/jchartfx/jchartfx.animation.js"></script>
+    
+    
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="lib/qtip2/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="lib/antiscroll/antiscroll.js"></script>  
+    <script type="text/javascript" src="lib/antiscroll/jquery-mousewheel.js"></script>
+    <script type="text/javascript" src="lib/timeago/jquery.timeago.js"></script>  
+    <script type="text/javascript" src="lib/amcharts/amcharts.js"></script>  
+    <script type="text/javascript" src="lib/jchartfx/jchartfx.system.js"></script>
+    <script type="text/javascript" src="lib/jchartfx/jchartfx.coreBasic.js"></script>
+    <script type="text/javascript" src="lib/jchartfx/jchartfx.animation.js"></script>
+    
+    
     <script type="text/javascript" src="js/app/ajaxCalls.js"></script>
     <script type="text/javascript" src="js/app/ps_utilities.js"></script>
     <script type="text/javascript" src="js/app/ps_graphdefinitions.js"></script>
@@ -96,14 +110,14 @@
                 </div>
                 <div class="news-wrapper" id="pscroller" style="height: 285px; max-height: none;">
                     <div class="arrow-up"></div>
-                    
+
                 </div>
                 <!--<div class="hidden-desktop onscreendatacard"></div>-->
                 <div class="arrow-down tn"></div>
                 <div class="footing roundlow"></div>
                 <div class="timelabel"></div>
             </div>
-            
+
 
 
             <div id="grafico" style="width:600px;height:400px"></div>
