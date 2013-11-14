@@ -1,6 +1,7 @@
 (function (ps_twitterUtils, $, undefined) {
 
-    ps_twitterUtils.timeDifference = function (start) {
+    ps_twitterUtils.timeDifference = function (start) 
+    {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
         endDate = new Date();
@@ -9,9 +10,10 @@
         diff -= hours * 1000 * 60 * 60;
         minutes = Math.floor(diff / 1000 / 60);
         return (hours <= 9 ? "0" : "") + hours + "h" + (minutes <= 9 ? "0" : "") + minutes + "m";
-    };
+    }
 
-    ps_twitterUtils.addlinks = function (data) {
+    ps_twitterUtils.addlinks = function (data) 
+    {
         //Add link to all http:// links within tweets
         data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function (url) {
             return '<a target="_blank" style="color:#08c;" href="' + url + '" >' + url + '</a>';
@@ -21,9 +23,10 @@
             return '<a target="_blank" href="http://twitter.com/' + reply.substring(1) + '" style="color:#08c;font-weight:lighter;" >' + reply.charAt(0) + reply.substring(1) + '</a>';
         });
         return data;
-    };
+    }
 
-    ps_twitterUtils.moveTweetForwordByOne = function () {
+    ps_twitterUtils.moveTweetForwordByOne = function () 
+    {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
@@ -38,9 +41,10 @@
                 });
             }
         }
-    };
+    }
 
-    ps_twitterUtils.moveTweetBackByOne = function () {
+    ps_twitterUtils.moveTweetBackByOne = function () 
+    {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
@@ -55,9 +59,10 @@
                 });
             }
         }
-    };
+    }
 
-    ps_twitterUtils.moveTweetBackByOne_admin = function () {
+    ps_twitterUtils.moveTweetBackByOne_admin = function () 
+    {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
@@ -72,39 +77,34 @@
                 });
             }
         }
-    };
+    }
 
-    ps_twitterUtils.buildMentionsData = function () {
+    ps_twitterUtils.getMentionJsonData = function () 
+    {
         var date = new Date();
         var tweetStreamHtml = "";
+        var response = ps_graphdefinitions.jsonpData;
         var statusCount = response.statuses.length;
-
         var userName = response.tag_names;
         var tweetData = response.statuses;
-        console.log(statusCount);
         var rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
-
         var divIndex = 0;
         var adminHtml = "";
-
         for (i = 0; i < statusCount; i++) {
-            //rank			= tweetData[i].rank;
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
             tweetTime = tweetData[i].status_time_str;
             status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
-
+        
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
             }
             tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
-            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-        //$('#topTweets').html(topTweets);
-        $(".div_tweetsMain").html(tweetStreamHtml);
-    };
+        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml); 
+    }
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));

@@ -35,7 +35,7 @@
             jsonp: 'callback',
             jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
-                ps_graphdefinitions.jsonData = dataResponse;
+                ps_graphdefinitions.jsonpData = dataResponse;
                 arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
