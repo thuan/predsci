@@ -4,46 +4,43 @@
  *
  */
 
-(function (ps_graphDefinitions, $, undefined) {
+(function (ps_graphDefinitions, $, undefined) { 
+    ps_graphDefinitions.jsonData = "";
 
-        ps_graphDefinitions.jsonData = "";
+    ps_graphDefinitions.buildChart = function (sElementName) {
+        },
 
-        ps_graphDefinitions.buildChart = function (sElementName) {
+    ps_graphDefinitions.buildPieChart = function (sElementName) {
 
-            var objChart;
+        },
 
-            objChart = new cfx.Chart();
-            objChart.getAnimations().getLoad().setEnabled(true);
+    ps_graphDefinitions.buildBarChart = function (sElementName) {
 
-            objChart.setGallery(cfx.Gallery.Bar);
-            var data = objChart.getData();
-            data.setSeries(3);
-            data.setPoints(10);
-            objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
-            objChart.getLegendBox().setVisible(true);
+    },
 
-            //UILayout.CreateTitle(objChart, "Volume & Sentiment");
+    ps_graphDefinitions.buildLineChart = function (sElementName) {
+        
+    },
+    
+    ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
+    
+    },
+    
+    ps_graphDefinitions.buildTwitterStream = function (sElementName) {
+        totalNumberOfTweet          = 20;
+    totalNumberOfTweet_admin    = 15;
+    
+    },
+    
+    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {
+    
+    },
+    
+} (window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
 
-            var data = ps_graphDefinitions.jsonData;
+        
 
-            objChart.setDataSource(data);
-            var divHolder = document.getElementById(sElementName.div_location);
-            objChart.create(divHolder);
-
-            // UILayout.RemoveWidgetGradient();
-        }
-
-        ps_graphDefinitions.buildPieChart = function (sElementName) {
-
-        }
-
-        ps_graphDefinitions.buildBarChart = function (sElementName) {
-
-        }
-
-        ps_graphDefinitions.buildLineChart = function (sElementName) {}
-
-        ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {}
+        ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {},
 
         ps_graphDefinitions.buildTwitterStream = function (sElementName) {
             var build, rank, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml;
@@ -101,8 +98,6 @@
                 divIndex += 1;
             }
             $(".div_tweetsMain").html(tweetStreamHtml);
-        }
+        },
 
-    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
-
-}(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
+    
