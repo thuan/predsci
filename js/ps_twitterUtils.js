@@ -75,10 +75,10 @@
                 
         date = new Date();
         tweetStreamHtml = "";
-        statusCount = ps_graphDefinitions.jsonData.statuses.length;
+        statusCount = ps_graphdefinitions.jsonData.statuses.length;
 
-        userName = ps_graphDefinitions.jsonData.tag_names;
-        tweetData = ps_graphDefinitions.jsonData.statuses;
+        userName = ps_graphdefinitions.jsonData.tag_names;
+        tweetData = ps_graphdefinitions.jsonData.statuses;
 
         divIndex = 0;
         adminHtml = "";
@@ -116,7 +116,7 @@
         }, 10000);
         getTweetDataTimer = window.setInterval(function () {
             //getUserJsonData();
-            ps_graphDefinitions.buildTwitterStream();
+            ps_graphdefinitions.buildTwitterStream();
             //getMentionJsonData();
         }, 60000);
 
@@ -154,4 +154,4 @@
     }
 
 
-}(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
+}(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));

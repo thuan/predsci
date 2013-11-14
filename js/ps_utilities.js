@@ -16,7 +16,7 @@
             url: "/" + arrayData.dataURL,
             dataType: 'json',
             success: function(dataResponse) {
-                ps_graphDefinitions.jsonData = dataResponse;
+                ps_graphdefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
             },
             error: function() { console.log('Error making request'); },
@@ -35,7 +35,7 @@
             jsonp: 'callback',
             jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
-                ps_graphDefinitions.jsonData = dataResponse;
+                ps_graphdefinitions.jsonData = dataResponse;
                 arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },

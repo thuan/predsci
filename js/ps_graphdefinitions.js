@@ -4,10 +4,10 @@
  *
  */
 
-(function (ps_graphDefinitions, $, undefined) {
-    ps_graphDefinitions.jsonData = "";
+(function (ps_graphdefinitions, $, undefined) {
+    ps_graphdefinitions.jsonData = "";
 
-    ps_graphDefinitions.buildTwitterStream = function (sElementName) 
+    ps_graphdefinitions.buildTwitterStream = function (sElementName) 
     {
         var mentionsData, usersData;
         
@@ -27,4 +27,4 @@
         new ps_utilities.loadJsonpData(usersData);
     }
 
-}(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
+}(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery));
