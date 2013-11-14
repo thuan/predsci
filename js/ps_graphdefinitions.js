@@ -16,7 +16,6 @@
             legend: false
         };
         new ps_utilities.loadJsonpData(mentionsData);
-    }
-
+    };
 
 }(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery));
