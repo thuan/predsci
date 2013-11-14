@@ -9,7 +9,7 @@
     ps_graphdefinitions.jsonData = "";
 
 
-    psgraphdefinitions.buildChart = function(sElementName)
+    ps_graphdefinitions.buildChart = function(sElementName)
     {
 
         var objChart;
