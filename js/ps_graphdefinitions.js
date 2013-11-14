@@ -25,6 +25,6 @@
 
         new ps_utilities.loadJsonpData(mentionsData);
         new ps_utilities.loadJsonpData(usersData);
-    }
+    };
 
 }(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery));
