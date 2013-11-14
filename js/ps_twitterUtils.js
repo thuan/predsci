@@ -25,6 +25,7 @@
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
         var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -41,6 +42,7 @@
 
     ps_twitterUtils.moveTweetBackByOne = function () {
         var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -56,7 +58,8 @@
     }
 
     ps_twitterUtils.moveTweetForwordByOne_admin = function () {
-        var totalNumberOfTweet_admin = 20;
+        var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -71,7 +74,8 @@
         }
     }
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
-        var totalNumberOfTweet_admin = 20;
+        var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
