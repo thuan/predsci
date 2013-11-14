@@ -6,12 +6,8 @@ $(function () {
         legend: false
     };
     
-    usersJsonData = {
-        dataURL: ajaxCalls.getUsersJsonData,
-        function: ps_twitterUtils.getUsersJsonData,
-        legend: false
-    };
+    
     
     new ps_utilities.loadJsonpData(mentionsJsonData);
-    new ps_utilities.loadJsonpData(usersJsonData);
+    //new ps_utilities.loadJsonpData(usersJsonData);
 });
