@@ -63,7 +63,8 @@ var APIvolumeandsentiment = "http://wcg-verizon-api-alpha.herokuapp.com/rest/dri
 console.log("API: Volume and Sentiment: " + APIvolumeandsentiment);
 
 var ajaxCalls = {
-    getMentionsJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=verizon&limit=25&min_followers=10&include_replies=false"
+    getMentionsJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=verizon&limit=25&min_followers=10&include_replies=false",
+    getUsersJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/user/statuses?group=1&include_replies=false&limit=10"
 };
 
 var APIgettweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/user/statuses?group=1&include_replies=false&limit=10";
