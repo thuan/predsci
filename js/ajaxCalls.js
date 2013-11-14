@@ -64,7 +64,8 @@ console.log("API: Volume and Sentiment: " + APIvolumeandsentiment);
 
 var ajaxCalls = {
     getMentionsJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=verizon&limit=25&min_followers=10&include_replies=false",
-    getUsersJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/user/statuses?group=1&include_replies=false&limit=10"
+    getUsersJsonData: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=1&period=day&period_count=7&limit=20"
+    
 };
 
 var APIgettweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/user/statuses?group=1&include_replies=false&limit=10";
