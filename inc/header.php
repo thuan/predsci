@@ -15,7 +15,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700' rel='stylesheet' type='text/css'>
     
-    <script src="/js/app.js"></script>
+    <script src="/js/ajaxCalls.js"></script>
     <script src="/js/ps_utilities.js"></script>
     <script src="/js/ps_graphdefinitions.js"></script>
     
