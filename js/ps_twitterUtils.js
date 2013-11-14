@@ -111,7 +111,7 @@
         }, 10000);
         getTweetDataTimer = window.setInterval(function () {
             //getUserJsonData();
-            ps_graphDefinitions.buildTwitterStream();
+            ps_graphDefinitions.buildMentionsData();
             //getMentionJsonData();
         }, 60000);
 
