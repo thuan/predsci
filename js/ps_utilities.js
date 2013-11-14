@@ -22,7 +22,7 @@
             error: function() { console.log('Error making request'); },
             json: 'json'
          });
-    };
+    }
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
@@ -40,6 +40,6 @@
             },
             error: function(e) { console.log('Error making request'); },
         });
-    };
+    }
 
 }(window.ps_utilities = window.ps_utilities || {}, jQuery));

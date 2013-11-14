@@ -12,7 +12,7 @@
 
     ps_graphdefinitions.buildTwitterStream = function (sElementName) 
     {
-        
+        ps_twitterUtils.getMentionJsonData();
     }
 
 }(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery));
