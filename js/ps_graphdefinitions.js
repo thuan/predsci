@@ -115,11 +115,11 @@
         $(".div_tweetsMain").html(tweetStreamHtml);
         // Twitter Stream
         $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetBackByOne();
         });
 
         scrollTwitTimer = window.setInterval(function () {
@@ -146,18 +146,18 @@
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
                     $(".modal-body div#div_upperArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetForwordByOne();
                     });
 
                     $(".modal-body div#div_downArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetBackByOne();
                     });
                     $(".modal-body div#div_upperArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") moveTweetForwordByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "") build.moveTweetForwordByOne_admin();
                     });
 
                     $(".modal-body div#div_downArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") moveTweetBackByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "") build.moveTweetBackByOne_admin();
                     });
 
                 }
