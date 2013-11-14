@@ -5,18 +5,17 @@
  */
 
 (function (ps_graphDefinitions, $, undefined) {
-
     ps_graphDefinitions.jsonData = "";
 
-    ps_graphDefinitions.buildChart = function (sElementName) {},
+    ps_graphDefinitions.buildChart = function (sElementName) {}
 
-    ps_graphDefinitions.buildPieChart = function (sElementName) {},
+    ps_graphDefinitions.buildPieChart = function (sElementName) {}
 
-    ps_graphDefinitions.buildBarChart = function (sElementName) {},
+    ps_graphDefinitions.buildBarChart = function (sElementName) {}
 
-    ps_graphDefinitions.buildLineChart = function (sElementName) {},
+    ps_graphDefinitions.buildLineChart = function (sElementName) {}
 
-    ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {},
+    ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {}
 
     ps_graphDefinitions.buildTwitterStream = function (sElementName) {
         var build, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml, totalNumberOfTweet, totalNumberOfTweet_admin;
@@ -88,7 +87,7 @@
                     }
                 }
             }
-        };
+        },
         date = new Date();
         tweetStreamHtml = "";
         statusCount = ps_graphDefinitions.jsonData.statuses.length;
@@ -98,9 +97,7 @@
 
         divIndex = 0;
         adminHtml = "";
-
         for (i = 0; i < statusCount; i++) {
-            //rank			= tweetData[i].rank;
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
@@ -111,12 +108,13 @@
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
             }
-            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
-            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
+            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + timeDifference(tweetTime) + '</div><div class="div_tweetText">' + addlinks(status_text) + '</div></div></div>';
+            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + timeDifference(tweetTime) + '</div><div class="div_tweetText">' + addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-        $(".div_tweetsMain").html(tweetStreamHtml);
-    },
 
-    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {},
+    }
+
+    ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
+
 }(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
