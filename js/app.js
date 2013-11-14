@@ -37,66 +37,7 @@ $(document).ready(function () {
         $("#webticker").webTicker('cont');
     });
 
-    // Twitter Stream
-    $(".div_upperArrow").on('click',function () {
-        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html()!="") moveTweetForwordByOne();
-    });
     
-    $(".div_downArrow").on('click',function () {
-        if ($(this).attr('status') != "disabled"&&$(".div_tweetsMain").html()!="") moveTweetBackByOne();
-    });
-    
-    var scrollTwitTimer = window.setInterval(function () {
-        if ($(".div_tweetsMain").html()!="") {
-            moveTweetBackByOne();
-            moveTweetBackByOne_admin();
-        }
-    }, 10000);
-    var getTweetDataTimer = window.setInterval(function () {
-            getUserJsonData();
-            getMentionJsonData();    
-        }, 60000);
-
-    
-
-    $("#div_tweeterStream").on('click',function() {
-
-        $("#div_tweeterStream").attr('isclicked','1');
-
-        $('#twitterStreamModal').on('shown', function () {
-            if($("#div_tweeterStream").attr('isclicked')=="1") {
-                $("#twitterStream_div_modal, #myModalLabel").empty();
-
-                //displaying the modal content
-                $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>"+$("#div_tweeterStream .div_tweetsParent").html()+"</div>"+"<div id='div_verizonTweet'>"+$("#div_tweeterStream_admin .div_tweetsParent").html()+"</div>");
-
-                $(".modal-body div#div_upperArrow").click(function () {
-                    if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html()!="") moveTweetForwordByOne();
-                });
-    
-                $(".modal-body div#div_downArrow").click(function () {
-                    if ($(this).attr('status') != "disabled"&&$(".div_tweetsMain").html()!="") moveTweetBackByOne();
-                });
-                $(".modal-body div#div_upperArrow_admin").click(function () {
-                    if ($(".div_tweetsMain_admin").html()!="") moveTweetForwordByOne_admin();
-                });
-    
-                $(".modal-body div#div_downArrow_admin").click(function () {
-                    if ($(".div_tweetsMain_admin").html()!="") moveTweetBackByOne_admin();
-                });
-                
-            }
-        })
-        
-    });
-    $('#myModal').on('hidden', function () {
-        $('#myModal').unbind('show');
-        $("#div_tweeterStream").attr('isclicked','0');
-    })
-    // Finished Twitter Stream
-
-    jsonUserData    = getUserJsonData();
-    jsonMentionData = getMentionJsonData();
 
     // Metric Ticker
     metric_ticker();
