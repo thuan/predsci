@@ -5,9 +5,12 @@ $(function () {
         function: ps_twitterUtils.getMentionJsonData,
         legend: false
     };
-    
-    
-    
     new ps_utilities.loadJsonpData(mentionsJsonData);
-    //new ps_utilities.loadJsonpData(usersJsonData);
+    
+    usersJsonData = {
+        dataURL: ajaxCalls.getUsersJsonData,
+        function: ps_twitterUtils.getUsersJsonData,
+        legend: false
+    };
+    new ps_utilities.loadJsonpData(usersJsonData);
 });

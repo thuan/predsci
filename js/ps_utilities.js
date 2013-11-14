@@ -32,8 +32,6 @@
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataURL,
-            jsonp: 'callback',
-            jsonpCallback: 'jsonpCallback',
             success: function(dataResponse) {
                 ps_graphdefinitions.jsonpData = dataResponse;
                 arrayData.function(arrayData);
