@@ -1,8 +1,17 @@
 $(function () {
-    var twitterStream = {
+    var mentionsJsonData, usersJsonData; 
+    mentionsJsonData = {
         dataURL: ajaxCalls.getMentionsJsonData,
         function: ps_twitterUtils.getMentionJsonData,
         legend: false
     };
-    new ps_utilities.loadJsonpData(twitterStream);
+    
+    usersJsonData = {
+        dataURL: ajaxCalls.getUsersJsonData,
+        function: ps_twitterUtils.getUsersJsonData,
+        legend: false
+    };
+    
+    new ps_utilities.loadJsonpData(mentionsJsonData);
+    new ps_utilities.loadJsonpData(usersJsonData);
 });
