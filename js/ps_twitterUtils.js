@@ -113,7 +113,7 @@
         var userName = response.groups[0].userName;
         var tweetData = response.groups[0].statuses;
         var statusCount = response.groups[0].statuses.length;
-        var rank, screen_name, status_text, reply_count, status_time_str;
+        var rank, screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
         for (i = 0; i < 5; i++) {
             rank = tweetData[i].rank;
             screen_name = tweetData[i].screen_name;
@@ -124,7 +124,7 @@
 
             topTweets += '<tr>';
             topTweets += '<td>' + rank + '</td>';
-            topTweets += '<td>' + addlinks(status_text) + '</td>';
+            topTweets += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
             topTweets += '<td>@' + screen_name + '</td>';
             topTweets += '<td>' + reply_count + '</td>';
             topTweets += '<td>' + retweet_count + '</td>';
@@ -146,7 +146,7 @@
 
             topTweetsModal += '<tr>';
             topTweetsModal += '<td>' + rank + '</td>';
-            topTweetsModal += '<td>' + addlinks(status_text) + '</td>';
+            topTweetsModal += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
             topTweetsModal += '<td>@' + screen_name + '</td>';
             topTweetsModal += '<td>' + reply_count + '</td>';
             topTweetsModal += '<td>' + retweet_count + '</td>';
@@ -156,7 +156,7 @@
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
             }
-            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + timeDifference(tweetTime) + '</div><div class="div_tweetText">' + addlinks(status_text) + '</div></div></div>';
+            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
         
