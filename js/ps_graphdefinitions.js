@@ -7,7 +7,8 @@
 (function (ps_graphDefinitions, $, undefined) {
     ps_graphDefinitions.jsonData = "";
 
-    ps_graphDefinitions.buildTwitterStream = function (sElementName) {
+    ps_graphDefinitions.buildTwitterStream = function (sElementName) 
+    {
         var mentionsData, usersData;
         
         mentionsData = {
@@ -24,6 +25,6 @@
 
         new ps_utilities.loadJsonpData(mentionsData);
         new ps_utilities.loadJsonpData(usersData);
-    };
+    }
 
 }(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));
