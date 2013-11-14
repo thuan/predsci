@@ -175,12 +175,11 @@
             adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-                        
+
         topTweets += '</tbody></table>';
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-        ps_twitterUtils.buildModals();
     }
 
     ps_twitterUtils.buildModals = function () {
