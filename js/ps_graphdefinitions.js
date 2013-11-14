@@ -1,14 +1,18 @@
 /*
- *
- * Defines all graphs
- *
- */
+*
+* Defines all graphs
+*
+*/
 
 (function (ps_graphdefinitions, $, undefined) {
+
     ps_graphdefinitions.jsonData = "";
 
-    ps_graphdefinitions.buildTwitterStream = function (sElementName) {
-        $(function () {
+
+    ps_graphdefinitions.buildTwitterStream = function(sElementName)
+    {
+
+       $(function () {
             var mentionsData = {
                 dataURL: ajaxCalls.getMentionsJsonData,
                 function: ps_twitterUtils.buildMentionsData,
@@ -18,4 +22,5 @@
         });
     }
 
-}(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery));
+
+}(window.ps_graphdefinitions = window.ps_graphdefinitions || {}, jQuery ));
