@@ -1,7 +1,6 @@
 (function (ps_twitterUtils, $, undefined) {
 
-    ps_twitterUtils.timeDifference = function (start) 
-    {
+    ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
         endDate = new Date();
@@ -12,8 +11,7 @@
         return (hours <= 9 ? "0" : "") + hours + "h" + (minutes <= 9 ? "0" : "") + minutes + "m";
     }
 
-    ps_twitterUtils.addlinks = function (data) 
-    {
+    ps_twitterUtils.addlinks = function (data) {
         //Add link to all http:// links within tweets
         data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function (url) {
             return '<a target="_blank" style="color:#08c;" href="' + url + '" >' + url + '</a>';
@@ -25,8 +23,7 @@
         return data;
     }
 
-    ps_twitterUtils.moveTweetForwordByOne = function () 
-    {
+    ps_twitterUtils.moveTweetForwordByOne = function () {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
@@ -43,8 +40,7 @@
         }
     }
 
-    ps_twitterUtils.moveTweetBackByOne = function () 
-    {
+    ps_twitterUtils.moveTweetBackByOne = function () {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
@@ -61,8 +57,7 @@
         }
     }
 
-    ps_twitterUtils.moveTweetBackByOne_admin = function () 
-    {
+    ps_twitterUtils.moveTweetBackByOne_admin = function () {
         var totalNumberOfTweet = 20;
         var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
@@ -79,8 +74,7 @@
         }
     }
 
-    ps_twitterUtils.getMentionJsonData = function () 
-    {
+    ps_twitterUtils.getMentionJsonData = function () {
         var date = new Date();
         var tweetStreamHtml = "";
         var response = ps_graphdefinitions.jsonpData;
@@ -96,7 +90,7 @@
             img_url = tweetData[i].img_url;
             tweetTime = tweetData[i].status_time_str;
             status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
-        
+
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
@@ -104,7 +98,60 @@
             tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml); 
+        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
+        $(".div_upperArrow").on('click', function () {
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+        });
+
+        $(".div_downArrow").on('click', function () {
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+        });
+
+        var scrollTwitTimer = window.setInterval(function () {
+            if ($(".div_tweetsMain").html() != "") {
+                ps_twitterUtils.moveTweetBackByOne();
+                ps_twitterUtils.moveTweetBackByOne_admin();
+            }
+        }, 10000);
+        var getTweetDataTimer = window.setInterval(function () {
+            ps_twitterUtils.getMentionJsonData();
+            //getMentionJsonData();
+        }, 60000);
+
+        $("#div_tweeterStream").on('click', function () {
+
+            $("#div_tweeterStream").attr('isclicked', '1');
+
+            $('#twitterStreamModal').on('shown', function () {
+                if ($("#div_tweeterStream").attr('isclicked') == "1") {
+                    $("#twitterStream_div_modal, #myModalLabel").empty();
+
+                    //displaying the modal content
+                    $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
+
+                    $(".modal-body div#div_upperArrow").click(function () {
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetForwordByOne();
+                    });
+
+                    $(".modal-body div#div_downArrow").click(function () {
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetBackByOne();
+                    });
+                    $(".modal-body div#div_upperArrow_admin").click(function () {
+                        if ($(".div_tweetsMain_admin").html() != "") ps_twitterUtils.moveTweetForwordByOne_admin();
+                    });
+
+                    $(".modal-body div#div_downArrow_admin").click(function () {
+                        if ($(".div_tweetsMain_admin").html() != "") ps_twitterUtils.moveTweetBackByOne_admin();
+                    });
+
+                }
+            })
+
+        });
+        $('#myModal').on('hidden', function () {
+            $('#myModal').unbind('show');
+            $("#div_tweeterStream").attr('isclicked', '0');
+        })
     }
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
