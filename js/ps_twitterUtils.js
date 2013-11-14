@@ -99,7 +99,7 @@
             divIndex += 1;
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-
+        ps_twitterUtils.buildModals();
     }
     
     ps_twitterUtils.getUsersJsonData = function () {
@@ -165,6 +165,7 @@
             $('#topTweets').html(topTweets);
             $('#twitter-feed-modal').html(topTweetsModal);
             $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+            ps_twitterUtils.buildModals();
     }
     
     ps_twitterUtils.buildModals = function () {
