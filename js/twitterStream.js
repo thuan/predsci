@@ -1,8 +1,8 @@
 $(function () {
     var twitterStream = {
         dataURL: ajaxCalls.getMentionsJsonData,
-        function: ps_graphdefinitions.buildTwitterStream,
+        function: ps_twitterUtils.getMentionJsonData,
         legend: false
     };
-    new ps_utilities.loadData(twitterStream);
+    new ps_utilities.loadJsonpData(twitterStream);
 });
