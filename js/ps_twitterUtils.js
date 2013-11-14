@@ -100,11 +100,11 @@
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
         $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetBackByOne();
         });
 
         var scrollTwitTimer = window.setInterval(function () {
