@@ -27,9 +27,19 @@
     };
 
     ps_graphDefinitions.buildTwitterStream = function (sElementName) {
+        
         var build, totalNumberOfTweet, totalNumberOfTweet_admin, rank, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml;
+        
         totalNumberOfTweet = 20;
         totalNumberOfTweet_admin = 15;
+        
+        date = new Date();
+        tweetStreamHtml = "";
+        statusCount = ps_graphDefinitions.jsonData.statuses.length;
+        userName = ps_graphDefinitions.jsonData.tag_names;
+        tweetData = ps_graphDefinitions.jsonData.statuses;
+        divIndex = 0;
+        adminHtml = "";
         
         build = {
             timeDifference: function (start) {
@@ -89,18 +99,8 @@
                     }
                 }
             }
-        };
-        
-        date = new Date();
-        tweetStreamHtml = "";
-        statusCount = ps_graphDefinitions.jsonData.statuses.length;
-
-        userName = ps_graphDefinitions.jsonData.tag_names;
-        tweetData = ps_graphDefinitions.jsonData.statuses;
-
-        divIndex = 0;
-        adminHtml = "";
-
+        }; 
+       
         for (i = 0; i < statusCount; i++) {
             //rank          = tweetData[i].rank;
             screen_name = tweetData[i].screen_name;
@@ -173,7 +173,7 @@
             $('#myModal').unbind('show');
             $("#div_tweeterStream").attr('isclicked', '0');
         });
-        
+            
     };
     
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {
