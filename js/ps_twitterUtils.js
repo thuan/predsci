@@ -1,4 +1,5 @@
 (function (ps_twitterUtils, $, undefined) {
+       
     ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
@@ -22,6 +23,8 @@
     },
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
+        var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -36,6 +39,8 @@
         }
     },
     ps_twitterUtils.moveTweetBackByOne = function () {
+        var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -50,6 +55,8 @@
         }
     },
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
+        var totalNumberOfTweet = 20;
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -64,10 +71,8 @@
         }
     },
     ps_twitterUtils.buildMentionsData = function () {
-        var build, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml, totalNumberOfTweet, totalNumberOfTweet_admin, scrollTwitTimer, getTweetDataTimer;
-        totalNumberOfTweet = 20;
-        totalNumberOfTweet_admin = 15;
-        
+         var screen_name, status_text, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml,  scrollTwitTimer, getTweetDataTimer;
+                
         date = new Date();
         tweetStreamHtml = "";
         statusCount = ps_graphDefinitions.jsonData.statuses.length;
@@ -111,7 +116,7 @@
         }, 10000);
         getTweetDataTimer = window.setInterval(function () {
             //getUserJsonData();
-            ps_graphDefinitions.buildMentionsData();
+            ps_graphDefinitions.buildTwitterStream();
             //getMentionJsonData();
         }, 60000);
 
@@ -145,10 +150,7 @@
             })
 
         });
-        $('#myModal').on('hidden', function () {
-            $('#myModal').unbind('show');
-            $("#div_tweeterStream").attr('isclicked', '0');
-        })
+        
     }
 
 
