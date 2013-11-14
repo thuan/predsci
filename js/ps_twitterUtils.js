@@ -1,7 +1,7 @@
 (function (ps_twitterUtils, $, undefined) {
     
     var mentionsData = {
-        dataURL: ajaxCalls.getMentionsJsonData(),
+        dataURL: ajaxCalls.getMentionsJsonData,
         function: ps_twitterUtils.buildMentionsData(),
         legend: false
     };
