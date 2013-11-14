@@ -11,13 +11,13 @@
         var mentionsData, usersData;
         
         mentionsData = {
-            dataURL: metric_ticker.APIgettweets,
+            dataURL: api.getAPItweets,
             function: ps_twitterUtils.buildMentionsData,
             legend: false
         };
         
         usersData = {
-            dataURL: metric_ticker.APIgettweets2,
+            dataURL: api.getAPItweets2,
             function: ps_twitterUtils.buildUsersJsonData,
             legend: false
         };

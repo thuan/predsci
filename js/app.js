@@ -73,6 +73,8 @@ var metric_ticker = function() {
         api: {
             sentiment: APIsentimentsnapshot,
             conversation: APIconversationsnapshot,
+            getAPItweets: APIgettweets,
+            getAPItweets2: APIgettweets2,
         }
     });
 }
