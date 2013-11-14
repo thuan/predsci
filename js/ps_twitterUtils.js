@@ -202,8 +202,8 @@
         }, 10000);
 
         getTweetDataTimer = window.setInterval(function () {
-            ps_twitterUtils.getMentionJsonData();
             ps_twitterUtils.getUsersJsonData();
+            ps_twitterUtils.getMentionJsonData();
         }, 60000);
 
         $("#div_tweeterStream").on('click', function () {
