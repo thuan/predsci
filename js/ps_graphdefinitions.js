@@ -18,7 +18,7 @@
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {}
 
     ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-        var build, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml, totalNumberOfTweet, totalNumberOfTweet_admin;
+        var build, screen_name, status_text, reply_count, status_time_str, date, tweetStreamHtml, statusCount, userName, tweetData, divIndex, adminHtml, totalNumberOfTweet, totalNumberOfTweet_admin, scrollTwitTimer, getTweetDataTimer;
         totalNumberOfTweet = 20;
         totalNumberOfTweet_admin = 15;
 
@@ -113,6 +113,61 @@
             divIndex += 1;
         }
         $(".div_tweetsMain").html(tweetStreamHtml);
+        // Twitter Stream
+        $(".div_upperArrow").on('click', function () {
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+        });
+
+        $(".div_downArrow").on('click', function () {
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+        });
+
+        scrollTwitTimer = window.setInterval(function () {
+            if ($(".div_tweetsMain").html() != "") {
+                build.moveTweetBackByOne();
+                build.moveTweetBackByOne_admin();
+            }
+        }, 10000);
+        getTweetDataTimer = window.setInterval(function () {
+            //getUserJsonData();
+            ps_graphDefinitions.buildTwitterStream();
+            //getMentionJsonData();
+        }, 60000);
+
+        $("#div_tweeterStream").on('click', function () {
+
+            $("#div_tweeterStream").attr('isclicked', '1');
+
+            $('#twitterStreamModal').on('shown', function () {
+                if ($("#div_tweeterStream").attr('isclicked') == "1") {
+                    $("#twitterStream_div_modal, #myModalLabel").empty();
+
+                    //displaying the modal content
+                    $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
+
+                    $(".modal-body div#div_upperArrow").click(function () {
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetForwordByOne();
+                    });
+
+                    $(".modal-body div#div_downArrow").click(function () {
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") moveTweetBackByOne();
+                    });
+                    $(".modal-body div#div_upperArrow_admin").click(function () {
+                        if ($(".div_tweetsMain_admin").html() != "") moveTweetForwordByOne_admin();
+                    });
+
+                    $(".modal-body div#div_downArrow_admin").click(function () {
+                        if ($(".div_tweetsMain_admin").html() != "") moveTweetBackByOne_admin();
+                    });
+
+                }
+            })
+
+        });
+        $('#myModal').on('hidden', function () {
+            $('#myModal').unbind('show');
+            $("#div_tweeterStream").attr('isclicked', '0');
+        })
     }
 
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
