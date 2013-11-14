@@ -25,7 +25,6 @@
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
         var totalNumberOfTweet = 20;
-        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -42,7 +41,6 @@
 
     ps_twitterUtils.moveTweetBackByOne = function () {
         var totalNumberOfTweet = 20;
-        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -58,8 +56,7 @@
     }
 
     ps_twitterUtils.moveTweetForwordByOne_admin = function () {
-        var totalNumberOfTweet = 20;
-        var totalNumberOfTweet_admin = 15;
+        var totalNumberOfTweet_admin = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -74,13 +71,12 @@
         }
     }
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
-        var totalNumberOfTweet = 20;
-        var totalNumberOfTweet_admin = 15;
-        if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
-            sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
+        var totalNumberOfTweet_admin = 20;
+        if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
+            sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) + 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
                 var top = parseInt($('div[index_admin="' + index + '"]').css('top'));
-                top = top + 80;
+                top = top - 80;
                 $('div[index_admin="' + index + '"]').animate({
                     "top": top + "px"
                 }, 500, function () {
