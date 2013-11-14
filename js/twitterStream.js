@@ -1,4 +1,9 @@
 $(function () {
+    //Temporario tooltip
+    $('body').tooltip({
+            selector: "a"
+    });
+    
     var usersJsonData, mentionsJsonData; 
     
     usersJsonData = {

@@ -32,6 +32,31 @@ var UILayout = UILayout || {};
 
     UILayout.Init = function()
     {
+
+        var jsonShareOfVoice = {
+            dataURL : "pie_chart.json",
+            function : "psgraphdefinitions.buildChart",
+            div_location : "div_pie_chart"
+        }
+
+        new ps_utilities.loadData(jsonShareOfVoice);
+
+
+        UILayout.BuildDashboard();
+        //UILayout.loadCustomPieChart("div_pie_chart");
+        psgraphdefinitions.buildChart("div_multi_chart", "pie_chart.json");
+
+
+
+
+
+        UILayout.loadChart("chart_div");
+       //UILayout.loadMultiLine4();
+        UILayout.loadMultiLine3();
+        UILayout.loadMultiLine2();
+        UILayout.loadMultiLine();
+        //UILayout.loadChart2();
+
         UILayout.RemoveWidgetGradient();
 
         $('body').tooltip({
