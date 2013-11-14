@@ -88,25 +88,25 @@
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
             }
-            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
-            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
+            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' +  ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' +  ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
+            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' +  ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' +  ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
         $(".div_tweetsMain").html(tweetStreamHtml);
         
         // Twitter Stream
         $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetForwordByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "")  ps_twitterUtils.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetBackByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "")  ps_twitterUtils.moveTweetBackByOne();
         });
 
         scrollTwitTimer = window.setInterval(function () {
             if ($(".div_tweetsMain").html() != "") {
-                build.moveTweetBackByOne();
-                build.moveTweetBackByOne_admin();
+                 ps_twitterUtils.moveTweetBackByOne();
+                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
         }, 10000);
         getTweetDataTimer = window.setInterval(function () {
@@ -127,18 +127,18 @@
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
                     $(".modal-body div#div_upperArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetForwordByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "")  ps_twitterUtils.moveTweetForwordByOne();
                     });
 
                     $(".modal-body div#div_downArrow").click(function () {
-                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") build.moveTweetBackByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "")  ps_twitterUtils.moveTweetBackByOne();
                     });
                     $(".modal-body div#div_upperArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") build.moveTweetForwordByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "")  ps_twitterUtils.moveTweetForwordByOne_admin();
                     });
 
                     $(".modal-body div#div_downArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() != "") build.moveTweetBackByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "")  ps_twitterUtils.moveTweetBackByOne_admin();
                     });
 
                 }
