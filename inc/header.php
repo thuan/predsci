@@ -14,7 +14,8 @@
     <link href="/css/bootstrap/jquery.dataTables.css" type="text/css" rel="stylesheet" />
 
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700' rel='stylesheet' type='text/css'>
-
+    
+    <script src="/js/app.js"></script>
     <script src="/js/ps_utilities.js"></script>
     <script src="/js/ps_graphdefinitions.js"></script>
     
@@ -52,5 +53,5 @@
     <link href="/css/main-web.css" type="text/css" rel="stylesheet" />
     <link href="/css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet" />
 
-    <script src="/js/app.js"></script>
+    
 </head>
