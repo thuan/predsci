@@ -32,15 +32,6 @@ var UILayout = UILayout || {};
 
     UILayout.Init = function()
     {
-
-        var jsonShareOfVoice = {
-            dataURL : "pie_chart.json",
-            function : "psgraphdefinitions.buildChart",
-            div_location : "div_pie_chart"
-        }
-
-        
-
         UILayout.RemoveWidgetGradient();
 
         $('body').tooltip({
