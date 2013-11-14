@@ -112,7 +112,7 @@
             adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 75, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h1><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h1><div class="div_tweetTime">' + build.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + build.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-
+        $(".div_tweetsMain").html(tweetStreamHtml);
     }
 
     ps_graphDefinitions.buildKeywordTrending = function (sElementName) {}
