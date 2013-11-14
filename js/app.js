@@ -74,7 +74,7 @@ var metric_ticker = function() {
             sentiment: APIsentimentsnapshot,
             conversation: APIconversationsnapshot,
             getAPItweets: APIgettweets,
-            getAPItweets2: APIgettweets2,
+            getAPItweets2: APIgettweets2
         }
     });
 }
