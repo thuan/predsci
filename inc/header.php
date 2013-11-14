@@ -18,6 +18,7 @@
     <script src="/js/ajaxCalls.js"></script>
     <script src="/js/ps_utilities.js"></script>
     <script src="/js/ps_graphdefinitions.js"></script>
+    <script src="/js/ps_twitterUtils.js"></script>
     
 
     <script src="/lib/jquery/jquery-ui.js"></script>
