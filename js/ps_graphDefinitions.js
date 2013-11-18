@@ -73,8 +73,12 @@
 		//Code goes here
     }
 
-    ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-		//Code goes here	
+    ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
+		ps_twitterUtils.getMentionsJsonData();
+    }
+    
+    ps_graphDefinitions.buildUsersTwitterStream = function (sElementName) {
+		ps_twitterUtils.getUsersJsonData();
     }
 	
 	/*
