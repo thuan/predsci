@@ -1,4 +1,6 @@
 (function (ps_twitterUtils, $, undefined) {
+    ps_graphDefinitions.jsonpData = "";
+    
     var totalNumberOfTweet = 20;
     var totalNumberOfTweet_admin = 15;
 
@@ -81,7 +83,7 @@
         var date = new Date();
         var tweetStreamHtml = "";
         var response = ps_graphDefinitions.jsonpData;
-        var statusCount = response.statuses.size;
+        var statusCount = response.statuses.length;
         var userName = response.tag_names;
         var tweetData = response.statuses;
         var rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
