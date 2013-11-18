@@ -46,9 +46,7 @@
 
             divIndex += 1;
         }
-        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-        ps_twitterUtils.buildModals();
-
+        
         for (var i = 0; i < 5; i++) {
             rank = tweetData[i].rank;
             screen_name_group = tweetData[i].screen_name_group;
@@ -94,6 +92,8 @@
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
+        ps_twitterUtils.buildModals();
     };
 
 
