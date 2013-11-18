@@ -12,6 +12,7 @@
     <script language="javascript" src="/js/ps_utilities.js" type="text/javascript"></script>
     <script language="javascript" src="/js/ps_graphDefinitions.js" type="text/javascript"></script>
 	<script language="javascript" src="/js/ps_googlemaps.js" type="text/javascript"></script>
+    <script language="javascript" src="/js/ps_twitterUtils.js" type="text/javascript"></script>
     <script language="javascript" src="/js/wirelessSocialPulse.js" type="text/javascript"></script>
     
     <script language="javascript" src="/lib/jquery/jquery-ui.js" type="text/javascript"></script>
