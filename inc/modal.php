@@ -1,17 +1,3 @@
-<!-- Modal Starts -->
-<div id="myModal" class="modal hide fade myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 id="myModalLabel"></h3>
-    </div>
-    <div class="modal-body" id="div_modal">
-        <p>One fine body…</p>
-    </div>
-</div>
-<!-- Modal Ends -->
-
-
-
 
 <!-- Twitter Modal Starts -->
 <div id="twitterModal" class="modal hide fade twitterModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
