@@ -161,7 +161,7 @@ $(function () {
 
 $(function () {
     var userStream = {
-        dataURL: APIgettweets,
+        dataURL: APIgettoptweets,
         function: ps_graphDefinitions.buildUsersTwitterStream,
         legend: false
     };
