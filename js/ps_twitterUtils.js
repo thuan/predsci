@@ -176,6 +176,7 @@
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+        ps_twitterUtils.buildModals();
     }
 
     ps_twitterUtils.buildModals = function () {
