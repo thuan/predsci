@@ -56,7 +56,7 @@
                             break;
                         case "loadChart":
                             //UILayout.loadChart(JSONProperties.div_location);
-                            break;!
+                            break;
                         default:
                             break;
                     }
