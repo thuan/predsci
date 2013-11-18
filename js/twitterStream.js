@@ -8,14 +8,14 @@ $(function () {
     
     usersJsonData = {
         dataURL: ajaxCalls.getUsersJsonData,
-        function: ps_graphdefinitions.buildTwitterStream,
+        function: ps_graphdefinitions.buildTwitterStream.getUsersJsonData,
         legend: false
     };
     new ps_utilities.loadJsonpData(usersJsonData);
     
     mentionsJsonData = {
         dataURL: ajaxCalls.getMentionsJsonData,
-        function: ps_graphdefinitions.buildTwitterStream,
+        function: ps_graphdefinitions.buildTwitterStream.getMentionsJsonData,
         legend: false
     };
     new ps_utilities.loadJsonpData(mentionsJsonData);
