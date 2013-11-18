@@ -1,3 +1,8 @@
+/*
+* style.css
+* Main css file for the dashboards
+*/
+
 *{margin:0; padding:0;}
 body {
 	background: #e41b23;
@@ -12,18 +17,24 @@ body {
 .box{
 	overflow:hidden;
 }
-.box.full{width:1071px;}
-	.box h3{padding:0 10px; color: #fff; font-size: 1.6em; font-weight: normal;}
-    .box small
-    {
-        font-size: .5em;
-        margin-top: -5px;
-        display: block;
-    }
-	div.default {
-		width:510px;
-		height:300px;
-	}
+.box.full{
+	width:1071px;
+}
+.box h3{
+	padding:0 10px; 
+	color: #fff; 
+	font-size: 1.6em; 
+	font-weight: normal;
+}
+.box small{
+       font-size: .5em;
+       margin-top: -5px;
+       display: block;
+}
+div.default {
+	width:510px;
+	height:300px;
+}
 
 
 .modal-body{min-height:430px !important;}
@@ -48,8 +59,6 @@ body {
 	background: url(/../images/bootstrap/glyphicons-halflings-white.png) -361px -97px no-repeat;
 }
 
-
-
 .select_filter {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -65,11 +74,11 @@ body {
     vertical-align: middle;
     width: auto;
 }
-	.select_filter:focus {
+.select_filter:focus {
 		border-color: #66AFE9;
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
 		outline: 0 none;
-	}
+}
 
 /*Twitter Stream*/
 .div_tweetsParent {
@@ -236,40 +245,37 @@ body {
 		margin-left: 9px;
 		padding: 0;
 	}
-		ul.keywordlist li.title{
-			background: none;
-			border-radius: 0;
-			font-size: 15px;
-			color: #fff;
-		}
-			ul.keywordlist li {
-				font: 11px/27px Arial, Helvetica, Sans-Serif;
-				list-style-type: none;
-				background-color: #7f8c8d;
-				border-radius: 4px;
-				height: 25px;
-				margin: 5px 2px;
-				padding: 3px 3px 3px 8px;
-				width: 140px;
-			}
-			ul.keywordlist > li:nth-child(2n) {background-color: #95a5a6;}
-				ul.keywordlist li span {
-					background-color: #444;
-					color: #fff;
-					border-radius: 4px;
-					float: right;
-					font-size: 10px;
-					line-height: 20px;
-					padding: 2px 5px;
-				}
-					
-					
+ul.keywordlist li.title{
+	background: none;
+	border-radius: 0;
+	font-size: 15px;
+	color: #fff;
+}
+ul.keywordlist li {
+	font: 11px/27px Arial, Helvetica, Sans-Serif;
+	list-style-type: none;
+	background-color: #7f8c8d;
+	border-radius: 4px;
+	height: 25px;
+	margin: 5px 2px;
+	padding: 3px 3px 3px 8px;
+	width: 100%;
+}
+ul.keywordlist > li:nth-child(2n) {background-color: #95a5a6;}
+	ul.keywordlist li span {
+		background-color: #444;
+		color: #fff;
+		border-radius: 4px;
+		float: right;
+		font-size: 10px;
+		line-height: 20px;
+		padding: 2px 5px;
+	}				
 span.twitter-font {
 	font-size: 13px;
 	border-bottom: none;
 }
 .box .icon-resize-full {
-
     float: right;
 	cursor:pointer;
     margin: -40px 10px 0 0;
@@ -281,7 +287,7 @@ span.twitter-font {
 	background:#000;
 	border:1px solid #000;
 	border-radius: 7px;
-    width: 1583px;
+    width: 100%;
 	margin:12px 15px 0;
 	position: relative;
 }
@@ -831,18 +837,21 @@ body
 
 #dashboard_content .widget_holder
 {
-    width: 500px;
+    width: 100%;
     height: 350px;
 }
 
 
 #dashboard_content .widget_container_holder
 {
-    width: 500px;
+    width: 415px;
     height: 430px;
     float: left;
     background: #000 url(../images/top_bkgd.jpg) repeat-x;
-    margin: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -852,11 +861,14 @@ body
 
 #dashboard_content .widget_container_holder_long
 {
-    width: 1045px;
+    width: 850px;
     height: 430px;
     float: left;
     background: #000 url(../images/top_bkgd.jpg) repeat-x;
-    margin: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -875,11 +887,9 @@ body
     height: 30px;
 }
 
-
-
 #dashboard_content .widget_container_holder #maps_widget
 {
-    width: 499px;
+    width: 100%;
     height: 320px;
     overflow: hidden;
 }
@@ -901,17 +911,13 @@ body
 }
 
 
-#topTweets table tbody td
-{
+#topTweets table tbody td{
     background: #fff;
     color: #000;
 }
 
-
-
-#dashboard_content .widget_container_holder .widget_label
-{
-    width: 480px;
+#dashboard_content .widget_container_holder .widget_label{
+    width: 400px;
     height: 80px;
     color: #fff;
     margin: 0 auto 0 auto;
@@ -919,7 +925,7 @@ body
 
 #dashboard_content .widget_container_holder_long .widget_label
 {
-    width: 1025px;
+    width: 835px;
     height: 80px;
     color: #fff;
     margin: 0 auto 0 auto;

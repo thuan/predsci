@@ -159,6 +159,7 @@ $(function () {
 
 //End Twitter Activity Map Definitions
 
+//Begin Twitter Stream Definitions
 $(function () {
     var userStream = {
         dataURL: APIgettoptweets,
@@ -176,3 +177,4 @@ $(function () {
     };
     new ps_utilities.loadJsonpData(mentionStream);
 });
+//End Twitter Stream Definitions
