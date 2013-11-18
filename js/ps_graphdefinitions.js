@@ -75,8 +75,8 @@
         topTweets += '</tbody></table>';
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
-        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
         ps_twitterUtils.buildModals();
     };
 
