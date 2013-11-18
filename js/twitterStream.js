@@ -8,7 +8,7 @@ $(function () {
     
     usersJsonData = {
         dataURL: ajaxCalls.getUsersJsonData,
-        function: ps_graphdefinitions.buildTwitterStream.getUsersJsonData,
+        function: ps_graphdefinitions.buildTwitterStream,
         legend: false
     };
     new ps_utilities.loadJsonpData(usersJsonData);
