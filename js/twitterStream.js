@@ -15,7 +15,7 @@ $(function () {
     
     mentionsJsonData = {
         dataURL: ajaxCalls.getMentionsJsonData,
-        function: ps_graphdefinitions.buildTwitterStream.buildStream.getMentionsJsonData,
+        function: ps_graphdefinitions.buildTwitterStream,
         legend: false
     };
     new ps_utilities.loadJsonpData(mentionsJsonData);
