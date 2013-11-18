@@ -1,7 +1,7 @@
 (function (ps_twitterUtils, $, undefined) {
     var totalNumberOfTweet = 20;
     var totalNumberOfTweet_admin = 15;
-    
+
     ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
@@ -81,7 +81,7 @@
         var date = new Date();
         var tweetStreamHtml = "";
         var response = ps_graphDefinitions.jsonpData;
-        var statusCount = response.statuses.length;
+        var statusCount = response.statuses.size;
         var userName = response.tag_names;
         var tweetData = response.statuses;
         var rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
@@ -170,7 +170,6 @@
     }
 
     ps_twitterUtils.buildModals = function () {
-        var scrollTwitTimer, getTweetDataTimer;
 
         $(".div_upperArrow").on('click', function () {
             if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetForwordByOne();
@@ -180,14 +179,14 @@
             if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetBackByOne();
         });
 
-        scrollTwitTimer = window.setInterval(function () {
+        var scrollTwitTimer = window.setInterval(function () {
             if ($(".div_tweetsMain").html() != "") {
                 ps_twitterUtils.moveTweetBackByOne();
                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
         }, 10000);
 
-        getTweetDataTimer = window.setInterval(function () {
+        var getTweetDataTimer = window.setInterval(function () {
             ps_twitterUtils.getUsersJsonData();
             ps_twitterUtils.getMentionsJsonData();
         }, 60000);
