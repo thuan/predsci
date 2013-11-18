@@ -122,9 +122,9 @@
         var topTweetsModal = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
         var period = response.period;
         var periodCount = response.period_count;
-        var userName = response.groups[0].userName;
-        var tweetData = response.groups[0].statuses;
-        var statusCount = response.groups[0].statuses.length;
+        var userName = response.groups[1].userName;
+        var tweetData = response.groups[1].statuses;
+        var statusCount = response.groups[1].statuses.length;
         var rank, screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
         for (i = 0; i < 5; i++) {
             rank = tweetData[i].rank;
