@@ -1,5 +1,3 @@
-/*JSHint validation*/
-/*global jQuery: false, sessionStorage:false, window:false, ps_graphdefinitions: false,*/
 (function (ps_twitterUtils, $, undefined) {
 
     ps_twitterUtils.timeDifference = function (start) {
@@ -11,7 +9,7 @@
         diff -= hours * 1000 * 60 * 60;
         minutes = Math.floor(diff / 1000 / 60);
         return (hours <= 9 ? "0" : "") + hours + "h" + (minutes <= 9 ? "0" : "") + minutes + "m";
-    };
+    }
 
     ps_twitterUtils.addlinks = function (data) {
         //Add link to all http:// links within tweets
@@ -23,7 +21,7 @@
             return '<a target="_blank" href="http://twitter.com/' + reply.substring(1) + '" style="color:#08c;font-weight:lighter;" >' + reply.charAt(0) + reply.substring(1) + '</a>';
         });
         return data;
-    };
+    }
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
         var totalNumberOfTweet = 20;
@@ -34,10 +32,12 @@
                 top = top + 80;
                 $('div[index="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500);
+                }, 500, function () {
+
+                });
             }
         }
-    };
+    }
 
     ps_twitterUtils.moveTweetBackByOne = function () {
         var totalNumberOfTweet = 20;
@@ -48,10 +48,12 @@
                 top = top - 80;
                 $('div[index="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500);
+                }, 500, function () {
+
+                });
             }
         }
-    };
+    }
 
     ps_twitterUtils.moveTweetForwordByOne_admin = function () {
         var totalNumberOfTweet_admin = 20;
@@ -62,10 +64,12 @@
                 top = top + 80;
                 $('div[index_admin="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500);
+                }, 500, function () {
+
+                });
             }
         }
-    };
+    }
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
         var totalNumberOfTweet_admin = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
@@ -75,22 +79,24 @@
                 top = top - 80;
                 $('div[index_admin="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500);
+                }, 500, function () {
+
+                });
             }
         }
-    };
+    }
 
     ps_twitterUtils.getMentionJsonData = function () {
-        var date, tweetStreamHtml, response, statusCount, userName, tweetData, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str, divIndex, adminHtml; 
-        date = new Date();
-        response = ps_graphdefinitions.jsonpData;
-        statusCount = response.statuses.length;
-        userName = response.tag_names;
-        tweetData = response.statuses;
-        divIndex = 0;
-        tweetStreamHtml = "";
-        adminHtml = "";
-        for (var i = 0; i < statusCount; i++) {
+        var date = new Date();
+        var tweetStreamHtml = "";
+        var response = ps_graphdefinitions.jsonpData;
+        var statusCount = response.statuses.length;
+        var userName = response.tag_names;
+        var tweetData = response.statuses;
+        var rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
+        var divIndex = 0;
+        var adminHtml = "";
+        for (i = 0; i < statusCount; i++) {
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
@@ -106,7 +112,7 @@
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
         ps_twitterUtils.buildModals();
-    };
+    }
 
     ps_twitterUtils.getUsersJsonData = function () {
         var date = new Date();
@@ -139,7 +145,7 @@
         }
         var divIndex = 0;
         var adminHtml = "";
-        for (var i = 0; i < statusCount; i++) {
+        for (i = 0; i < statusCount; i++) {
             rank = tweetData[i].rank;
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
@@ -170,21 +176,21 @@
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-    };
+    }
 
     ps_twitterUtils.buildModals = function () {
         var scrollTwitTimer, getTweetDataTimer;
 
         $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
+            if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetBackByOne();
         });
 
         scrollTwitTimer = window.setInterval(function () {
-            if ($(".div_tweetsMain").html() !== "") {
+            if ($(".div_tweetsMain").html() != "") {
                 ps_twitterUtils.moveTweetBackByOne();
                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
@@ -207,26 +213,26 @@
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
                     $(".modal-body div#div_upperArrow").click(function () {
-                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetForwordByOne();
                     });
 
                     $(".modal-body div#div_downArrow").click(function () {
-                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
+                        if ($(this).attr('status') != "disabled" && $(".div_tweetsMain").html() != "") ps_twitterUtils.moveTweetBackByOne();
                     });
                     $(".modal-body div#div_upperArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetForwordByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "") ps_twitterUtils.moveTweetForwordByOne_admin();
                     });
 
                     $(".modal-body div#div_downArrow_admin").click(function () {
-                        if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
+                        if ($(".div_tweetsMain_admin").html() != "") ps_twitterUtils.moveTweetBackByOne_admin();
                     });
                 }
-            });
+            })
         });
         $('#myModal').on('hidden', function () {
             $('#myModal').unbind('show');
             $("#div_tweeterStream").attr('isclicked', '0');
-        });
-    };
+        })
+    }
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
