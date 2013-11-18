@@ -160,16 +160,16 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 $(function () {
-    var userStream, mentionStream; 
-    
-    userStream = {
+    var userStream = {
         dataURL: APIgettweets,
         function: ps_graphDefinitions.buildUsersTwitterStream,
         legend: false
     };
     new ps_utilities.loadJsonpData(userStream);
-    
-    mentionStream = {
+});
+
+$(function () {
+    var mentionStream = {
         dataURL: APIgettweetsmentions,
         function: ps_graphDefinitions.buildMentionsTwitterStream,
         legend: false
