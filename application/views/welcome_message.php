@@ -86,7 +86,6 @@
 
                 </div>
 
-
                 <div id="div_tweeterStream" class="div_tweeterStream">
                     <div class="div_tweetsParent">
                         <div status='enabled' class="div_upperArrow" id="div_upperArrow"></div>

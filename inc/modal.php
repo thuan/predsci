@@ -1,54 +1,3 @@
-
-<!-- Twitter Modal Starts -->
-<div id="twitterModal" class="modal hide fade twitterModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <div id="right-side">
-            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies.">
-                <i class="icon-info-sign icon-white"></i>
-            </a>
-            <div class="label label-inverse">7 Days</div>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        </div>
-        <h3>Top Tweets
-            <br>
-            <small>Most Engaging Verizon Wireless Tweets</small>
-        </h3>
-    </div>
-    <div class="modal-body" id="twitter_div_modal">
-        <div id="twitter-feed-modal"></div>
-    </div>
-</div>
-<!-- Twitter Modal Ends -->
-
-
-
-
-
-
-
-<!-- Twitter stream Modal Starts -->
-<div id="twitterStreamModal" class="modal hide fade twitterSModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <div id="right-side">
-            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
-                <i class="icon-info-sign icon-white"></i>
-            </a>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        </div>
-        <h3>Twitter Stream
-            <br>
-            <small>Tweets mentioning Verizon Wireless</small>
-        </h3>
-    </div>
-    <ul class="headng">
-        <li class="lft">Tweets from Verizon Wireless Handles</l>
-            <li class="rht">Tweets mentioning Verizon Wireless</li>
-    </ul>
-    <div class="modal-body" id="twitterStream_div_modal">
-
-    </div>
-</div>
-<!-- Twitter Stream Modal Ends -->
 <!-- Modal -->
 <div id="modal_widget" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
@@ -102,3 +51,26 @@
         <div id="modal-stealth"></div>
     </div>
 </div>
+<!-- Twitter stream Modal Starts -->
+<div id="twitterStreamModal" class="modal hide fade twitterSModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <div id="right-side">
+            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                <i class="icon-info-sign icon-white"></i>
+            </a>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        </div>
+        <h3>Twitter Stream
+            <br>
+            <small>Tweets mentioning Verizon Wireless</small>
+        </h3>
+    </div>
+    <ul class="headng">
+        <li class="lft">Tweets from Verizon Wireless Handles</l>
+            <li class="rht">Tweets mentioning Verizon Wireless</li>
+    </ul>
+    <div class="modal-body" id="twitterStream_div_modal">
+
+    </div>
+</div>
+<!-- Twitter Stream Modal Ends -->
