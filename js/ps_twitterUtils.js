@@ -89,7 +89,7 @@
     ps_twitterUtils.getMentionsJsonData = function () {
         var date = new Date();
         var tweetStreamHtml = "";
-        var response = ps_graphdefinitions.jsonpData;
+        var response = ps_graphDefinitions.jsonpData;
         var statusCount = response.statuses.length;
         var userName = response.tag_names;
         var tweetData = response.statuses;
@@ -116,7 +116,7 @@
 
     ps_twitterUtils.getUsersJsonData = function () {
         var date = new Date();
-        var response = ps_graphdefinitions.jsonpData;
+        var response = ps_graphDefinitions.jsonpData;
         var tweetStreamHtml = "";
         var topTweets = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
         var topTweetsModal = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
