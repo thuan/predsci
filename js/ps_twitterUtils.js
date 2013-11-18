@@ -1,5 +1,7 @@
 (function (ps_twitterUtils, $, undefined) {
-
+    var totalNumberOfTweet = 20;
+    var totalNumberOfTweet_admin = 15;
+    
     ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
@@ -16,6 +18,7 @@
         data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function (url) {
             return '<a target="_blank" style="color:#08c;" href="' + url + '" >' + url + '</a>';
         });
+
         //Add link to @usernames used within tweets
         data = data.replace(/\B@([_a-z0-9]+)/ig, function (reply) {
             return '<a target="_blank" href="http://twitter.com/' + reply.substring(1) + '" style="color:#08c;font-weight:lighter;" >' + reply.charAt(0) + reply.substring(1) + '</a>';
@@ -24,7 +27,6 @@
     }
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
-        var totalNumberOfTweet = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -32,15 +34,12 @@
                 top = top + 80;
                 $('div[index="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500, function () {
-
-                });
+                }, 500);
             }
         }
     }
 
     ps_twitterUtils.moveTweetBackByOne = function () {
-        var totalNumberOfTweet = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -48,15 +47,12 @@
                 top = top - 80;
                 $('div[index="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500, function () {
-
-                });
+                }, 500);
             }
         }
     }
 
     ps_twitterUtils.moveTweetForwordByOne_admin = function () {
-        var totalNumberOfTweet_admin = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -64,14 +60,11 @@
                 top = top + 80;
                 $('div[index_admin="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500, function () {
-
-                });
+                }, 500);
             }
         }
     }
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
-        var totalNumberOfTweet_admin = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) + 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -79,9 +72,7 @@
                 top = top - 80;
                 $('div[index_admin="' + index + '"]').animate({
                     "top": top + "px"
-                }, 500, function () {
-
-                });
+                }, 500);
             }
         }
     }
@@ -232,7 +223,7 @@
         $('#myModal').on('hidden', function () {
             $('#myModal').unbind('show');
             $("#div_tweeterStream").attr('isclicked', '0');
-        })
+        });
     }
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
