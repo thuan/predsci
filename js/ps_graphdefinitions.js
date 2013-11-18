@@ -12,7 +12,7 @@
 
     ps_graphdefinitions.buildTwitterStream = function (sElementName) {
         var date, tweetStreamHtml, response, statusCount, userName, tweetData, rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str, retweet_count, divIndex, adminHtml, topTweets, topTweetsModal, period, periodCount;
-        var build = {
+        var buildTwitterStream = {
             getMentionJsonData: function () {
                 date = new Date();
                 response = ps_graphdefinitions.jsonpData;
@@ -103,7 +103,7 @@
                 $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
             }
         };
-        return build;
+        return buildTwitterStream;
     };
 
 
