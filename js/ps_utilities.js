@@ -44,7 +44,7 @@
             contentType: "application/json",
             url: arrayData.dataURL,
             success: function(dataResponse) {
-                ps_graphdefinitions.jsonpData = dataResponse;
+                ps_graphDefinitions.jsonpData = dataResponse;
                 arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
