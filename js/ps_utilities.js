@@ -13,16 +13,27 @@
             type: 'GET',
             cache: true,
             data: "",
-            url: "/" + arrayData.dataURL,
+            url: arrayData.dataURL,
             dataType: 'json',
             success: function(dataResponse) {
-                ps_graphdefinitions.jsonData = dataResponse;
+
+                //TODO
+                /*
+                * dataResponse is coming in as extra parameters with comma separated
+                * Need to not use eval. In the ps_graphDefinitions need to add a success
+                * event to load the rest of the function
+                *
+                */
+
+                ps_graphDefinitions.jsonData = dataResponse;
+
                 arrayData.function(arrayData);
+
             },
             error: function() { console.log('Error making request'); },
             json: 'json'
          });
-    }
+    };
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
@@ -38,6 +49,8 @@
             },
             error: function(e) { console.log('Error making request'); },
         });
-    }
+    };
+
+
 
 }(window.ps_utilities = window.ps_utilities || {}, jQuery));

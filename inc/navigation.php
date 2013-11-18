@@ -1,7 +1,6 @@
 <div id="navigation">
     <div id="navigation_background">
 
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -10,7 +9,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#"><img src="/images/logo-predictive-science.png" /></a>
+                    <a class="brand" href="#"><img src="images/logo-predictive-science.png" /></a>
                     <div class="nav-collapse collapse navbar-responsive-collapse">
                         <ul class="nav">
                             <li class="dropdown">
@@ -34,11 +33,6 @@
                             <li>
                                 <a href="/database/adminer/plugin.php">Import Data</a>
                             </li>
-
-
-
-
-
 
                             <li><input type="button" class="btn btn-small btn-danger" onclick="javascript:window.location.href = 'index.php'" value="Log Out"</li>
                         </ul>

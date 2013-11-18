@@ -86,7 +86,7 @@
         }
     }
 
-    ps_twitterUtils.getMentionJsonData = function () {
+    ps_twitterUtils.getMentionsJsonData = function () {
         var date = new Date();
         var tweetStreamHtml = "";
         var response = ps_graphdefinitions.jsonpData;

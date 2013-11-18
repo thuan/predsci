@@ -66,6 +66,7 @@
             }
         }
     };
+    
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
         var totalNumberOfTweet_admin = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
