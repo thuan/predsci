@@ -98,7 +98,7 @@
             reply_count = tweetData[i].reply_count;
             retweet_count = tweetData[i].retweet_count;
             img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time_str;
+            tweetTime = tweetData[i].status_time;
             status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
 
             if (divIndex === 0) {
@@ -125,7 +125,7 @@
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time_str;
+            tweetTime = tweetData[i].status_time;
             status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
 
             if (divIndex === 0) {
