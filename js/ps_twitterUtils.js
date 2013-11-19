@@ -188,7 +188,7 @@
         var getTweetDataTimer = window.setInterval(function () {
             ps_twitterUtils.getUsersJsonData();
             ps_twitterUtils.getMentionsJsonData();
-        }, 60000);
+        }, 10000);
 
         $("#div_tweeterStream").on('click', function () {
 
