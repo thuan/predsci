@@ -79,6 +79,23 @@
             }
         }
     };
+    
+    ps_twitterUtils.scrollTweets = function () {
+        var scrollTweetTimer = window.setInterval(function () {
+            if ($(".div_tweetsMain").html() !== "") {
+                ps_twitterUtils.moveTweetBackByOne();
+                ps_twitterUtils.moveTweetBackByOne_admin();
+            }
+        }, 10000);
+        
+        $(".div_upperArrow").on('click', function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
+        });
+
+        $(".div_downArrow").on('click', function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
+        });        
+    };
    
     ps_twitterUtils.getUsersJsonData = function () {
         var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime;
@@ -124,33 +141,16 @@
             divIndex += 1;
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
+        ps_twitterUtils.scrollTweets();
+        ps_twitterUtils.buildModals();
     };
 
     ps_twitterUtils.buildModals = function () {
-
-        $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-        });
-
-        $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-        });
-
-        var scrollTwitTimer = window.setInterval(function () {
-            if ($(".div_tweetsMain").html() !== "") {
-                ps_twitterUtils.moveTweetBackByOne();
-                ps_twitterUtils.moveTweetBackByOne_admin();
-            }
-        }, 10000);
-
         $("#div_tweeterStream").on('click', function () {
-
             $("#div_tweeterStream").attr('isclicked', '1');
-
             $('#twitterStreamModal').on('shown', function () {
                 if ($("#div_tweeterStream").attr('isclicked') == "1") {
                     $("#twitterStream_div_modal, #myModalLabel").empty();
-
                     //displaying the modal content
                     $("#twitterStream_div_modal").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 
@@ -170,10 +170,6 @@
                     });
                 }
             });
-        });
-        $('#myModal').on('hidden', function () {
-            $('#myModal').unbind('show');
-            $("#div_tweeterStream").attr('isclicked', '0');
         });
     };
 
