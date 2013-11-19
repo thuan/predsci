@@ -79,27 +79,17 @@
     };
    
     ps_twitterUtils.getUsersJsonData = function () {
-        var date = new Date();
-        var tweetStreamHtml = "";
-
-        var period = ps_graphDefinitions.jsonpData.period;
-        var periodCount = ps_graphDefinitions.jsonpData.period_count;
-
-        var userName = ps_graphDefinitions.jsonpData.groups[0].userName;
-        var tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
-        var statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
-        var screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
-
-        var divIndex = 0;
-        var adminHtml = "";
+        var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime;
+        tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
+        statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
+        divIndex = 0;
+        adminHtml = "";
+        
         for (var i = 0; i < statusCount; i++) {            
             screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;
-            reply_count = tweetData[i].reply_count;
-            retweet_count = tweetData[i].retweet_count;
+            status_text = tweetData[i].status_text;            
             img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time;
-            
+            tweetTime = tweetData[i].status_time;         
 
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
@@ -113,21 +103,18 @@
     };
 
     ps_twitterUtils.getMentionsJsonData = function () {
-        var date = new Date();
-        var tweetStreamHtml = "";
-        var statusCount = ps_graphDefinitions.jsonpData.statuses.length;
-        var userName = ps_graphDefinitions.jsonpData.tag_names;
-        var tweetData = ps_graphDefinitions.jsonpData.statuses;
-        var rank, screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
-        var divIndex = 0;
-        var adminHtml = "";
+        var tweetData, statusCount, divIndex, tweetStreamHtml, screen_name, status_text, img_url, tweetTime;
+        tweetData = ps_graphDefinitions.jsonpData.statuses;
+        statusCount = ps_graphDefinitions.jsonpData.statuses.length;
+        tweetStreamHtml = "";
+        divIndex = 0;
+        
         for (var i = 0; i < statusCount; i++) {
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
             tweetTime = tweetData[i].status_time;
             
-
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
