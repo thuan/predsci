@@ -105,12 +105,38 @@
             </div>
 
             <div class="widget_container_holder">
-                <div class="news-wrapper" id="pscroller">
-			        
-                </div>
-                
+                <div class="widget_label">
+                    <h3 class="pull-left">Twitter Stream
+                        <br>
+                        <small>Tweets mentioning Verizon Wireless</small>
+                    </h3>
 
-                
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                            <i class="icon-info-sign icon-white"></i>
+                        </a>
+                        <a href="#" id="launch-app">
+                            <i isclicked="0" class="icon-resize-full icon-white" id="div_tweeterStream" data-toggle="modal" data-target="#twitterStreamModal"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="div_tweeterStream" class="div_tweeterStream">
+                    <div class="div_tweetsParent">
+                        <div status='enabled' class="div_upperArrow" id="div_upperArrow"></div>
+                        <div class="div_tweetsMain"></div>
+                        <div status='enabled' class="div_downArrow" id="div_downArrow"></div>
+                    </div>
+                </div>
+
+                <div id="div_tweeterStream_admin" class="div_tweeterStream">
+                    <div class="div_tweetsParent">
+                        <div status='enabled' class="div_upperArrow" id="div_upperArrow_admin"></div>
+                        <div class="div_tweetsMain"></div>
+                        <div status='enabled' class="div_downArrow" id="div_downArrow_admin"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="widget_container_holder_long">
