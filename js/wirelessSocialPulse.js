@@ -207,14 +207,6 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-$(function () {
-    var userStream = {
-        dataURL: APIgettoptweets,
-        function: ps_graphDefinitions.buildUsersTwitterStream,
-        legend: false
-    };
-    new ps_utilities.loadJsonpData(userStream);
-});
 
 $(function () {
     var mentionStream = {
@@ -223,6 +215,15 @@ $(function () {
         legend: false
     };
     new ps_utilities.loadJsonpData(mentionStream);
+});
+
+$(function () {
+    var userStream = {
+        dataURL: APIgettoptweets,
+        function: ps_graphDefinitions.buildUsersTwitterStream,
+        legend: false
+    };
+    new ps_utilities.loadJsonpData(userStream);
 });
 //End Twitter Stream Definitions
 
