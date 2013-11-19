@@ -163,7 +163,9 @@
 
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
         ps_twitterUtils.buildModals();
-
+        var getTweetDataTimer = window.setInterval(function () {
+            ps_twitterUtils.getUsersJsonData();
+        }, 60000);
     };
 
     ps_twitterUtils.getMentionsJsonData = function () {
@@ -191,6 +193,9 @@
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
         ps_twitterUtils.buildModals();
+        var getTweetDataTimer = window.setInterval(function () {
+            ps_twitterUtils.getMentionsJsonData();
+        }, 60000);
 
     };
 
@@ -210,8 +215,6 @@
                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
         }, 10000);
-
-        
 
 
         $("#div_tweeterStream").on('click', function () {
