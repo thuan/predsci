@@ -24,6 +24,7 @@
     <script language="javascript" src="js/app/ajaxCalls.js" type="text/javascript"></script>
     <script language="javascript" src="js/app/ps_utilities.js" type="text/javascript"></script>
     <script language="javascript" src="js/app/ps_graphdefinitions.js" type="text/javascript"></script>
+    <script language="javascript" src="js/app/pscroller.js" type="text/javascript"></script>
     <script language="javascript" src="js/app/twitterStream.js" type="text/javascript"></script>
 	
     
