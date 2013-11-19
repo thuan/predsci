@@ -64,7 +64,7 @@
             }
         }
     };
-    
+
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) + 1;
@@ -78,38 +78,72 @@
         }
     };
 
+    ps_twitterUtils.buildStream = function () {
+        var date = new Date();
+        var divIndex = 0;
+        var tweetStreamHtml = "";
+        var adminHtml = "";
+        var userName = ps_graphDefinitions.jsonpData.tag_names;
+        var tweetData = ps_graphDefinitions.jsonpData.statuses;
+        var statusCount = ps_graphDefinitions.jsonpData.statuses.length;
+        var screen_name, status_text, img_url, tweetTime, reply_count, status_time_str;
+        var divIndex = 0;
+        var adminHtml = "";
+        for (var i = 0; i < statusCount; i++) {
+            screen_name = tweetData[i].screen_name;
+            status_text = tweetData[i].status_text;
+            img_url = tweetData[i].img_url;
+            tweetTime = tweetData[i].status_time_str;
+            status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
+
+            if (divIndex === 0) {
+                sessionStorage.presentTopTweetIndex = 0;
+                sessionStorage.presentTopTweetIndex_admin = 0;
+            }
+            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
+            divIndex += 1;
+        }
+        if (ps_graphDefinitions.jsonpData.groups[0] !== undefined) {
+            var userName = ps_graphDefinitions.jsonpData.groups[0].userName;
+            var tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
+            var statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
+            var screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
+            for (var i = 0; i < statusCount; i++) {
+                screen_name = tweetData[i].screen_name;
+                status_text = tweetData[i].status_text;
+                reply_count = tweetData[i].reply_count;
+                retweet_count = tweetData[i].retweet_count;
+                img_url = tweetData[i].img_url;
+                tweetTime = tweetData[i].status_time_str;
+                status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
+
+
+                if (divIndex === 0) {
+                    sessionStorage.presentTopTweetIndex = 0;
+                    sessionStorage.presentTopTweetIndex_admin = 0;
+                }
+                adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
+                divIndex += 1;
+            }
+        }
+
+    };
+
     ps_twitterUtils.getUsersJsonData = function () {
         var date = new Date();
         var tweetStreamHtml = "";
-        var topTweets = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
-        var topTweetsModal = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
+
         var period = ps_graphDefinitions.jsonpData.period;
         var periodCount = ps_graphDefinitions.jsonpData.period_count;
+
         var userName = ps_graphDefinitions.jsonpData.groups[0].userName;
         var tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
         var statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
-        var rank, screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
-        for (var i = 0; i < 5; i++) {
-            rank = tweetData[i].rank;
-            screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;
-            reply_count = tweetData[i].reply_count;
-            retweet_count = tweetData[i].retweet_count;
-            status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
+        var screen_name, status_text, reply_count, status_time_str, retweet_count, img_url, tweetTime;
 
-            topTweets += '<tr>';
-            topTweets += '<td>' + rank + '</td>';
-            topTweets += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
-            topTweets += '<td>@' + screen_name + '</td>';
-            topTweets += '<td>' + reply_count + '</td>';
-            topTweets += '<td>' + retweet_count + '</td>';
-            topTweets += '<td>' + status_time_str + '</td>';
-            topTweets += '</tr>';
-        }
         var divIndex = 0;
         var adminHtml = "";
-        for (i = 0; i < statusCount; i++) {
-            rank = tweetData[i].rank;
+        for (var i = 0; i < statusCount; i++) {            
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             reply_count = tweetData[i].reply_count;
@@ -119,14 +153,6 @@
             status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
 
 
-            topTweetsModal += '<tr>';
-            topTweetsModal += '<td>' + rank + '</td>';
-            topTweetsModal += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
-            topTweetsModal += '<td>@' + screen_name + '</td>';
-            topTweetsModal += '<td>' + reply_count + '</td>';
-            topTweetsModal += '<td>' + retweet_count + '</td>';
-            topTweetsModal += '<td>' + status_time_str + '</td>';
-            topTweetsModal += '</tr>';
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
@@ -135,13 +161,11 @@
             divIndex += 1;
         }
 
-        topTweets += '</tbody></table>';
-        $('#topTweets').html(topTweets);
-        $('#twitter-feed-modal').html(topTweetsModal);
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-         ps_twitterUtils.buildModals();
+        ps_twitterUtils.buildModals();
+
     };
-    
+
     ps_twitterUtils.getMentionsJsonData = function () {
         var date = new Date();
         var tweetStreamHtml = "";
@@ -166,7 +190,8 @@
             divIndex += 1;
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-         ps_twitterUtils.buildModals();
+        ps_twitterUtils.buildModals();
+
     };
 
     ps_twitterUtils.buildModals = function () {
@@ -187,6 +212,7 @@
         }, 10000);
 
         
+
 
         $("#div_tweeterStream").on('click', function () {
 
