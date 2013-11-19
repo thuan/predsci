@@ -30,7 +30,6 @@
             type: "GET",
             dataType: "jsonp",
             crossDomain: true,
-            contentType: "application/json",
             url: arrayData.dataURL,
             success: function(dataResponse) {
                 ps_graphDefinitions.jsonpData = dataResponse;
