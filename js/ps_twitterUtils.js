@@ -189,8 +189,8 @@
         }, 10000);
 
         var getTweetDataTimer = window.setInterval(function () {
-            getMentionsJsonData();
-            getUsersJsonData();
+            ps_twitterUtils.getUsersJsonData();
+            ps_twitterUtils.getMentionsJsonData();
         }, 60000);
 
         $("#div_tweeterStream").on('click', function () {

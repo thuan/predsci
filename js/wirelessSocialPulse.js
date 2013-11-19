@@ -74,7 +74,54 @@ var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillabl
 // Selectable Topics
 var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/conversationvolume/multitime?limit=10";
 
+/*Definitions Conversation Volume*/
+var widgetConversationVolume = {
+    title: 'Conversation Volume',
+    subtitle: 'Subtitle of conversation volume',
+    dataURL: APIconversationvolume,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv',
+    legend: false,
+    tooltip:'Conversation Volume Tooltip Dashboard!',
+    id_div: 'conversationVolume',
+    modal: {
+        title: 'Conversation Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APIconversationvolume,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: false,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        showInsights: true
+    }
+}
 
+var widgetPredefinedTopicVolume = {
+    title: 'Predefined Topic Volume',
+    subtitle: 'by Volume',
+    dataURL: APItrendingtopics,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv2',
+    legend: false,
+    tooltip:'Predefined Topic Volume',
+    id_div: 'predefinedTopicVolume',
+    modal: {
+        title: 'Predefined Topic Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APItrendingtopics,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: false,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        showInsights: true
+    }
+}
+
+$(function () {
+    $('body').tooltip( { selector: "a"});
+    new ps_utilities.loadData(widgetConversationVolume);
+    new ps_utilities.loadData(widgetPredefinedTopicVolume);
+});
 /*
  * Keyword Frequency
  * Invokes the ajax call and builds the keyword widget
@@ -178,3 +225,75 @@ $(function () {
     new ps_utilities.loadJsonpData(mentionStream);
 });
 //End Twitter Stream Definitions
+
+
+/*
+ * Volume & Sentiment
+ */
+var widget_volumeandsentiment = {
+    title: "Volume & Sentiment",
+    subTitle: "",
+    dataURL: APIvolumeandsentiment,
+    function: ps_graphDefinitions.buildBarChart,
+    div_location: "barChartDiv",
+    legend: false,
+    modal: {
+        title: "Volume & Sentiment",
+        header : "Volume & Sentiment",
+        subheader : "Daily Volume & Sentiment",
+        tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
+        div_location: "modal-widget-body",
+        function: ps_graphDefinitions.buildBarChart,
+        dataURL: APIvolumeandsentiment
+    }
+}
+
+$(function () {
+    new ps_utilities.loadData(widget_volumeandsentiment);
+});
+
+//Begin Metric Ticker
+
+$(function () {
+	
+var widget = {
+    title: "",
+    subTitle: "",
+ 
+    dataURLSentiment: APIsentimentsnapshot,
+    dataURLConversation: APIconversationsnapshot,
+    function: ps_graphDefinitions.metricTicker,
+    div_location: "metricTicker",
+    legend: false
+}
+
+new ps_utilities.multipleLoadData(widget);
+
+});
+//End Metric Ticker
+
+
+
+/*
+ * PIECHART
+ * */
+
+
+pieWidget =  function getPieChart(source){
+
+    if(source === undefined){
+        source = "";
+    }
+
+    var PieCharWidget = {
+        title: "",
+        subTitle: "",
+        dataURL: APIshareofvoiceCrosstab,
+        function: ps_graphDefinitions.buildPieChart,
+        div_location: "div_pie_chart",
+        legend: false,
+        source : source
+    }
+    new ps_utilities.loadData(PieCharWidget);
+}
+pieWidget();

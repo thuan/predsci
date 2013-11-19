@@ -21,6 +21,7 @@
         try
         {
             $('#modal_widget').modal();
+
             $('#modal_widget').on('show', function(e) {
                 if (e.target.id == "modal_widget")
                 {
@@ -41,8 +42,8 @@
                     }
 
                     $("#modal_widget #modal-widget-body").html("");
-                    $("#modal_widget .modal-header h3").text(JSONProperties.header);
-                    $("#modal_widget .modal-header small").text(JSONProperties.subheader);
+                    $("#modal_widget .modal-header h3").text(JSONProperties.title);
+                    $("#modal_widget .modal-header small").text(JSONProperties.subtitle);
                     $("#modal_widget #icon-info").attr("data-original-title",JSONProperties.tooltip);
 
                     switch($function)
@@ -51,16 +52,11 @@
                             ps_googlemaps.Initialize(JSONProperties, 0);
                             $("#modal-stealth").hide();
                             break;
-                        case "loadCustomPieChart":
-                            //UILayout.loadCustomPieChart(JSONProperties.div_location);
-                            break;
-                        case "loadChart":
-                            //UILayout.loadChart(JSONProperties.div_location);
-                            break;
                         default:
+                            ps_utilities.loadData(JSONProperties);
                             break;
+                        //testando synchronize
                     }
-                    //UILayout.RemoveWidgetGradient();
                 }
             });
 

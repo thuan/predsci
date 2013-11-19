@@ -29,8 +29,11 @@ var ps_googlemaps = ps_googlemaps || {};
 
 
     APIgetInsightsSOV.url = "twitter.json";
+    APIgetInsightsSOV.insightUrl = "insight.json";
     APIgetInsightsFollowers.url = "twitter2.json";
+    APIgetInsightsFollowers.insightUrl = "insight2.json";
     APIgetInsightsVolume.url = "twitter3.json";
+    APIgetInsightsVolume.insightUrl = "insight3.json";
 
     var arrayURL    = [APIgetInsightsSOV, APIgetInsightsFollowers, APIgetInsightsVolume];
     var iFeed       = 0;
@@ -149,9 +152,10 @@ var ps_googlemaps = ps_googlemaps || {};
                 var getScale = 0;
 
             if (iFeed.name =="ShareOfVoice") {
+                ps_googlemaps.buildInsgihtText(iFeed);
 
                 $.each( dataResponse.locations, function( i, location ) {
-                
+
                    totalcount = location.tweet_count;
                     //console.log(location.city + " " + totalcount);
                     getScale = (totalcount/max+.75);
@@ -163,14 +167,14 @@ var ps_googlemaps = ps_googlemaps || {};
                     $.each(location.tags, function( i, val ) {
 
                         percentage = Math.round((val.tweet_count/totalcount)*100);
-                        itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999;'>" + 
+                        itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999;'>" +
                                     val.display_name + " " + percentage + "%</div>";
                     });
-    
+
                     ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
                 });
 
-                var iCheckPagination = setInterval(myMethod, 500);
+                var iCheckPagination = 0;
 
                 function myMethod()
                 {
@@ -182,9 +186,12 @@ var ps_googlemaps = ps_googlemaps || {};
                         clearInterval(iCheckPagination);
                     }
                 }
-            
+
+                iCheckPagination = setInterval(myMethod, 500);
             }
+
             if (iFeed.name == "Followers") {
+                ps_googlemaps.buildInsgihtText(iFeed);
 
                 $.each( dataResponse.locations, function( i, location ) {
                     
@@ -215,7 +222,7 @@ var ps_googlemaps = ps_googlemaps || {};
                     ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
                 });
 
-                var iCheckPagination = setInterval(myMethod, 500);
+                var iCheckPagination = 0;
 
                 function myMethod()
                 {
@@ -227,8 +234,12 @@ var ps_googlemaps = ps_googlemaps || {};
                         clearInterval(iCheckPagination);
                     }
                 }
+
+                iCheckPagination = setInterval(myMethod, 500);
+
             }
             if (iFeed.name=="Volume") {
+                ps_googlemaps.buildInsgihtText(iFeed);
 
                 $.each( dataResponse.locations, function( i, location ) {
                     
@@ -259,7 +270,7 @@ var ps_googlemaps = ps_googlemaps || {};
                     ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
                 });
 
-                var iCheckPagination = setInterval(myMethod, 500);
+                var iCheckPagination = 0;
 
                 function myMethod()
                 {
@@ -271,7 +282,13 @@ var ps_googlemaps = ps_googlemaps || {};
                         clearInterval(iCheckPagination);
                     }
                 }
+
+                iCheckPagination = setInterval(myMethod, 500);
+
+
             }
+
+
 
         }, error: function(jqXHR, textStatus, errorThrown) { console.log(errorThrown); console.log(textStatus); }
         });
@@ -326,8 +343,154 @@ var ps_googlemaps = ps_googlemaps || {};
 
         arrayCircle.push(markerOutlineCircle);
         arrayCircle2.push(markerSolidCircle);
+    }
+
+    ps_googlemaps.buildInsgihtText = function(iFeed){
+
+        var taburl = iFeed.insightUrl;
+        var datacard = iFeed.insightDataCard;
+
+        if (taburl.toLowerCase().indexOf("http") >= 0) {
+            var jsontype2 = "JSONP"
+        } else {
+            var jsontype2 = "JSON"
+        };
+
+        var mappoints = [];
+        var addStyle = "";
+
+        //$('.share-of-voice-tab').click(function() {
+        $('.modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
+        $('.modal-header small').html(iFeed.insightSubtitle);
+
+        // Update the tooltip qtip
+        /*$('#modal-twittersovmap .ttip_t').qtip({
+            style : {
+                classes: 'ui-tooltip-shadow ui-tooltip-tipsy'
+            },
+            show : {
+                delay: 100,
+                event: 'mouseenter focus'
+            },
+            hide : {
+                delay: 0
+            },
+            content: datacard
+        });*/
+
+        $.ajax({
+            url : taburl,
+            dataType : jsontype2,
+            beforeSend: function(data) {
+            },
+            error: function(data) {
+                console.log("error loading tab data from: " + taburl);
+            },
+            success : function(data) {
+
+
+                if (iFeed.name =='ShareOfVoice') {
+
+                    var currentweek = data.periods[0].tags;
+                    //console.log(data.periods[0]);
+                    var previousweek = data.periods[1].tags;
+
+                    var today = {
+                        vzw: 0,
+                        comp: 0,
+                        total: 0
+                    };
+                    var lastWeek = {
+                        vzw: 0,
+                        comp: 0,
+                        total: 0
+                    };
+
+                    for (var i=0; i < currentweek.length; i++) {
+                        if (currentweek[i].tag_name == 'verizon') {
+                            today.vzw = currentweek[i].volume;
+                        } else {
+                            today.comp += currentweek[i].volume;
+                        }
+                        today.total += currentweek[i].volume;
+                    }
+                    for (var i=0; i < previousweek.length; i++) {
+                        if (previousweek[i].tag_name == 'verizon') {
+                            lastWeek.vzw = previousweek[i].volume;
+                        } else {
+                            lastWeek.comp += previousweek[i].volume;
+                        }
+                        lastWeek.total += previousweek[i].volume;
+                    }
+
+                    today.sov = Math.round((today.vzw / today.total) * 100);
+                    lastWeek.sov = Math.round((lastWeek.vzw / lastWeek.total) * 100);
+                    var prefix = "";
+
+                    if (today.sov > lastWeek.sov) {prefix = "+"}
+
+                    var difference = (today.sov);
+                    var differencerelative = (today.sov - lastWeek.sov);
+                    //localStorage["Twitter Insights: Share Of Voice - Current Week"] = today.vzw.addCommas();
+                    //localStorage["Twitter Insights: Share Of Voice - Previous Week"] = lastWeek.vzw.addCommas();
+                    //localStorage["Twitter Insights: Share Of Voice - Absolute Change"] = difference.addCommas() + "%";
+                    //localStorage["Twitter Insights: Share Of Voice - Relative Change"] = Math.round(differencerelative) + "pts";
+
+                    $("#latest_insights_change").html("<strong>W-O-W Change </strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%</p>");
+                    $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+today.vzw.addCommas()+"</p>");
+
+                } else if (iFeed.name =='Volume') {
+                    var currentweek = data.volume[0].volume;
+                    var previousweek = data.volume[1].volume;
+                    var difference = (currentweek-previousweek);
+                    var differencerelative = ((currentweek-previousweek) / previousweek) * 100;
+
+                    if (currentweek > previousweek) {prefix = "+"}
+                    if (previousweek > currentweek) {prefix = "-"}
+
+                    //localStorage["Twitter Insights: Volume - Current Week"] = currentweek.addCommas();
+                    //localStorage["Twitter Insights: Volume - Previous Week"] = previousweek.addCommas();
+                    //localStorage["Twitter Insights: Volume - Absolute Change"] = difference.addCommas();
+                    //localStorage["Twitter Insights: Volume - Relative Change"] = Math.round(differencerelative) + "%";
+
+                    $("#latest_insights_change").html("<strong>W-O-W Change</strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%</p>");
+                    $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+currentweek.addCommas()+"</p>")
+
+                } else if (iFeed.name =='Followers') {
+                    var prefix = "";
+                    var currentweek = data.periods[0].accounts[0].new_follower_count;
+                    var previousweek = data.periods[1].accounts[0].new_follower_count;
+                    var difference = (currentweek-previousweek);
+                    var differencerelative = ((currentweek-previousweek) / previousweek) * 100;
+                    if (currentweek > previousweek) {prefix = "+"}
+                    if (previousweek > currentweek) {prefix = "-"}
+
+                    //localStorage["Twitter Insights: Followers - Current Week"] = currentweek.addCommas();
+                    //localStorage["Twitter Insights: Followers - Previous Week"] = previousweek.addCommas();
+                    //localStorage["Twitter Insights: Followers - Absolute Change"] = difference.addCommas();
+                    //localStorage["Twitter Insights: Followers - Relative Change"] = Math.round(differencerelative) + "%";
+
+                    $("#latest_insights_change").html("<strong>W-O-W Change</strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%");
+                    $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+currentweek.addCommas()+"</p>");
+
+                }
+            }
+        });
+
 
     }
+    Number.prototype.addCommas = function() {
+        var nStr = this + ''; // convert number to string
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    };
+
 })();
 
     
