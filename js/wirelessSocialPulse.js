@@ -84,15 +84,46 @@ var widgetConversationVolume = {
     legend: false,
     tooltip:'Conversation Volume Tooltip Dashboard!',
     id_div: 'conversationVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
         subtitle: 'Subtitle of conversation volume',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
-        legend: false,
+        legend: true,
         tooltip:'Conversation Volume Tooltip Dashboard!',
-        showInsights: true
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showQueryForm: true,
+        showToggle1: true
+    }
+}
+
+var widgetConversationVolumeTemp = {
+    title: 'Conversation Volume',
+    subtitle: 'Subtitle of conversation volume',
+    dataURL: APIconversationvolume,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv',
+    legend: false,
+    tooltip:'Conversation Volume Tooltip Dashboard!',
+    id_div: 'conversationVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Conversation Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APIconversationvolume,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showQueryForm: true,
+        showToggle1: true
     }
 }
 
@@ -105,6 +136,8 @@ var widgetPredefinedTopicVolume = {
     legend: false,
     tooltip:'Predefined Topic Volume',
     id_div: 'predefinedTopicVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Predefined Topic Volume',
         subtitle: 'Subtitle of conversation volume',
@@ -113,14 +146,23 @@ var widgetPredefinedTopicVolume = {
         div_location: 'modal-widget-body',
         legend: false,
         tooltip:'Conversation Volume Tooltip Dashboard!',
-        showInsights: true
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showInsights: true,
+        showToggle2: true
     }
 }
 
 $(function () {
     $('body').tooltip( { selector: "a"});
     new ps_utilities.loadData(widgetConversationVolume);
-    new ps_utilities.loadData(widgetPredefinedTopicVolume);
+    new ps_utilities.loadData(widgetPredefinedTopicVolume)
+
+    $("#conversation_volume_query").submit(function(e) {
+        e.preventDefault();
+        widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
+        new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
+    });
 });
 /*
  * Keyword Frequency
@@ -129,8 +171,8 @@ $(function () {
 $(function () {
 
     var KeywordWidget = {
-        title: "smartphones",
-        subTitle: "",
+        title: "Smartphones",
+        category: "smartphones",
         dataURL: APIkeywordfrequency1,
         function: ps_graphDefinitions.buildKeywordTrending,
         div_location: "keywordTrendingDiv",
@@ -144,8 +186,8 @@ $(function () {
 $(function () {
 
     var KeywordWidget = {
-        title: "tablets",
-        subTitle: "",
+        title: "Tablets",
+        category: "tablets",
         dataURL: APIkeywordfrequency2,
         function: ps_graphDefinitions.buildKeywordTrending,
         div_location: "keywordTrendingDiv",
@@ -159,8 +201,8 @@ $(function () {
 $(function () {
 
     var KeywordWidget = {
-        title: "features",
-        subTitle: "",
+        title: "Features",
+        category: "features",
         dataURL: APIkeywordfrequency3,
         function: ps_graphDefinitions.buildKeywordTrending,
         div_location: "keywordTrendingDiv",
@@ -207,7 +249,6 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-
 var userStream = {
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
@@ -228,9 +269,6 @@ $(function () {
         new ps_utilities.loadJsonpData(mentionStream);    
     }, 60000); 
 });
-
-
-
 //End Twitter Stream Definitions
 
 
@@ -240,6 +278,7 @@ $(function () {
 var widget_volumeandsentiment = {
     title: "Volume & Sentiment",
     subTitle: "",
+    timelabel: "7 days",
     dataURL: APIvolumeandsentiment,
     function: ps_graphDefinitions.buildBarChart,
     div_location: "barChartDiv",
@@ -250,6 +289,7 @@ var widget_volumeandsentiment = {
         subheader : "Daily Volume & Sentiment",
         tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
         div_location: "modal-widget-body",
+        showVolumeAndSentimentMenu: true,
         function: ps_graphDefinitions.buildBarChart,
         dataURL: APIvolumeandsentiment
     }
@@ -278,6 +318,18 @@ new ps_utilities.multipleLoadData(widget);
 
 });
 //End Metric Ticker
+
+//Begin Top Tweets
+
+$(function () {
+    var widget = {
+        dataURL: APIgettoptweets,
+        function: ps_graphDefinitions.topTweets,
+        legend: false
+    };
+    new ps_utilities.loadJsonpData(widget);
+});
+//End Top Tweets
 
 
 

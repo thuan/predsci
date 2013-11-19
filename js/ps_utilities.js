@@ -15,10 +15,11 @@
             dataType: 'json',
             json: 'json',
             success: function(dataResponse) {
-                arrayData.jsonData = dataResponse;
-                ps_graphDefinitions.jsonData = dataResponse;
-                arrayData.function(arrayData);
-
+                if(dataResponse.data.length){
+                    arrayData.jsonData = dataResponse;
+                    ps_graphDefinitions.jsonData = dataResponse;
+                    arrayData.function(arrayData);
+                }
             },
             error: function() { console.log('Error making request'); }
          });
@@ -70,36 +71,6 @@
 
         return result;
     }
-
-    
-    ps_utilities.processData = function (data) {
-        var chartOpt = {};
-        var result = [];
-
-        for (var i = 0; i < data.length; i++) {
-            if (!chartOpt[data[i].date]) {
-                chartOpt[data[i].date] = {};
-            }
-            if (!chartOpt[data[i].date][data[i].display]) {
-                chartOpt[data[i].date][data[i].display] = 0;
-            }
-            chartOpt[data[i].date][data[i].display] = data[i].value;
-        }
-
-        for (var dt in chartOpt) {
-            var temp = {};
-            var newDT = dt.split("-");
-            newDT = newDT[1] + "/" + newDT[2];
-            temp['date'] = newDT;
-            for (var display in chartOpt[dt]){
-                temp[display] = chartOpt[dt][display];
-            }
-            result.push(temp);
-        }
-        
-        return result;
-    }
-    
     
     ps_utilities.RemoveWidgetGradient = function()
     {
@@ -276,6 +247,30 @@
             total += val.value;
         });
         return total;
+    }
+
+    ps_utilities.toggleBarLine = function(obj){
+        if(obj.template == 'LineBasic'){
+            obj.template = 'BarBasic';
+            obj.gallery = 'cfx.Gallery.bar';
+        }else{
+            obj.template = 'LineBasic';
+            obj.gallery = cfx.Gallery.Lines;
+        }
+
+        new ps_utilities.loadData(obj);
+    }
+
+    ps_utilities.toggleBarLineModal = function(obj){
+        if(obj.template == 'LineBasic'){
+            obj.template = 'BarBasic';
+            obj.gallery = 'cfx.Gallery.bar';
+        }else{
+            obj.template = 'LineBasic';
+            obj.gallery = cfx.Gallery.Lines;
+        }
+
+        new ps_utilities.loadData(obj);
     }
 
 

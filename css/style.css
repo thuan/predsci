@@ -27,6 +27,7 @@ body {
 	font-weight: normal;
 }
 .box small{
+	   white-space: nowrap;
        font-size: .5em;
        margin-top: -5px;
        display: block;
@@ -237,12 +238,20 @@ div.default {
 /*Top Tweets*/
 #topTweets th, #twitter-feed-modal th{font-size:12px !important;}
 #topTweets td, #twitter-feed-modal td{font-size:11px !important;}
+.timelabel{ 
+	color:#fff; 
+	font-size:9px; 
+	float: right; 
+	margin-top: 1px; 
+	margin-right: 10px;
+}
 
 /*Keyword Frequency*/
-#klist, #klist > div > div {margin: 0;}
+#klist, #klist > div > div {margin: 0; clear:both}
 #klist .klist-fe {float: left;}
 #klist ul.keywordlist{
-		margin-left: 9px;
+		color: #ffffff;
+		margin-left: 17px;
 		padding: 0;
 	}
 ul.keywordlist li.title{
@@ -254,16 +263,16 @@ ul.keywordlist li.title{
 ul.keywordlist li {
 	font: 11px/27px Arial, Helvetica, Sans-Serif;
 	list-style-type: none;
-	background-color: #7f8c8d;
+	background-color: #602f2f;
 	border-radius: 4px;
 	height: 25px;
 	margin: 5px 2px;
 	padding: 3px 3px 3px 8px;
 	width: 100%;
 }
-ul.keywordlist > li:nth-child(2n) {background-color: #95a5a6;}
+ul.keywordlist > li:nth-child(2n) {background-color: #444444;}
 	ul.keywordlist li span {
-		background-color: #444;
+		background-color: #000;
 		color: #fff;
 		border-radius: 4px;
 		float: right;
@@ -283,14 +292,22 @@ span.twitter-font {
 
 
 /* Metric Ticker */
-.metric-ticker {
-	background:#000;
-	border:1px solid #000;
-	border-radius: 7px;
-    width: 100%;
-	margin:12px 15px 0;
-	position: relative;
-}
+	.metric-ticker {
+		background:#000;
+		border:1px solid #000;
+		border-radius: 7px;
+	    width: 100%;
+		margin:12px 15px 0;
+		position: relative;
+	}
+	.metric-ticker_100 {
+		background:#000;
+		border:1px solid #000;
+		border-radius: 7px;
+	    width: 100%;
+		margin:12px 15px 0;
+		position: relative;
+	}	
 	.metric-ticker .widget {
 		height: 40px;
 		max-height: 40px;
@@ -877,20 +894,73 @@ body
     -moz-border-radius: 5px;
 }
 
+.widget_container_holder_long_100
+{
+    width: 100%;
+    height: 430px;
+    float: left;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
 
+#dashboard_content .widget_container_holder_keyword
+{
+    width: 500px;
+    height: 510px;
+    float: left;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
 
+.widget_container_holder_keyword_100
+{
+    width: 100%;
+    height: 510px;
+    float: left;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
 
 #dashboard_content .widget_container_holder .widget_stealth
 {
     position: absolute;
-    margin: 380px 0 0 380px;
+    /* margin: 380px 0 0 380px; */
+    margin: 390px 0 0 315px;
     background: #000;
     z-index: 10000;
-    width: 120px;
+    /* width: 120px; */
+    width: 100px;
     height: 30px;
 }
 
 #dashboard_content .widget_container_holder #maps_widget
+{
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    position: relative; 
+    background-color: rgb(229, 227, 223);
+}
+
+#maps_widget_100
 {
     width: 100%;
     height: 320px;
@@ -928,6 +998,13 @@ body
     margin: 0 auto 0 auto;
 }
 
+.widget_label_100{
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    margin: 0 auto 0 auto;
+}
+
 #dashboard_content .widget_container_holder_long .widget_label
 {
     width: 835px;
@@ -936,6 +1013,13 @@ body
     margin: 0 auto 0 auto;
 }
 
+.widget_label_100
+{
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    margin: 0 auto 0 auto;
+}
 
 #dashboard_content .widget_container_holder .widget_label h3, #dashboard_content .widget_container_holder_long .widget_label h3
 {
@@ -951,20 +1035,17 @@ body
     display: block;
 }
 
-
 .widget_label .pull-left
 {
     float: left;
     width: 265px;
 }
 
-
-.widget_label .pull-left
+.widget_label .pull-left_100
 {
     float: left;
-    width: 265px;
+    width: 100%;
 }
-
 
 .widget_label .pull-right
 {
@@ -972,14 +1053,7 @@ body
     margin: 10px 10px 0 0;
 }
 
-
-.widget_label .pull-right #launch-app
-{
-
-}
-
-
-
+.widget_label .pull-right #launch-app{}
 
 
 #dashboard_selector
@@ -1170,7 +1244,7 @@ table.dataTable td
 #modal_widget .modal-header #right-side
 {
     float: right;
-    width: 100px;
+    width: 115px;
 }
 
 
@@ -1477,4 +1551,47 @@ table.dataTable td
             font-size:11px;
             color: #333333;
         }
-	
+
+input.chart-query[type="text"] {
+    border-radius: 20px;
+    margin: 0 0 0 15px;
+    padding: 4px 10px 4px 30px;
+    width: 200px;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border-radius: 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+.query-icon {
+    margin: 6px 0 0 -190px;
+    opacity: 0.6;
+}
+
+
+.icon.line-swap {
+    background-position: 0 0;
+}
+.icon {
+    background: url("../images/glyphicons-halflings-white.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    transition: opacity 0.5s ease 0s;
+    width: 20px;
+}

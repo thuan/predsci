@@ -35,8 +35,6 @@
 				<!-- END: Twitter Activity -->
             </div>
 
-
-
 			<div class="widget_container_holder">
 				<!-- Share of Voice -->
 				<div class="widget_label">
@@ -53,11 +51,11 @@
 
 					</div>
 				</div>
-
 				<div class="widget_holder" id="div_pie_chart"></div>
 			</div>
             
-            <div class="widget_container_holder">
+            <div class="widget_container_holder" id="volumeAndSentiment">
+                <div class="widget_stealth"></div>
                 <!-- Volume & Sentiment -->
                 <div class="widget_label">
                     <h3 class="pull-left">Volume &AMP; Sentiment<br>
@@ -68,7 +66,6 @@
                         <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5."><i class="icon-info-sign icon-white"></i></a>
                         <a id="launch-app" href="javascript:ps_modals.launch(widget_volumeandsentiment.modal);"><i class="icon-resize-full icon-white"></i></a>
                     </div>
-
                 </div>
                 <div class="widget_holder" id="barChartDiv"></div>
             </div>
@@ -80,7 +77,8 @@
                         <small></small>
                     </h3>
                     <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+                        <a href="javascript:ps_utilities.toggleBarLine(widgetConversationVolume)"><i class="icon line-swap"></i></a>
+                        <a id="tooltipp" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
                         <a id="launch-app" href="javascript:ps_modals.launch(widgetConversationVolume.modal)"><i class="icon-resize-full icon-white"></i></a>
 
                     </div>
@@ -96,21 +94,19 @@
                         <small></small>
                     </h3>
                     <div class="pull-right">
+                        <a href="javascript:ps_utilities.toggleBarLine(widgetPredefinedTopicVolume)"><i class="icon line-swap"></i></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
                         <a id="launch-app" href="javascript:ps_modals.launch(widgetPredefinedTopicVolume.modal)"><i class="icon-resize-full icon-white"></i></a>
-
                     </div>
                 </div>
                 <div class="widget_holder" id="lineChartDiv2"></div>
             </div>
 
             <div class="widget_container_holder">
-                <div class="widget_label">
-                    <h3 class="pull-left">Twitter Stream
-                        <br>
+            	<div class="widget_label">
+                    <h3 class="pull-left">Twitter Stream<br>
                         <small>Tweets mentioning Verizon Wireless</small>
                     </h3>
-
                     <div class="pull-right">
                         <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
                             <i class="icon-info-sign icon-white"></i>
@@ -118,7 +114,6 @@
                         <a href="#" id="launch-app">
                             <i isclicked="0" class="icon-resize-full icon-white" id="div_tweeterStream" data-toggle="modal" data-target="#twitterStreamModal"></i>
                         </a>
-
                     </div>
                 </div>
 
@@ -138,13 +133,50 @@
                     </div>
                 </div>
             </div>
-
+			<!-- Top Tweets -->
             <div class="widget_container_holder_long">
-                <!-- Top Tweets-->
-            </div>
+                <div class="widget_label">
 
-			<div class="box kList widget_container_holder">
+                    <h3 class="pull-left">Top Tweets<br>
+                        <small>Most Engaging Verizon Wireless Tweets</small>
+                    </h3>
+
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
+                        <a href="#" id="launch-app"><i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i></a>
+
+                    </div>
+
+                </div>
+                <div id="topTweets"></div>
+                <div class="timelabel timelabel-toptweets">7 days</div>
+            </div>
+            
+            <!-- END Top Tweets -->
+            
+            
+        <!-- Top Twitter Modal Starts -->
+        <div id="twitterModal" class="modal hide fade twitterModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <div id="right-side">
+                    <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
+                    <div class="label label-inverse">7 Days</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                </div>
+                <h3>Top Tweets<br>
+                    <small>Most Engaging Verizon Wireless Tweets</small>
+                </h3>
+            </div>
+            <div class="modal-body" id="twitter_div_modal">
+                <div id="twitter-feed-modal"></div>
+            </div>
+        </div>
+        <!-- Top Twitter Modal Ends -->
+			
+			<div class="widget_container_holder"></div>			
 				<!-- Keyword Frequency Starts-->
+			<div class="box kList widget_container_holder_keyword">
+
 				<div class="widget_label">
 					<h3 class="pull-left">Keyword Frequency<br>
 						<small>Information on keyword frequency by volume of conversation.</small>
@@ -154,19 +186,18 @@
 					</div>
 				</div>
 				<div id="klist"><div  id="list"></div></div>
+				<div class="timelabel">last 24 hours</div>
 			</div>
-
+			
         </div>
 
         <!-- end of widgets -->
-		
+
 		<!-- Start of modals -->
         <?php
         include_once ("inc/modal.php");
         ?>
 		<!-- end of modals
-
-
     </div>
 
 </body>

@@ -16,7 +16,23 @@
 
         var boolRunOnce = false;
         JSONProperties.showInsights == undefined ? $showInsights = false : $showInsights = true;
+        JSONProperties.showQueryForm == undefined ? $showQueryForm = false : $showQueryForm = true;
+        JSONProperties.showToggle1 == undefined ? $showToggle1 = false : $showToggle1 = true;
+        JSONProperties.showToggle2 == undefined ? $showToggle2 = false : $showToggle2 = true;
+        JSONProperties.showVolumeAndSentimentMenu == undefined ? $showVolumeAndSentimentMenu = false : $showVolumeAndSentimentMenu = true;
         var $function = JSONProperties.function;
+        
+        if($showVolumeAndSentimentMenu)
+        {
+            $.get( "templates/menu_volumeAndSentiment.html", function( data ) {
+                $("#insight_container").html(data);
+            });
+        } else
+        {
+            $.get( "templates/insight_history.html", function( data ) {
+                $("#insight_container").html(data);
+            });
+        }
 
         try
         {
@@ -33,12 +49,25 @@
                 if (e.target.id == "modal_widget" && !boolRunOnce)
                 {
                     boolRunOnce = true;
-                    $("#modal_widget #modal-widget-body").css("background-color","black")
+                    $("#modal_widget #modal-widget-body").css("background-color","black");
+
                     if ($showInsights)
                     {
                         $.get( "templates/insights.html", function( data ) {
                             $("#modal_widget").prepend(data);
                         });
+                    }
+
+                    if($showQueryForm){
+                        $('#conversation_volume_query').show()
+                    }
+
+                    if($showToggle1){
+                        $('#toggle1').show()
+                    }
+
+                    if($showToggle2){
+                        $('#toggle2').show()
                     }
 
                     $("#modal_widget #modal-widget-body").html("");
@@ -69,6 +98,10 @@
                     $("#latest_insights_nav_back").unbind();
                     $("#latest_insights_nav_next").unbind();
                     $("#modal-stealth").show();
+                    $('#conversation_volume_query').hide();
+                    $('#conversation_volume_query').find('input').val('');
+                    $('#toggle1').hide();
+                    $('#toggle2').hide();
                 }
             });
         } catch( e ) {

@@ -7,8 +7,6 @@
 (function (ps_graphDefinitions, $, undefined) {
 
     ps_graphDefinitions.jsonData = "";
-    
-    ps_graphDefinitions.jsonpData = "";
 
 	/*
 	* Builds the Keyword Trending Widget
@@ -35,7 +33,6 @@
     /*
 	* Builds the Metric Ticker Widget
 	*/
-    
     ps_graphDefinitions.metricTicker = function(responseSentiment, responseConversation)
     {
     	var data = [];
@@ -135,9 +132,6 @@
 
     ticker.append(output).find("ul").fadeIn(800);
 
-   
-
-
     $(".metric-ticker").find("li[data-original='true']").each(function() {
         $(this).clone()
         .removeAttr("style")
@@ -194,9 +188,11 @@
  
     } // end metricTicker
 
-    
+	/*
+	* Builds the Pie Chart Widget - Process Data
+	*/    
     ps_graphDefinitions.processDataAllPie = function (data) {
-        //PROCESSA TODOS OS DADOS
+        //Process all data
        var process = [];
         data.forEach(function(val){
           if( _.where(process, {id : val.id}).length === 0 ){
@@ -210,13 +206,12 @@
         return process;
     }
 
-    /**
-     *  PIECHART FROM MODAL
-     */
+	/*
+	 * Builds the Pie Chart Widget - Modal View
+	 */ 
     ps_graphDefinitions.processDataSourcePie = function (source, data) {
-        //PROCESSA OS DADOS QUE FOREM IGUAIS AO SOURCE
-        //CAMPO ID_2
-
+        //Process all data equals to source
+        //Atribute ID_2
         var nData = _.where(data, {id_2 : source});
         var values = new Array();
 
@@ -228,10 +223,11 @@
         }
         return values;
     }
-    
+
+   /*
+	* Builds the Pie Chart Widget
+	*/ 
     ps_graphDefinitions.buildPieChart = function (sElementName) {
-		//Code goes here
-    	
     	var objChart;
         objChart = new cfx.Chart();
         objChart.getAnimations().getLoad().setEnabled(true);
@@ -251,9 +247,26 @@
         objChart.setDataSource(nData );
         var divHolder = document.getElementById(sElementName.div_location);
         objChart.create(divHolder);
-    }
-
+    } //end pie chart
+    
+    /*
+	* Builds the Bar Chart Widget
+	*/
+    ps_graphDefinitions.barChartReload = function(attr) {
+        var txt = $("#menuBarChart li a[data-attr='"+attr+"']").text();
+        var prop = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-prop');
+        var attr = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-attr');
+        var series = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-series');
+        
+        $('#dropdownMenuBarChart').html(txt + ' <span class="caret"></span>');
+        $('#'+widget_volumeandsentiment.modal.div_location).html("Carregando...");
+        widget_volumeandsentiment.modal.dataURL = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/"+prop+"/competitors/"+attr+"/sentiment/"+series+"?period=week&limit=5";
+        widget_volumeandsentiment.modal.div_modal = false;
+        ps_utilities.loadData(widget_volumeandsentiment.modal);
+    };
+        
     ps_graphDefinitions.buildBarChart = function (sElementName) {
+        
         var objChart;
 
         objChart = new cfx.Chart();
@@ -261,6 +274,7 @@
         objChart.setGallery(cfx.Gallery.Bar); // BAR Chart
         
         var data = objChart.getData();
+        objChart.getGalleryAttributes().setTemplate("BarBasic");
         objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
         objChart.getLegendBox().setVisible(true);
 
@@ -269,11 +283,20 @@
 
         objChart.setDataSource(data);
         var divHolder = document.getElementById( sElementName.div_location );
+        divHolder.innerHTML = "";
         objChart.create(divHolder);
         
+        if(sElementName.showVolumeAndSentimentMenu == undefined)
+        {
+            $( "#volumeAndSentiment div[class='widget_stealth']" ).html('<div class="timelabel">'+sElementName.timelabel+'</div>');
+        }
+        
         ps_utilities.RemoveWidgetGradient();
-    }
+    } //end bar chart
 
+    /*
+	* Builds the Line Chart Widget
+	*/
     ps_graphDefinitions.buildLineChart = function (sElementName) {
         var objChart;
         var td;
@@ -283,8 +306,8 @@
 
         objChart = new cfx.Chart();
 
-        objChart.setGallery(cfx.Gallery.Lines);
-        objChart.getGalleryAttributes().setTemplate('LineBasic');
+        objChart.setGallery(sElementName.gallery);
+        objChart.getGalleryAttributes().setTemplate(sElementName.template);
         objChart.getLegendBox().setVisible(sElementName.legend);
         objChart.getAnimations().getLoad().setEnabled(true);
         objChart.getTitles().add(td);
@@ -293,36 +316,108 @@
 
         objChart.setDataSource(data);
         var divHolder = document.getElementById(sElementName.div_location);
+        divHolder.innerHTML = '';
         objChart.create(divHolder);
 
-        $("body stop").attr("stop-color","#000000");
-        $("#" + sElementName.id_div + " .pull-right a:first").attr("data-original-title",sElementName.tooltip);
+        ps_utilities.RemoveWidgetGradient();
+        $("#" + sElementName.id_div + " .pull-right #tooltipp").attr("data-original-title",sElementName.tooltip);
         $("#" + sElementName.id_div + " .pull-left span").text(sElementName.title);
         $("#" + sElementName.id_div + " .pull-left small").text(sElementName.subtitle);
-
-    }
+    } //end line chart
 
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
 		//Code goes here
     }
 
+    ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
+		ps_twitterUtils.getMentionsJsonData();
+    }
+    
     ps_graphDefinitions.buildUsersTwitterStream = function (sElementName) {
 		ps_twitterUtils.getUsersJsonData();
     }
     
-    ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
-		ps_twitterUtils.getMentionsJsonData();
-    }
+
+	/*
+	* Top Tweets
+	*/
+    ps_graphDefinitions.topTweets = function(response) {
+    	
+    	var date            = new Date();
+    	var response = ps_graphDefinitions.jsonpData;
+        var tweetStreamHtml = "";
+        var topTweets       = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
+        var topTweetsModal  = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
+        var period          = response.period;
+        var periodCount     = response.period_count;
+        var userName        = response.groups[0].userName;
+        var tweetData       = response.groups[0].statuses;
+        var statusCount     = response.groups[0].statuses.length;
+        var rank,screen_name,status_text,reply_count,status_time_str;
+        for ( i = 0; i < 5; i++) {
+            rank            = tweetData[i].rank;
+            screen_name     = tweetData[i].screen_name;
+            status_text     = tweetData[i].status_text;
+            reply_count     = tweetData[i].reply_count;
+            retweet_count   = tweetData[i].retweet_count;
+            status_time_str = date.getDate(tweetData[i].status_time_str)+"/"+date.getMonth(tweetData[i].status_time_str)+"/"+date.getFullYear(tweetData[i].status_time_str);
+
+            topTweets += '<tr>';
+            topTweets += '<td>'+rank+'</td>';
+            topTweets += '<td>'+ps_twitterUtils.addlinks(status_text)+'</td>';
+            topTweets += '<td>@'+screen_name+'</td>';
+            topTweets += '<td>'+reply_count+'</td>';
+            topTweets += '<td>'+retweet_count+'</td>';
+            topTweets += '<td>'+status_time_str+'</td>';
+            topTweets += '</tr>';
+        }
+        var divIndex=0;
+        var adminHtml="";
+        for ( i = 0; i < statusCount; i++) {
+            rank            = tweetData[i].rank;
+            screen_name     = tweetData[i].screen_name;
+            status_text     = tweetData[i].status_text;
+            reply_count     = tweetData[i].reply_count;
+            retweet_count   = tweetData[i].retweet_count;
+            img_url         = tweetData[i].img_url;
+            tweetTime       = tweetData[i].status_time_str;
+            status_time_str = date.getDate(tweetData[i].status_time_str)+"/"+date.getMonth(tweetData[i].status_time_str)+"/"+date.getFullYear(tweetData[i].status_time_str);
+
+
+            topTweetsModal  += '<tr>';
+            topTweetsModal  += '<td>'+rank+'</td>';
+            topTweetsModal  += '<td>'+ps_twitterUtils.addlinks(status_text)+'</td>';
+            topTweetsModal  += '<td>@'+screen_name+'</td>';
+            topTweetsModal  += '<td>'+reply_count+'</td>';
+            topTweetsModal  += '<td>'+retweet_count+'</td>';
+            topTweetsModal  += '<td>'+status_time_str+'</td>';
+            topTweetsModal  += '</tr>';
+            if ( divIndex === 0 ) {
+                sessionStorage.presentTopTweetIndex = 0;
+                sessionStorage.presentTopTweetIndex_admin=0;
+            }
+            adminHtml       += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
+            divIndex+=1;
+        }
+        
+        
+        topTweets += '</tbody></table>';
+        $('#topTweets').html(topTweets);
+        $('#twitter-feed-modal').html(topTweetsModal);
+        $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+    } // end topTweets
+        
+   
 	
 	/*
 	* Builds the Keyword Trending Widget
 	*/
     ps_graphDefinitions.buildKeywordTrending = function(sElementName) {
-        $('#list').append("<ul class='keywordlist  klist-fe' id="+sElementName.title+"></ul>");
-        $("#"+sElementName.title).append("<li class='title'>" + sElementName.title + "</li>");
+        $('#list').append("<ul class='keywordlist  klist-fe' id="+sElementName.category+"></ul>");
+        $("#"+sElementName.category).append("<li class='title'>" + sElementName.title + "</li>");
 
         $.each(ps_graphDefinitions.jsonData.data, function(i,v){
-           $("#"+sElementName.title).append("<li  tag=" +v.display+">"  + v.display+"<span>"+ v.value + "</span>"+ "</li>");
+           $("#"+sElementName.category).append("<li  tag=" +v.display+">"  + v.display+"<span>"+ v.value + "</span>"+ "</li>");
 		});
     } // end buildKeywordTrending
 	

@@ -65,6 +65,24 @@
     transition: opacity 0.1s ease-in-out;
 }
 
+/* BAR CHART */
+#barChartDiv .jchartfx .Attribute0 {
+    fill: #BEBEBE;
+    stroke: #4281A4;
+    stroke-width: 0;
+}
+#barChartDiv .jchartfx .Attribute1 {
+    fill: #006400;
+    stroke: #4281A4;
+    stroke-width: 0;
+}
+#barChartDiv .jchartfx .Attribute2 {
+    fill: #FF0000;
+    stroke: #4281A4;
+    stroke-width: 0;
+}
+/* END BAR CHART */
+
 .jchartfx .Attribute0 {
     fill: #0068FF;
     stroke: #4281A4;

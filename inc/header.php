@@ -28,12 +28,10 @@
     <script language="javascript" src="js/wirelessSocialPulse.js" type="text/javascript"></script>
     
     <script language="javascript" src="lib/jquery/jquery-ui.js" type="text/javascript"></script>
-    <!-- time ago plugin -->
-    <script language="javascript" src="lib/timeago/jquery.timeago.js" type="text/javascript"></script>
     <script language="javascript" src="lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
     <script language="javascript" src="lib/bootstrap/jquery.dataTables.min.js" type="text/javascript"></script>
     <script language="javascript" src="lib/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
-
+    <script language="javascript" src="lib/timeago/jquery.timeago.js" type="text/javascript"></script>
 
    <script language="javascript" src="js/modals.js" type="text/javascript"></script>
     
