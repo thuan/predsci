@@ -105,8 +105,13 @@
             </div>
 
             <div class="widget_container_holder">
-            <div class="widget_label">
-
+                <div class="news-wrapper" id="pscroller" style="height: 285px; max-height: none;">
+			        <div class="arrow-up disabled"></div>
+                    <div class="arrow-down tn disabled"></div>
+		            <div class="footing roundlow"></div>
+		            <div class="timelabel"></div>
+                </div>
+                <div class="widget_label">
                     <h3 class="pull-left">Twitter Stream
                         <br>
                         <small>Tweets mentioning Verizon Wireless</small>
@@ -121,9 +126,7 @@
                         </a>
 
                     </div>
-
                 </div>
-
 
                 <div id="div_tweeterStream" class="div_tweeterStream">
                     <div class="div_tweetsParent">
@@ -141,9 +144,6 @@
                     </div>
                 </div>
             </div>
-
-			<!-- <div class="widget_container_holder"> 
-            </div>-->
 
             <div class="widget_container_holder_long">
                 <!-- Top Tweets-->

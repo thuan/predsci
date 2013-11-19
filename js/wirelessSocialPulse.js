@@ -225,8 +225,6 @@ $(function () {
     new ps_utilities.loadJsonpData(mentionStream);
 });
 
-
-
 //End Twitter Stream Definitions
 
 
