@@ -223,7 +223,13 @@ var mentionStream = {
 $(function () {  
     new ps_utilities.loadJsonpData(userStream);
     new ps_utilities.loadJsonpData(mentionStream);
+    var getTweetDataTimer = window.setInterval(function () {
+        new ps_utilities.loadJsonpData(userStream);
+        new ps_utilities.loadJsonpData(mentionStream);    
+    }, 60000); 
 });
+
+
 
 //End Twitter Stream Definitions
 
