@@ -105,8 +105,7 @@
             </div>
 
             <div class="widget_container_holder">
-            
-            <div class="widget_label" id="pscroller">
+            <div class="widget_label">
 
                     <h3 class="pull-left">Twitter Stream
                         <br>
