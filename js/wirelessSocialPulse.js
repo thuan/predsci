@@ -208,35 +208,24 @@ $(function () {
 
 //Begin Twitter Stream Definitions
 
-getUserJsonData = function() {
-    var userStream = {
-        dataURL: APIgettoptweets,
-        function: ps_graphDefinitions.buildUsersTwitterStream,
-        legend: false
-    };
-    new ps_utilities.loadJsonpData(userStream);
+var userStream = {
+    dataURL: APIgettoptweets,
+    function: ps_graphDefinitions.buildUsersTwitterStream,
+    legend: false
 };
 
-getMentionJsonData = function() {
-    var mentionStream = {
-        dataURL: APIgettweetsmentions,
-        function: ps_graphDefinitions.buildMentionsTwitterStream,
-        legend: false
-    };
-    new ps_utilities.loadJsonpData(mentionStream);
+var mentionStream = {
+    dataURL: APIgettweetsmentions,
+    function: ps_graphDefinitions.buildMentionsTwitterStream,
+    legend: false
 };
-
-$(function () {
-    getUserJsonData();
-    getMentionJsonData();
-});
 
 $(function () {  
-    var getTweetDataTimer = window.setInterval(function () {
-        getUserJsonData();
-        getMentionJsonData();    
-    }, 60000);
+    new ps_utilities.loadJsonpData(userStream);
+    new ps_utilities.loadJsonpData(mentionStream);
 });
+
+
 
 //End Twitter Stream Definitions
 
