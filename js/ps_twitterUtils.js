@@ -1,9 +1,7 @@
 (function (ps_twitterUtils, $, undefined) {
-    var startDate, endDate, diff, hours, minutes;
-    var totalNumberOfTweet = 20;
-    var totalNumberOfTweet_admin = 15;
-
+    
     ps_twitterUtils.timeDifference = function (start) {
+        var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
         endDate = new Date();
         diff = endDate.getTime() - startDate.getTime();
@@ -27,6 +25,7 @@
     };
 
     ps_twitterUtils.moveTweetForwordByOne = function () {
+        var totalNumberOfTweet = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -40,6 +39,7 @@
     };
 
     ps_twitterUtils.moveTweetBackByOne = function () {
+        var totalNumberOfTweet = 20;
         if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
             sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
             for (var index = 0; index < totalNumberOfTweet; index++) {
@@ -53,6 +53,7 @@
     };
 
     ps_twitterUtils.moveTweetForwordByOne_admin = function () {
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -66,6 +67,7 @@
     };
 
     ps_twitterUtils.moveTweetBackByOne_admin = function () {
+        var totalNumberOfTweet_admin = 15;
         if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
             sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) + 1;
             for (var index = 0; index < totalNumberOfTweet_admin; index++) {
@@ -99,7 +101,6 @@
             divIndex += 1;
         }
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-        ps_twitterUtils.buildModals();
     };
 
     ps_twitterUtils.getMentionsJsonData = function () {
@@ -123,7 +124,6 @@
             divIndex += 1;
         }
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-        ps_twitterUtils.buildModals();
     };
 
     ps_twitterUtils.buildModals = function () {
