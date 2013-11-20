@@ -38,7 +38,7 @@
             success: function(dataResponse) {
 				if(dataResponse.data.length){
 					usersResponse = dataResponse;
-					ps_graphDefinitions.jsonData = usersResponse;
+					
 				}
                 
                 ps_graphDefinitions.jsonpData = dataResponse;
@@ -57,7 +57,7 @@
             success: function(dataResponse) {
 				if(dataResponse.data.length){
 					mentionsResponse = dataResponse;
-					ps_graphDefinitions.jsonData = mentionsResponse;
+					
 				}
             },
             error: function(e) { console.log('Error making request'); },
