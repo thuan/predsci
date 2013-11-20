@@ -27,12 +27,10 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-        $.ajax({
-            type: "GET",
-            dataType: "jsonp",
-            crossDomain: true,
-            contentType: "application/json",
+        $.ajax({      
             url: arrayData.dataUsersURL,
+			dataType: "jsonp",
+            crossDomain: true,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
