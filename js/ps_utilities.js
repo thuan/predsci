@@ -34,6 +34,7 @@
             contentType: "application/json",
             url: arrayData.dataUsersURL,
             success: function(dataResponse) {
+				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
 				arrayData.function(arrayData);
             },
@@ -47,6 +48,7 @@
             contentType: "application/json",
             url: arrayData.dataMentionsURL,
             success: function(dataResponse) {
+				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
 				arrayData.function(arrayData);
             },
