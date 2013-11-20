@@ -140,17 +140,7 @@ new ps_utilities.multipleLoadData(widget);
 });
 //End Metric Ticker
 
-//Begin Top Tweets
 
-$(function () {
-    var widget = {
-        dataURL: APIgettoptweets,
-        function: ps_graphDefinitions.topTweets,
-        legend: false
-    };
-    new ps_utilities.loadJsonpData(widget);
-});
-//End Top Tweets
 
 //Begin Twitter Stream Definitions
 
