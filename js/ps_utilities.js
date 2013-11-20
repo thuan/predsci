@@ -38,12 +38,10 @@
             url: arrayData.dataUsersURL,
             async: false,
             success: function(dataResponse) {
-				if(dataResponse.data.length){
-					arrayData.jsonpData = dataResponse;
-					ps_graphDefinitions.jsonData = dataResponse;
-					usersResponse = dataResponse;
-					arrayData.function(usersResponse);
-				}
+				arrayData.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonData = dataResponse;
+				usersResponse = dataResponse;
+				arrayData.function(usersResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -57,12 +55,11 @@
             url: arrayData.dataMentionsURL,
             async: false,
             success: function(dataResponse) {
-				if(dataResponse.data.length){
-					arrayData.jsonpData = dataResponse;
-					ps_graphDefinitions.jsonData = dataResponse;
-					mentionsResponse = dataResponse;
-					arrayData.function(mentionsResponse)
-				}
+				arrayData.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonData = dataResponse;
+				mentionsResponse = dataResponse;
+				arrayData.function(mentionsResponse)
+				
             },
             error: function(e) { console.log('Error making request'); },
         });
