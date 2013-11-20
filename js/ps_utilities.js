@@ -35,12 +35,10 @@
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataUsersURL,
-            
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
 				usersResponse = dataResponse;
-				arrayData.jsonpDataUsers = usersResponse;
-				arrayData.function(arrayData.jsonpDataUsers);
+				arrayData.function(usersResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -51,12 +49,10 @@
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataMentionsURL,
-           
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
 				mentionsResponse = dataResponse;
-				arrayData.jsonpDataMentions = mentionsResponse;
-				arrayData.function(arrayData.jsonpDataMentions);
+				arrayData.function(mentionsResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
