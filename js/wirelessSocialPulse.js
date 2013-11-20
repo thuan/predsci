@@ -252,23 +252,13 @@ $(function () {
 var userStream = {
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
-    legend: false,
-    modal: {
-      div_location :  "twitterStreamModal",
-      header : "Twitter Stream",
-      subheader : "Tweets mentioning Verizon Wireless"
-    }
+    legend: false
 };
 
 var mentionStream = {
     dataURL: APIgettweetsmentions,
     function: ps_graphDefinitions.buildMentionsTwitterStream,
-    legend: false,
-    modal: {
-      div_location :  "twitterStreamModal",
-      header : "Twitter Stream",
-      subheader : "Tweets mentioning Verizon Wireless"
-    }
+    legend: false
 };
 
 $(function () {  

@@ -6,7 +6,7 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
-
+/*global window:false, ps_graphDefinitions:false, jQuery:false, sessionStorage:false*/
 (function (ps_twitterUtils, $, undefined) {
 
     ps_twitterUtils.timeDifference = function (start) {
@@ -22,7 +22,7 @@
 
     ps_twitterUtils.addlinks = function (data) {
         //Add link to all http:// links within tweets
-        data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function (url) {
+        data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\\>]*[^.,;'">\:\s\\>\)\]\!])/g, function (url) {
             return '<a target="_blank" style="color:#08c;" href="' + url + '" >' + url + '</a>';
         });
 
