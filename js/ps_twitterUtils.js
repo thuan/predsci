@@ -93,7 +93,7 @@
     };
 
     ps_twitterUtils.scrollTweets = function () {
-        var scrollTweetTimer = $.setTimeout(function () {
+        var scrollTweetTimer = window.setTimeout(function () {
             if ($(".div_tweetsMain").html() !== "") {
                 ps_twitterUtils.moveTweetBackByOne();
                 ps_twitterUtils.moveTweetBackByOne_admin();
