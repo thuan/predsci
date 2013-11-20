@@ -27,7 +27,8 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		var usersResponse, mentionsResponse;
+		var usersResponse = "";
+		var mentionsResponse = "";
         $.ajax({
             type: "GET",
             dataType: "jsonp",
