@@ -285,6 +285,7 @@ var widget_volumeandsentiment = {
     legend: false,
     modal: {
         title: "Volume & Sentiment",
+        subtitle: "Daily Volume & Sentiment",
         header : "Volume & Sentiment",
         subheader : "Daily Volume & Sentiment",
         tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",

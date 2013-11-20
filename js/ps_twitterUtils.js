@@ -1,3 +1,12 @@
+/**
+ *  
+ * @version		1.0
+ * @package		Predictive Science Dashboard
+ * @subpackage	Wireless Social Pulse
+ * @license		GPLv3
+ * @author		Ifactory Solutions <informacao@ifactory.com.br>
+ */
+
 (function (ps_twitterUtils, $, undefined) {
     
     ps_twitterUtils.timeDifference = function (start) {
