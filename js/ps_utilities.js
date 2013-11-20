@@ -27,8 +27,6 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		var usersResponse = "";
-		var mentionsResponse = "";
         $.ajax({
             type: "GET",
             dataType: "jsonp",
@@ -37,8 +35,7 @@
             url: arrayData.dataUsersURL,
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
-				usersResponse = dataResponse;
-				arrayData.function(usersResponse);
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -51,13 +48,11 @@
             url: arrayData.dataMentionsURL,
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
-				mentionsResponse = dataResponse;
-				arrayData.function(mentionsResponse);
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
-		
-		
+				
     };
 
     ps_utilities.processData = function (data) {
