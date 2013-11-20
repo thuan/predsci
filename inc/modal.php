@@ -76,10 +76,14 @@
             </a>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         </div>
-        <h3>Twitter Stream
+        <div id="modal-heading" class="pull-left">
+            <h3>Twitter Stream
             <br>
-            <small>Tweets mentioning Verizon Wireless</small>
-        </h3>
+            <small></small>
+            </h3>
+            
+        </div>
+        
     </div>
     <ul class="headng">
         <li class="lft">Tweets from Verizon Wireless Handles</li>

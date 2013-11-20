@@ -250,12 +250,16 @@ $(function () {
 
 //Begin Twitter Stream Definitions
 var userStream = {
+    title: "Twitter Stream",
+    subTitle: "",
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
     legend: false
 };
 
 var mentionStream = {
+    title: "",
+    subTitle: "Tweets mentioning Verizon Wireless",
     dataURL: APIgettweetsmentions,
     function: ps_graphDefinitions.buildMentionsTwitterStream,
     legend: false
