@@ -144,16 +144,13 @@ new ps_utilities.multipleLoadData(widget);
 
 //Begin Twitter Stream Definitions
 
+$(function () {  
 var widgetTwitterStream = {
 	dataUsersURL: APIgettoptweets,
 	dataMentionsURL: APIgettweetsmentions,
 	function: ps_graphDefinitions.buildTwitterStream,
 	legend: false
 };
-
-
-
-$(function () {  
     new ps_utilities.loadJsonpData(widgetTwitterStream);
     
     var getTweetDataTimer = window.setTimeout(function () {
