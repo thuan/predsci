@@ -95,8 +95,8 @@ div.default {
 		background:no-repeat 50% 50%;
 	}
 	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
-    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:345px;}
-    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:250px;}
+    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:325px;}
+    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top: 310px;}
 
 #twitterStreamModal .modal-body
 {
