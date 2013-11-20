@@ -40,7 +40,7 @@
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
 				usersResponse = dataResponse;
 				arrayData.jsonpData = usersResponse;
-				arrayData.function(arrayData.jsonpData);
+				arrayData.function(arrayData.jsonpDataUsers);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -56,7 +56,7 @@
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
 				mentionsResponse = dataResponse;
 				arrayData.jsonpData = mentionsResponse;
-				arrayData.function(arrayData.jsonpData);
+				arrayData.function(arrayData.jsonpDataMentions);
             },
             error: function(e) { console.log('Error making request'); },
         });
