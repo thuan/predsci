@@ -39,8 +39,9 @@
             async: false,
             success: function(dataResponse) {
 				if(dataResponse.data.length){
-					usersResponse = dataResponse;
-					
+					arrayData.jsonpData = dataResponse;
+					ps_graphDefinitions.jsonData = dataResponse;
+					usersResponse = dataResponse;					
 				}
                 
                 ps_graphDefinitions.jsonpData = dataResponse;
@@ -59,6 +60,8 @@
             async: false,
             success: function(dataResponse) {
 				if(dataResponse.data.length){
+					arrayData.jsonpData = dataResponse;
+					ps_graphDefinitions.jsonData = dataResponse;
 					mentionsResponse = dataResponse;
 					
 				}
