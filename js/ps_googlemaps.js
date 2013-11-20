@@ -360,8 +360,8 @@ var ps_googlemaps = ps_googlemaps || {};
         var addStyle = "";
 
         //$('.share-of-voice-tab').click(function() {
-        $('.modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
-        $('.modal-header small').html(iFeed.insightSubtitle);
+        $('#modal_widget .modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
+        $('#modal_widget .modal-header small').html(iFeed.insightSubtitle);
 
         // Update the tooltip qtip
         /*$('#modal-twittersovmap .ttip_t').qtip({
