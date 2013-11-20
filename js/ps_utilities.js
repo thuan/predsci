@@ -39,7 +39,7 @@
             async: false,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
-				ps_graphDefinitions.jsonData = dataResponse;
+				ps_graphDefinitions.jsonpData = dataResponse;
 				usersResponse = dataResponse;
 				arrayData.function(usersResponse);
             },
@@ -56,7 +56,7 @@
             async: false,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
-				ps_graphDefinitions.jsonData = dataResponse;
+				ps_graphDefinitions.jsonpData = dataResponse;
 				mentionsResponse = dataResponse;
 				arrayData.function(mentionsResponse)
 				
