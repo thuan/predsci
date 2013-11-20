@@ -35,7 +35,7 @@
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataUsersURL,
-            async: false,
+            
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
 				usersResponse = dataResponse;
@@ -51,7 +51,7 @@
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataMentionsURL,
-            async: false,
+           
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
 				mentionsResponse = dataResponse;
