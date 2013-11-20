@@ -249,6 +249,9 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
+
+
+$(function () {
 var userStream = {
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
@@ -256,9 +259,10 @@ var userStream = {
     modal_propeties: {
       div_location :  "modal-widget-body",
       header : "Twitter Stream",
-      subheader : "Tweets mentioning Verizon Wireless",
-    },
+      subheader : "Tweets mentioning Verizon Wireless"
+    }
 };
+new ps_utilities.loadJsonpData(userStream);
 
 var mentionStream = {
     dataURL: APIgettweetsmentions,
@@ -267,12 +271,9 @@ var mentionStream = {
     modal_propeties: {
       div_location :  "modal-widget-body",
       header : "Twitter Stream",
-      subheader : "Tweets mentioning Verizon Wireless",
-    },
+      subheader : "Tweets mentioning Verizon Wireless"
+    }
 };
-
-$(function () {  
-    new ps_utilities.loadJsonpData(userStream);
     new ps_utilities.loadJsonpData(mentionStream);
     var getTweetDataTimer = window.setInterval(function () {
         new ps_utilities.loadJsonpData(userStream);
