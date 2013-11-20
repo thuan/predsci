@@ -170,7 +170,7 @@
         
         $("#div_tweeterStream").on('click', function () {
             $("#div_tweeterStream").attr('isclicked', '1');
-            $('#modal_widget').on('shown', function () {
+            $('#twitterStreamModal').on('shown', function () {
                 if ($("#div_tweeterStream").attr('isclicked') == "1") {
                     $("#twitterStream_div_modal, #myModalLabel").empty();
                     //displaying the modal content

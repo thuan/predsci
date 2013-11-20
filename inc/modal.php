@@ -53,7 +53,6 @@
                 <button class="btn insights-history-see-more btn-inverse">See more</button>
             </div>
         </div>
-
     </div>
     <div class="modal-body">
         <div id="modal-widget-body"></div>
@@ -63,4 +62,28 @@
         <div id="modal-stealth"></div>
     </div>
 </div>
+    
+ <!-- Twitter stream Modal Starts -->
+<div id="twitterStreamModal" class="modal hide fade twitterSModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <div id="right-side">
+            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                <i class="icon-info-sign icon-white"></i>
+            </a>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        </div>
+        <h3>Twitter Stream
+            <br>
+            <small>Tweets mentioning Verizon Wireless</small>
+        </h3>
+    </div>
+    <ul class="headng">
+        <li class="lft">Tweets from Verizon Wireless Handles</li>
+            <li class="rht">Tweets mentioning Verizon Wireless</li>
+    </ul>
+    <div class="modal-body" id="twitterStream_div_modal">
+
+    </div>
+</div>
+<!-- Twitter Stream Modal Ends -->
     
