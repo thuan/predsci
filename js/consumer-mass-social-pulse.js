@@ -153,38 +153,22 @@ $(function () {
 //End Top Tweets
 
 //Begin Twitter Stream Definitions
-var userStream = {
-    dataURL: APIgettoptweets,
-    function: ps_graphDefinitions.buildUsersTwitterStream,
-    legend: false,
-    modal: {
-        title: "Volume & Sentiment",
-        subtitle: "Daily Volume & Sentiment",
-        tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
-        div_location: "modal-widget-body",
-        function: ps_graphDefinitions.buildUsersTwitterStream
-    }
+
+var widgetTwitterStream = {
+	dataUsersURL: APIgettoptweets,
+	dataMentionsURL: APIgettweetsmentions,
+	function: ps_graphDefinitions.buildTwitterStream,
+	legend: false
 };
 
-var mentionStream = {
-    dataURL: APIgettweetsmentions,
-    function: ps_graphDefinitions.buildMentionsTwitterStream,
-    legend: false,
-    modal: {
-        title: "Volume & Sentiment",
-        subtitle: "Daily Volume & Sentiment",
-        tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
-        div_location: "modal-widget-body",
-        function: ps_graphDefinitions.buildMentionsTwitterStream
-    }
-};
+
 
 $(function () {  
-    new ps_utilities.loadJsonpData(userStream);
-    new ps_utilities.loadJsonpData(mentionStream);
+    new ps_utilities.loadJsonpData(widgetTwitterStream);
+    
     var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadJsonpData(userStream);
-        new ps_utilities.loadJsonpData(mentionStream);    
+        new ps_utilities.loadJsonpData(widgetTwitterStream);
+            
     }, 80000); 
 });
 //End Twitter Stream Definitions

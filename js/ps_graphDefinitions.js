@@ -358,7 +358,12 @@
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
 		//Code goes here
     }
-
+	
+	ps_graphDefinitions.buildTwitterStream = function (sElementName) {
+		ps_twitterUtils.getUsersJsonData();
+		ps_twitterUtils.getMentionsJsonData();
+    }
+	
     ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
 		ps_twitterUtils.getMentionsJsonData();
     }
