@@ -93,20 +93,12 @@
     };
 
     ps_twitterUtils.scrollTweets = function () {
-        var scrollTweetTimer = window.setInterval(function () {
+        var scrollTweetTimer = $.setTimeout(function () {
             if ($(".div_tweetsMain").html() !== "") {
                 ps_twitterUtils.moveTweetBackByOne();
                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
         }, 10000);
-
-        $(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-        });
-
-        $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-        });
     };
 
     ps_twitterUtils.getUsersJsonData = function () {
@@ -154,7 +146,18 @@
             tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
+        
         $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
+        
+        $(".div_upperArrow").on('click', function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
+        });
+
+        $(".div_downArrow").on('click', function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
+        });
+        
+        
         ps_twitterUtils.scrollTweets();
         ps_twitterUtils.buildModals();
     };
