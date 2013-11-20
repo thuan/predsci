@@ -292,7 +292,37 @@
         }
         
         ps_utilities.RemoveWidgetGradient();
-    } //end bar chart
+    }
+    
+    ps_graphDefinitions.buildSentimentCompetitors = function (sElementName) {
+        
+        var objChart;
+
+        objChart = new cfx.Chart();
+        objChart.getAnimations().getLoad().setEnabled(true);
+        objChart.setGallery(cfx.Gallery.Bar); // BAR Chart
+        
+        var data = objChart.getData();
+        objChart.getGalleryAttributes().setTemplate("BarBasic");
+        objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
+        objChart.getLegendBox().setVisible(true);
+
+        var data = ps_graphDefinitions.jsonData.data;
+        data = ps_utilities.dataSentimentCompetitors(data);
+
+        objChart.setDataSource(data);
+        var divHolder = document.getElementById( sElementName.div_location );
+        divHolder.innerHTML = "";
+        objChart.create(divHolder);
+        
+        if(sElementName.showVolumeAndSentimentMenu == undefined)
+        {
+            $( "#sentimentCompetitors div[class='widget_stealth']" ).html('<div class="timelabel">'+sElementName.timelabel+'</div>');
+        }
+        
+        ps_utilities.RemoveWidgetGradient();
+    }
+    //end bar chart
 
     /*
 	* Builds the Line Chart Widget
@@ -345,11 +375,8 @@
     	
     	var date            = new Date();
     	var response = ps_graphDefinitions.jsonpData;
-        var tweetStreamHtml = "";
         var topTweets       = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
         var topTweetsModal  = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
-        var period          = response.period;
-        var periodCount     = response.period_count;
         var userName        = response.groups[0].userName;
         var tweetData       = response.groups[0].statuses;
         var statusCount     = response.groups[0].statuses.length;
@@ -372,7 +399,6 @@
             topTweets += '</tr>';
         }
         var divIndex=0;
-        var adminHtml="";
         for ( i = 0; i < statusCount; i++) {
             rank            = tweetData[i].rank;
             screen_name     = tweetData[i].screen_name;
@@ -396,7 +422,7 @@
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin=0;
             }
-            adminHtml       += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + ps_twitterUtils.timeDifference(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
+            
             divIndex+=1;
         }
         
@@ -404,7 +430,7 @@
         topTweets += '</tbody></table>';
         $('#topTweets').html(topTweets);
         $('#twitter-feed-modal').html(topTweetsModal);
-        $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+      
     } // end topTweets
         
    
@@ -413,7 +439,7 @@
 	* Builds the Keyword Trending Widget
 	*/
     ps_graphDefinitions.buildKeywordTrending = function(sElementName) {
-        $('#list').append("<ul class='keywordlist  klist-fe' id="+sElementName.category+"></ul>");
+        $('#klist').append("<ul class='keywordlist  klist-fe' id="+sElementName.category+"></ul>");
         $("#"+sElementName.category).append("<li class='title'>" + sElementName.title + "</li>");
 
         $.each(ps_graphDefinitions.jsonData.data, function(i,v){

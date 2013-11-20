@@ -24,11 +24,15 @@
         
         if($showVolumeAndSentimentMenu)
         {
-            $.get( "templates/menu_volumeAndSentiment.html", function( data ) {
-                $("#insight_container").html(data);
-            });
-        } else
-        {
+            if(JSONProperties.showVolumeAndSentimentMenu === false)
+            {
+                $("#insight_container").html("");
+            } else {
+                $.get( "templates/menu_volumeAndSentiment.html", function( data ) {
+                    $("#insight_container").html(data);
+                });
+            }
+        } else {
             $.get( "templates/insight_history.html", function( data ) {
                 $("#insight_container").html(data);
             });

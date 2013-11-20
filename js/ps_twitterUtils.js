@@ -6,7 +6,10 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
+
+//JSHint ignores
 /*global window:false, ps_graphDefinitions:false, jQuery:false, sessionStorage:false*/
+
 (function (ps_twitterUtils, $, undefined) {
 
     ps_twitterUtils.timeDifference = function (start) {

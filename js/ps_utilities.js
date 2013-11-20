@@ -72,6 +72,26 @@
         return result;
     }
     
+    ps_utilities.dataSentimentCompetitors = function (data) {
+        var chartOpt = {};
+        var result = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (!chartOpt[data[i].display]) { chartOpt[data[i].display] = {}; }
+            if (!chartOpt[data[i].display][data[i].display_2]) { chartOpt[data[i].display][data[i].display_2] = 0; }
+            chartOpt[data[i].display][data[i].display_2] = data[i].value;
+        }
+
+        for (var id in chartOpt) {
+            var temp = {};
+            temp['display'] = id;
+            for (var dp in chartOpt[id]){ temp[dp] = chartOpt[id][dp]; }
+            result.push(temp);
+        }
+
+        return result;
+    }
+    
     ps_utilities.RemoveWidgetGradient = function()
     {
         $("body stop").attr("stop-color","#000000");

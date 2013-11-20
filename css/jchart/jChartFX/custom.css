@@ -66,17 +66,23 @@
 }
 
 /* BAR CHART */
-#barChartDiv .jchartfx .Attribute0 {
+#barChartDiv .jchartfx .Attribute0,
+#sentimentCompetitorsDiv .jchartfx .Attribute0,
+#modal-widget-body .jchartfx .Attribute0 {
     fill: #BEBEBE;
     stroke: #4281A4;
     stroke-width: 0;
 }
-#barChartDiv .jchartfx .Attribute1 {
+#barChartDiv .jchartfx .Attribute1,
+#sentimentCompetitorsDiv .jchartfx .Attribute1,
+#modal-widget-body .jchartfx .Attribute1 {
     fill: #006400;
     stroke: #4281A4;
     stroke-width: 0;
 }
-#barChartDiv .jchartfx .Attribute2 {
+#barChartDiv .jchartfx .Attribute2,
+#sentimentCompetitorsDiv .jchartfx .Attribute2,
+#modal-widget-body .jchartfx .Attribute2 {
     fill: #FF0000;
     stroke: #4281A4;
     stroke-width: 0;

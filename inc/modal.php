@@ -83,7 +83,7 @@
     </div>
     <ul class="headng">
         <li class="lft">Tweets from Verizon Wireless Handles</li>
-        <li class="rht">Tweets mentioning Verizon Wireless</li>
+            <li class="rht">Tweets mentioning Verizon Wireless</li>
     </ul>
     <div class="modal-body" id="twitterStream_div_modal">
 

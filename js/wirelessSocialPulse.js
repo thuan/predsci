@@ -277,7 +277,7 @@ $(function () {
  */
 var widget_volumeandsentiment = {
     title: "Volume & Sentiment",
-    subTitle: "",
+    subtitle: "",
     timelabel: "7 days",
     dataURL: APIvolumeandsentiment,
     function: ps_graphDefinitions.buildBarChart,
@@ -286,18 +286,38 @@ var widget_volumeandsentiment = {
     modal: {
         title: "Volume & Sentiment",
         subtitle: "Daily Volume & Sentiment",
-        header : "Volume & Sentiment",
-        subheader : "Daily Volume & Sentiment",
         tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
         div_location: "modal-widget-body",
         showVolumeAndSentimentMenu: true,
         function: ps_graphDefinitions.buildBarChart,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=volume_sentiment&business=ves_security&limit=100",
         dataURL: APIvolumeandsentiment
     }
 }
 
+/*
+ * Sentiment Competitors
+ */
+var widget_sentimentCompetitors = {
+    title: "Volume & Sentiment",
+    subtitle: "",
+    timelabel: "7 days",
+    dataURL: APIsentimentcompetitors,
+    function: ps_graphDefinitions.buildSentimentCompetitors,
+    div_location: "sentimentCompetitorsDiv",
+    modal: {
+        title: "Volume & Sentiment",
+        subtitle: "With Key Competitors",
+        tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
+        div_location: "modal-widget-body",
+        showVolumeAndSentimentMenu: false,
+        function: ps_graphDefinitions.buildSentimentCompetitors,
+        dataURL: APIsentimentcompetitors
+    }
+}
 $(function () {
     new ps_utilities.loadData(widget_volumeandsentiment);
+    new ps_utilities.loadData(widget_sentimentCompetitors);
 });
 
 //Begin Metric Ticker
