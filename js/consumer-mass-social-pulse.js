@@ -168,9 +168,9 @@ var mentionStream = {
 $(function () {  
     new ps_utilities.loadJsonpData(userStream);
     new ps_utilities.loadJsonpData(mentionStream);
-    var getTweetDataTimer = window.setInterval(function () {
+    var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadJsonpData(userStream);
         new ps_utilities.loadJsonpData(mentionStream);    
-    }, 60000); 
+    }, 80000); 
 });
 //End Twitter Stream Definitions
