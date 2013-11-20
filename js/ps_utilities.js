@@ -41,7 +41,8 @@
 				if(dataResponse.data.length){
 					arrayData.jsonpData = dataResponse;
 					ps_graphDefinitions.jsonData = dataResponse;
-					usersResponse = dataResponse;					
+					usersResponse = dataResponse;
+					arrayData.function(usersResponse);
 				}
             },
             error: function(e) { console.log('Error making request'); },
@@ -60,12 +61,12 @@
 					arrayData.jsonpData = dataResponse;
 					ps_graphDefinitions.jsonData = dataResponse;
 					mentionsResponse = dataResponse;
+					arrayData.function(mentionsResponse)
 				}
             },
             error: function(e) { console.log('Error making request'); },
         });
 		
-		arrayData.function(usersResponse, mentionsResponse);
     };
 
     ps_utilities.processData = function (data) {
