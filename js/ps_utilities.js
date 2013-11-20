@@ -32,23 +32,19 @@
 			dataType: "jsonp",
             crossDomain: true,
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
-				arrayData.function(arrayData);
+				arrayData.function(dataResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
 		
 		$.ajax({
-            type: "GET",
-            dataType: "jsonp",
-            crossDomain: true,
-            contentType: "application/json",
             url: arrayData.dataMentionsURL,
+            dataType: "jsonp",
+            crossDomain: true,            
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
-				arrayData.function(arrayData);
+				arrayData.function(dataResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
