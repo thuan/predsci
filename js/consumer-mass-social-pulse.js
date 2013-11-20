@@ -151,3 +151,26 @@ $(function () {
     new ps_utilities.loadJsonpData(widget);
 });
 //End Top Tweets
+
+//Begin Twitter Stream Definitions
+var userStream = {
+    dataURL: APIgettoptweets,
+    function: ps_graphDefinitions.buildUsersTwitterStream,
+    legend: false
+};
+
+var mentionStream = {
+    dataURL: APIgettweetsmentions,
+    function: ps_graphDefinitions.buildMentionsTwitterStream,
+    legend: false
+};
+
+$(function () {  
+    new ps_utilities.loadJsonpData(userStream);
+    new ps_utilities.loadJsonpData(mentionStream);
+    var getTweetDataTimer = window.setInterval(function () {
+        new ps_utilities.loadJsonpData(userStream);
+        new ps_utilities.loadJsonpData(mentionStream);    
+    }, 60000); 
+});
+//End Twitter Stream Definitions
