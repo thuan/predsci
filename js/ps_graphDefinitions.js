@@ -7,6 +7,7 @@
 (function (ps_graphDefinitions, $, undefined) {
 
     ps_graphDefinitions.jsonData = "";
+	ps_graphDefinitions.jsonpData = "";
 
 	/*
 	* Builds the Keyword Trending Widget
