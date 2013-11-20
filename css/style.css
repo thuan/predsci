@@ -134,34 +134,41 @@ div.default {
         padding: 10px 10px 0px 10px;
         height: 68px;
         position: relative;
-        border-bottom: 1px solid #aaa;
         clear: both;
         overflow: hidden;
+		color: #6a6a6a;
+		border-bottom: 1px solid #4c4c4c;
 	}
-		.div_tweetImage {
-			float:left;
-			margin:0 10px 0 0;
-		}
-			.img_dp {
-				border-radius: 8px;
-				border: 3px solid #aaaaaa;
-			}
-		.div_tweetDescription {
-			font-size:11px;
-			line-height:16px;
-		}
-			.div_tweetDescription h4{margin:0;}
-				.div_tweetDescription h4 a {
-					font-size:13px;
-					color:#ff0000 !important;
-					text-decoration:none;
-				}
-			.div_tweetDescription .div_tweetTime{
-				position:absolute;
-				right:10px;
-				top:5px;
-				font-size:10px;
-			}
+	.div_tweetImage {
+		padding-top: 3px;
+		float: left;
+		width: 18%;
+		padding-left: 32px;
+		float:left;
+		margin:0 10px 0 0;
+	}
+	.img_dp {
+		border-radius: 8px;
+		border: 3px solid #aaaaaa;
+	}
+	.div_tweetDescription {
+		font-size: 11px;
+		overflow: hidden;
+		color:#B1B1B1;
+		line-height: 15px;
+	}
+	.div_tweetDescription h4{margin:0;}
+		.div_tweetDescription h4 a {
+			font-size:13px;
+			color:#ff0000 !important;
+			text-decoration:none;
+	}
+	.div_tweetDescription .div_tweetTime{
+		position:absolute;
+		right:10px;
+		top:5px;
+		font-size:10px;
+	}
 		
 #twitterStreamModal	{width: 700px!important; background: #000 url(../images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
 

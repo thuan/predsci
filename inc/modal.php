@@ -54,9 +54,6 @@
             </div>
         </div>
 
-
-
-
     </div>
     <div class="modal-body">
         <div id="modal-widget-body"></div>
@@ -83,10 +80,10 @@
     </div>
     <ul class="headng">
         <li class="lft">Tweets from Verizon Wireless Handles</li>
-            <li class="rht">Tweets mentioning Verizon Wireless</li>
+        <li class="rht">Tweets mentioning Verizon Wireless</li>
     </ul>
-    <div class="modal-body" id="twitterStream_div_modal">
-
+    <div class="modal-body">
+        <div id="twitterStream_div_modal"></div>
     </div>
 </div>
 <!-- Twitter Stream Modal Ends -->
