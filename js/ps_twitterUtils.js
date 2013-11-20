@@ -162,12 +162,7 @@
         ps_twitterUtils.buildModals();
     };
 
-    ps_twitterUtils.buildModals = function () {
-        $('#modal_widget').on('hidden', function () {
-            $('#modal_widget').unbind('show');
-            $("#div_tweeterStream").attr('isclicked', '0');
-        });
-        
+    ps_twitterUtils.buildModals = function () {        
         $("#div_tweeterStream").on('click', function () {
             $("#div_tweeterStream").attr('isclicked', '1');
             $('#twitterStreamModal').on('shown', function () {
@@ -193,7 +188,10 @@
                 }
             });
         });
-        
+        $('#div_tweeterStream').on('hidden', function () {
+            $('#twitterStreamModal').unbind('show');
+            $("#div_tweeterStream").attr('isclicked', '0');
+        });
     };
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
