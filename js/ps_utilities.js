@@ -32,8 +32,9 @@
 			dataType: "jsonp",
             crossDomain: true,
             success: function(dataResponse) {
+				arrayData.jsonpDataUsers = dataResponse;
 				ps_graphDefinitions.jsonpDataUsers = dataResponse;
-				arrayData.function(dataResponse);
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -43,8 +44,9 @@
             dataType: "jsonp",
             crossDomain: true,            
             success: function(dataResponse) {
+				arrayData.jsonpDataMentions = dataResponse;
 				ps_graphDefinitions.jsonpDataMentions = dataResponse;
-				arrayData.function(dataResponse);
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
