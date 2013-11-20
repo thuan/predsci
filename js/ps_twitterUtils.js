@@ -103,8 +103,8 @@
 
     ps_twitterUtils.getUsersJsonData = function () {
         var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime;
-        tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
-        statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
+        tweetData = ps_graphDefinitions.jsonpDataUsers.groups[0].statuses;
+        statusCount = ps_graphDefinitions.jsonpDataUsers.groups[0].statuses.length;
         divIndex = 0;
         adminHtml = "";
 
@@ -128,8 +128,8 @@
 
     ps_twitterUtils.getMentionsJsonData = function () {
         var tweetData, statusCount, divIndex, tweetStreamHtml, screen_name, status_text, img_url, tweetTime;
-        tweetData = ps_graphDefinitions.jsonpData.statuses;
-        statusCount = ps_graphDefinitions.jsonpData.statuses.length;
+        tweetData = ps_graphDefinitions.jsonpDataMentions.statuses;
+        statusCount = ps_graphDefinitions.jsonpDataMentions.statuses.length;
         tweetStreamHtml = "";
         divIndex = 0;
 

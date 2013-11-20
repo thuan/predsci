@@ -37,7 +37,7 @@
             url: arrayData.dataUsersURL,
             async: false,
             success: function(dataResponse) {
-				ps_graphDefinitions.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonpDataUsers = dataResponse;
 				usersResponse = dataResponse;
 				arrayData.jsonpData = usersResponse;
 				arrayData.function(arrayData.jsonpData);
@@ -53,7 +53,7 @@
             url: arrayData.dataMentionsURL,
             async: false,
             success: function(dataResponse) {
-				ps_graphDefinitions.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonpDataMentions = dataResponse;
 				mentionsResponse = dataResponse;
 				arrayData.jsonpData = mentionsResponse;
 				arrayData.function(arrayData.jsonpData);
