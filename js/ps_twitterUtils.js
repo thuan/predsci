@@ -102,9 +102,10 @@
     };
 
     ps_twitterUtils.getUsersJsonData = function () {
-        var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime;
-        tweetData = ps_graphDefinitions.jsonpDataUsers.groups[0].statuses;
-        statusCount = ps_graphDefinitions.jsonpDataUsers.groups[0].statuses.length;
+        var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime, data;
+		data = ps_graphDefinitions.jsonpDataUsers.groups[0];
+        tweetData = data.statuses;
+        statusCount = data.statuses.length;
         divIndex = 0;
         adminHtml = "";
 
@@ -127,9 +128,10 @@
     };
 
     ps_twitterUtils.getMentionsJsonData = function () {
-        var tweetData, statusCount, divIndex, tweetStreamHtml, screen_name, status_text, img_url, tweetTime;
-        tweetData = ps_graphDefinitions.jsonpDataMentions.statuses;
-        statusCount = ps_graphDefinitions.jsonpDataMentions.statuses.length;
+        var tweetData, statusCount, divIndex, tweetStreamHtml, screen_name, status_text, img_url, tweetTime, data;
+		data = ps_graphDefinitions.jsonpDataMentions;
+        tweetData = data.statuses;
+        statusCount = data.statuses.length;
         tweetStreamHtml = "";
         divIndex = 0;
 

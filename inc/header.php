@@ -21,8 +21,8 @@
     <script type="text/javascript" src="lib/jchart/jchartfx.handdrawn.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
     
-    <script language="javascript" src="js/ps_graphDefinitions.js" type="text/javascript"></script>
     <script language="javascript" src="js/ps_utilities.js" type="text/javascript"></script>
+    <script language="javascript" src="js/ps_graphDefinitions.js" type="text/javascript"></script>
 	<script language="javascript" src="js/ps_googlemaps.js" type="text/javascript"></script>
     <script language="javascript" src="js/ps_twitterUtils.js" type="text/javascript"></script>
     <script language="javascript" src="js/consumer-mass-social-pulse.js" type="text/javascript"></script>
