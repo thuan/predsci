@@ -250,19 +250,25 @@ $(function () {
 
 //Begin Twitter Stream Definitions
 var userStream = {
-    title: "Twitter Stream",
-    subTitle: "",
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
-    legend: false
+    legend: false,
+    modal_propeties: {
+      div_location :  "modal-widget-body",
+      header : "Twitter Stream",
+      subheader : "Tweets mentioning Verizon Wireless",
+    },
 };
 
 var mentionStream = {
-    title: "",
-    subTitle: "Tweets mentioning Verizon Wireless",
     dataURL: APIgettweetsmentions,
     function: ps_graphDefinitions.buildMentionsTwitterStream,
-    legend: false
+    legend: false,
+    modal_propeties: {
+      div_location :  "modal-widget-body",
+      header : "Twitter Stream",
+      subheader : "Tweets mentioning Verizon Wireless",
+    },
 };
 
 $(function () {  
