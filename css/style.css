@@ -143,7 +143,7 @@ div.default {
 		padding-top: 3px;
 		float: left;
 		width: 18%;
-		padding-left: 32px;
+		padding-left: 15px;
 		float:left;
 		margin:0 10px 0 0;
 	}
@@ -214,7 +214,7 @@ div.default {
 
 #twitterModal 		{width: 700px!important;}
 
-#twitterStreamModal .headng .lft, #twitterStreamModal .headng .rht
+#twitterStreamModal .modal-heading .lft, #twitterStreamModal .modal-heading .rht
 {
     width: 320px !important;
     text-align: center;
@@ -222,7 +222,7 @@ div.default {
 
 
 
-	#twitterStreamModal .headng{
+	#twitterStreamModal .modal-heading {
 		overflow: hidden;
 		padding: 20px 0 0;
 	}
