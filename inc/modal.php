@@ -80,6 +80,10 @@
             <br>
             <small>Tweets mentioning Verizon Wireless</small>
         </h3>
+        <div id="modal-heading" class="pull-left">
+            <h3>Modal header</h3>
+            <small></small>
+        </div>
     </div>
     <ul class="headng">
         <li class="lft">Tweets from Verizon Wireless Handles</li>

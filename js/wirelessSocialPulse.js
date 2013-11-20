@@ -249,31 +249,30 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-
-
-$(function () {
 var userStream = {
     dataURL: APIgettoptweets,
     function: ps_graphDefinitions.buildUsersTwitterStream,
     legend: false,
-    modal_propeties: {
-      div_location :  "modal-widget-body",
+    modal: {
+      div_location :  "twitterStreamModal",
       header : "Twitter Stream",
       subheader : "Tweets mentioning Verizon Wireless"
     }
 };
-new ps_utilities.loadJsonpData(userStream);
 
 var mentionStream = {
     dataURL: APIgettweetsmentions,
     function: ps_graphDefinitions.buildMentionsTwitterStream,
     legend: false,
-    modal_propeties: {
-      div_location :  "modal-widget-body",
+    modal: {
+      div_location :  "twitterStreamModal",
       header : "Twitter Stream",
       subheader : "Tweets mentioning Verizon Wireless"
     }
 };
+
+$(function () {  
+    new ps_utilities.loadJsonpData(userStream);
     new ps_utilities.loadJsonpData(mentionStream);
     var getTweetDataTimer = window.setInterval(function () {
         new ps_utilities.loadJsonpData(userStream);
