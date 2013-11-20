@@ -31,12 +31,11 @@
 		var mentionsResponse = "";
         $.ajax({
             type: "GET",
-			cache: true,
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataUsersURL,
-            
+            async: false,
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpData = dataResponse;
 				usersResponse = dataResponse;
@@ -48,12 +47,11 @@
 		
 		$.ajax({
             type: "GET",
-			cache: true,
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
             url: arrayData.dataMentionsURL,
-            
+            async: false,
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpData = dataResponse;
 				mentionsResponse = dataResponse;
