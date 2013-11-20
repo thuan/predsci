@@ -38,10 +38,10 @@
             url: arrayData.dataUsersURL,
             
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpData = dataResponse;
 				usersResponse = dataResponse;
-				arrayData.function(arrayData);
+				arrayData.jsonpData = usersResponse;
+				arrayData.function(arrayData.jsonpData);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -55,14 +55,14 @@
             url: arrayData.dataMentionsURL,
             
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpData = dataResponse;
 				mentionsResponse = dataResponse;
-				arrayData.function(arrayData);
+				arrayData.jsonpData = mentionsResponse;
+				arrayData.function(arrayData.jsonpData);
             },
             error: function(e) { console.log('Error making request'); },
         });
-		arrayData.function(usersResponse, mentionsResponse);
+		
 		
     };
 
