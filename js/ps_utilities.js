@@ -31,7 +31,7 @@
 		var mentionsResponse = "";
         $.ajax({
             type: "GET",
-			
+			cache: true,
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
@@ -48,7 +48,7 @@
 		
 		$.ajax({
             type: "GET",
-			
+			cache: true,
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
