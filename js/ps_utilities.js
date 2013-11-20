@@ -41,7 +41,6 @@
 				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpData = dataResponse;
 				usersResponse = dataResponse;
-				arrayData.function(usersResponse);
             },
             error: function(e) { console.log('Error making request'); },
         });
@@ -57,12 +56,11 @@
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpData = dataResponse;
-				mentionsResponse = dataResponse;
-				arrayData.function(mentionsResponse)
-				
+				mentionsResponse = dataResponse;				
             },
             error: function(e) { console.log('Error making request'); },
         });
+		arrayData.function(usersResponse, mentionsResponse);
 		
     };
 
