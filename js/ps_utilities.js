@@ -31,6 +31,7 @@
 		var mentionsResponse = "";
         $.ajax({
             type: "GET",
+			data: "",
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
@@ -50,6 +51,7 @@
 		
 		$.ajax({
             type: "GET",
+			data: "",
             dataType: "jsonp",
             crossDomain: true,
             contentType: "application/json",
