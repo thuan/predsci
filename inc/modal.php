@@ -64,32 +64,3 @@
     </div>
 </div>
     
- <!-- Twitter stream Modal Starts -->
-<div id="twitterStreamModal" class="modal hide fade twitterSModal" tabindex="-1" role="dialog" aria-labelledby="twitterModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <div id="right-side">
-            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
-                <i class="icon-info-sign icon-white"></i>
-            </a>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        </div>
-        <div id="modal-heading" class="pull-left">
-            <h3>Twitter Stream</h3>
-            <small>Tweets mentioning Verizon Wireless</small>
-        </div>
-        
-        <!--<h3>Twitter Stream
-            <br>
-            <small>Tweets mentioning Verizon Wireless</small>
-        </h3> -->
-    </div>
-    <ul class="modal-heading">
-        <li class="lft">Tweets from Verizon Wireless Handles</li>
-        <li class="rht">Tweets mentioning Verizon Wireless</li>
-    </ul>
-    <div class="modal-body">
-        <div id="twitterStream_div_modal"></div>
-    </div>
-</div>
-<!-- Twitter Stream Modal Ends -->
-    
