@@ -127,6 +127,8 @@
             divIndex += 1;
         }
         $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+        ps_twitterUtils.scrollTweets();
+        ps_twitterUtils.buildModals();
     };
 
     ps_twitterUtils.getMentionsJsonData = function () {
