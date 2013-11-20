@@ -1,5 +1,5 @@
 /**
- *  
+ *
  * @version		1.0
  * @package		Predictive Science Dashboard
  * @subpackage	Wireless Social Pulse
@@ -8,7 +8,7 @@
  */
 
 (function (ps_twitterUtils, $, undefined) {
-    
+
     ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);
@@ -88,7 +88,7 @@
             }
         }
     };
-    
+
     ps_twitterUtils.scrollTweets = function () {
         var scrollTweetTimer = window.setInterval(function () {
             if ($(".div_tweetsMain").html() !== "") {
@@ -96,28 +96,28 @@
                 ps_twitterUtils.moveTweetBackByOne_admin();
             }
         }, 10000);
-        
+
         $(".div_upperArrow").on('click', function () {
             if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
             if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-        });        
+        });
     };
-   
+
     ps_twitterUtils.getUsersJsonData = function () {
         var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime;
         tweetData = ps_graphDefinitions.jsonpData.groups[0].statuses;
         statusCount = ps_graphDefinitions.jsonpData.groups[0].statuses.length;
         divIndex = 0;
         adminHtml = "";
-        
-        for (var i = 0; i < statusCount; i++) {            
+
+        for (var i = 0; i < statusCount; i++) {
             screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;            
+            status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time;         
+            tweetTime = tweetData[i].status_time;
 
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
@@ -137,13 +137,13 @@
         statusCount = ps_graphDefinitions.jsonpData.statuses.length;
         tweetStreamHtml = "";
         divIndex = 0;
-        
+
         for (var i = 0; i < statusCount; i++) {
             screen_name = tweetData[i].screen_name;
             status_text = tweetData[i].status_text;
             img_url = tweetData[i].img_url;
             tweetTime = tweetData[i].status_time;
-            
+
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
                 sessionStorage.presentTopTweetIndex_admin = 0;
@@ -181,6 +181,10 @@
                     });
                 }
             });
+        });
+        $('#modal_widget').on('hidden', function () {
+            $('#modal_widget').unbind('show');
+            $("#div_tweeterStream").attr('isclicked', '0');
         });
     };
 
