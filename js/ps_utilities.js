@@ -56,8 +56,8 @@
 	$.when(getDataUsers(), getMentions()).done(function(dataResponseUsers, dataResponseMentions){
 		ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
 		ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-		arrayData.function(arrayData);
 	});
+		arrayData.function(arrayData);
        /* $.ajax({      
             url: arrayData.dataUsersURL,
 			dataType: "jsonp",
