@@ -27,69 +27,37 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		var count = 0;
-var dfr;
-
-var showData = function(arrayData) {
-    dfr.resolve();
-	arrayData.function(arrayData);
-    alert(count);
-   // Do something with my data data received
-};
-
-var method1 = function() {
-    dfr = $.Deferred();
-
-    return $.ajax(arrayData.dataURL[0], {
-        dataType: "jsonp",
-		crossDomain: true,
-        jsonp: "$callback",
-        success: function(dataResponse) {
-			ps_graphDefinitions.jsonpData[0] = dataResponse
-            count = dataResponse.d.__count;
-        }
-    });
-};
-
-var method2 = function() {
-    return $.ajax(arrayData.dataURL[1], {
-        dataType: "jsonp",
-		crossDomain: true,
-        jsonp: "$callback",
-        success: function(dataResponse) {
-			ps_graphDefinitions.jsonpData[1] = dataResponse
-            count = dataResponse.d.__count;
-        }
-    });
-};
-
-$.when(method1(), method2())
-    .then(showData());
 		
-		/*var getDataUser = function() {
-			$.ajax({
-				url: arrayData.dataURL[0],
-				dataType: "jsonp",
-            	crossDomain: true,
-            	success: function(dataResponse) {
-					ps_graphDefinitions.jsonpData[0] = dataResponse;
-            	},
-            	error: function(e) { console.log('Error making request'); },
-        	});
-		};
+	function getDataUsers() {
+		return $.ajax({
+			url: arrayData.dataURL[0],
+			dataType: "jsonp",
+			crossDomain: true,
+			async: false,
+			success: function(dataResponseUsers) {
+			
+			},
+           	error: function(e) { console.log('Error making request'); },
+       	});
+	}
 		
-		
-		$.ajax({
+	function getMentions() {
+		return $.ajax({
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
-            success: function(dataResponse) {
-				ps_graphDefinitions.jsonpData[1] = dataResponse;
-				arrayData.function(arrayData);
+            success: function(dataResponseMentions) {
+				
             },
             error: function(e) { console.log('Error making request'); },
-        });*/
+        });
+	}
+	$.when(getDataUsers(), getMentions()).done(function(dataResponseUsers, dataResponseMentions){
+		ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
+		ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
+		arrayData.function(arrayData);
+	});
        /* $.ajax({      
             url: arrayData.dataUsersURL,
 			dataType: "jsonp",
