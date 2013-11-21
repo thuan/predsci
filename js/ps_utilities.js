@@ -30,7 +30,22 @@
 		$.ajax({
 			cache: true,
             data: "",
-            url: arrayData.dataURL,
+            url: arrayData.dataURL[0],
+			dataType: "jsonp",
+            crossDomain: true,
+			async: false,
+            success: function(dataResponse) {
+				arrayData.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonpData = dataResponse;
+				arrayData.function(arrayData);
+            },
+            error: function(e) { console.log('Error making request'); },
+        });
+		
+		$.ajax({
+			cache: true,
+            data: "",
+            url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
