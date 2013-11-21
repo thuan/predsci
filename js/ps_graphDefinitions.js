@@ -7,7 +7,7 @@
 (function (ps_graphDefinitions, $, undefined) {
 
     ps_graphDefinitions.jsonData = "";
-	ps_graphDefinitions.jsonpData = [];
+	ps_graphDefinitions.jsonpData = [""];
 	ps_graphDefinitions.jsonpDataUsers = "";
 	ps_graphDefinitions.jsonpDataMentions = "";
 
