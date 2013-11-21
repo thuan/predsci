@@ -439,9 +439,10 @@
 		//Code goes here
     }
     
-    ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-		
-		
+    ps_graphDefinitions.buildTwitterStream = function (usersData, mentionData) {
+		ps_twitterUtils.buildWidget(usersData, mentionData);
+		ps_twitterUtils.buildWidgetScroll();
+        ps_twitterUtils.buildWidgetModal();
     }
 
 	/*
