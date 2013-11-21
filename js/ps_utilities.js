@@ -47,7 +47,8 @@
     {
 		var usersURL = arrayData.dataURL[0];
 		var mentionsURL = arrayData.dataURL[1];
-	
+		var arrayDataSucess = [ps_graphDefinitions.jsonpData[0], ps_graphDefinitions.jsonpData[1]];
+		
 		$.when($.ajax({
 			url: usersURL,
 			dataType: "jsonp",
@@ -56,7 +57,6 @@
 			success: function(dataResponseUsers) {
 				arrayData.jsonpData = dataResponseUsers;
 				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-				arrayData.function(arrayData);
 			},
            	error: function(e) { console.log('Error making request'); },
        	}),
@@ -69,10 +69,9 @@
             success: function(dataResponseMentions) {
 				arrayData.jsonpData = dataResponseMentions;
 				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
-        })).then(arrayData.function(arrayData));		
+        })).then(arrayData.function(arrayDataSucess));		
     };
 
     ps_utilities.processData = function (data) {
