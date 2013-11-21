@@ -363,9 +363,9 @@
     }
 	
 	ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-		ps_twitterUtils.buildStreaming();
-		ps_twitterUtils.scrollTweets();
-        ps_twitterUtils.buildModals();
+		ps_twitterUtils.buildWidget();
+		ps_twitterUtils.buildWidgetScroll();
+        ps_twitterUtils.buildWidgetModal();
     }
 	
     ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {

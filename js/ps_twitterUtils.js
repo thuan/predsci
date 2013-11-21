@@ -92,24 +92,8 @@
             }
         }
     };
-
-    ps_twitterUtils.scrollTweets = function () {
-        var scrollTweetTimer = window.setInterval(function () {
-            if ($(".div_tweetsMain").html() !== "") {
-                ps_twitterUtils.moveTweetBackByOne();
-                ps_twitterUtils.moveTweetBackByOne_admin();
-            }
-        }, 10000);
-		$(".div_upperArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-        });
-
-        $(".div_downArrow").on('click', function () {
-            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-        });
-    };
 	
-	ps_twitterUtils.buildStreaming = function() {
+	ps_twitterUtils.buildWidget = function() {
 		var index, tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
 		index = 0;
 		data = ps_graphDefinitions.jsonpData[index].groups[0];
@@ -156,70 +140,23 @@
 		$("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
 	};
 
-   /* ps_twitterUtils.getUsersJsonData = function () {
-        var tweetData, statusCount, divIndex, adminHtml, screen_name, status_text, img_url, tweetTime, data;
-		data = ps_graphDefinitions.jsonpDataUsers.groups[0];
-        tweetData = data.statuses;
-        statusCount = data.statuses.length;
-        divIndex = 0;
-        adminHtml = "";
-
-        for (var i = 0; i < statusCount; i++) {
-            screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;
-            img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time;
-
-            if (divIndex === 0) {
-                sessionStorage.presentTopTweetIndex = 0;
-                sessionStorage.presentTopTweetIndex_admin = 0;
+    ps_twitterUtils.buildWidgetScroll = function () {
+        var scrollTweetTimer = window.setInterval(function () {
+            if ($(".div_tweetsMain").html() !== "") {
+                ps_twitterUtils.moveTweetBackByOne();
+                ps_twitterUtils.moveTweetBackByOne_admin();
             }
-            adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
-            divIndex += 1;
-        }
-        $("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-        ps_twitterUtils.scrollTweets();
-        ps_twitterUtils.buildModals();
-    };
-
-    ps_twitterUtils.getMentionsJsonData = function () {
-        var tweetData, statusCount, divIndex, tweetStreamHtml, screen_name, status_text, img_url, tweetTime, data;
-		data = ps_graphDefinitions.jsonpDataMentions;
-        tweetData = data.statuses;
-        statusCount = data.statuses.length;
-        tweetStreamHtml = "";
-        divIndex = 0;
-
-        for (var i = 0; i < statusCount; i++) {
-            screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;
-            img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time;
-
-            if (divIndex === 0) {
-                sessionStorage.presentTopTweetIndex = 0;
-                sessionStorage.presentTopTweetIndex_admin = 0;
-            }
-            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
-            divIndex += 1;
-        }
-        
-        $("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-        
-        $(".div_upperArrow").on('click', function () {
+        }, 10000);
+		$(".div_upperArrow").on('click', function () {
             if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
         });
 
         $(".div_downArrow").on('click', function () {
             if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
         });
-        
-        
-        ps_twitterUtils.scrollTweets();
-        ps_twitterUtils.buildModals();
     };
-*/
-    ps_twitterUtils.buildModals = function () {        
+  
+    ps_twitterUtils.buildWidgetModal = function () {        
         $("#div_tweeterStream").on('click', function () {
             $("#div_tweeterStream").attr('isclicked', '1');
             $('#twitterStreamModal').on('shown', function () {

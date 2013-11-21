@@ -27,15 +27,13 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		var responseUsers = ps_graphDefinitions.jsonpData[0];
-		var responseMentions = ps_graphDefinitions.jsonpData[1];
 		$.ajax({
 			url: arrayData.dataURL[0],
 			dataType: "jsonp",
 			crossDomain: true,
 			async: false,
 			success: function(dataResponseUsers) {
-				responseUsers = dataResponseUsers;
+				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
 				arrayData.function(arrayData);
 			},
            	error: function(e) { console.log('Error making request'); },
@@ -47,7 +45,7 @@
             crossDomain: true,
 			async: false,
             success: function(dataResponseMentions) {
-				responseMentions = dataResponseMentions;
+				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
 				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
