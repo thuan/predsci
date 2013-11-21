@@ -31,7 +31,6 @@
             url: arrayData.dataURL[0],
 			dataType: "jsonp",
             crossDomain: true,
-			async: false,
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpData[0] = dataResponse;
 				arrayData.function(arrayData);
