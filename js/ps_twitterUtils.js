@@ -112,7 +112,7 @@
 	ps_twitterUtils.buildStreaming = function() {
 		var tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
 		
-		data = ps_graphDefinitions.jsonpData[0].groups[0];
+		data = ps_graphDefinitions.jsonpData[""].groups[0];
         tweetData = data.statuses;
         statusCount = data.statuses.length;
         divIndex = 0;

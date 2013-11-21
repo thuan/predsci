@@ -28,6 +28,19 @@
     ps_utilities.loadJsonpData = function (arrayData)
     {
 		$.ajax({
+            url: arrayData.dataURL[""],
+			dataType: "jsonp",
+            crossDomain: true,
+			async: false,
+            success: function(dataResponse) {
+				
+				ps_graphDefinitions.jsonpData[""] = dataResponse;
+				arrayData.function(arrayData);
+            },
+            error: function(e) { console.log('Error making request'); },
+        });
+		
+		$.ajax({
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
@@ -35,19 +48,6 @@
             success: function(dataResponse) {
 				
 				ps_graphDefinitions.jsonpData[1] = dataResponse;
-				arrayData.function(arrayData);
-            },
-            error: function(e) { console.log('Error making request'); },
-        });
-		
-		$.ajax({
-            url: arrayData.dataURL[0],
-			dataType: "jsonp",
-            crossDomain: true,
-			async: false,
-            success: function(dataResponse) {
-				
-				ps_graphDefinitions.jsonpData[0] = dataResponse;
 				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
