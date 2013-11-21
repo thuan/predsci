@@ -7,6 +7,7 @@
 (function (ps_graphDefinitions, $, undefined) {
 
     ps_graphDefinitions.jsonData = "";
+	ps_graphDefinitions.jsonpData = [];
 	ps_graphDefinitions.jsonpDataUsers = "";
 	ps_graphDefinitions.jsonpDataMentions = "";
 
@@ -362,8 +363,9 @@
     }
 	
 	ps_graphDefinitions.buildTwitterStream = function (sElementName) {
-		ps_twitterUtils.getUsersJsonData();
-		ps_twitterUtils.getMentionsJsonData();
+		ps_twitterUtils.buildStreaming();
+		ps_twitterUtils.scrollTweets();
+        ps_twitterUtils.buildModals();
     }
 	
     ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {

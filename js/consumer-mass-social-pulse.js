@@ -146,8 +146,7 @@ new ps_utilities.multipleLoadData(widget);
 
 $(function () {  
 var widgetTwitterStream = {
-	dataUsersURL: APIgettoptweets,
-	dataMentionsURL: APIgettweetsmentions,
+	dataURL: [APIgettoptweets, APIgettweetsmentions],
 	function: ps_graphDefinitions.buildTwitterStream,
 	legend: false
 };
