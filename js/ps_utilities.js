@@ -35,7 +35,7 @@
 			crossDomain: true,
 			async: false,
 			success: function(dataResponseUsers) {
-			
+				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;	
 			},
            	error: function(e) { console.log('Error making request'); },
        	});
@@ -48,16 +48,16 @@
             crossDomain: true,
 			async: false,
             success: function(dataResponseMentions) {
-				
+				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
             },
             error: function(e) { console.log('Error making request'); },
         });
 	}
-	$.when(getDataUsers(), getMentions()).done(function(dataResponseUsers, dataResponseMentions){
-		ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-		ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-	});
+		
+	$.when(getDataUsers(), getMentions()).done(function(arrayData){
 		arrayData.function(arrayData);
+	});
+		
        /* $.ajax({      
             url: arrayData.dataUsersURL,
 			dataType: "jsonp",
