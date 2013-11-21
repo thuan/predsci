@@ -36,6 +36,7 @@
 			async: false,
 			success: function(dataResponseUsers) {
 				responseUsers = dataResponseUsers;
+				arrayData.function(arrayData);
 			},
            	error: function(e) { console.log('Error making request'); },
        	});
@@ -47,6 +48,7 @@
 			async: false,
             success: function(dataResponseMentions) {
 				responseMentions = dataResponseMentions;
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
