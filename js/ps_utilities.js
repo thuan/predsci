@@ -33,7 +33,6 @@
 			url: arrayData.dataURL[0],
 			dataType: "jsonp",
 			crossDomain: true,
-			async: false,
 			success: function(dataResponseUsers) {
 				
 			},
@@ -46,9 +45,7 @@
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
-			async: false,
             success: function(dataResponseMentions) {
-				
             },
             error: function(e) { console.log('Error making request'); },
         });
