@@ -290,6 +290,8 @@ $(function () {
 //Begin Twitter Stream Definitions
 $(function () {
 	var widgetTwitterStream = {
+		title: 'Twitter Stream',
+    	subtitle: 'Subtitle of conversation volume',
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
 		legend: false
