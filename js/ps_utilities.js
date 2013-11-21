@@ -28,35 +28,31 @@
     ps_utilities.loadJsonpData = function (arrayData)
     {
 		
-	function getDataUsers() {
-		return $.ajax({
+
+		$.ajax({
 			url: arrayData.dataURL[0],
 			dataType: "jsonp",
 			crossDomain: true,
+			async: false,
 			success: function(dataResponseUsers) {
-				
+				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
+				arrayData.function(arrayData);
 			},
            	error: function(e) { console.log('Error making request'); },
        	});
-	}
-		
-	function getMentions() {
-		return $.ajax({
+	
+		$.ajax({
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
+			async: false,
             success: function(dataResponseMentions) {
+				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
+				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
-	}
-		
-	$.when(getDataUsers(), getMentions()).done(function(dataResponseUsers, dataResponseMentions, newArrayData){
-		ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-		ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-		newArrayData = [ps_graphDefinitions.jsonpData[0], ps_graphDefinitions.jsonpData[1]];
-		arrayData.function(newArrayData);
-	});
+	
 		
        /* $.ajax({      
             url: arrayData.dataUsersURL,
