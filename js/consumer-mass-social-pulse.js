@@ -145,9 +145,8 @@ new ps_utilities.multipleLoadData(widget);
 //Begin Twitter Stream Definitions
 
 $(function () {
-	var requests = [APIgettoptweets, APIgettweetsmentions];
 	var widgetTwitterStream = {
-		dataURL: requests,
+		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
 		legend: false
 	};    

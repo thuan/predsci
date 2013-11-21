@@ -11,7 +11,8 @@
 /*global window:false, ps_graphDefinitions:false, jQuery:false, sessionStorage:false*/
 
 (function (ps_twitterUtils, $, undefined) {
-
+	
+	
     ps_twitterUtils.timeDifference = function (start) {
         var startDate, endDate, diff, hours, minutes;
         startDate = new Date(start);

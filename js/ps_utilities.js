@@ -28,8 +28,6 @@
     ps_utilities.loadJsonpData = function (arrayData)
     {
 		$.ajax({
-			cache: true,
-            data: "",
             url: arrayData.dataURL[0],
 			dataType: "jsonp",
             crossDomain: true,
@@ -43,8 +41,6 @@
         });
 		
 		$.ajax({
-			cache: true,
-            data: "",
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
