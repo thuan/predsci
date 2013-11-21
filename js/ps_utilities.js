@@ -36,10 +36,11 @@
             success: function(dataResponse) {
 				ps_graphDefinitions.jsonpData[i] = dataResponse;
 				arrayData.function(arrayData);
-				i++;
             },
             error: function(e) { console.log('Error making request'); },
         });
+		
+		i++;
 		
 		$.ajax({
             url: arrayData.dataURL[i],
