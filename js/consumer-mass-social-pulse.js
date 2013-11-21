@@ -150,13 +150,13 @@ $(function () {
 		dataURL: requests,
 		function: ps_graphDefinitions.buildTwitterStream,
 		legend: false
-	};
-    
+	};    
 	new ps_utilities.loadJsonpData(widgetTwitterStream);
-    
-    var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadJsonpData(widgetTwitterStream);
-            
+});
+
+$(function () {
+	var getTweetDataTimer = window.setTimeout(function () {
+        new ps_utilities.loadJsonpData(widgetTwitterStream);      
     }, 80000); 
 });
 //End Twitter Stream Definitions
