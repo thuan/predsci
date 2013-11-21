@@ -154,8 +154,6 @@
         }
 		$("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
 		$("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-		ps_twitterUtils.scrollTweets();
-        ps_twitterUtils.buildModals();
 	};
 
    /* ps_twitterUtils.getUsersJsonData = function () {
