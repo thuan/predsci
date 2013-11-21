@@ -47,7 +47,6 @@
     {
 		var usersURL = arrayData.dataURL[0];
 		var mentionsURL = arrayData.dataURL[1];
-		var arrayDataSucess = [ps_graphDefinitions.jsonpData[0], ps_graphDefinitions.jsonpData[1]];
 		var usersData, mentionData;
 		$.when($.ajax({
 			url: usersURL,
@@ -70,8 +69,7 @@
             },
             error: function(e) { console.log('Error making request'); },
         })).then(function(){
-			arrayData.function(usersData, mentionData)
-			
+			arrayData.function(usersData, mentionData)		
 		});		
     };
 

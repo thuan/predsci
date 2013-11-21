@@ -298,7 +298,7 @@ $(function () {
 	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      
-    }, 80000);
+    }, 60000);
 });
 //End Twitter Stream Definitions
 

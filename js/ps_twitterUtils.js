@@ -156,18 +156,16 @@
 		
 		ps_twitterUtils.buildWidget = function(usersData, mentionsData) {
 			var index, tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime;
-			index = 0;
-			
+						
 	        tweetData = usersData.groups[0].statuses;
 	        statusCount = usersData.groups[0].statuses.length;
-	        divIndex = 0;
 	        adminHtml = "";
-			index++;
-			
+						
 	        tweetDataMentions = mentionsData.statuses;
 	        statusCountMentions = mentionsData.statuses.length;
 	        tweetStreamHtml = "";
 			
+			divIndex = 0;
 			for (index = 0; index < statusCount; index++) {
 	            screen_name = tweetData[index].screen_name;
 	            status_text = tweetData[index].status_text;
@@ -183,7 +181,6 @@
 	        }
 			
 			divIndex = 0;
-			
 			for (index = 0; index < statusCountMentions; index++) {
 	            screen_name = tweetDataMentions[index].screen_name;
 	            status_text = tweetDataMentions[index].status_text;
@@ -197,13 +194,13 @@
 	            tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
 	            divIndex += 1;
 	        }
-			$("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-			$("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
+			$("#div_tweetsMain_admin").html(adminHtml);
+			$("#div_tweetsMain").html(tweetStreamHtml);
 		};
 
 	    ps_twitterUtils.buildWidgetScroll = function () {
 	        var scrollTweetTimer = window.setInterval(function () {
-	            if ($(".div_tweetsMain").html() !== "") {
+	            if ($("#div_tweetsMain").html() !== "") {
 	                ps_twitterUtils.moveTweetBackByOne();
 	                ps_twitterUtils.moveTweetBackByOne_admin();
 	            }
