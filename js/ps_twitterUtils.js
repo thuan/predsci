@@ -137,6 +137,8 @@
             divIndex += 1;
         }
 		
+		divIndex = 0;
+		
 		for (var i = 0; i < statusCountMentions; i++) {
             screen_name = tweetDataMentions[i].screen_name;
             status_text = tweetDataMentions[i].status_text;
