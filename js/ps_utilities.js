@@ -51,6 +51,7 @@
 			crossDomain: true,
 			async: false,
 			success: function(dataResponseUsers) {
+				arrayData.jsonpData = dataResponseUsers;
 				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
 				arrayData.function(arrayData);
 			},
@@ -63,6 +64,7 @@
             crossDomain: true,
 			async: false,
             success: function(dataResponseMentions) {
+				arrayData.jsonpData = dataResponseMentions;
 				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
 				arrayData.function(arrayData);
             },
