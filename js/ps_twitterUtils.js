@@ -110,16 +110,17 @@
 	
 	ps_twitterUtils.buildStreaming = function() {
 		var tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
-		data = ps_graphDefinitions.jsonpData[0].groups[0];
-        tweetData = data.statuses;
-        statusCount = data.statuses.length;
-        divIndex = 0;
-        adminHtml = "";
 		
 		dataMentions = ps_graphDefinitions.jsonpData[1];
         tweetDataMentions = dataMentions.statuses;
         statusCountMentions = dataMentions.statuses.length;
         tweetStreamHtml = "";
+		
+		data = ps_graphDefinitions.jsonpData[0].groups[0];
+        tweetData = data.statuses;
+        statusCount = data.statuses.length;
+        divIndex = 0;
+        adminHtml = "";
 		
 		for (var i = 0; i < statusCount; i++) {
             screen_name = tweetData[i].screen_name;
