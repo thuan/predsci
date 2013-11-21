@@ -36,7 +36,7 @@
 			async: false,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
-				ps_graphDefinitions.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonpData[0] = dataResponse;
 				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
@@ -51,7 +51,7 @@
 			async: false,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
-				ps_graphDefinitions.jsonpData = dataResponse;
+				ps_graphDefinitions.jsonpData[1] = dataResponse;
 				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },

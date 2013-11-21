@@ -152,11 +152,10 @@ $(function () {
 		legend: false
 	};    
 	new ps_utilities.loadJsonpData(widgetTwitterStream);
-});
-
-$(function () {
+	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadJsonpData(widgetTwitterStream);      
-    }, 80000); 
+    }, 80000);
 });
+
 //End Twitter Stream Definitions
