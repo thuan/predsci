@@ -45,28 +45,31 @@
 	
 	ps_utilities.loadTwitterStream = function (arrayData)
     {
+		var usersURL = arrayData.dataURL[0];
+		var mentionsURL = arrayData.dataURL[1];
+		
 		$.ajax({
-			url: arrayData.dataURL[0],
+			url: usersURL,
 			dataType: "jsonp",
 			crossDomain: true,
 			async: false,
 			success: function(dataResponseUsers) {
 				arrayData.jsonpData = dataResponseUsers;
 				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-				arrayData.function(arrayData);
+				arrayData.function(arrayData.jsonpData);
 			},
            	error: function(e) { console.log('Error making request'); },
        	});
 	
 		$.ajax({
-            url: arrayData.dataURL[1],
+            url: mentionsURL,
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
             success: function(dataResponseMentions) {
 				arrayData.jsonpData = dataResponseMentions;
 				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-				arrayData.function(arrayData);
+				arrayData.function(arrayData.jsonpData);
             },
             error: function(e) { console.log('Error making request'); },
         });			
