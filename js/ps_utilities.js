@@ -51,9 +51,7 @@
 				arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
-        });
-		
-		arrayData.function(responseUsers, responseMentions);
+        });		
 	
        /* $.ajax({      
             url: arrayData.dataUsersURL,
