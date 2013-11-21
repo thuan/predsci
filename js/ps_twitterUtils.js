@@ -110,24 +110,24 @@
     };
 	
 	ps_twitterUtils.buildStreaming = function() {
-		var tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
-		var position = 0;
-		data = ps_graphDefinitions.jsonpData[position].groups[0];
+		var index, tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
+		index = 0;
+		data = ps_graphDefinitions.jsonpData[index].groups[0];
         tweetData = data.statuses;
         statusCount = data.statuses.length;
         divIndex = 0;
         adminHtml = "";
-		position++;
-		dataMentions = ps_graphDefinitions.jsonpData[position];
+		index++;
+		dataMentions = ps_graphDefinitions.jsonpData[index];
         tweetDataMentions = dataMentions.statuses;
         statusCountMentions = dataMentions.statuses.length;
         tweetStreamHtml = "";
 		
-		for (var i = 0; i < statusCount; i++) {
-            screen_name = tweetData[i].screen_name;
-            status_text = tweetData[i].status_text;
-            img_url = tweetData[i].img_url;
-            tweetTime = tweetData[i].status_time;
+		for (index = 0; index < statusCount; index++) {
+            screen_name = tweetData[index].screen_name;
+            status_text = tweetData[index].status_text;
+            img_url = tweetData[index].img_url;
+            tweetTime = tweetData[index].status_time;
 
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
@@ -139,11 +139,11 @@
 		
 		divIndex = 0;
 		
-		for (var i = 0; i < statusCountMentions; i++) {
-            screen_name = tweetDataMentions[i].screen_name;
-            status_text = tweetDataMentions[i].status_text;
-            img_url = tweetDataMentions[i].img_url;
-            tweetTime = tweetDataMentions[i].status_time;
+		for (index = 0; index < statusCountMentions; index++) {
+            screen_name = tweetDataMentions[index].screen_name;
+            status_text = tweetDataMentions[index].status_text;
+            img_url = tweetDataMentions[index].img_url;
+            tweetTime = tweetDataMentions[index].status_time;
 
             if (divIndex === 0) {
                 sessionStorage.presentTopTweetIndex = 0;
@@ -152,7 +152,7 @@
             tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
             divIndex += 1;
         }
-     	$("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
+		$("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
 		$("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
 		ps_twitterUtils.scrollTweets();
         ps_twitterUtils.buildModals();
