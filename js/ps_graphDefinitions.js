@@ -7,9 +7,6 @@
 (function (ps_graphDefinitions, $, undefined) {
 
     ps_graphDefinitions.jsonData = "";
-	ps_graphDefinitions.jsonpData = [];
-	ps_graphDefinitions.jsonpDataUsers = "";
-	ps_graphDefinitions.jsonpDataMentions = "";
 
 	/*
 	* Builds the Keyword Trending Widget
@@ -193,20 +190,33 @@
 
 	/*
 	* Builds the Pie Chart Widget - Process Data
-	*/    
+	*/
     ps_graphDefinitions.processDataAllPie = function (data) {
-        //Process all data
-       var process = [];
-        data.forEach(function(val){
-          if( _.where(process, {id : val.id}).length === 0 ){
-                process.push({
-                    display : val.display,
-                    id      : val.id,
-                    value   :  ps_utilities.sumValues(_.where(data, {id : val.id}))
+
+        if(!data["source"]){
+            var process = [];
+            data.forEach(function(val){
+                if( _.where(process, {id : val.id}).length === 0 ){
+                    process.push({
+                        display : val.display,
+                        id      : val.id,
+                        value   :  ps_utilities.sumValues(_.where(data, {id : val.id}))
+                    });
+                }
+            });
+            return process;
+        }else{
+            alert("process");
+            var nData = _.where(data, {id_2 : $(this).attr("rel")});
+            var values = new Array();
+            for (var i = 0; i < nData.length; i++){
+                values.push({
+                    display : nData[i].display,
+                    value   : nData[i].value
                 });
-          }
-        });
-        return process;
+            }
+            return values;
+        }
     }
 
 	/*
@@ -229,28 +239,33 @@
 
    /*
 	* Builds the Pie Chart Widget
-	*/ 
+	*/
     ps_graphDefinitions.buildPieChart = function (sElementName) {
-    	var objChart;
-        objChart = new cfx.Chart();
-        objChart.getAnimations().getLoad().setEnabled(true);
-        objChart.setGallery(cfx.Gallery.Pie);
-        objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
-        objChart.getLegendBox().setVisible(true);
 
         var data = ps_graphDefinitions.jsonData.data;
-        var source = sElementName.source;
+        var nData = ps_graphDefinitions.processDataAllPie(data);
 
-        if(source === ""){
-           var nData = ps_graphDefinitions.processDataAllPie(data);
-        }else{
-            var nData = ps_graphDefinitions.processDataSourcePie(source, data);
-        }
 
-        objChart.setDataSource(nData );
+        objPieChart = new cfx.Chart();
+        objPieChart.getAnimations().getLoad().setEnabled(true);
+
+        objPieChart.setGallery(cfx.Gallery.Pie);
+        objPieChart.getDataGrid().setBorder(cfx.DockBorder.Internal);
+        var data = objPieChart.getData();
+
+        objPieChart.setGallery(cfx.Gallery.Pie);
+        objPieChart.getAllSeries().getPointLabels().setVisible(true);
+        objPieChart.getLegendBox().setDock(cfx.DockArea.Right);
+        objPieChart.getLegendBox().setVisible(false);
+        //objPieChart.getAllSeries().set
+
+        objPieChart.setDataSource(nData);
         var divHolder = document.getElementById(sElementName.div_location);
-        objChart.create(divHolder);
-    } //end pie chart
+        objPieChart.create(divHolder);
+        ps_utilities.RemoveWidgetGradient();
+        ps_utilities.RemoveLogo();
+
+    }
     
     /*
 	* Builds the Bar Chart Widget
@@ -262,10 +277,34 @@
         var series = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-series');
         
         $('#dropdownMenuBarChart').html(txt + ' <span class="caret"></span>');
-        $('#'+widget_volumeandsentiment.modal.div_location).html("Carregando...");
+        $('#'+widget_volumeandsentiment.modal.div_location).html("Loading...");
         widget_volumeandsentiment.modal.dataURL = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/"+prop+"/competitors/"+attr+"/sentiment/"+series+"?period=week&limit=5";
         widget_volumeandsentiment.modal.div_modal = false;
         ps_utilities.loadData(widget_volumeandsentiment.modal);
+    };
+    
+    ps_graphDefinitions.getCompetitors = function(url) {
+        var competitors = {};
+        $.ajax({
+            type: 'GET',
+            cache: true,
+            url: url,
+            dataType: 'json',
+            json: 'json',
+            async:false,
+            success: function(dataResponse) {
+                var dataR = dataResponse.data;
+                if(dataR.length){
+                    $.each(dataR, function(index, value) {
+                        if(!competitors[value.id]) {
+                            competitors[value.id] = value.display;
+                        }
+                    });
+                }
+            },
+            error: function() { console.log('Error making request'); }
+        });
+        return competitors;
     };
         
     ps_graphDefinitions.buildBarChart = function (sElementName) {
@@ -287,15 +326,35 @@
         objChart.setDataSource(data);
         var divHolder = document.getElementById( sElementName.div_location );
         divHolder.innerHTML = "";
-        objChart.create(divHolder);
         
-        if(sElementName.showVolumeAndSentimentMenu == undefined)
+        if(sElementName.showMenuDropdown == undefined)
         {
-            $( "#volumeAndSentiment div[class='widget_stealth']" ).html('<div class="timelabel">'+sElementName.timelabel+'</div>');
+            $( "#volumeAndSentiment" ).append('<div class="timelabel">'+sElementName.timelabel+'</div>');
+        } else {
+            var URLsearch = widget_sentimentCompetitors.modal.dataURL;
+            var comps = ps_graphDefinitions.getCompetitors(URLsearch);
+            var prop = URLsearch.split("/");
+            var newProp = prop[5]+'/'+prop[6];
+            var init = $("#dropdownMenuBarChart").text();
+            if(!init) {
+                $( "#insight_container" ).html(''+
+                    '<button class="btn dropdown-toggle btn-inverse" id="dropdownMenuBarChart" data-toggle="dropdown">Verizon <span class="caret"></span></button>'+
+                    '<ul id="menuBarChart" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuBarChart"></ul>'+
+                '');
+
+                $.each(comps, function(k, v) {
+                    $( "ul[id='menuBarChart']" ).append(''+
+                        '<li><a onClick="ps_graphDefinitions.barChartReload(this.dataset.attr);" data-prop="'+newProp+'" data-attr="'+k+'" data-series="multitime">'+v+'</a></li>'+
+                    '');
+                });
+            }
         }
         
+        objChart.create(divHolder);
+        
         ps_utilities.RemoveWidgetGradient();
-    }
+        ps_utilities.RemoveLogo();
+    };
     
     ps_graphDefinitions.buildSentimentCompetitors = function (sElementName) {
         
@@ -320,11 +379,12 @@
         
         if(sElementName.showVolumeAndSentimentMenu == undefined)
         {
-            $( "#sentimentCompetitors div[class='widget_stealth']" ).html('<div class="timelabel">'+sElementName.timelabel+'</div>');
+            $( "#sentimentCompetitors" ).append('<div class="timelabel">'+sElementName.timelabel+'</div>');
         }
         
         ps_utilities.RemoveWidgetGradient();
-    }
+        ps_utilities.RemoveLogo();
+    };
     //end bar chart
 
     /*
@@ -332,52 +392,64 @@
 	*/
     ps_graphDefinitions.buildLineChart = function (sElementName) {
         var objChart;
-        var td;
-        td = new cfx.TitleDockable();
-        td.setText(sElementName.title);
-        td.setDock(cfx.DockArea.Top);
 
         objChart = new cfx.Chart();
-
         objChart.setGallery(sElementName.gallery);
         objChart.getGalleryAttributes().setTemplate(sElementName.template);
         objChart.getLegendBox().setVisible(sElementName.legend);
+        objChart.getLegendBox().setHeight(300);
+        objChart.getLegendBox().setWidth(100);
+        objChart.getLegendBox().sizeToFit();
+        objChart.getLegendBox().setDock(cfx.DockArea.Right);
         objChart.getAnimations().getLoad().setEnabled(true);
-        objChart.getTitles().add(td);
 
         var data = ps_utilities.processData(sElementName.jsonData.data);
-
+        
         objChart.setDataSource(data);
-        var divHolder = document.getElementById(sElementName.div_location);
+        var divHolder;
+        
+        if(document.getElementById(sElementName.div_location)){
+            divHolder = document.getElementById(sElementName.div_location);
+        }else {
+            if(sElementName.div_location == 'modal-widget-body'){
+               $("<div id='modal-widget-body'></div>").appendTo("#"+sElementName.id_div);
+               divHolder = document.getElementById(sElementName.modal.div_location);
+            }else{
+                $("#"+sElementName.id_div + " div.widget_label").after("<div class='widget_holder' id='lineChartDiv2'></div>");
+                divHolder = document.getElementById(sElementName.div_location);
+            }
+            
+            
+        }
+       
         divHolder.innerHTML = '';
         objChart.create(divHolder);
-
+        
+        
         ps_utilities.RemoveWidgetGradient();
-        $("#" + sElementName.id_div + " .pull-right #tooltipp").attr("data-original-title",sElementName.tooltip);
-        $("#" + sElementName.id_div + " .pull-left span").text(sElementName.title);
-        $("#" + sElementName.id_div + " .pull-left small").text(sElementName.subtitle);
+        ps_utilities.RemoveLogo();
+        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+        
     } //end line chart
 
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
 		//Code goes here
     }
-	
-	ps_graphDefinitions.buildTwitterStream = function (sElementName) {
+    
+    ps_graphDefinitions.buildTwitterStream = function (sElementName) {
 		ps_twitterUtils.buildWidget();
 		ps_twitterUtils.buildWidgetScroll();
         ps_twitterUtils.buildWidgetModal();
     }
-	
-    ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
-		ps_twitterUtils.getMentionsJsonData();
-    }
-    
-    ps_graphDefinitions.buildUsersTwitterStream = function (sElementName) {
-		ps_twitterUtils.getUsersJsonData();
-    }
-    
 
-	
+	/*
+	* Top Tweets
+	*/
+    ps_graphDefinitions.topTweets = function(response) {
+    	ps_twitterUtils.topTweets(response);
+    } // end topTweets
         
    
 	

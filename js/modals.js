@@ -1,19 +1,6 @@
 (function( ps_modals, $, undefined ) {
     ps_modals.launch = function(JSONProperties)
     {
-        /*
-         * Launches Bootstrap Modal Window
-         * The parameters are loaded using JSON
-         *
-         * @param : string : $header : Main title of Modal
-         * @param : string : $subheader : subheader underneath Modal
-         * @param : string : $function : what function to execute
-         * @param : string : $div_location : name of element id to create function
-         * @param : boolean : $showInsights : shows the insights functionality
-         * @param : string : $tooltip : shows the tooltip
-         *
-         */
-
         var boolRunOnce = false;
         JSONProperties.showInsights == undefined ? $showInsights = false : $showInsights = true;
         JSONProperties.showQueryForm == undefined ? $showQueryForm = false : $showQueryForm = true;
@@ -21,45 +8,77 @@
         JSONProperties.showToggle2 == undefined ? $showToggle2 = false : $showToggle2 = true;
         JSONProperties.showVolumeAndSentimentMenu == undefined ? $showVolumeAndSentimentMenu = false : $showVolumeAndSentimentMenu = true;
         var $function = JSONProperties.function;
-        
-        if($showVolumeAndSentimentMenu)
-        {
-            if(JSONProperties.showVolumeAndSentimentMenu === false)
-            {
-                $("#insight_container").html("");
-            } else {
-                $.get( "templates/menu_volumeAndSentiment.html", function( data ) {
-                    $("#insight_container").html(data);
-                });
-            }
-        } else {
-            $.get( "templates/insight_history.html", function( data ) {
-                $("#insight_container").html(data);
+
+        $showInsightsDropdown = JSONProperties.showInsightsDropdown;
+
+        if(JSONProperties.showMenu === true){
+
+
+            var social = ps_utilities.showMenuSocial(JSONProperties.dataURL);
+            var menu = '<div id="socialmenu"><ul class="buttonUl">';
+            menu += '<li class="tab_button"><span data="" class="social active">All</span></li>';
+            social.forEach(function(val){
+                menu += '<li class="tab_button"><span data="'+val.id+'" class="social">'+val.display+'</span></li>';
             });
+            menu += '</ul></div>';
+            $("#socialmenu").remove();
+            $("#insight_container").after('<div class="clearfix"></div>');
+            $("#insight_container").after(menu);
+
+
+            $(".buttonUl li span").click(function () {
+                $(".active").removeClass("active");
+                $(this).addClass("active");
+                widget_pie.modal.source = $(this).attr("data");
+                ps_utilities.loadData(widget_pie.modal);
+                $("#modal_widget #modal-widget-body").html("");
+
+            });
+        }else{
+            $("#socialmenu").html("");
         }
 
-        try
-        {
+
+        // CLEAR MODAL DIVs
+        $("#modal_widget #insight_container").html("");
+        $("#modal_widget #modal-widget-body").html("Loading...");
+        $("#modal_widget .modal-header h3").text("");
+        $("#modal_widget .modal-header small").text("");
+
+        if($showInsightsDropdown === false || $showInsightsDropdown === undefined){
+            $("#insight_container").html("");
+        }else{
+            $("#modal_widget").insights(JSONProperties.insight_url);
+        }
+        try{
             $('#modal_widget').modal();
 
             $('#modal_widget').on('show', function(e) {
-                if (e.target.id == "modal_widget")
-                {
+                if (e.target.id == "modal_widget") {
                     $("#modal_widget #modal-widget-body").html("");
                 }
             });
 
             $('#modal_widget').on('shown', function(e) {
-                if (e.target.id == "modal_widget" && !boolRunOnce)
-                {
+                if (e.target.id == "modal_widget" && !boolRunOnce){
                     boolRunOnce = true;
                     $("#modal_widget #modal-widget-body").css("background-color","black");
 
-                    if ($showInsights)
-                    {
-                        $.get( "templates/insights.html", function( data ) {
-                            $("#modal_widget").prepend(data);
-                        });
+                    if ($showInsights){
+                        $('#latest_insights_content_holder').html("");
+
+                        if(JSONProperties.function == 'launch_maps'){
+                            $.get( "templates/insightsMap.html", function( data ) {
+                                $("#modal_widget").prepend(data);
+                                $("#modal_widget").find("#latest_insights_content_holder" ).draggable();
+                            });
+                        }else{
+                            $.get( "templates/insights.html", function( data ) {
+                                $("#modal_widget").prepend(data);
+                                $("#modal_widget").find("#latest_insights_content_holder" ).draggable();
+                            });
+                        }
+                        $("#modal_widget").find("#latest_insights_content_holder" ).draggable();
                     }
 
                     if($showQueryForm){
@@ -79,8 +98,7 @@
                     $("#modal_widget .modal-header small").text(JSONProperties.subtitle);
                     $("#modal_widget #icon-info").attr("data-original-title",JSONProperties.tooltip);
 
-                    switch($function)
-                    {
+                    switch($function){
                         case "launch_maps":
                             ps_googlemaps.Initialize(JSONProperties, 0);
                             $("#modal-stealth").hide();
@@ -88,15 +106,13 @@
                         default:
                             ps_utilities.loadData(JSONProperties);
                             break;
-                        //testando synchronize
                     }
                 }
             });
 
             // unbinds the navigation for insights
             $("#modal_widget").on("hide", function(e){
-                if (e.target.id == "modal_widget")
-                {
+                if (e.target.id == "modal_widget")  {
                     $("#modal_widget #latest_insights_viewer").remove();
                     ps_googlemaps.boolPagination = false;
                     $("#latest_insights_nav_back").unbind();

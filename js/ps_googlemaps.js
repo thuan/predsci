@@ -5,39 +5,7 @@ var ps_googlemaps = ps_googlemaps || {};
 
 (function () {
 
-    var APIgetInsightsSOV = {name: "ShareOfVoice", 
-                             url: "/livecache/vzw_twitter_topic_locations_share_of_voice_1d.json", 
-                             insightUrl: "/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json", 
-                             insightTitle:"Share of Voice",
-                             insightSubtitle: "Share of Voice on Twitter by City",
-                             insightDataCard: "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."};
-
-    var APIgetInsightsFollowers = {name: "Followers", 
-                                   url: "/livecache/vzw_twitter_locations_followers_1d.json?key=52812a364dd25", 
-                                   insightUrl: "/livecache/vzw_twitter_followers_summary_1d.json", 
-                                   insightTitle:"Followers",
-                                   insightSubtitle: "Followers on Twitter by City",
-                                   insightDataCard: "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b"};
-   
-    var APIgetInsightsVolume = {name: "Volume", 
-                                url: "/livecache/vzw_twitter_topic_locations_volume_1d.json",
-                                insightUrl: "/livecache/vzw_twitter_topic_volume_summary_1d.json", 
-                                insightTitle:"Volume",
-                                insightSubtitle: "Wireless Volume on Twitter by City",
-                                insightDataCard: "A United States map showing cities with the most Twitter volume related to Verizon Wireless."};
-
-
-
-    APIgetInsightsSOV.url = "twitter.json";
-    APIgetInsightsSOV.insightUrl = "insight.json";
-    APIgetInsightsFollowers.url = "twitter2.json";
-    APIgetInsightsFollowers.insightUrl = "insight2.json";
-    APIgetInsightsVolume.url = "twitter3.json";
-    APIgetInsightsVolume.insightUrl = "insight3.json";
-
-    var arrayURL    = [APIgetInsightsSOV, APIgetInsightsFollowers, APIgetInsightsVolume];
     var iFeed       = 0;
-
     var arrayCircle   = [];
     var arrayCircle2  = [];
 
@@ -45,36 +13,34 @@ var ps_googlemaps = ps_googlemaps || {};
 
     ps_googlemaps.loadMap = function(definitions, modal)
     {
-        if (modal)
-        {
+        if (modal)  {
             var modalProperties = definitions.modal_propeties;
             ps_modals.launch(modalProperties);
         }
-        else
-        {
+        else {
             ps_googlemaps.Initialize(definitions, 0);
         }
+
     }
 
     ps_googlemaps.Initialize = function(definitions,  feedNumber)
     {
-        if ($("#modal_widget #modal-widget-body").html() != "")
-        {
+        if ($("#modal_widget #modal-widget-body").html() != ""){
             $("#modal_widget #modal-widget-body").html("");
         }
 
         //var image = '/images/icon_map_predictivescience.png';
 
         var googleMapsCustonStyle =
-        [{
-          featureType: "all",
-          stylers: [
-              { "hue": "#005eff" },
-              { "gamma": 0.73 },
-              { "lightness": 15 },
-              { "saturation": -76 }
-          ]
-        }];
+            [{
+                featureType: "all",
+                stylers: [
+                    { "hue": "#005eff" },
+                    { "gamma": 0.73 },
+                    { "lightness": 15 },
+                    { "saturation": -76 }
+                ]
+            }];
 
         var googleMapsStyledMapConf = new google.maps.StyledMapType(googleMapsCustonStyle, {name: "Predictive Science"});
 
@@ -84,15 +50,13 @@ var ps_googlemaps = ps_googlemaps || {};
             disableDefaultUI: true,
             scrollwheel: false,
             mapTypeControlOptions: {
-            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'predictive_science']
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'predictive_science']
             }
         }
 
         var map = new google.maps.Map(document.getElementById(definitions.div_location), googleMapsOptions);
 
-        //ps_googlemaps.pagination(map);
-        ps_googlemaps.loadData(map, arrayURL[feedNumber]);
-
+        ps_googlemaps.loadData(map, arrayAPIActivityMap[feedNumber]);
         map.mapTypes.set('predictive_science', googleMapsStyledMapConf);
 
     }
@@ -101,29 +65,24 @@ var ps_googlemaps = ps_googlemaps || {};
     {
 
         $("#latest_insights_nav_back").click(function(){
-            console.log("ps_googlemaps : pagination : Pagination Going Back");
             iFeed--;
             if (iFeed < 0)
             {
-                iFeed = arrayURL.length - 1;
+                iFeed = widgetActivityMap.dataURL.length - 1;
             }
-            ps_googlemaps.Initialize(definitions.modal_propeties, iFeed);
+            ps_googlemaps.Initialize(widgetActivityMap.modal_propeties, iFeed);
         });
 
         $("#latest_insights_nav_next").click(function(){
-            console.log("ps_googlemaps : pagination : Pagination Going Forward");
             iFeed++;
-            if (iFeed >= arrayURL.length)
-            {
+            if (iFeed >= widgetActivityMap.dataURL.length){
                 iFeed = 0;
             }
-            ps_googlemaps.Initialize(definitions.modal_propeties,iFeed);
+            ps_googlemaps.Initialize(widgetActivityMap.modal_propeties,iFeed);
         });
     }
 
-    ps_googlemaps.loadData = function(map, iFeed)
-    {
-        var iPopulationCondition = 900000;
+    ps_googlemaps.loadData = function(map, iFeed){
         $.ajax({
             type: 'GET',
             data: "",
@@ -134,12 +93,11 @@ var ps_googlemaps = ps_googlemaps || {};
 
                 $("#latest_insights_change p").text(dataResponse.change);
                 $("#latest_insights_weekly p").text(dataResponse.weekly);
-                $(".latest_insights_date").text(dataResponse.insight_date);
-                $(".latest_insights_content").text(dataResponse.insight_content);
+
 
                 var hexColor;
 
-                iFeed == arrayURL[1] ? hexColor = '#0000FF' : hexColor = '#FF9900';
+
 
                 var max = dataResponse.locations[0].tweet_count;
                 var min = 0;
@@ -150,159 +108,142 @@ var ps_googlemaps = ps_googlemaps || {};
                 var maxcount = 0;
                 var setColor = "#20988e";
                 var getScale = 0;
+                var count = 1;
+                if (iFeed.name =="ShareOfVoice") {
+                    ps_googlemaps.buildInsgihtText(iFeed);
 
-            if (iFeed.name =="ShareOfVoice") {
-                ps_googlemaps.buildInsgihtText(iFeed);
+                    $.each( dataResponse.locations, function( i, location ) {
 
-                $.each( dataResponse.locations, function( i, location ) {
+                        totalcount = location.tweet_count;
+                        getScale = (totalcount/max+.75);
+                        percentage = 0;
+                        maxcount = 0;
+                        setColor = "#20988e";
+                        itemlist = "";
 
-                   totalcount = location.tweet_count;
-                    //console.log(location.city + " " + totalcount);
-                    getScale = (totalcount/max+.75);
-                    //console.log(getScale);
-                    var itemlist = "";
+                        $.each(location.tags, function( i, val ) {
 
-                    var percentage = 0;
+                            if (val.tweet_count > maxcount) {
+                                maxcount = val.tweet_count;
+                                if (val.tag_name == "verizon") {
+                                    setColor = "#ff3300"
+                                }
+                                else if (val.tag_name == "sprint") {
+                                    setColor = "#ee9d00"
+                                }
+                                else if (val.tag_name == "att") {
+                                    setColor = "#0099cc"
+                                }
+                                else if (val.tag_name == "tmobile") {
+                                    setColor = "#e20074"
+                                }
+                                else if (val.tag_name == "us_cellular") {
+                                    setColor = "#d8e9e8"
+                                }
+                                else if (val.tag_name == "Netflix") {
+                                    setColor = "#4ef0e3"
+                                }
+                               // console.log(location.city + " " + val.tag_name + " " + setColor);
+                            };
 
-                    $.each(location.tags, function( i, val ) {
-
-                        percentage = Math.round((val.tweet_count/totalcount)*100);
-                        itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999;'>" +
-                                    val.display_name + " " + percentage + "%</div>";
+                            percentage = Math.round((val.tweet_count/totalcount)*100);
+                            itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999;'>" +
+                                val.display_name + " " + percentage + "%</div>";
+                        });
+                        if(count < 51){
+                            ps_googlemaps.buildMakers(map, location, setColor, itemlist, getScale, hexColor);
+                        }
+                        count++;
                     });
 
-                    ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
-                });
-
-                var iCheckPagination = 0;
-
-                function myMethod()
-                {
-                    if (!ps_googlemaps.boolPagination && $("#latest_insights_nav_back").length == 1)
-                    {
-                        ps_googlemaps.boolPagination = true;
-                        ps_googlemaps.pagination(map);
-                        console.log("pagination connected");
-                        clearInterval(iCheckPagination);
-                    }
+                    var iCheckPagination = 0;
+                    ps_googlemaps.callPagination(map, iCheckPagination);
                 }
 
-                iCheckPagination = setInterval(myMethod, 500);
-            }
+                if (iFeed.name == "Followers") {
+                    ps_googlemaps.buildInsgihtText(iFeed);
+                    var max = dataResponse.locations[0].new_follower_count;
 
-            if (iFeed.name == "Followers") {
-                ps_googlemaps.buildInsgihtText(iFeed);
+                    $.each( dataResponse.locations, function( i, location ) {
+                        itemlist = "";
+                        totalcount = 0;
+                        percentage = 0;
+                        maxcount = 0;
+                        setColor = "";
+                        getScale = 0;
+                        subtext = "";
 
-                $.each( dataResponse.locations, function( i, location ) {
-                    
-                    itemlist = "";
-                    totalcount = 0;
-                    percentage = 0;
-                    maxcount = 0;
-                    setColor = "";
-                    getScale = 0;
-                    subtext = "";
+                        totalcount = location.new_follower_count;
+                        getScale = (totalcount/max+.75);
+                        setColor = "#3c7ce5";
 
-                    totalcount = location.new_follower_count;
-                    //console.log(location.city + " " + totalcount);
-                    getScale = (totalcount/max+.75);
-                    //console.log(getScale);
-                    setColor = "#3c7ce5";
+                        if (getScale > 1.15) {setColor="#FF0000"}
 
-                    //if (getScale > 1.15) {setColor="#FF0000"}
+                        if (totalcount > 1) {
+                            subtext = "new followers"
+                        } else {
+                            subtext = "new follower"
+                        }
+                        itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999'>" +
+                            location.new_follower_count + " " + subtext + "</div>";
+                        if(count < 51){
+                            ps_googlemaps.buildMakers(map, location, setColor, itemlist, getScale, hexColor);
+                        }
+                        count++;
+                    });
 
-                    if (totalcount > 1) {
-                        subtext = "new followers"
-                    } else {
-                        subtext = "new follower"
-                    }
-                    itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999'>" + 
-                    location.new_follower_count + " " + subtext + "</div>";
-               
-                    ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
-                });
-
-                var iCheckPagination = 0;
-
-                function myMethod()
-                {
-                    if (!ps_googlemaps.boolPagination && $("#latest_insights_nav_back").length == 1)
-                    {
-                        ps_googlemaps.boolPagination = true;
-                        ps_googlemaps.pagination(map);
-                        console.log("pagination connected");
-                        clearInterval(iCheckPagination);
-                    }
+                    var iCheckPagination = 0;
+                    ps_googlemaps.callPagination(map, iCheckPagination);
                 }
+                if (iFeed.name=="Volume") {
+                    ps_googlemaps.buildInsgihtText(iFeed);
 
-                iCheckPagination = setInterval(myMethod, 500);
+                    $.each( dataResponse.locations, function( i, location ) {
+                        itemlist = "";
+                        totalcount = 0;
+                        percentage = 0;
+                        maxcount = 0;
+                        setColor = "";
+                        getScale = 0;
+                        subtext = "";
 
-            }
-            if (iFeed.name=="Volume") {
-                ps_googlemaps.buildInsgihtText(iFeed);
+                        totalcount = location.tweet_count;
+                        getScale = (totalcount/max+.75);
+                        setColor = "#3c7ce5";
 
-                $.each( dataResponse.locations, function( i, location ) {
-                    
-                    itemlist = "";
-                    totalcount = 0;
-                    percentage = 0;
-                    maxcount = 0;
-                    setColor = "";
-                    getScale = 0;
-                    subtext = "";
+                        if (getScale > 1.15) {setColor="#FF0000"}
 
-                    totalcount = location.tweet_count;
-                    getScale = (totalcount/max+.75);
-                    setColor = "#3c7ce5";
+                        if (location.tweet_count > 1) {
+                            subtext = "new tweets"
+                        } else {
+                            subtext = "new tweet"
+                        }
+                        itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999'>" +
+                            location.tweet_count + " " + subtext + "</div>";
 
-                    if (getScale > 1.15) {setColor="#FF0000"}
+                        if(count < 51){
+                            ps_googlemaps.buildMakers(map, location, setColor, itemlist, getScale, hexColor);
+                        }
+                        count++;
+                    });
 
-                    if (location.tweet_count > 1) {
-                        subtext = "new tweets"
-                    } else {
-                    subtext = "new tweet"
-                    }
-                    itemlist += "<div style='opacity:1; line-height:10px; padding:2px; z-index:9999'>" + 
-                    location.tweet_count + " " + subtext + "</div>";
-
-                    var iPopulationCondition = 900000;
-
-                    ps_googlemaps.buildMakers(map, location, setColor, itemlist, iPopulationCondition, hexColor);
-                });
-
-                var iCheckPagination = 0;
-
-                function myMethod()
-                {
-                    if (!ps_googlemaps.boolPagination && $("#latest_insights_nav_back").length == 1)
-                    {
-                        ps_googlemaps.boolPagination = true;
-                        ps_googlemaps.pagination(map);
-                        console.log("pagination connected");
-                        clearInterval(iCheckPagination);
-                    }
+                    var iCheckPagination = 0;
+                    ps_googlemaps.callPagination(map, iCheckPagination);
                 }
-
-                iCheckPagination = setInterval(myMethod, 500);
-
-
-            }
-
-
-
-        }, error: function(jqXHR, textStatus, errorThrown) { console.log(errorThrown); console.log(textStatus); }
+            }, error: function(jqXHR, textStatus, errorThrown) { console.log(errorThrown); console.log(textStatus); }
         });
     }
 
-    ps_googlemaps.buildMakers = function(map, location, setColor, itemlist, iPopulationCondition, hexColor){
+    ps_googlemaps.buildMakers = function(map, location, setColor, itemlist, getScale){
+        var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
         var circleOutline = {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillOpacity: 0,
-            fillColor: hexColor,
-            strokeOpacity:.8,
-            strokeColor: ((location.population) > iPopulationCondition ?  '#ff0000' : hexColor),
-            strokeWeight: 2.5,
-            scale: (location.population / 400000) * Math.pow(1.1, map.getZoom()) /* circles get bigger as you zoom in */
+            path: targetSVG,
+            anchor	: new google.maps.Point(8,10),
+            fillOpacity: 1,
+            strokeWeight: 0,
+            fillColor: setColor,
+            scale: getScale
         };
 
         var positionCircleOutline = new google.maps.LatLng(location.latitude, location.longitude);
@@ -310,15 +251,16 @@ var ps_googlemaps = ps_googlemaps || {};
         var markerOutlineCircle = new google.maps.Marker({
             icon: circleOutline,
             position: positionCircleOutline,
-            map: map
+            map: map,
+            tooltip: "<b>" + location.city + "</b><br>" + itemlist
         });
 
         var circleSolid = {
             path: google.maps.SymbolPath.CIRCLE,
-            fillOpacity:.8,
-            fillColor: ((location.population) > iPopulationCondition ?  '#ff0000' : '#FF9900'),
+            fillOpacity:1,
+            fillColor: setColor,
             strokeOpacity:0,
-            scale: (location.population / 850000) * Math.pow(1.1, map.getZoom()) /* circles get bigger as you zoom in */
+            scale: getScale
         };
 
         var positionSolidCircle = new google.maps.LatLng(location.latitude, location.longitude)
@@ -335,9 +277,20 @@ var ps_googlemaps = ps_googlemaps || {};
         google.maps.event.addListener(markerSolidCircle, 'mouseover', function() {
             infowindow1.setContent(this.tooltip);
             infowindow1.open(map, this);
+            $(".gm-style-iw").next("div").hide();
         });
 
-         google.maps.event.addListener(markerSolidCircle, 'mouseout', function() {
+        google.maps.event.addListener(markerSolidCircle, 'mouseout', function() {
+            infowindow1.close();
+        });
+
+        google.maps.event.addListener(markerOutlineCircle, 'mouseover', function() {
+            infowindow1.setContent(this.tooltip);
+            infowindow1.open(map, this);
+            $(".gm-style-iw").next("div").hide();
+        });
+
+        google.maps.event.addListener(markerOutlineCircle, 'mouseout', function() {
             infowindow1.close();
         });
 
@@ -346,7 +299,6 @@ var ps_googlemaps = ps_googlemaps || {};
     }
 
     ps_googlemaps.buildInsgihtText = function(iFeed){
-
         var taburl = iFeed.insightUrl;
         var datacard = iFeed.insightDataCard;
 
@@ -359,24 +311,8 @@ var ps_googlemaps = ps_googlemaps || {};
         var mappoints = [];
         var addStyle = "";
 
-        //$('.share-of-voice-tab').click(function() {
         $('#modal_widget .modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
         $('#modal_widget .modal-header small').html(iFeed.insightSubtitle);
-
-        // Update the tooltip qtip
-        /*$('#modal-twittersovmap .ttip_t').qtip({
-            style : {
-                classes: 'ui-tooltip-shadow ui-tooltip-tipsy'
-            },
-            show : {
-                delay: 100,
-                event: 'mouseenter focus'
-            },
-            hide : {
-                delay: 0
-            },
-            content: datacard
-        });*/
 
         $.ajax({
             url : taburl,
@@ -387,12 +323,9 @@ var ps_googlemaps = ps_googlemaps || {};
                 console.log("error loading tab data from: " + taburl);
             },
             success : function(data) {
-
-
                 if (iFeed.name =='ShareOfVoice') {
 
                     var currentweek = data.periods[0].tags;
-                    //console.log(data.periods[0]);
                     var previousweek = data.periods[1].tags;
 
                     var today = {
@@ -431,10 +364,6 @@ var ps_googlemaps = ps_googlemaps || {};
 
                     var difference = (today.sov);
                     var differencerelative = (today.sov - lastWeek.sov);
-                    //localStorage["Twitter Insights: Share Of Voice - Current Week"] = today.vzw.addCommas();
-                    //localStorage["Twitter Insights: Share Of Voice - Previous Week"] = lastWeek.vzw.addCommas();
-                    //localStorage["Twitter Insights: Share Of Voice - Absolute Change"] = difference.addCommas() + "%";
-                    //localStorage["Twitter Insights: Share Of Voice - Relative Change"] = Math.round(differencerelative) + "pts";
 
                     $("#latest_insights_change").html("<strong>W-O-W Change </strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%</p>");
                     $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+today.vzw.addCommas()+"</p>");
@@ -448,11 +377,6 @@ var ps_googlemaps = ps_googlemaps || {};
                     if (currentweek > previousweek) {prefix = "+"}
                     if (previousweek > currentweek) {prefix = "-"}
 
-                    //localStorage["Twitter Insights: Volume - Current Week"] = currentweek.addCommas();
-                    //localStorage["Twitter Insights: Volume - Previous Week"] = previousweek.addCommas();
-                    //localStorage["Twitter Insights: Volume - Absolute Change"] = difference.addCommas();
-                    //localStorage["Twitter Insights: Volume - Relative Change"] = Math.round(differencerelative) + "%";
-
                     $("#latest_insights_change").html("<strong>W-O-W Change</strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%</p>");
                     $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+currentweek.addCommas()+"</p>")
 
@@ -465,19 +389,12 @@ var ps_googlemaps = ps_googlemaps || {};
                     if (currentweek > previousweek) {prefix = "+"}
                     if (previousweek > currentweek) {prefix = "-"}
 
-                    //localStorage["Twitter Insights: Followers - Current Week"] = currentweek.addCommas();
-                    //localStorage["Twitter Insights: Followers - Previous Week"] = previousweek.addCommas();
-                    //localStorage["Twitter Insights: Followers - Absolute Change"] = difference.addCommas();
-                    //localStorage["Twitter Insights: Followers - Relative Change"] = Math.round(differencerelative) + "%";
-
                     $("#latest_insights_change").html("<strong>W-O-W Change</strong><p>"+prefix + Math.abs(Math.round(differencerelative)) + "%");
                     $("#latest_insights_weekly").html("<strong>Weekly Total</strong><p>"+currentweek.addCommas()+"</p>");
 
                 }
             }
         });
-
-
     }
     Number.prototype.addCommas = function() {
         var nStr = this + ''; // convert number to string
@@ -490,6 +407,18 @@ var ps_googlemaps = ps_googlemaps || {};
         }
         return x1 + x2;
     };
+
+    ps_googlemaps.callPagination = function(map, iCheckPagination){
+        function myMethod() {
+            if (!ps_googlemaps.boolPagination && $("#latest_insights_nav_back").length == 1){
+                ps_googlemaps.boolPagination = true;
+                ps_googlemaps.pagination(map);
+                console.log("pagination connected");
+                clearInterval(iCheckPagination);
+            }
+        }
+        iCheckPagination = setInterval(myMethod, 500);
+    }
 
 })();
 

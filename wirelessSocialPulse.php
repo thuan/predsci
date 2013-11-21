@@ -25,7 +25,7 @@
 							<a href="#" data-toggle="tooltip" data-placement="top" title=""
 							   data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i
 									class="icon-info-sign icon-white"></i></a>
-							<a id="launch-app" href="javascript:ps_googlemaps.loadMap(definitions, true);"><i
+							<a id="launch-app" href="javascript:ps_googlemaps.loadMap(widgetActivityMap, true);"><i
 									class="icon-resize-full icon-white"></i></a>
 						</div>
 					</div>
@@ -33,27 +33,27 @@
 					<!-- END: Twitter Activity -->
 				</div>
 
-				<div class="widget_container_holder">
-					<!-- Share of Voice -->
-					<div class="widget_label">
-						<h3 class="pull-left">
-							Share of Voice<br> <small>With key Competitors</small>
-						</h3>
+                <div class="widget_container_holder">
+                    <!-- Share of Voice -->
+                    <div class="widget_label">
+                        <h3 class="pull-left">
+                            Share of Voice<br> <small>With key Competitors</small>
+                        </h3>
 
-						<div class="pull-right">
-							<a href="#" data-toggle="tooltip" data-placement="top" title=""
-								data-original-title="Share of Voice by media type for Verizon Wireless and key competitors."><i
-								class="icon-info-sign icon-white"></i></a> <a id="div_Chart1"
-								data-toggle="modal" data-target="#modal_widget"> <!-- <a id="launch-app" href="javascript:UILayout.WidgetLaunch('modal-widget-body', 'loadCustomPieChart')"> -->
-								<i class="icon-resize-full icon-white"></i></a>
+                        <div class="pull-right">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Share of Voice by media type for Verizon Wireless and key competitors."><i
+                                    class="icon-info-sign icon-white"></i></a>
+                            <a id="launch-app" href="javascript:ps_modals.launch(widget_pie.modal);">
+                                <i class="icon-resize-full icon-white"></i>
+                            </a>
 
-						</div>
-					</div>
-					<div class="widget_holder" id="div_pie_chart"></div>
-				</div>
+                        </div>
+                    </div>
+                    <div class="widget_holder" id="div_pie_chart"></div>
+                </div>
 				
 				<div class="widget_container_holder" id="volumeAndSentiment">
-					<div class="widget_stealth"></div>
 					<!-- Volume & Sentiment -->
 					<div class="widget_label">
 						<h3 class="pull-left">Volume &AMP; Sentiment<br>
@@ -69,7 +69,7 @@
 				</div>
 
 				<div class="widget_container_holder" id="conversationVolume" >
-					<div class="widget_label">
+                                    <div class="widget_label">
 						<h3 class="pull-left">
 							<span></span>
 							<small></small>
@@ -82,6 +82,10 @@
 						</div>
 					</div>
 					<div class="widget_holder" id="lineChartDiv"></div>
+                                        <div id="legend">
+                                            <a href="#" id="conversationVolumeLegend" class="toggle-legend">Show legend</a>
+                                        </div>
+                                        <div class="timelabel">7 days</div>
 				</div>
 
 				<div class="widget_container_holder" id="predefinedTopicVolume">
@@ -98,6 +102,10 @@
 						</div>
 					</div>
 					<div class="widget_holder" id="lineChartDiv2"></div>
+                                        <div id="legend">
+                                            <a href="#" id="predefinedTopicVolumeLegend" class="toggle-legend">Show legend</a>
+                                        </div>
+                                        <div class="timelabel">7 days</div>
 				</div>
 
 				<div class="widget_container_holder">
@@ -174,7 +182,6 @@
 				
                         <!-- Sentiment Competitors -->
                         <div class="widget_container_holder" id="sentimentCompetitors">
-                            <div class="widget_stealth"></div>
                             <div class="widget_label">
                                     <h3 class="pull-left">Volume &AMP; Sentiment<br>
                                             <small>With Key Competitors</small>

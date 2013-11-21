@@ -28,7 +28,7 @@
 							<a href="#" data-toggle="tooltip" data-placement="top" title=""
 							   data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i
 									class="icon-info-sign icon-white"></i></a>
-							<a id="launch-app" href="javascript:ps_googlemaps.loadMap(definitions, true);"><i
+							<a id="launch-app" href="javascript:ps_googlemaps.loadMap(widgetActivityMap, true);"><i
 									class="icon-resize-full icon-white"></i></a>
 						</div>
 					</div>
@@ -55,9 +55,8 @@
 					<div class="widget_holder" id="div_pie_chart"></div>
 				</div>
 				
+                                <!-- Volume & Sentiment -->
 				<div class="widget_container_holder" id="volumeAndSentiment">
-					<div class="widget_stealth"></div>
-					<!-- Volume & Sentiment -->
 					<div class="widget_label">
 						<h3 class="pull-left">Volume &AMP; Sentiment<br>
 							<small>Daily Volume &AMP; Sentiment</small>
@@ -70,6 +69,7 @@
 					</div>
 					<div class="widget_holder" id="barChartDiv"></div>
 				</div>
+                                <!-- Volume & Sentiment END -->
 
 				<div class="widget_container_holder" id="conversationVolume" >
 					<div class="widget_label">
@@ -174,8 +174,25 @@
 			</div>
 			<!-- Top Twitter Modal Ends -->
 				
-				<div class="widget_container_holder"></div>			
-					<!-- Keyword Frequency Starts-->
+			
+                        <!-- Sentiment Competitors -->
+                        <div class="widget_container_holder" id="sentimentCompetitors">
+                            <div class="widget_label">
+                                    <h3 class="pull-left">Volume &AMP; Sentiment<br>
+                                            <small>With Key Competitors</small>
+                                    </h3>
+
+                                    <div class="pull-right">
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors."><i class="icon-info-sign icon-white"></i></a>
+                                            <a id="launch-app" href="javascript:ps_modals.launch(widget_sentimentCompetitors.modal);"><i class="icon-resize-full icon-white"></i></a>
+                                    </div>
+                            </div>
+                            <div class="widget_holder" id="sentimentCompetitorsDiv"></div>
+                        </div>
+                        <!-- Sentiment Competitors END -->
+                        
+                        
+				<!-- Keyword Frequency Starts-->
 				<div class="box kList widget_container_holder_keyword">
 
 					<div class="widget_label">
@@ -188,6 +205,7 @@
 					</div>
 					<div id="klist"></div>
 					<div class="timelabel">last 24 hours</div>
+					
 				</div>
 				
 			</div>

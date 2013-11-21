@@ -1,12 +1,12 @@
 /**
- *  
+ *
  * @version		1.0
  * @package		Predictive Science Dashboard
  * @subpackage	Wireless Social Pulse
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
- 
+
 //Define all the endpoint as Variables
 var PropertyID = "1";
 var InsightID = "vzw";
@@ -25,25 +25,36 @@ var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillab
 var APIgettoptweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=1&period=day&period_count=7&limit=20";
 var APItwitterfollowers = "/livecache/vzw_twitter_followers_1d.json";
 
-var APIgetInsightsVolume = "/livecache/vzw_twitter_topic_locations_volume_1d.json";
-var APIgetInsightsVolumeTab = "/livecache/vzw_twitter_topic_volume_summary_1d.json";
-var APIgetInsightsVolumeTitle = "Volume";
-var APIgetInsightsVolumeSubtitle = "Wireless Volume on Twitter by City";
-var APIgetInsightsVolumeDataCard = "A United States map showing cities with the most Twitter volume related to Verizon Wireless.";
+var APIgetInsightsSOV = {name: "ShareOfVoice",
+    tag: "twitter_insights_sov",
+    url: "/livecache/vzw_twitter_topic_locations_share_of_voice_1d.json",
+    insightUrl: "/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json",
+    insightTitle:"Share of Voice",
+    insightSubtitle: "Share of Voice on Twitter by City",
+    insightDataCard: "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."};
 
-var APIgetInsightsSOV = "/livecache/vzw_twitter_topic_locations_share_of_voice_1d.json";
-var APIgetInsightsSOVTab = "/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json";
-var APIgetInsightsSOVTitle = "Share Of Voice";
-var APIgetInsightsSOVSubtitle = "Share of Voice on Twitter by City";
-var APIgetInsightsSOVDataCard = "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city.";
+var APIgetInsightsFollowers = {name: "Followers",
+    url: "/livecache/vzw_twitter_locations_followers_1d.json?key=52812a364dd25",
+    insightUrl: "/livecache/vzw_twitter_followers_summary_1d.json",
+    insightTitle:"Followers",
+    insightSubtitle: "Followers on Twitter by City",
+    insightDataCard: "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b"};
 
-var APIgetInsightsSOVNew = "";
+var APIgetInsightsVolume = {name: "Volume",
+    url: "/livecache/vzw_twitter_topic_locations_volume_1d.json",
+    insightUrl: "/livecache/vzw_twitter_topic_volume_summary_1d.json",
+    insightTitle:"Volume",
+    insightSubtitle: "Wireless Volume on Twitter by City",
+    insightDataCard: "A United States map showing cities with the most Twitter volume related to Verizon Wireless."};
 
-var APIgetInsightsFollowers = "/livecache/vzw_twitter_locations_followers_1d.json?key=52812a364dd25";
-var APIgetInsightsFollowersTab = "/livecache/vzw_twitter_followers_summary_1d.json";
-var APIgetInsightsFollowersTitle = "Followers";
-var APIgetInsightsFollowersSubtitle = "Followers on Twitter by City";
-var APIgetInsightsFollowersDataCard = "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b";
+APIgetInsightsSOV.url = "data/twitter.json";
+APIgetInsightsSOV.insightUrl = "data/insight.json";
+APIgetInsightsFollowers.url = "data/twitter2.json";
+APIgetInsightsFollowers.insightUrl = "data/insight2.json";
+APIgetInsightsVolume.url = "data/twitter3.json";
+APIgetInsightsVolume.insightUrl = "data/insight3.json";
+
+var arrayAPIActivityMap    = [APIgetInsightsSOV, APIgetInsightsFollowers, APIgetInsightsVolume];
 
 //Volume & Sentiment
 var APIvolumeandsentiment = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/sentiment/multitime?period=week&limit=5";
@@ -61,7 +72,7 @@ var APIkeywordfrequency3 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/dril
 var APIconversationvolume = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/conversationvolume/multitime?period=week";
 var APIshareofvoice = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/shareofvoice/aggregate?period=week";
 var APIshareofvoiceCrosstab = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/shareofvoice/crosstab?period=week";
-
+var APIinsedeShareofVoice  = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=sov&business=ves_security&limit=100";
 // LinkedIn
 
 
@@ -97,7 +108,10 @@ var widgetConversationVolume = {
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showQueryForm: true,
-        showToggle1: true
+        showToggle1: true,
+        showInsightsDropdown: true,
+        showInsights: true,
+        insight_url: 'http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=conversation_volume&business=vzw&limit=100'
     }
 }
 
@@ -144,7 +158,7 @@ var widgetPredefinedTopicVolume = {
         dataURL: APItrendingtopics,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
-        legend: false,
+        legend: true,
         tooltip:'Conversation Volume Tooltip Dashboard!',
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
@@ -163,20 +177,49 @@ $(function () {
         widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
         new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
     });
+    
+    
+    
+    $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
+        e.preventDefault();
+              
+              var arrData;  
+              if(this.id == 'predefinedTopicVolumeLegend'){
+                  arrData = widgetPredefinedTopicVolume; 
+              }else if(this.id == 'conversationVolumeLegend'){
+                  arrData = widgetConversationVolume;
+              } 
+               var text = this.text;
+                    // Show the chart
+                    if (text == "Show legend") {
+                        arrData.legend = true;
+			$(this).text("Hide legend");
+			$('#' + this.id).hide();
+                        $('#' + this.id).show();
+                    }
+                    // Hide the chart
+                    else {
+                        arrData.legend = false;
+			$(this).text("Show legend");
+                        $('#' + this.id).hide();
+                        $('#' + this.id).show();
+                       
+                    }
+              arrData.function(arrData);
+    });
 });
+
 /*
  * Keyword Frequency
- * Invokes the ajax call and builds the keyword widget
  */
+
 $(function () {
 
     var KeywordWidget = {
         title: "Smartphones",
-        category: "smartphones",
+        category: "twitter_smartphones",
         dataURL: APIkeywordfrequency1,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
@@ -187,11 +230,9 @@ $(function () {
 
     var KeywordWidget = {
         title: "Tablets",
-        category: "tablets",
+        category: "twitter_tablets",
         dataURL: APIkeywordfrequency2,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
@@ -202,72 +243,62 @@ $(function () {
 
     var KeywordWidget = {
         title: "Features",
-        category: "features",
+        category: "twitter_features",
         dataURL: APIkeywordfrequency3,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
 
-});
+}); //END Keyword Frequency
 
 //Begin Twitter Activity Map Definitions
 
-var definitions = "";
-$(function () {
+var widgetActivityMap = {
+    title: "Twitter Activity Map",
+    subTitle: "Share of Voice on Twitter by City",
+    dataURL: arrayAPIActivityMap,
+    function: ps_graphDefinitions.buildChart,
+    div_location: "maps_widget",
+    legend: false,
+    showInsights : true,
+    zoom_amount: 3,
 
-    definitions = {
-        title: "Twitter Activity Map",
-        subTitle: "Share of Voice on Twitter by City",
-        dataURL: ["twitter.json", "twitter2.json", "twitter3.json", "twitter4.json"],
-        function: ps_graphDefinitions.buildChart,
-        div_location: "maps_widget",
-        legend: false,
+    modal_propeties: {
+        div_location :  "modal-widget-body",
+        header : "Twitter Activity Map - Share of Voice",
+        subheader : "Share of Voice on Twitter by City",
+        function : "launch_maps",
         showInsights : true,
-        zoom_amount: 3,
-
-        modal_propeties: {
-            div_location :  "modal-widget-body",
-            header : "Twitter Activity Map - Share of Voice",
-            subheader : "Share of Voice on Twitter by City",
-            function : "launch_maps",
-            showInsights : true,
-            zoom_amount: 4,
-            tooltip : "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city.",
-            generalMap: new google.maps.LatLng(42,-97.7445),
-            markerLocation: new google.maps.LatLng(30.2665,-97.743)
-        },
+        zoom_amount: 4,
+        showInsightsDropdown: true,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=twitter_insights_sov&business=vzw&limit=100",
+        tooltip : "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city.",
         generalMap: new google.maps.LatLng(42,-97.7445),
         markerLocation: new google.maps.LatLng(30.2665,-97.743)
-    }
-    ps_googlemaps.Initialize(definitions,0);
+    },
+    generalMap: new google.maps.LatLng(42,-97.7445),
+    markerLocation: new google.maps.LatLng(30.2665,-97.743)
+};
+$(function () {
+    ps_googlemaps.Initialize(widgetActivityMap,0);
 
 });
 
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-var userStream = {
-    dataURL: APIgettoptweets,
-    function: ps_graphDefinitions.buildUsersTwitterStream,
-    legend: false
-};
-
-var mentionStream = {
-    dataURL: APIgettweetsmentions,
-    function: ps_graphDefinitions.buildMentionsTwitterStream,
-    legend: false
-};
-
-$(function () {  
-    new ps_utilities.loadJsonpData(userStream);
-    new ps_utilities.loadJsonpData(mentionStream);
-    var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadJsonpData(userStream);
-        new ps_utilities.loadJsonpData(mentionStream);    
-    }, 80000); 
+$(function () {
+	var widgetTwitterStream = {
+		dataURL: [APIgettoptweets, APIgettweetsmentions],
+		function: ps_graphDefinitions.buildTwitterStream,
+		legend: false
+	};    
+	new ps_utilities.loadTwitterStream(widgetTwitterStream);
+	
+	var getTweetDataTimer = window.setTimeout(function () {
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+    }, 80000);
 });
 //End Twitter Stream Definitions
 
@@ -290,6 +321,8 @@ var widget_volumeandsentiment = {
         div_location: "modal-widget-body",
         showVolumeAndSentimentMenu: true,
         function: ps_graphDefinitions.buildBarChart,
+        showInsightsDropdown: false,
+        showMenuDropdown: true,
         insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=volume_sentiment&business=ves_security&limit=100",
         dataURL: APIvolumeandsentiment
     }
@@ -310,7 +343,7 @@ var widget_sentimentCompetitors = {
         subtitle: "With Key Competitors",
         tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
         div_location: "modal-widget-body",
-        showVolumeAndSentimentMenu: false,
+        showInsightsDropdown: false,
         function: ps_graphDefinitions.buildSentimentCompetitors,
         dataURL: APIsentimentcompetitors
     }
@@ -320,37 +353,38 @@ $(function () {
     new ps_utilities.loadData(widget_sentimentCompetitors);
 });
 
-//Begin Metric Ticker
+/*
+ * Metric Ticker
+ */
 
 $(function () {
-	
-var widget = {
-    title: "",
-    subTitle: "",
- 
-    dataURLSentiment: APIsentimentsnapshot,
-    dataURLConversation: APIconversationsnapshot,
-    function: ps_graphDefinitions.metricTicker,
-    div_location: "metricTicker",
-    legend: false
-}
 
-new ps_utilities.multipleLoadData(widget);
+    var widget = {
+        title: "",
+        subTitle: "",
 
-});
-//End Metric Ticker
+        dataURLSentiment: APIsentimentsnapshot,
+        dataURLConversation: APIconversationsnapshot,
+        function: ps_graphDefinitions.metricTicker
+    }
 
-//Begin Top Tweets
+    new ps_utilities.multipleLoadData(widget);
+
+}); //End Metric Ticker
+
+
+/*
+ * Top Tweets
+ */
 
 $(function () {
     var widget = {
         dataURL: APIgettoptweets,
-        function: ps_graphDefinitions.topTweets,
-        legend: false
+        function: ps_graphDefinitions.topTweets
     };
     new ps_utilities.loadJsonpData(widget);
-});
-//End Top Tweets
+}); //End Top Tweets
+
 
 
 
@@ -359,21 +393,27 @@ $(function () {
  * */
 
 
-pieWidget =  function getPieChart(source){
-
-    if(source === undefined){
-        source = "";
-    }
-
-    var PieCharWidget = {
-        title: "",
-        subTitle: "",
-        dataURL: APIshareofvoiceCrosstab,
+var widget_pie = {
+    title: "",
+    subTitle: "",
+    dataURL: APIshareofvoiceCrosstab,
+    function: ps_graphDefinitions.buildPieChart,
+    div_location: "div_pie_chart",
+    legend: false,
+    modal: {
+        source : "",
+        title: "Share of Voice",
+        header : "Share of Voice",
+        subheader : "With key Competitors",
+        tooltip : "Share of Voice by media type for Verizon Wireless and key competitors.",
+        div_location: "modal-widget-body",
         function: ps_graphDefinitions.buildPieChart,
-        div_location: "div_pie_chart",
-        legend: false,
-        source : source
+        dataURL: APIshareofvoiceCrosstab,
+        insight_url : APIinsedeShareofVoice,
+        showMenu : true
     }
-    new ps_utilities.loadData(PieCharWidget);
 }
-pieWidget();
+
+$(function(){
+    new ps_utilities.loadData(widget_pie);
+});

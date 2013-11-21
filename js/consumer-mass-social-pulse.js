@@ -69,21 +69,83 @@ var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillabl
 // Selectable Topics
 var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/conversationvolume/multitime?limit=10";
 
+var APIgetInsightsSOV = {name: "ShareOfVoice",
+    url:"/livecache/cmb_twitter_topic_locations_share_of_voice_1d.json",
+    insightUrl: "/livecache/cmb_twitter_topic_share_of_voice_summary_1d.json",
+    insightTitle:"Share of Voice",
+    insightSubtitle: "Share of Voice on Twitter by City",
+    insightDataCard: "A United States map displaying Share of Voice by city for Verizon CMB and key competitors. The color of a circle indicates the leading competitor for that city."};
+
+var APIgetInsightsFollowers = {name: "Followers",
+    url: "/livecache/cmb_twitter_locations_followers_1d.json",
+    insightUrl: "/livecache/cmb_twitter_followers_summary_1d.json",
+    insightTitle:"Followers",
+    insightSubtitle: "Followers on Twitter by City",
+    insightDataCard: "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b"};
+
+var APIgetInsightsVolume = {name: "Volume",
+    url: "/livecache/cmb_twitter_topic_locations_volume_1d.json",
+    insightUrl: "/livecache/cmb_twitter_topic_volume_summary_1d.json",
+    insightTitle:"Volume",
+    insightSubtitle: "Wireless Volume on Twitter by City",
+    insightDataCard: "A United States map showing cities with the most Twitter volume related to Verizon CMB."};
+
+APIgetInsightsSOV.url = "data/twitter_sov_cmb.json";
+APIgetInsightsSOV.insightUrl = "data/twitter_sov_cmb_insight.json";
+APIgetInsightsFollowers.url = "data/twitter_followers_cmb.json";
+APIgetInsightsFollowers.insightUrl = "data/twitter_followers_cmb_insight.json";
+APIgetInsightsVolume.url = "data/twitter_volume_cmb.json";
+APIgetInsightsVolume.insightUrl = "data/twitter_volume_cmb_insight.json";
+
+
+var arrayAPIActivityMap    = [APIgetInsightsSOV, APIgetInsightsFollowers, APIgetInsightsVolume];
 //Data Manipulation
 
 /*
- * Keyword Frequency
- * Invokes the ajax call and builds the keyword widget
+ * Metric Ticker
  */
+
+$(function () {
+	
+var widget = {
+    title: "",
+    subTitle: "",
+ 
+    dataURLSentiment: APIsentimentsnapshot,
+    dataURLConversation: APIconversationsnapshot,
+    function: ps_graphDefinitions.metricTicker
+}
+
+new ps_utilities.multipleLoadData(widget);
+
+});//End Metric Ticker
+
+
+/*
+ * Top Tweets
+ */
+
+$(function () {
+  $('body').tooltip( { selector: "a"});
+  var widget = {
+      dataURL: APIgettoptweets,
+      function: ps_graphDefinitions.topTweets
+  };
+  new ps_utilities.loadJsonpData(widget);
+}); //End Top Tweets
+
+
+/*
+ * Keyword Frequency
+ */
+
 $(function () {
 
     var KeywordWidget = {
         title: "Content",
-        category: "content",
+        category: "twitter_content",
         dataURL: APIkeywordfrequency1,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
@@ -94,11 +156,9 @@ $(function () {
 
     var KeywordWidget = {
         title: "Product",
-        category: "product",
+        category: "twitter_product",
         dataURL: APIkeywordfrequency2,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
@@ -109,52 +169,108 @@ $(function () {
 
     var KeywordWidget = {
         title: "Service",
-        category: "service",
+        category: "twitter_service",
         dataURL: APIkeywordfrequency3,
-        function: ps_graphDefinitions.buildKeywordTrending,
-        div_location: "keywordTrendingDiv",
-        legend: false
+        function: ps_graphDefinitions.buildKeywordTrending
     }
 
     new ps_utilities.loadData(KeywordWidget);
 
 }); // END Keyword Frequency
 
-//Begin Metric Ticker
 
-$(function () {
-	
-var widget = {
-    title: "",
-    subTitle: "",
- 
-    dataURLSentiment: APIsentimentsnapshot,
-    dataURLConversation: APIconversationsnapshot,
-    function: ps_graphDefinitions.metricTicker,
-    div_location: "metricTicker",
-    legend: false
+/*
+ * Volume & Sentiment
+ */
+var widget_volumeandsentiment = {
+    title: "Volume & Sentiment",
+    subtitle: "",
+    timelabel: "7 days",
+    dataURL: APIvolumeandsentiment,
+    function: ps_graphDefinitions.buildBarChart,
+    div_location: "barChartDiv",
+    legend: false,
+    modal: {
+        title: "Volume & Sentiment",
+        subtitle: "Daily Volume & Sentiment",
+        tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
+        div_location: "modal-widget-body",
+        showVolumeAndSentimentMenu: true,
+        function: ps_graphDefinitions.buildBarChart,
+        showInsightsDropdown: false,
+        showMenuDropdown: true,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=volume_sentiment&business=ves_security&limit=100",
+        dataURL: APIvolumeandsentiment
+    }
 }
 
-new ps_utilities.multipleLoadData(widget);
+/*
+ * Sentiment Competitors
+ */
+var widget_sentimentCompetitors = {
+    title: "Volume & Sentiment",
+    subtitle: "",
+    timelabel: "7 days",
+    dataURL: APIsentimentcompetitors,
+    function: ps_graphDefinitions.buildSentimentCompetitors,
+    div_location: "sentimentCompetitorsDiv",
+    modal: {
+        title: "Volume & Sentiment",
+        subtitle: "With Key Competitors",
+        tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
+        div_location: "modal-widget-body",
+        showInsightsDropdown: false,
+        function: ps_graphDefinitions.buildSentimentCompetitors,
+        dataURL: APIsentimentcompetitors2
+    }
+}
+$(function () {
+    new ps_utilities.loadData(widget_volumeandsentiment);
+    new ps_utilities.loadData(widget_sentimentCompetitors);
+});
+
+var widgetActivityMap = {
+    title: "Twitter Activity Map",
+    subTitle: "Share of Voice on Twitter by City",
+    dataURL: arrayAPIActivityMap,
+    function: ps_graphDefinitions.buildChart,
+    div_location: "maps_widget",
+    legend: false,
+    showInsights : true,
+    zoom_amount: 3,
+
+    modal_propeties: {
+        div_location :  "modal-widget-body",
+        header : "Twitter Activity Map - Share of Voice",
+        subheader : "Share of Voice on Twitter by City",
+        function : "launch_maps",
+        showInsights : true,
+        zoom_amount: 4,
+        showInsightsDropdown: true,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=twitter_insights_sov&business=cmb&limit=100",
+        tooltip : "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city.",
+        generalMap: new google.maps.LatLng(42,-97.7445),
+        markerLocation: new google.maps.LatLng(30.2665,-97.743)
+    },
+    generalMap: new google.maps.LatLng(42,-97.7445),
+    markerLocation: new google.maps.LatLng(30.2665,-97.743)
+};
+$(function () {
+    ps_googlemaps.Initialize(widgetActivityMap,0);
 
 });
-//End Metric Ticker
-
-
 
 //Begin Twitter Stream Definitions
-
 $(function () {
 	var widgetTwitterStream = {
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
 		legend: false
 	};    
-	new ps_utilities.loadJsonpData(widgetTwitterStream);
+	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadJsonpData(widgetTwitterStream);      
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 80000);
 });
-
 //End Twitter Stream Definitions

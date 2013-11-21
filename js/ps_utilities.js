@@ -27,54 +27,20 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		$.ajax({
-			url: arrayData.dataURL[0],
-			dataType: "jsonp",
-			crossDomain: true,
-			async: false,
-			success: function(dataResponseUsers) {
-				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-				arrayData.function(arrayData);
-			},
-           	error: function(e) { console.log('Error making request'); },
-       	});
-	
-		$.ajax({
-            url: arrayData.dataURL[1],
-			dataType: "jsonp",
-            crossDomain: true,
-			async: false,
-            success: function(dataResponseMentions) {
-				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-				arrayData.function(arrayData);
-            },
-            error: function(e) { console.log('Error making request'); },
-        });		
-	
-       /* $.ajax({      
-            url: arrayData.dataUsersURL,
-			dataType: "jsonp",
-            crossDomain: true,
-            success: function(dataResponse) {
-				arrayData.jsonpDataUsers = dataResponse;
-				ps_graphDefinitions.jsonpDataUsers = dataResponse;
-				arrayData.function(arrayData);
-            },
-            error: function(e) { console.log('Error making request'); },
-        });
-		
-		$.ajax({
-            url: arrayData.dataMentionsURL,
+        $.ajax({
+            type: "GET",
             dataType: "jsonp",
-            crossDomain: true,            
+            crossDomain: true,
+            contentType: "application/json",
+            url: arrayData.dataURL,
+            async: false,
             success: function(dataResponse) {
-				arrayData.jsonpDataMentions = dataResponse;
-				ps_graphDefinitions.jsonpDataMentions = dataResponse;
-				arrayData.function(arrayData);
+                arrayData.jsonpData = dataResponse;
+                ps_graphDefinitions.jsonpData = dataResponse;
+                arrayData.function(arrayData);
             },
             error: function(e) { console.log('Error making request'); },
         });
-			*/	
     };
 
     ps_utilities.processData = function (data) {
@@ -130,7 +96,29 @@
     {
         $("body stop").attr("stop-color","#000000");
     }
-    
+
+    ps_utilities.RemoveLogo = function()
+    {
+        $('g.AxisText').html('');
+        $('g.LegendItem').remove();
+    }
+
+    ps_utilities.AddTitle = function(div, element)
+    {
+        $("#" + div + " .pull-left span").text(element);
+    }
+
+    ps_utilities.AddSubTitle = function(div, element)
+    {
+        $("#" + div + " .pull-left small").text(element);
+    }
+
+    ps_utilities.AddTooltip = function(div, element)
+    {
+        $("#" + div + " .pull-right #tooltipp").attr("data-original-title",element);
+        $('g.LegendItem').remove();
+    }
+
     ps_utilities.multipleLoadData = function (arrayData)
     {
 
@@ -325,6 +313,58 @@
         }
 
         new ps_utilities.loadData(obj);
+    }
+    
+    ps_utilities.loadTwitterStream = function (arrayData)
+    {
+		$.ajax({
+			url: arrayData.dataURL[0],
+			dataType: "jsonp",
+			crossDomain: true,
+			async: false,
+			success: function(dataResponseUsers) {
+				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
+				arrayData.function(arrayData);
+			},
+           	error: function(e) { console.log('Error making request'); },
+       	});
+	
+		$.ajax({
+            url: arrayData.dataURL[1],
+			dataType: "jsonp",
+            crossDomain: true,
+			async: false,
+            success: function(dataResponseMentions) {
+				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
+				arrayData.function(arrayData);
+            },
+            error: function(e) { console.log('Error making request'); },
+        });			
+    };
+
+    ps_utilities.showMenuSocial = function(datasource){
+        var sources = [];
+        var results = [];
+        $.ajax({
+            type : "GET",
+            url  : datasource,
+            dataType : "json",
+            async: false,
+            success : function(data){
+                sources = data.data;
+            },
+            error: function(e){console.warn(e)}
+        });
+
+        sources.forEach(function(k){
+            if(_.where(results, {id : k.id_2}).length === 0){
+                results.push({
+                    id : k.id_2,
+                    display : k.display_2
+                });
+            }
+        });
+        return results.sort();
     }
 
 

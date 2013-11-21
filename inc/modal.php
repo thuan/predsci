@@ -53,12 +53,16 @@
                 <button class="btn insights-history-see-more btn-inverse">See more</button>
             </div>
         </div>
+
+
+
+
     </div>
     <div class="modal-body">
         <div id="modal-widget-body"></div>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>-->
         <div id="modal-stealth"></div>
     </div>
 </div>
