@@ -27,28 +27,29 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
+		var i = 0;
 		$.ajax({
-            url: arrayData.dataURL[""],
+            url: arrayData.dataURL[i],
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
             success: function(dataResponse) {
-				
-				ps_graphDefinitions.jsonpData[""] = dataResponse;
+				ps_graphDefinitions.jsonpData[i] = dataResponse;
 				arrayData.function(arrayData);
+				i++;
             },
             error: function(e) { console.log('Error making request'); },
         });
 		
 		$.ajax({
-            url: arrayData.dataURL[1],
+            url: arrayData.dataURL[i],
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
             success: function(dataResponse) {
-				
-				ps_graphDefinitions.jsonpData[1] = dataResponse;
+				ps_graphDefinitions.jsonpData[i] = dataResponse;
 				arrayData.function(arrayData);
+				i++;
             },
             error: function(e) { console.log('Error making request'); },
         });
