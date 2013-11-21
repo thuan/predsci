@@ -42,6 +42,33 @@
             error: function(e) { console.log('Error making request'); },
         });
     };
+	
+	ps_utilities.loadTwitterStream = function (arrayData)
+    {
+		$.ajax({
+			url: arrayData.dataURL[0],
+			dataType: "jsonp",
+			crossDomain: true,
+			async: false,
+			success: function(dataResponseUsers) {
+				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
+				arrayData.function(arrayData);
+			},
+           	error: function(e) { console.log('Error making request'); },
+       	});
+	
+		$.ajax({
+            url: arrayData.dataURL[1],
+			dataType: "jsonp",
+            crossDomain: true,
+			async: false,
+            success: function(dataResponseMentions) {
+				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
+				arrayData.function(arrayData);
+            },
+            error: function(e) { console.log('Error making request'); },
+        });			
+    };
 
     ps_utilities.processData = function (data) {
         var chartOpt = {};
@@ -315,32 +342,7 @@
         new ps_utilities.loadData(obj);
     }
     
-    ps_utilities.loadTwitterStream = function (arrayData)
-    {
-		$.ajax({
-			url: arrayData.dataURL[0],
-			dataType: "jsonp",
-			crossDomain: true,
-			async: false,
-			success: function(dataResponseUsers) {
-				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
-				arrayData.function(arrayData);
-			},
-           	error: function(e) { console.log('Error making request'); },
-       	});
-	
-		$.ajax({
-            url: arrayData.dataURL[1],
-			dataType: "jsonp",
-            crossDomain: true,
-			async: false,
-            success: function(dataResponseMentions) {
-				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
-				arrayData.function(arrayData);
-            },
-            error: function(e) { console.log('Error making request'); },
-        });			
-    };
+    
 
     ps_utilities.showMenuSocial = function(datasource){
         var sources = [];
