@@ -47,11 +47,11 @@
 			async: false,
             success: function(dataResponseMentions) {
 				responseMentions = dataResponseMentions;
-				arrayData.function(responseUsers, responseMentions);
             },
             error: function(e) { console.log('Error making request'); },
         });
-
+		
+		arrayData.function(responseUsers, responseMentions);
 	
        /* $.ajax({      
             url: arrayData.dataUsersURL,
