@@ -48,15 +48,15 @@
 		var usersURL = arrayData.dataURL[0];
 		var mentionsURL = arrayData.dataURL[1];
 		var arrayDataSucess = [ps_graphDefinitions.jsonpData[0], ps_graphDefinitions.jsonpData[1]];
-		
+		var a, b;
 		$.when($.ajax({
 			url: usersURL,
 			dataType: "jsonp",
 			crossDomain: true,
 			async: false,
 			success: function(dataResponseUsers) {
-				arrayData.jsonpData = dataResponseUsers;
 				ps_graphDefinitions.jsonpData[0] = dataResponseUsers;
+				a = dataResponseUsers;
 			},
            	error: function(e) { console.log('Error making request'); },
        	}),
@@ -66,12 +66,16 @@
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
-            success: function(dataResponseMentions) {
-				arrayData.jsonpData = dataResponseMentions;
+            success: function(dataResponseMentions) {				
 				ps_graphDefinitions.jsonpData[1] = dataResponseMentions;
+				b = dataResponseMentions;
             },
             error: function(e) { console.log('Error making request'); },
-        })).then(arrayData.function(arrayDataSucess));		
+        })).then(function(){
+			ps_twitterUtils.buildWidget(a,b);
+			ps_twitterUtils.buildWidgetScroll();
+        	ps_twitterUtils.buildWidgetModal();
+		});		
     };
 
     ps_utilities.processData = function (data) {

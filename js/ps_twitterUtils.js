@@ -154,16 +154,16 @@
 	        }
 	    };
 		
-		ps_twitterUtils.buildWidget = function() {
+		ps_twitterUtils.buildWidget = function(a,b) {
 			var index, tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime, data, dataMentions;
 			index = 0;
-			data = ps_graphDefinitions.jsonpData[index].groups[0];
+			data = a.groups[0];
 	        tweetData = data.statuses;
 	        statusCount = data.statuses.length;
 	        divIndex = 0;
 	        adminHtml = "";
 			index++;
-			dataMentions = ps_graphDefinitions.jsonpData[index];
+			dataMentions = b;
 	        tweetDataMentions = dataMentions.statuses;
 	        statusCountMentions = dataMentions.statuses.length;
 	        tweetStreamHtml = "";
