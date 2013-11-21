@@ -33,7 +33,7 @@
             crossDomain: true,
 			async: false,
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
+				
 				ps_graphDefinitions.jsonpData[0] = dataResponse;
 				arrayData.function(arrayData);
             },
@@ -41,14 +41,12 @@
         });
 		
 		$.ajax({
-			cache: true,
-            data: "",
             url: arrayData.dataURL[1],
 			dataType: "jsonp",
             crossDomain: true,
 			async: false,
             success: function(dataResponse) {
-				arrayData.jsonpData = dataResponse;
+				
 				ps_graphDefinitions.jsonpData[1] = dataResponse;
 				arrayData.function(arrayData);
             },
