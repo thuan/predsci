@@ -27,10 +27,13 @@
     
     ps_utilities.loadJsonpData = function (arrayData)
     {
-		$.ajax({      
+		$.ajax({
+			cache: true,
+            data: "",
             url: arrayData.dataURL,
 			dataType: "jsonp",
             crossDomain: true,
+			async: false,
             success: function(dataResponse) {
 				arrayData.jsonpData = dataResponse;
 				ps_graphDefinitions.jsonpData = dataResponse;
