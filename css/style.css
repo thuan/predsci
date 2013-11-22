@@ -82,6 +82,27 @@ div.default {
 }
 
 /*Twitter Stream*/
+.newsHeaderAdmin {
+	float: left;
+	height: 20px;
+	width: 50%;
+	background: #232122;
+	border-bottom: 12px solid #7a2220;
+	font-size: 16px;
+	text-align: center;
+	padding: 12px 0;
+}
+.newsHeader {
+	float: right;
+	height: 20px;
+	width: 50%;
+	background: #232122;
+	border-bottom: 12px solid #7a2220;
+	font-size: 16px;
+	text-align: center;
+	padding: 12px 0;
+}
+
 .div_tweetsParent {
 	position:relative;
 	z-index:999;
@@ -95,9 +116,8 @@ div.default {
 		background:no-repeat 50% 50%;
 	}
 	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
-    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:345px;}
-    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:250px;}
-
+    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:355px;}
+    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top: 303px;}
 #twitterStreamModal .modal-body
 {
     padding: 0;
@@ -105,7 +125,7 @@ div.default {
 
     #twitterStreamModal .div_tweetsMain {
 
-        height: 370px;
+        height: 390px;
         position: absolute;
         overflow: hidden;
         color: #B1B1B1;
@@ -121,7 +141,7 @@ div.default {
 
 	.div_tweetsMain {
 		width:100%;
-		height:270px;
+		height:320px;
 		position: absolute;	
 		overflow: hidden;
 		color:#B1B1B1;
@@ -132,13 +152,18 @@ div.default {
 
 	.div_tweet {
         padding: 10px 10px 0px 10px;
-        height: 68px;
+        height: 80px;
         position: relative;
-        border-bottom: 1px solid #aaa;
         clear: both;
         overflow: hidden;
+		color: #6a6a6a;
+		border-bottom: 1px solid #4c4c4c;
 	}
 		.div_tweetImage {
+			padding-top: 3px;
+			float: left;
+			width: 18%;
+			padding-left: 15px;
 			float:left;
 			margin:0 10px 0 0;
 		}
@@ -147,8 +172,10 @@ div.default {
 				border: 3px solid #aaaaaa;
 			}
 		.div_tweetDescription {
-			font-size:11px;
-			line-height:16px;
+			font-size: 11px;
+			overflow: hidden;
+			color:#B1B1B1;
+			line-height: 15px;
 		}
 			.div_tweetDescription h4{margin:0;}
 				.div_tweetDescription h4 a {
@@ -963,7 +990,7 @@ body
 #dashboard_content .widget_container_holder #maps_widget
 {
     width: 100%;
-    height: 320px;
+    height: 250px;
     overflow: hidden;
     position: relative; 
     background-color: rgb(229, 227, 223);
