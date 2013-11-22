@@ -102,7 +102,6 @@ div.default {
 	text-align: center;
 	padding: 12px 0;
 }
-
 .div_tweetsParent {
 	position:relative;
 	z-index:999;
@@ -117,7 +116,8 @@ div.default {
 	}
 	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
     #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:355px;}
-    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top: 303px;}
+    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:303px;}
+
 #twitterStreamModal .modal-body
 {
     padding: 0;
@@ -154,17 +154,15 @@ div.default {
         padding: 10px 10px 0px 10px;
         height: 80px;
         position: relative;
+        border-bottom: 1px solid #aaa;
         clear: both;
         overflow: hidden;
-		color: #6a6a6a;
-		border-bottom: 1px solid #4c4c4c;
 	}
 		.div_tweetImage {
 			padding-top: 3px;
 			float: left;
 			width: 18%;
 			padding-left: 15px;
-			float:left;
 			margin:0 10px 0 0;
 		}
 			.img_dp {
@@ -172,10 +170,8 @@ div.default {
 				border: 3px solid #aaaaaa;
 			}
 		.div_tweetDescription {
-			font-size: 11px;
-			overflow: hidden;
-			color:#B1B1B1;
-			line-height: 15px;
+			font-size:11px;
+			line-height:16px;
 		}
 			.div_tweetDescription h4{margin:0;}
 				.div_tweetDescription h4 a {
