@@ -151,7 +151,7 @@
 	
 	ps_utilities.AddTwitterHeader = function(div, element)
     {
-        $("#modal_widget #modal-widget-body #" + div).text(element);
+        $("#" + div + ".newsHeaderAdmin").text(element);
     }
 
     ps_utilities.multipleLoadData = function (arrayData)
