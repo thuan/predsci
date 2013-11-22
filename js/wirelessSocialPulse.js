@@ -290,7 +290,8 @@ $(function () {
 //Begin Twitter Stream Definitions
 var widgetTwitterStream = {
 		title: 'Twitter Stream',
-    	subtitle: 'Subtitle of conversation volume',
+    	subtitle: 'Tweets mentioning Verizon Wireless',
+		tooltip: 'A stream of tweets related to Verizon Wireless.',
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
@@ -298,13 +299,12 @@ var widgetTwitterStream = {
 		tooltip:'Predefined Topic Volume',
     	id_div: 'twitterStream',
     	modal: {
-        	title: 'Predefined Topic Volume',
-        	subtitle: 'Subtitle of conversation volume',
-        	dataURL: [APIgettoptweets, APIgettweetsmentions],
-        	function: ps_graphDefinitions.buildTwitterStream,
+			title: "Twitter Stream",
+        	subtitle: "Tweets mentioning Verizon Wireless",
+			tooltip: "A stream of tweets related to Verizon Wireless.",
+        	function : "launch_twitter",
         	div_location: 'modal-widget-body',
-        	legend: true,
-        	tooltip:'Conversation Volume Tooltip Dashboard!',
+        	legend: false,
         	showInsights: false,
         	showToggle2: false
 		}
