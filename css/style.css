@@ -95,15 +95,15 @@ div.default {
 		background:no-repeat 50% 50%;
 	}
 	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
-    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:355px;}
+    .twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:355px;}
     .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top: 310px;}
 
-#twitterStreamModal .modal-body
+.twitterStreamModal .modal-body
 {
     padding: 0;
 }
 
-    #twitterStreamModal .div_tweetsMain {
+    .twitterStreamModal .div_tweetsMain {
 
         height: 370px;
         position: absolute;
@@ -113,7 +113,7 @@ div.default {
     }
 
 
-#twitterStreamModal #div_mentionTweet .div_tweet
+.twitterStreamModal #div_mentionTweet .div_tweet
 {
     border-left: 1px solid #aaa;
 }
@@ -170,17 +170,17 @@ div.default {
 				font-size:10px;
 			}
 		
-#twitterStreamModal	{width: 700px!important; background: #000 url(../images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
+.twitterStreamModal	{width: 700px!important; background: #000 url(../images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
 
 
-#twitterStreamModal	.modal-header #right-side
+.twitterStreamModal	.modal-header #right-side
 {
     float: right;
     width: 40px;
 }
 
 
-#twitterStreamModal .modal-header .close
+.twitterStreamModal .modal-header .close
 {
     color: #fff;
     filter: alpha(opacity=100);
@@ -188,25 +188,25 @@ div.default {
     margin: -18px 0 0 10px;
 }
 
-#twitterStreamModal .modal-header #icon-info
+.twitterStreamModal .modal-header #icon-info
 {
     margin-right: 10px;
 }
 
 
-#twitterStreamModal	.modal-header h3
+.twitterStreamModal	.modal-header h3
 {
     color: #fff;
     font-weight: normal;
 }
 
-#twitterStreamModal	.modal-header small
+.twitterStreamModal	.modal-header small
 {
     font-size: .5em;
 }
 
 
-#twitterStreamModal	.modal-header
+.twitterStreamModal	.modal-header
 {
     border-bottom: none;
 }
@@ -214,7 +214,7 @@ div.default {
 
 #twitterModal 		{width: 700px!important;}
 
-#twitterStreamModal .headng .lft, #twitterStreamModal .headng .rht
+.twitterStreamModal .headng .lft, .twitterStreamModal .headng .rht
 {
     width: 320px !important;
     text-align: center;
@@ -222,19 +222,19 @@ div.default {
 
 
 
-	#twitterStreamModal .headng{
+	.twitterStreamModal .headng{
 		overflow: hidden;
 		padding: 20px 0 0;
 	}
-		#twitterStreamModal .lft,
-		#twitterStreamModal .rht{font-weight: bold; color: #fff;}
-		#div_verizonTweet, #twitterStreamModal .lft{float: left;}
-		#div_mentionTweet, #twitterStreamModal .rht{float: right;}
+		.twitterStreamModal .lft,
+		.twitterStreamModal .rht{font-weight: bold; color: #fff;}
+		#div_verizonTweet, .twitterStreamModal .lft{float: left;}
+		#div_mentionTweet, .twitterStreamModal .rht{float: right;}
 		
 #div_mentionTweet,
 #div_verizonTweet,
-#twitterStreamModal .lft,
-#twitterStreamModal .rht,
+.twitterStreamModal .lft,
+.twitterStreamModal .rht,
 #div_mentionTweet .div_tweetsMain,
 #div_verizonTweet .div_tweetsMain{
 	width:350px !important;
