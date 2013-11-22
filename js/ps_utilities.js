@@ -69,7 +69,7 @@
             },
             error: function(e) { console.log('Error making request'); },
         })).then(function(){
-			arrayData.function(usersData, mentionData)		
+			arrayData.function(usersData, mentionData, arrayData)		
 		});		
     };
 
