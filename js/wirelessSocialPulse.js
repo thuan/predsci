@@ -311,8 +311,11 @@ $(function () {
 			news_header_admin: "Tweets from Verizon Wireless Handles",
         	legend: false,
 		}
-};
-	new ps_utilities.loadTwitterStream(widgetTwitterStream);
+};	
+  	var timerTwitter = window.setTimeout(function () {
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+    }, 100);
+	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 60000);
