@@ -1,291 +1,423 @@
 /**
- *
+ *  
  * @version		1.0
  * @package		Predictive Science Dashboard
- * @subpackage	Wireless Social Pulse
+ * @subpackage	Consumer & Mass Business Social Pulse
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
 
-//JSHint ignores
-/*global window:false, ps_graphDefinitions:false, jQuery:false, sessionStorage:false*/
+var PropertyID = "2";
+var InsightID = "cmb";
+var PropertyTitle = "Consumer & Mass Business Social Pulse";
+var userID = "6";
+var EndpointHostDS = "http://wcg-verizon-api-alpha.herokuapp.com";
 
-(function (ps_twitterUtils, $, undefined) {
-	
-	ps_twitterUtils.topTweets = function(response) {
-    	
-    	var date            = new Date();
-    	var response = ps_graphDefinitions.jsonpData;
-        var topTweets       = '<table class="table table-bordered" id="tableTopTweets"><thead><tr><th>Tweet</th><th>Handle</th><th>@Replies</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>';
-        var topTweetsModal  = '<table class="table table-bordered" id="tableTopTweetsModal"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>';
-        var userName        = response.groups[0].userName;
-        var tweetData       = response.groups[0].statuses;
-        var statusCount     = response.groups[0].statuses.length; 
-        var rank,screen_name,status_text,reply_count,status_time_str;
-        topTweets += '<tbody>';
-        for ( i = 0; i < 5; i++) {
-            
-            screen_name      = tweetData[i].screen_name;
-            status_text      = tweetData[i].status_text;
-            reply_count      = tweetData[i].reply_count;
-            retweet_count    = tweetData[i].retweet_count;
-            tweet_engagement =  reply_count + retweet_count;
-            status_time_str  = tweetData[i].status_time_str.split(" ");
-            status_time_str  = status_time_str[0].split("-");
-            status_time_str  = status_time_str[0] +"/"+status_time_str[1]+"/"+status_time_str[2];
+//endpoints
+var APINotifications = "http://dashboard-api.herokuapp.com/rest/Topics/All/Recent/Alerts";
+var APIsentimentsnapshot = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/sentiment/metricsperiod?period=week&period_count=2&formatter=normalized";
+var APIconversationsnapshot = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/shareofvoice/metricsperiod?period=week&period_count=2";
+var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/topics/multitime?period=week&limit=5";
+var APIgettoptweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=7&period=day&period_count=7&limit=204";
+var APItwitterfollowers = "/livecache/cmb_twitter_followers_1d.json?";
 
-            
-            topTweets += "<tr class='newrow'>";
-            topTweets += '<td>'+ps_twitterUtils.addlinks(status_text)+'</td>';
-            topTweets += '<td>@'+screen_name+'</td>';
-            topTweets += '<td>'+reply_count+'</td>';
-            topTweets += '<td>'+retweet_count+'</td>';
-            topTweets += '<td>'+tweet_engagement+'</td>';
-            topTweets += '<td>'+status_time_str+'</td>';
-            topTweets += '</tr>';
-            
-        }
-        	topTweets += '</tbody>';
-        	topTweetsModal += '<tbody>';
-        var divIndex=0;
-        for ( i = 0; i < statusCount; i++) {
-            
-            screen_name      = tweetData[i].screen_name;
-            status_text      = tweetData[i].status_text;
-            reply_count      = tweetData[i].reply_count;
-            retweet_count    = tweetData[i].retweet_count;
-            tweet_engagement =  reply_count + retweet_count;
-            img_url          = tweetData[i].img_url;
-            tweetTime        = tweetData[i].status_time_str;
-            status_time_str  = tweetData[i].status_time_str.split(" ");
-            status_time_str  = status_time_str[0].split("-");
-            status_time_str  = status_time_str[0] +"/"+status_time_str[1]+"/"+status_time_str[2];
+//Insights
+var APIgetInsightsVolume = "/livecache/cmb_twitter_topic_locations_volume_1d.json";
+var APIgetInsightsVolumeTab = "/livecache/cmb_twitter_topic_volume_summary_1d.json";
+var APIgetInsightsVolumeTitle = "Volume";
+var APIgetInsightsVolumeSubtitle = "Volume on Twitter by City";
+var APIgetInsightsVolumeDataCard = "A United States map showing cities with the most Twitter volume related to Verizon CMB.";
+var APIgetInsightsSOV = "/livecache/cmb_twitter_topic_locations_share_of_voice_1d.json";
+var APIgetInsightsSOVTab = "/livecache/cmb_twitter_topic_share_of_voice_summary_1d.json";
+var APIgetInsightsSOVTitle = "Share Of Voice";
+var APIgetInsightsSOVSubtitle = "Share of Voice on Twitter by City";
+var APIgetInsightsSOVDataCard = "A United States map displaying Share of Voice by city for Verizon CMB and key competitors. The color of a circle indicates the leading competitor for that city.";
+var APIgetInsightsFollowers = "/livecache/cmb_twitter_locations_followers_1d.json";
+var APIgetInsightsFollowersTab = "/livecache/cmb_twitter_followers_summary_1d.json";
+var APIgetInsightsFollowersTitle = "Followers";
+var APIgetInsightsFollowersSubtitle = "Followers on Twitter by City";
+var APIgetInsightsFollowersDataCard = "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b";
+
+//Volume & Sentiment
+var APIvolumeandsentiment = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/sentiment/multitime?period=week&limit=5";
+
+//Tweets
+var APIgettweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/user/statuses?group=7&include_replies=false&limit=10";
+var APIgettweets2 = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=vz_fios&limit=25&min_followers=10&include_replies=false";
+var APIgettweetsmentions = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=vz_fios&limit=25&min_followers=10&include_replies=false";
+
+//Keyword Frequency
+var APIkeywordfrequency1 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/twitter_content/aggregate?period=hour&period_count=24";
+var APIKeywordTitle1 = "Content";
+var APIkeywordfrequency2 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/twitter_product/aggregate?period=hour&period_count=24";
+var APIKeywordTitle2 = "Product";
+var APIkeywordfrequency3 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/twitter_service/aggregate?period=hour&period_count=24";
+var APIKeywordTitle3 = "Service";
+
+//Conversation Volume
+var APIconversationvolume = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/conversationvolume/multitime?period=week";
+var APIshareofvoice = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/shareofvoice/aggregate?period=week&limit=100";
+var APIshareofvoiceCrosstab = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/shareofvoice/crosstab?period=week&limit=100";
+
+// Sentiment
+var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=5";
+var APIsentimentcompetitors2 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=20";
+
+// Trending Terms
+var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/trending?limit=10&target=content&filters=sources.twitter";
+
+// Selectable Topics
+var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/conversationvolume/multitime?limit=10";
 
 
-            topTweetsModal  += '<tr>';
-            topTweetsModal  += '<td>'+ps_twitterUtils.addlinks(status_text)+'</td>';
-            topTweetsModal  += '<td>@'+screen_name+'</td>';
-            topTweetsModal  += '<td>'+reply_count+'</td>';
-            topTweetsModal  += '<td>'+retweet_count+'</td>';
-            topTweetsModal  += '<td>'+tweet_engagement+'</td>';
-            topTweetsModal  += '<td>'+status_time_str+'</td>';
-            topTweetsModal  += '</tr>';
-            if ( divIndex === 0 ) {
-                sessionStorage.presentTopTweetIndex = 0;
-                sessionStorage.presentTopTweetIndex_admin=0;
-            }
-            
-            divIndex+=1;
-        }
-        
-        topTweetsModal += '</tbody>';
-        
-        
-        topTweets += '</table>';
-        $('#topTweets').html(topTweets);
-        $('#twitter-feed-modal').html(topTweetsModal);
-        $('#tableTopTweets').dataTable({ 
-        	iDisplayLength: 100,
-        	"aaSorting": [[4, "desc"]],
-            "aoColumns": [
-                          {"bSortable": false},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true}
-                         ],
-        	"bPaginate": false,
-    		"bJQueryUI": false,
-    		"bFilter": false
-    		
 
-    	});
-        $('#tableTopTweetsModal').dataTable({ 
-        	iDisplayLength: 100,
-        	"aaSorting": [[4, "desc"]],
-            "aoColumns": [
-                          {"bSortable": false},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true},
-                          {"bSortable": true}
-                         ],
-        	"bPaginate": false,
-    		"bJQueryUI": false,
-    		"bFilter": false
-    		
+/*Definitions*/
 
-    	});
-        $(".dataTables_info").remove();
-        $('#topTweets div div').remove();
-        $('#tableTopTweets thead tr th:eq(0)').css('background', '#e9f3f8');
-        $('#tableTopTweetsModal thead tr th:eq(0)').css('background', '#e9f3f8');
-        $(".dataTables_length").remove();
-
-        
-      
+/*Definitions Conversation Volume*/
+var widgetConversationVolume = {
+    title: 'Conversation Volume',
+    subtitle: 'by Media Type',
+    dataURL: APIconversationvolume,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv',
+    legend: false,
+    tooltip:'Volume of online conversation for all media types for Verizon CMB.',
+    id_div: 'conversationVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Conversation Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APIconversationvolume,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Volume of online conversation for all media types for Verizon CMB.',
+        class: 'conversationVolume',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showQueryForm: true,
+        showToggle1: true,
+        showInsightsDropdown: true,
+        showInsights: true,
+        insight_url: 'http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=conversation_volume&business=vzw&limit=100'
     }
-		
-	ps_twitterUtils.timeDifference = function (start) {
-		var startDate, endDate, diff, hours, minutes;
-		startDate = new Date(start);
-		endDate = new Date();
-		diff = endDate.getTime() - startDate.getTime();
-		hours = Math.floor(diff / 1000 / 60 / 60);
-		diff -= hours * 1000 * 60 * 60;
-		minutes = Math.floor(diff / 1000 / 60);
-		return (hours <= 9 ? "0" : "") + hours + "h" + (minutes <= 9 ? "0" : "") + minutes + "m";
-	};
+}
 
-	ps_twitterUtils.addlinks = function (data) {
-		//Add link to all http:// links within tweets
-		data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\\>]*[^.,;'">\:\s\\>\)\]\!])/g, function (url) {
-			return '<a target="_blank" style="color:#08c;" href="' + url + '" >' + url + '</a>';
-		});
+var widgetConversationVolumeTemp = {
+    title: 'Conversation Volume',
+    subtitle: 'by Media Type',
+    dataURL: APIconversationvolume,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv',
+    legend: false,
+    tooltip:'Volume of online conversation for all media types for Verizon CMB.',
+    id_div: 'conversationVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Conversation Volume',
+        subtitle: 'by Media Type',
+        dataURL: APIconversationvolume,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Volume of online conversation for all media types for Verizon CMB.',
+        class: 'conversationVolume',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showQueryForm: true,
+        showToggle1: true
+    }
+}
 
-		//Add link to @usernames used within tweets
-		data = data.replace(/\B@([_a-z0-9]+)/ig, function (reply) {
-			return '<a target="_blank" href="http://twitter.com/' + reply.substring(1) + '" style="color:#08c;font-weight:lighter;" >' + reply.charAt(0) + reply.substring(1) + '</a>';
-		});
-		return data;
-	};
+$(function(){
+    $('body').tooltip( { selector: "a"});
+    new ps_utilities.loadData(widgetConversationVolume);
+    new ps_utilities.loadData(widgetPredefinedTopicVolume)
 
-	ps_twitterUtils.moveTweetForwordByOne = function () {
-		var totalNumberOfTweet = 20;
-		if (parseInt(sessionStorage.presentTopTweetIndex) > 0) {
-			sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) - 1;
-			for (var index = 0; index < totalNumberOfTweet; index++) {
-				var top = parseInt($('div[index="' + index + '"]').css('top'));
-				top = top + 80;
-				$('div[index="' + index + '"]').animate({
-					"top": top + "px"
-				}, 500);
-			}
-		}
-	};
+    $("#conversation_volume_query").submit(function(e) {
+        e.preventDefault();
+        widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
+        new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
+    });
+});
 
-	ps_twitterUtils.moveTweetBackByOne = function () {
-		var totalNumberOfTweet = 20;
-		if (parseInt(sessionStorage.presentTopTweetIndex) < totalNumberOfTweet - 2) {
-			sessionStorage.presentTopTweetIndex = parseInt(sessionStorage.presentTopTweetIndex) + 1;
-			for (var index = 0; index < totalNumberOfTweet; index++) {
-				var top = parseInt($('div[index="' + index + '"]').css('top'));
-				top = top - 80;
-				$('div[index="' + index + '"]').animate({
-					"top": top + "px"
-				}, 500);
-			}
-		}
-	};
+var APIgetInsightsSOV = {name: "ShareOfVoice",
+    url:"/livecache/cmb_twitter_topic_locations_share_of_voice_1d.json",
+    insightUrl: "/livecache/cmb_twitter_topic_share_of_voice_summary_1d.json",
+    insightTitle:"Share of Voice",
+    insightSubtitle: "Share of Voice on Twitter by City",
+    insightDataCard: "A United States map displaying Share of Voice by city for Verizon CMB and key competitors. The color of a circle indicates the leading competitor for that city."};
 
-	ps_twitterUtils.moveTweetForwordByOne_admin = function () {
-		var totalNumberOfTweet_admin = 15;
-		if (parseInt(sessionStorage.presentTopTweetIndex_admin) > 0) {
-			sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) - 1;
-			for (var index = 0; index < totalNumberOfTweet_admin; index++) {
-				var top = parseInt($('div[index_admin="' + index + '"]').css('top'));
-				top = top + 80;
-				$('div[index_admin="' + index + '"]').animate({
-					"top": top + "px"
-				}, 500);
-			}
-		}
-	};
+var APIgetInsightsFollowers = {name: "Followers",
+    url: "/livecache/cmb_twitter_locations_followers_1d.json",
+    insightUrl: "/livecache/cmb_twitter_followers_summary_1d.json",
+    insightTitle:"Followers",
+    insightSubtitle: "Followers on Twitter by City",
+    insightDataCard: "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b"};
 
-	ps_twitterUtils.moveTweetBackByOne_admin = function () {
-		var totalNumberOfTweet_admin = 15;
-		if (parseInt(sessionStorage.presentTopTweetIndex_admin) < totalNumberOfTweet_admin - 2) {
-			sessionStorage.presentTopTweetIndex_admin = parseInt(sessionStorage.presentTopTweetIndex_admin) + 1;
-			for (var index = 0; index < totalNumberOfTweet_admin; index++) {
-				var top = parseInt($('div[index_admin="' + index + '"]').css('top'));
-				top = top - 80;
-				$('div[index_admin="' + index + '"]').animate({
-					"top": top + "px"
-				}, 500);
-			}
-		}
-	};
+var APIgetInsightsVolume = {name: "Volume",
+    url: "/livecache/cmb_twitter_topic_locations_volume_1d.json",
+    insightUrl: "/livecache/cmb_twitter_topic_volume_summary_1d.json",
+    insightTitle:"Volume",
+    insightSubtitle: "Wireless Volume on Twitter by City",
+    insightDataCard: "A United States map showing cities with the most Twitter volume related to Verizon CMB."};
 
-	ps_twitterUtils.buildWidget = function (usersData, mentionsData) {
-		var index, tweetData, statusCount, tweetDataMentions, statusCountMentions, divIndex, tweetStreamHtml, adminHtml, screen_name, status_text, img_url, tweetTime;
+APIgetInsightsSOV.url = "data/twitter_sov_cmb.json";
+APIgetInsightsSOV.insightUrl = "data/twitter_sov_cmb_insight.json";
+APIgetInsightsFollowers.url = "data/twitter_followers_cmb.json";
+APIgetInsightsFollowers.insightUrl = "data/twitter_followers_cmb_insight.json";
+APIgetInsightsVolume.url = "data/twitter_volume_cmb.json";
+APIgetInsightsVolume.insightUrl = "data/twitter_volume_cmb_insight.json";
 
-		tweetData = usersData.groups[0].statuses;
-		statusCount = usersData.groups[0].statuses.length;
-		adminHtml = "";
 
-		tweetDataMentions = mentionsData.statuses;
-		statusCountMentions = mentionsData.statuses.length;
-		tweetStreamHtml = "";
+var arrayAPIActivityMap    = [APIgetInsightsSOV, APIgetInsightsFollowers, APIgetInsightsVolume];
+//Data Manipulation
 
-		divIndex = 0;
-		for (index = 0; index < statusCount; index++) {
-			screen_name = tweetData[index].screen_name;
-			status_text = tweetData[index].status_text;
-			img_url = tweetData[index].img_url;
-			tweetTime = tweetData[index].status_time;
+/*
+ * Metric Ticker
+ */
 
-			if (divIndex === 0) {
-				sessionStorage.presentTopTweetIndex = 0;
-				sessionStorage.presentTopTweetIndex_admin = 0;
-			}
-			adminHtml += '<div index_admin="' + divIndex + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
-			divIndex += 1;
-		}
+$(function () {
+	
+var widget = {
+    title: "",
+    subTitle: "",
+ 
+    dataURLSentiment: APIsentimentsnapshot,
+    dataURLConversation: APIconversationsnapshot,
+    function: ps_graphDefinitions.metricTicker
+}
 
-		divIndex = 0;
-		for (index = 0; index < statusCountMentions; index++) {
-			screen_name = tweetDataMentions[index].screen_name;
-			status_text = tweetDataMentions[index].status_text;
-			img_url = tweetDataMentions[index].img_url;
-			tweetTime = tweetDataMentions[index].status_time;
+new ps_utilities.multipleLoadData(widget);
 
-			if (divIndex === 0) {
-				sessionStorage.presentTopTweetIndex = 0;
-				sessionStorage.presentTopTweetIndex_admin = 0;
-			}
-			tweetStreamHtml += '<div index="' + (divIndex) + '" class="div_tweet" style="top:' + (parseInt(divIndex * 1, 10)).toString() + 'px"><div class="div_tweetImage"><a target="_blank" href="https://twitter.com/' + screen_name + '"><img class="img_dp" src="' + img_url + '"></a></div><div class="div_tweetDescription"><h4><a target="_blank" href="https://twitter.com/' + screen_name + '"> ' + screen_name + '</a></h4><div class="div_tweetTime">' + $.timeago(tweetTime) + '</div><div class="div_tweetText">' + ps_twitterUtils.addlinks(status_text) + '</div></div></div>';
-			divIndex += 1;
-		}
-		$("#div_tweeterStream_admin .div_tweetsMain").html(adminHtml);
-		$("#div_tweeterStream .div_tweetsMain").html(tweetStreamHtml);
-	};
+});//End Metric Ticker
 
-	ps_twitterUtils.buildWidgetScroll = function () {
-		var scrollTweetTimer = window.setInterval(function () {
-			if ($(".div_tweetsMain").html() !== "") {
-				ps_twitterUtils.moveTweetBackByOne();
-				ps_twitterUtils.moveTweetBackByOne_admin();
-			}
-		}, 10000);
-		$(".div_upperArrow").on('click', function () {
-			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-		});
 
-		$(".div_downArrow").on('click', function () {
-			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-		});
-	};
+/*
+ * Top Tweets
+ */
 
-	ps_twitterUtils.buildWidgetModal = function () {
-		$("#modal_widget #modal-widget-body").empty();
-		
-		//displaying the modal content
-		
-		$("#modal_widget #modal-widget-body").html("<div id='news_header_admin' class='newsHeaderAdmin'>" + "</div>" + "<div id='news_header' class='newsHeader'></div>" + "<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
-		$("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
-			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-		});
-		$("#modal_widget #modal-widget-body div#div_downArrow").click(function () {
-			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-		});
-		$("#modal_widget #modal-widget-body div#div_upperArrow_admin").click(function () {
-			if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetForwordByOne_admin();
-		});
+$(function () {
+  $('body').tooltip( { selector: "a"});
+  var widget = {
+      dataURL: APIgettoptweets,
+      function: ps_graphDefinitions.topTweets
+  };
+  new ps_utilities.loadJsonpData(widget);
+}); //End Top Tweets
 
-		$("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
-			if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
-		});
-	};
-}(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
+
+/*
+ * Keyword Frequency
+ */
+
+$(function () {
+
+    var KeywordWidget = {
+        title: "Content",
+        category: "twitter_content",
+        dataURL: APIkeywordfrequency1,
+        function: ps_graphDefinitions.buildKeywordTrending
+    }
+
+    new ps_utilities.loadData(KeywordWidget);
+
+});
+
+$(function () {
+
+    var KeywordWidget = {
+        title: "Product",
+        category: "twitter_product",
+        dataURL: APIkeywordfrequency2,
+        function: ps_graphDefinitions.buildKeywordTrending
+    }
+
+    new ps_utilities.loadData(KeywordWidget);
+
+});
+
+$(function () {
+
+    var KeywordWidget = {
+        title: "Service",
+        category: "twitter_service",
+        dataURL: APIkeywordfrequency3,
+        function: ps_graphDefinitions.buildKeywordTrending
+    }
+
+    new ps_utilities.loadData(KeywordWidget);
+
+}); // END Keyword Frequency
+
+
+/*
+ * Volume & Sentiment
+ */
+var widget_volumeandsentiment = {
+    title: "Volume & Sentiment",
+    subtitle: "",
+    timelabel: "7 days",
+    dataURL: APIvolumeandsentiment,
+    function: ps_graphDefinitions.buildBarChart,
+    div_location: "barChartDiv",
+    legend: false,
+    modal: {
+        title: "Volume & Sentiment",
+        subtitle: "Daily Volume & Sentiment",
+        tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
+        div_location: "modal-widget-body",
+        class: "barChartVS",
+        showVolumeAndSentimentMenu: true,
+        function: ps_graphDefinitions.buildBarChart,
+        showInsightsDropdown: false,
+        showMenuDropdown: true,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=volume_sentiment&business=ves_security&limit=100",
+        dataURL: APIvolumeandsentiment
+    }
+}
+
+/*
+ * Sentiment Competitors
+ */
+var widget_sentimentCompetitors = {
+    title: "Volume & Sentiment",
+    subtitle: "",
+    timelabel: "7 days",
+    dataURL: APIsentimentcompetitors,
+    function: ps_graphDefinitions.buildSentimentCompetitors,
+    div_location: "sentimentCompetitorsDiv",
+    modal: {
+        title: "Volume & Sentiment",
+        subtitle: "With Key Competitors",
+        tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
+        div_location: "modal-widget-body",
+        class: "barChartVS",
+        showInsightsDropdown: false,
+        function: ps_graphDefinitions.buildSentimentCompetitors,
+        dataURL: APIsentimentcompetitors2
+    }
+}
+$(function () {
+    new ps_utilities.loadData(widget_volumeandsentiment);
+    new ps_utilities.loadData(widget_sentimentCompetitors);
+});
+
+var widgetActivityMap = {
+    title: "Twitter Activity Map",
+    subTitle: "Share of Voice on Twitter by City",
+    dataURL: arrayAPIActivityMap,
+    function: ps_graphDefinitions.buildChart,
+    div_location: "maps_widget",
+    legend: false,
+    showInsights : true,
+    zoom_amount: 3,
+
+    modal_propeties: {
+        div_location :  "modal-widget-body",
+        header : "Twitter Activity Map - Share of Voice",
+        subheader : "Share of Voice on Twitter by City",
+        function : "launch_maps",
+        showInsights : true,
+        zoom_amount: 4,
+        showInsightsDropdown: true,
+        insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=twitter_insights_sov&business=cmb&limit=100",
+        tooltip : "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city.",
+        generalMap: new google.maps.LatLng(42,-97.7445),
+        markerLocation: new google.maps.LatLng(30.2665,-97.743)
+    },
+    generalMap: new google.maps.LatLng(42,-97.7445),
+    markerLocation: new google.maps.LatLng(30.2665,-97.743)
+};
+$(function () {
+    ps_googlemaps.Initialize(widgetActivityMap,0);
+
+});
+
+/*
+ * Predefined Topic Volume
+ */
+var widgetPredefinedTopicVolume = {
+    title: 'Predefined Topic Volume',
+    subtitle: 'by Volume',
+    dataURL: APItrendingtopics,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv2',
+    legend: false,
+    tooltip:'Predefined Topic Volume',
+    id_div: 'predefinedTopicVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Predefined Topic Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APItrendingtopics,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showInsights: true,
+        showToggle2: true
+    }
+}
+
+$(function () {
+    $('body').tooltip( { selector: "a"});
+    new ps_utilities.loadData(widgetPredefinedTopicVolume)
+    
+    $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
+        e.preventDefault();
+              
+              var arrData;  
+              if(this.id == 'predefinedTopicVolumeLegend'){
+                  arrData = widgetPredefinedTopicVolume; 
+              }else if(this.id == 'conversationVolumeLegend'){
+                  arrData = widgetConversationVolume;
+              } 
+               var text = this.text;
+                    // Show the chart
+                    if (text == "Show legend") {
+                        arrData.legend = true;
+			$(this).text("Hide legend");
+			$('#' + this.id).hide();
+                        $('#' + this.id).show();
+                    }
+                    // Hide the chart
+                    else {
+                        arrData.legend = false;
+			$(this).text("Show legend");
+                        $('#' + this.id).hide();
+                        $('#' + this.id).show();
+                       
+                    }
+              arrData.function(arrData);
+    });
+});
+
+var widget_pie = {
+    title: "",
+    subTitle: "",
+    dataURL: APIshareofvoiceCrosstab,
+    function: ps_graphDefinitions.buildPieChart,
+    div_location: "div_pie_chart",
+    legend: false,
+    modal: {
+        source : "",
+        title: "Share of Voice",
+        subtitle : "With key Competitors",
+        tooltip : "Share of Voice by media type for Verizon Wireless and key competitors.",
+        div_location: "modal-widget-body",
+        function: ps_graphDefinitions.buildPieChart,
+        dataURL: APIshareofvoiceCrosstab,
+        insight_url : "",
+        showMenu : true
+    }
+}
+
+$(function(){
+    new ps_utilities.loadData(widget_pie);
+});
