@@ -298,8 +298,6 @@ $(function () {
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
     	id_div: 'twitterStream',
-		id_div_header: 'news_header',
-		id_div_header_admin: 'news_header_admin',
 		legend: false,
     	modal: {
 			title: "Twitter Stream",
@@ -307,6 +305,8 @@ $(function () {
 			tooltip: "A stream of tweets related to Verizon Wireless.",
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
+			id_div_header: 'news_header',
+			id_div_header_admin: 'news_header_admin',
 			news_header: "Tweets mentioning Verizon Wireless",
 			news_header_admin: "Tweets from Verizon Wireless Handles",
         	legend: false,
