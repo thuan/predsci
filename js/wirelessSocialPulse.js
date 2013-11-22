@@ -297,7 +297,7 @@ $(function () {
 		div_location: 'div_tweeterStream_widget',
     	legend: false,
 		tooltip:'Predefined Topic Volume',
-    	id_div: 'twitterStream'
+    	id_div: 'twitterStream',
     	modal: {
         	title: 'Predefined Topic Volume',
         	subtitle: 'Subtitle of conversation volume',
@@ -308,8 +308,8 @@ $(function () {
         	tooltip:'Conversation Volume Tooltip Dashboard!',
         	showInsights: false,
         	showToggle2: false
-    }
-	};    
+		}
+    };   
 	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
