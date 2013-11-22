@@ -313,7 +313,6 @@ var ps_googlemaps = ps_googlemaps || {};
 
         $('#modal_widget .modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
         $('#modal_widget .modal-header small').html(iFeed.insightSubtitle);
-        $("#modal_widget #icon-info").attr("data-original-title",iFeed.insightDataCard);
 
         $.ajax({
             url : taburl,

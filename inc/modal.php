@@ -5,7 +5,7 @@
         <div id="right-side">
             <a id="toggle1" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetConversationVolumeTemp.modal)"><i class="icon line-swap"></i></a>
             <a id="toggle2" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetPredefinedTopicVolume.modal)"><i class="icon line-swap"></i></a>
-            <a id="icon-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+            <a id="icon-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
             <div class="label label-inverse">7 Days</div>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         </div>
@@ -53,12 +53,12 @@
                 <button class="btn insights-history-see-more btn-inverse">See more</button>
             </div>
         </div>
-
-
-
-
     </div>
     <div class="modal-body">
         <div id="modal-widget-body"></div>
     </div>
-</div>
+    <div class="modal-footer">
+        <!--<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>-->
+        <div id="modal-stealth"></div>
+    </div>
+</div>    

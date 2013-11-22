@@ -30,7 +30,6 @@
 						</div>
 					</div>
 					<div class="widget_holder" id="maps_widget"></div>
-                    <div class="timelabel" style="margin-top: 0px">7 days</div>
 					<!-- END: Twitter Activity -->
 				</div>
 
@@ -54,8 +53,8 @@
                     <div class="widget_holder" id="div_pie_chart"></div>
                 </div>
 				
-                                <!-- Volume & Sentiment -->
-				<div class="widget_container_holder barChartVS" id="volumeAndSentiment">
+				<div class="widget_container_holder" id="volumeAndSentiment">
+					<!-- Volume & Sentiment -->
 					<div class="widget_label">
 						<h3 class="pull-left">Volume &AMP; Sentiment<br>
 							<small>Daily Volume &AMP; Sentiment</small>
@@ -68,9 +67,8 @@
 					</div>
 					<div class="widget_holder" id="barChartDiv"></div>
 				</div>
-                                <!-- END Volume & Sentiment -->
 
-				<div id="conversationVolume" class="widget_container_holder conversationVolume">
+				<div class="widget_container_holder" id="conversationVolume" >
                                     <div class="widget_label">
 						<h3 class="pull-left">
 							<span></span>
@@ -84,10 +82,10 @@
 						</div>
 					</div>
 					<div class="widget_holder" id="lineChartDiv"></div>
-                    <div id="legend">
-                        <a href="#" id="conversationVolumeLegend" class="toggle-legend">Show legend</a>
-                    </div>
-                    <div class="timelabel">7 days</div>
+                                        <div id="legend">
+                                            <a href="#" id="conversationVolumeLegend" class="toggle-legend">Show legend</a>
+                                        </div>
+                                        <div class="timelabel">7 days</div>
 				</div>
 
 				<div class="widget_container_holder" id="predefinedTopicVolume">
@@ -183,7 +181,7 @@
 				
 				
                         <!-- Sentiment Competitors -->
-                        <div class="widget_container_holder barChartVS" id="sentimentCompetitors">
+                        <div class="widget_container_holder" id="sentimentCompetitors">
                             <div class="widget_label">
                                     <h3 class="pull-left">Volume &AMP; Sentiment<br>
                                             <small>With Key Competitors</small>
