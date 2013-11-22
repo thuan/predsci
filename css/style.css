@@ -84,7 +84,7 @@ div.default {
 /*Twitter Stream*/
 .newsHeaderAdmin {
 	float: left;
-	height: 100%;
+	height: 20px;
 	width: 50%;
 	background: #232122;
 	border-bottom: 12px solid #7a2220;
@@ -94,7 +94,7 @@ div.default {
 }
 .newsHeader {
 	float: right;
-	height: 100%;
+	height: 20px;
 	width: 50%;
 	background: #232122;
 	border-bottom: 12px solid #7a2220;
