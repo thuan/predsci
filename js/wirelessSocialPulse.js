@@ -312,10 +312,10 @@ $(function () {
         	legend: false,
 		}
 };	
-  	new ps_utilities.loadTwitterStream(this.widgetTwitterStream);
+  	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadTwitterStream(this.widgetTwitterStream);      
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 60000);
 });
 //End Twitter Stream Definitions
