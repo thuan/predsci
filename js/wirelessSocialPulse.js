@@ -290,7 +290,7 @@ $(function () {
 //Begin Twitter Stream Definitions
 var widgetTwitterStream;
 $(function () {
-	var widgetTwitterStream = {
+	widgetTwitterStream = {
 		title: 'Twitter Stream',
     	subtitle: 'Tweets mentioning Verizon Wireless',
 		tooltip: 'A stream of tweets related to Verizon Wireless.',
