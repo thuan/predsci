@@ -119,7 +119,7 @@
                 </div>
 				<div class="widget_holder" id="div_tweeterStream_widget">
 					<div id="div_tweeterStream" class="div_tweeterStream">
-                    	<div id="news_header" class="newsHeader"></div>
+                    	
                     	<div class="div_tweetsParent">
                         	<div status='enabled' class="div_upperArrow" id="div_upperArrow"></div>
                         	<div class="div_tweetsMain"></div>
@@ -127,7 +127,7 @@
                     	</div>
                 	</div>
                   	<div id="div_tweeterStream_admin" class="div_tweeterStream">
-                    	<div id="news_header_admin" class="newsHeader"></div>
+                    	
                     	<div class="div_tweetsParent">
                         	<div status='enabled' class="div_upperArrow" id="div_upperArrow_admin"></div>
                         	<div class="div_tweetsMain"></div>
