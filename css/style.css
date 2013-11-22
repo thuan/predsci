@@ -82,6 +82,14 @@ div.default {
 }
 
 /*Twitter Stream*/
+.newsHeader {
+	background: #232122;
+	border-bottom: 12px solid #7a2220;
+	font-size: 16px;
+	text-align: center;
+	padding: 12px 0;
+}
+
 .div_tweetsParent {
 	position:relative;
 	z-index:999;

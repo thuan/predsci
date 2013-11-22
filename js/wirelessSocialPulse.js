@@ -304,6 +304,8 @@ $(function () {
 			title: "Twitter Stream",
         	subtitle: "Tweets mentioning Verizon Wireless",
 			tooltip: "A stream of tweets related to Verizon Wireless.",
+			newsHeader: "Tweets mentioning Verizon Wireless",
+			newsHeader_admin: "Tweets from Verizon Wireless Handles",
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
         	legend: false,
