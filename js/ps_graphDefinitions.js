@@ -442,8 +442,8 @@
 		ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
         ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
-		ps_utilities.AddTwitterHeader(sElementName.modal.id_div_header, sElementName.modal.news_header);
-		ps_utilities.AddTwitterHeader(sElementName.modal.id_div_header_admin, sElementName.modal.news_header_admin);
+		ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
+		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);
 		ps_twitterUtils.buildWidget(usersData, mentionData);
 		ps_twitterUtils.buildWidgetScroll();
         ps_twitterUtils.buildWidgetModal();
