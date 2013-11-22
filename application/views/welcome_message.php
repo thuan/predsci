@@ -116,7 +116,6 @@
                             <i class="icon-resize-full icon-white"></i>
                         </a>
                     </div>
-                    <div id='news_header' class='newsHeader'></div>
                 </div>
 				<div class="widget_holder" id="div_tweeterStream_widget">
 					<div id="div_tweeterStream" class="div_tweeterStream">
