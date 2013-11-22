@@ -42,8 +42,8 @@
             error: function(e) { console.log('Error making request'); },
         });
     };
-	
-	ps_utilities.loadTwitterStream = function (arrayData)
+    
+    ps_utilities.loadTwitterStream = function (arrayData)
     {
 		var usersURL = arrayData.dataURL[0];
 		var mentionsURL = arrayData.dataURL[1];
@@ -114,8 +114,10 @@
 
         for (var id in chartOpt) {
             var temp = {};
+            var sum = 0;
             temp['display'] = id;
-            for (var dp in chartOpt[id]){ temp[dp] = chartOpt[id][dp]; }
+            for (var dp in chartOpt[id]){ temp[dp] = chartOpt[id][dp]; sum += temp[dp]; }
+            for (var dp in chartOpt[id]){ temp[dp+"_perc"] = ((temp[dp] * 100) / sum).toFixed(2); }
             result.push(temp);
         }
 
@@ -148,15 +150,9 @@
         $("#" + div + " .pull-right #tooltipp").attr("data-original-title",element);
         $('g.LegendItem').remove();
     }
-	
-	ps_utilities.AddTwitterHeader = function(div, element)
-    {
-        $("#" + div).html(element);
-    }
 
     ps_utilities.multipleLoadData = function (arrayData)
     {
-
         var reponse1 = "";
         var response2 ="";
 
@@ -169,12 +165,7 @@
             async: false,
 
             success: function(dataResponse) {
-
                 response1 = dataResponse;
-
-
-
-
             },
             error: function() { console.log('Error making request'); },
             json: 'json'
@@ -188,11 +179,7 @@
             dataType: 'json',
             async: false,
             success: function(dataResponse) {
-
                 response2 =  dataResponse;
-
-
-
             },
             error: function() { console.log('Error making request'); },
             json: 'json'
@@ -349,8 +336,6 @@
 
         new ps_utilities.loadData(obj);
     }
-    
-    
 
     ps_utilities.showMenuSocial = function(datasource){
         var sources = [];
@@ -374,7 +359,8 @@
                 });
             }
         });
-        return results.sort();
+        //return results;
+        return _.sortBy(results, function(val){return val.display;});
     }
 
 

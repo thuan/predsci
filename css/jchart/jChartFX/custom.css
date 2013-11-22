@@ -66,28 +66,98 @@
 }
 
 /* BAR CHART */
-#barChartDiv .jchartfx .Attribute0,
-#sentimentCompetitorsDiv .jchartfx .Attribute0,
-#modal-widget-body .jchartfx .Attribute0 {
+.barChartVS .jchartfx .Attribute0 {
     fill: #BEBEBE;
     stroke: #4281A4;
     stroke-width: 0;
 }
-#barChartDiv .jchartfx .Attribute1,
-#sentimentCompetitorsDiv .jchartfx .Attribute1,
-#modal-widget-body .jchartfx .Attribute1 {
+.barChartVS .jchartfx .Attribute1 {
     fill: #006400;
     stroke: #4281A4;
     stroke-width: 0;
 }
-#barChartDiv .jchartfx .Attribute2,
-#sentimentCompetitorsDiv .jchartfx .Attribute2,
-#modal-widget-body .jchartfx .Attribute2 {
+.barChartVS .jchartfx .Attribute2 {
     fill: #FF0000;
     stroke: #4281A4;
     stroke-width: 0;
 }
 /* END BAR CHART */
+
+/*LINE CHART*/
+.conversationVolume .jchartfx .Attribute0Line {
+    stroke: #00aba9;
+    fill: #00aba9;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute0 {
+    fill: #00aba9;
+    stroke: #00aba9;
+    stroke-width: 1;
+}
+
+.conversationVolume .jchartfx .Attribute1Line {
+    stroke: #309b46;
+    fill: #309b46;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute1 {
+    fill: #309b46;
+    stroke: #309b46;
+    stroke-width: 1;
+}
+
+.conversationVolume .jchartfx .Attribute2Line {
+    stroke: #8ebc00;
+    fill: #8ebc00;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute2 {
+    fill: #8ebc00;
+    stroke: #8ebc00;
+    stroke-width: 1;
+}
+
+.conversationVolume .jchartfx .Attribute3Line {
+    stroke: #ff6900;
+    fill: #ff6900;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute3 {
+    fill: #ff6900;
+    stroke: #ff6900;
+    stroke-width: 1;
+}
+
+.conversationVolume .jchartfx .Attribute4Line {
+    stroke: #e61e26;
+    fill: #e61e26;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute4 {
+    fill: #e61e26;
+    stroke: #e61e26;
+    stroke-width: 1;
+}
+
+.conversationVolume .jchartfx .Attribute5Line {
+    stroke: #d8e404;
+    fill: #d8e404;
+    stroke-width: 2;
+}
+
+.conversationVolume .jchartfx .Attribute5 {
+    fill: #d8e404;
+    stroke: #d8e404;
+    stroke-width: 1;
+}
+
+/*END  LINE CHART*/
+
 
 .jchartfx .Attribute0 {
     fill: #0068FF;
@@ -388,11 +458,11 @@
 }
 
 .jchartfx .AxisText {
-    fill: #666666;
+    fill: #DBDBD9;
 }
 
 .jchartfx .AxisMajor {
-    stroke: #DBDBD9;
+    stroke: #666666;
 }
 
 .jchartfx .AxisMinor {

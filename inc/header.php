@@ -6,6 +6,7 @@
 
     <script language="javascript" src="lib/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script language="javascript" src="lib/jquery/jquery-ui.js" type="text/javascript"></script>
+    <script language="javascript" src="lib/date.js" type="text/javascript"></script>
  
     <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=drawing" type="text/javascript" ></script>
 
@@ -23,12 +24,15 @@
     <script type="text/javascript" src="lib/jchart/jchartfx.vectorTemplates.js"></script>
     <script type="text/javascript" src="lib/jchart/jchartfx.handdrawn.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
+
+    
+   
     
     <script language="javascript" src="js/ps_utilities.js" type="text/javascript"></script>
     <script language="javascript" src="js/ps_graphDefinitions.js" type="text/javascript"></script>
 	<script language="javascript" src="js/ps_googlemaps.js" type="text/javascript"></script>
     <script language="javascript" src="js/ps_twitterUtils.js" type="text/javascript"></script>
-    <script language="javascript" src="js/wirelessSocialPulse.js" type="text/javascript"></script>
+    <script language="javascript" src="js/consumer-mass-social-pulse.js" type="text/javascript"></script>
     
     <script language="javascript" src="lib/jquery/jquery-ui.js" type="text/javascript"></script>
     <script language="javascript" src="lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
@@ -43,7 +47,7 @@
     <link href="css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700" rel="stylesheet" type="text/css">
     <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css">
-    	
+
 
    <style type="text/css">
         /* Google Map */

@@ -948,7 +948,7 @@ body
 
 #dashboard_content .widget_container_holder_keyword
 {
-    width: 500px;
+    width: 525px;
     height: 510px;
     float: left;
     background: #000 url(../images/top_bkgd.jpg) repeat-x;
@@ -1016,11 +1016,18 @@ body
 
 
 
-#topTweets table thead th
+#topTweets table thead th, #twitter-feed-modal table thead th
 {
-    background: #e9f3f8;
+    background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right;
     color: #000;
 }
+
+#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('/images/bootstrap/sort_asc.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('/images/bootstrap/sort_desc.png') no-repeat center right; }
+
+#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
 
 
 #topTweets table tbody td{
@@ -1252,6 +1259,7 @@ table.dataTable td
 #modal_widget
 {
     width: 900px;
+    height: 560px;
     margin-left: -450px;
     background: #000 url(../images/top_bkgd.jpg) repeat-x;
     border: 8px solid rgba(201, 29, 29, 0.5);
@@ -1354,8 +1362,8 @@ table.dataTable td
 
 #modal_widget .modal-body
 {
-    height: 600px;
-    max-height: 600px;
+    height: 450px;
+    max-height: 450px;
     padding: 0;
     border: 0;
 }
@@ -1375,7 +1383,7 @@ table.dataTable td
 #modal_widget #modal-widget-body
 {
     width: 800px;
-    height: 600px;
+    height: 420px;
     margin: 0 auto;
     z-index: 100;
     position: relative;
@@ -1462,8 +1470,24 @@ table.dataTable td
 
 #latest_insights_toggle_view
 {
+    background: #373737 url(../images/close.png) 4px 4px no-repeat;
     float: right;
-    color: #fff;
+    color: #FFFFFF;
+    top: 7px;
+    right: 7px;
+    width: 8px;
+    height: 8px;
+    padding: 5px;
+    border-radius: 100%;
+    text-indent: -9999px;
+}
+
+.open_toggle{
+    background: #373737 url(../images/plus.png) 4px 4px no-repeat !important;
+}
+
+.close_toggle{
+    background: #373737 url(../images/close.png) 4px 4px no-repeat !important;
 }
 
 #latest_insights_content_holder strong
@@ -1634,17 +1658,24 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     width: 20px;
 }
 
+
 /* Toggle legend */
 .toggle-legend {
 	/*margin: 1px 10px 0 0;
 	float: right;
 	font-size: 9px;*/
 	color: #fff;
+    text-decoration: none;
 }
-.toggle-legend:hover {
+
+.toggle-legend:hover{
 	color: #fff;
 }
 
+.toggle-legend:focus {
+    color: #fff;
+    text-decoration: none;
+}
 
 #legend {
    color:#fff; 
@@ -1653,5 +1684,39 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
    margin-top: -20px;
    margin-right: 55px;
    position: relative;     
+}
+
+
+g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
+
+#C1s{
+    z-index: 99999999;
+    left: 1px;
+}
+
+
+#latest_insights_content_holder:hover {
+    cursor: move;
+}
+#latest_insights_content_holder:hover .ellipsis {
+    display: none;
+}
+
+#latest_insights_content_holder .latest_insights_content .insight-full {
+    display: none;
+   opacity: 1;
+}
+
+#latest_insights_content_holder .toggle-view:hover {
+    opacity: 0.8;
+}
+
+#latest_insights_content_holder p {
+    margin-top: 3px;
+    font-size: 13px;
+}
+#latest_insights_content_holder p.date {
+    font-size: 11px;
+    line-height: 16px;
 }
 

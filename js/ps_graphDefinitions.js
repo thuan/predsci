@@ -18,7 +18,7 @@
 
 		objChart.setGallery(cfx.Gallery.Bar);
 		var data = objChart.getData();
-		
+
 		data.setSeries(3);
 		data.setPoints(10);
 		objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
@@ -29,14 +29,14 @@
 		var divHolder = document.getElementById(sElementName.div_location);
 		objChart.create(divHolder);
     }
-    
+
     /*
 	* Builds the Metric Ticker Widget
 	*/
     ps_graphDefinitions.metricTicker = function(responseSentiment, responseConversation)
     {
     	var data = [];
-    	
+
     	 data.push(
         {
             category: "Positive Sentiment",
@@ -61,7 +61,7 @@
         }
         );
 
-		
+
 
 		  var conversationVolume = [];
 		  //alert(responseConversation.data.length);
@@ -74,7 +74,7 @@
                 }
             }
 
-           
+
 
             // Transform the data
             data.push(
@@ -87,9 +87,9 @@
             }
             );
 
-            
 
-   
+
+
     var ticker = $(".metric-ticker").find(".widget");
     var output = "<ul>";
 
@@ -185,15 +185,15 @@
         }
 
     });
- 
+
     } // end metricTicker
 
 	/*
 	* Builds the Pie Chart Widget - Process Data
 	*/
     ps_graphDefinitions.processDataAllPie = function (data) {
-
-        if(!data["source"]){
+        var datasource = widget_pie.modal.source
+        if(datasource === ""){
             var process = [];
             data.forEach(function(val){
                 if( _.where(process, {id : val.id}).length === 0 ){
@@ -206,8 +206,7 @@
             });
             return process;
         }else{
-            alert("process");
-            var nData = _.where(data, {id_2 : $(this).attr("rel")});
+            var nData = _.where(data, {id_2 : datasource});
             var values = new Array();
             for (var i = 0; i < nData.length; i++){
                 values.push({
@@ -221,7 +220,7 @@
 
 	/*
 	 * Builds the Pie Chart Widget - Modal View
-	 */ 
+	 */
     ps_graphDefinitions.processDataSourcePie = function (source, data) {
         //Process all data equals to source
         //Atribute ID_2
@@ -246,27 +245,23 @@
         var nData = ps_graphDefinitions.processDataAllPie(data);
 
 
-        objPieChart = new cfx.Chart();
+        var objPieChart = new cfx.Chart();
         objPieChart.getAnimations().getLoad().setEnabled(true);
 
         objPieChart.setGallery(cfx.Gallery.Pie);
         objPieChart.getDataGrid().setBorder(cfx.DockBorder.Internal);
-        var data = objPieChart.getData();
-
         objPieChart.setGallery(cfx.Gallery.Pie);
         objPieChart.getAllSeries().getPointLabels().setVisible(true);
         objPieChart.getLegendBox().setDock(cfx.DockArea.Right);
         objPieChart.getLegendBox().setVisible(false);
-        //objPieChart.getAllSeries().set
 
+        nData = _.sortBy(nData, function(val){return val.display;})
         objPieChart.setDataSource(nData);
         var divHolder = document.getElementById(sElementName.div_location);
         objPieChart.create(divHolder);
         ps_utilities.RemoveWidgetGradient();
-        ps_utilities.RemoveLogo();
-
     }
-    
+
     /*
 	* Builds the Bar Chart Widget
 	*/
@@ -275,14 +270,14 @@
         var prop = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-prop');
         var attr = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-attr');
         var series = $("#menuBarChart li a[data-attr='"+attr+"']").attr('data-series');
-        
+
         $('#dropdownMenuBarChart').html(txt + ' <span class="caret"></span>');
         $('#'+widget_volumeandsentiment.modal.div_location).html("Loading...");
         widget_volumeandsentiment.modal.dataURL = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/"+prop+"/competitors/"+attr+"/sentiment/"+series+"?period=week&limit=5";
         widget_volumeandsentiment.modal.div_modal = false;
         ps_utilities.loadData(widget_volumeandsentiment.modal);
     };
-    
+
     ps_graphDefinitions.getCompetitors = function(url) {
         var competitors = {};
         $.ajax({
@@ -306,20 +301,20 @@
         });
         return competitors;
     };
-        
+
     ps_graphDefinitions.buildBarChart = function (sElementName) {
-        
+
         var objChart;
 
         objChart = new cfx.Chart();
         objChart.getAnimations().getLoad().setEnabled(true);
         objChart.setGallery(cfx.Gallery.Bar); // BAR Chart
-        
+
         var data = objChart.getData();
         objChart.getGalleryAttributes().setTemplate("BarBasic");
         objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
         objChart.getLegendBox().setVisible(true);
-
+        
         var data = ps_graphDefinitions.jsonData.data;
         data = ps_utilities.processData(data);
 
@@ -349,25 +344,30 @@
                 });
             }
         }
-        
+
         objChart.create(divHolder);
-        
+
         ps_utilities.RemoveWidgetGradient();
-        ps_utilities.RemoveLogo();
-    };
-    
-    ps_graphDefinitions.buildSentimentCompetitors = function (sElementName) {
         
+        $(divHolder).mousemove(function(e) {
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
+        });
+    };
+
+    ps_graphDefinitions.buildSentimentCompetitors = function (sElementName) {
+
         var objChart;
 
         objChart = new cfx.Chart();
         objChart.getAnimations().getLoad().setEnabled(true);
         objChart.setGallery(cfx.Gallery.Bar); // BAR Chart
-        
+
         var data = objChart.getData();
         objChart.getGalleryAttributes().setTemplate("BarBasic");
         objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
         objChart.getLegendBox().setVisible(true);
+        //objChart.getAxisY().getDataFormat().setFormat(cfx.AxisFormat.Percentage);
 
         var data = ps_graphDefinitions.jsonData.data;
         data = ps_utilities.dataSentimentCompetitors(data);
@@ -376,14 +376,18 @@
         var divHolder = document.getElementById( sElementName.div_location );
         divHolder.innerHTML = "";
         objChart.create(divHolder);
-        
+
         if(sElementName.showVolumeAndSentimentMenu == undefined)
         {
             $( "#sentimentCompetitors" ).append('<div class="timelabel">'+sElementName.timelabel+'</div>');
         }
-        
+
         ps_utilities.RemoveWidgetGradient();
-        ps_utilities.RemoveLogo();
+        
+        $(divHolder).mousemove(function(e) {
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
+        });
     };
     //end bar chart
 
@@ -397,47 +401,36 @@
         objChart.setGallery(sElementName.gallery);
         objChart.getGalleryAttributes().setTemplate(sElementName.template);
         objChart.getLegendBox().setVisible(sElementName.legend);
-        objChart.getLegendBox().setHeight(300);
-        objChart.getLegendBox().setWidth(100);
-        objChart.getLegendBox().sizeToFit();
-        objChart.getLegendBox().setDock(cfx.DockArea.Right);
         objChart.getAnimations().getLoad().setEnabled(true);
-
-        var data = ps_utilities.processData(sElementName.jsonData.data);
-        
+        objChart.getDataGrid().setWidth(100);
+        objChart.getDataGrid().setHeight(100);
+        objChart.getLegendBox().sizeToFit();
+        var dataSort = _.sortBy(sElementName.jsonData.data, function(val){return val.display;});
+        var data = ps_utilities.processData(dataSort);
         objChart.setDataSource(data);
-        var divHolder;
-        
-        if(document.getElementById(sElementName.div_location)){
-            divHolder = document.getElementById(sElementName.div_location);
-        }else {
-            if(sElementName.div_location == 'modal-widget-body'){
-               $("<div id='modal-widget-body'></div>").appendTo("#"+sElementName.id_div);
-               divHolder = document.getElementById(sElementName.modal.div_location);
-            }else{
-                $("#"+sElementName.id_div + " div.widget_label").after("<div class='widget_holder' id='lineChartDiv2'></div>");
-                divHolder = document.getElementById(sElementName.div_location);
-            }
-            
-            
-        }
-       
+
+        var  divHolder = document.getElementById(sElementName.div_location);
         divHolder.innerHTML = '';
         objChart.create(divHolder);
-        
-        
+
+
         ps_utilities.RemoveWidgetGradient();
         ps_utilities.RemoveLogo();
         ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
         ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
-        
+
+        $(divHolder).mousemove(function(e) {
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
+        });
+
     } //end line chart
 
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
 		//Code goes here
     }
-    
+
     ps_graphDefinitions.buildTwitterStream = function (usersData, mentionData, sElementName) {
 		ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
@@ -449,13 +442,16 @@
 		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);		
     }
 
+
 	/*
 	* Top Tweets
 	*/
     ps_graphDefinitions.topTweets = function(response) {
     	ps_twitterUtils.topTweets(response);
     } // end topTweets
-	
+
+
+
 	/*
 	* Builds the Keyword Trending Widget
 	*/
@@ -467,5 +463,5 @@
            $("#"+sElementName.category).append("<li  tag=" +v.display+">"  + v.display+"<span>"+ v.value + "</span>"+ "</li>");
 		});
     } // end buildKeywordTrending
-	
+
 }(window.ps_graphDefinitions = window.ps_graphDefinitions || {}, jQuery));

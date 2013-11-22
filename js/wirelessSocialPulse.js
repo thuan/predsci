@@ -88,12 +88,12 @@ var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drill
 /*Definitions Conversation Volume*/
 var widgetConversationVolume = {
     title: 'Conversation Volume',
-    subtitle: 'Subtitle of conversation volume',
+    subtitle: 'by Media Type',
     dataURL: APIconversationvolume,
     function: ps_graphDefinitions.buildLineChart,
     div_location: 'lineChartDiv',
     legend: false,
-    tooltip:'Conversation Volume Tooltip Dashboard!',
+    tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
     id_div: 'conversationVolume',
     template: 'LineBasic',
     gallery: cfx.Gallery.Lines,
@@ -104,7 +104,8 @@ var widgetConversationVolume = {
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
         legend: true,
-        tooltip:'Conversation Volume Tooltip Dashboard!',
+        tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
+        class: 'conversationVolume',
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showQueryForm: true,
@@ -117,23 +118,24 @@ var widgetConversationVolume = {
 
 var widgetConversationVolumeTemp = {
     title: 'Conversation Volume',
-    subtitle: 'Subtitle of conversation volume',
+    subtitle: 'by Media Type',
     dataURL: APIconversationvolume,
     function: ps_graphDefinitions.buildLineChart,
     div_location: 'lineChartDiv',
     legend: false,
-    tooltip:'Conversation Volume Tooltip Dashboard!',
+    tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
     id_div: 'conversationVolume',
     template: 'LineBasic',
     gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
-        subtitle: 'Subtitle of conversation volume',
+        subtitle: 'by Media Type',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
         legend: true,
-        tooltip:'Conversation Volume Tooltip Dashboard!',
+        tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
+        class: 'conversationVolume',
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showQueryForm: true,
@@ -163,7 +165,9 @@ var widgetPredefinedTopicVolume = {
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showInsights: true,
-        showToggle2: true
+        showToggle2: true,
+        showInsightsDropdown:true,
+        insight_url: 'http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=predefined_topic_volume&business=vzw&limit=100'
     }
 }
 
@@ -309,16 +313,15 @@ $(function () {
 			id_div_header_admin: 'news_header_admin',
 			news_header: "Tweets mentioning Verizon Wireless",
 			news_header_admin: "Tweets from Verizon Wireless Handles",
-        	legend: false,
+        	legend: false
 		}
 };	
   	new ps_utilities.loadTwitterStream(widgetTwitterStream);
-});
-$(function () {	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 60000);
 });
+
 //End Twitter Stream Definitions
 
 
@@ -338,6 +341,7 @@ var widget_volumeandsentiment = {
         subtitle: "Daily Volume & Sentiment",
         tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
         div_location: "modal-widget-body",
+        class: "barChartVS",
         showVolumeAndSentimentMenu: true,
         function: ps_graphDefinitions.buildBarChart,
         showInsightsDropdown: false,
@@ -362,6 +366,7 @@ var widget_sentimentCompetitors = {
         subtitle: "With Key Competitors",
         tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
         div_location: "modal-widget-body",
+        class: "barChartVS",
         showInsightsDropdown: false,
         function: ps_graphDefinitions.buildSentimentCompetitors,
         dataURL: APIsentimentcompetitors
@@ -400,8 +405,9 @@ $(function () {
     var widget = {
         dataURL: APIgettoptweets,
         function: ps_graphDefinitions.topTweets
-    };
+    };    
     new ps_utilities.loadJsonpData(widget);
+    
 }); //End Top Tweets
 
 
@@ -429,7 +435,9 @@ var widget_pie = {
         function: ps_graphDefinitions.buildPieChart,
         dataURL: APIshareofvoiceCrosstab,
         insight_url : APIinsedeShareofVoice,
-        showMenu : true
+        showMenu : true,
+        showInsights:true,
+        showInsightsDropdown: true
     }
 }
 
