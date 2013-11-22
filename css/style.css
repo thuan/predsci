@@ -82,26 +82,6 @@ div.default {
 }
 
 /*Twitter Stream*/
-.newsHeaderAdmin {
-	float: left;
-	height: 20px;
-	width: 50%;
-	background: #232122;
-	border-bottom: 12px solid #7a2220;
-	font-size: 16px;
-	text-align: center;
-	padding: 12px 0;
-}
-.newsHeader {
-	float: right;
-	height: 20px;
-	width: 50%;
-	background: #232122;
-	border-bottom: 12px solid #7a2220;
-	font-size: 16px;
-	text-align: center;
-	padding: 12px 0;
-}
 .div_tweetsParent {
 	position:relative;
 	z-index:999;
@@ -115,8 +95,8 @@ div.default {
 		background:no-repeat 50% 50%;
 	}
 	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
-    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:355px;}
-    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:303px;}
+    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:345px;}
+    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:250px;}
 
 #twitterStreamModal .modal-body
 {
@@ -125,7 +105,7 @@ div.default {
 
     #twitterStreamModal .div_tweetsMain {
 
-        height: 390px;
+        height: 370px;
         position: absolute;
         overflow: hidden;
         color: #B1B1B1;
@@ -141,7 +121,7 @@ div.default {
 
 	.div_tweetsMain {
 		width:100%;
-		height:320px;
+		height:270px;
 		position: absolute;	
 		overflow: hidden;
 		color:#B1B1B1;
@@ -152,17 +132,14 @@ div.default {
 
 	.div_tweet {
         padding: 10px 10px 0px 10px;
-        height: 80px;
+        height: 68px;
         position: relative;
         border-bottom: 1px solid #aaa;
         clear: both;
         overflow: hidden;
 	}
 		.div_tweetImage {
-			padding-top: 3px;
-			float: left;
-			width: 18%;
-			padding-left: 15px;
+			float:left;
 			margin:0 10px 0 0;
 		}
 			.img_dp {
