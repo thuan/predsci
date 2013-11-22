@@ -98,31 +98,15 @@
                     $("#modal_widget .modal-header small").text(JSONProperties.subtitle);
                     $("#modal_widget #icon-info").attr("data-original-title",JSONProperties.tooltip);
 					
-					if(JSONProperties.function == 'launch_twitter'){
-						$("#modal_widget #modal-widget-body").empty();
-	                    //displaying the modal content
-	                    $("#modal_widget #modal-widget-body").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
-
-	                    $("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
-	                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-	                    });
-
-	                    $("#modal_widget #modal-widget-body div#div_downArrow").click(function () {
-	                        if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-	                    });
-	                    $("#modal_widget #modal-widget-body div#div_upperArrow_admin").click(function () {
-	                        if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetForwordByOne_admin();
-	                    });
-
-	                    $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
-	                        if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
-	                    });
-					}
                     switch($function){
                         case "launch_maps":
                             ps_googlemaps.Initialize(JSONProperties, 0);
                             $("#modal-stealth").hide();
                             break;
+						case "launch_twitter":
+							ps_twitterUtils.buildWidgetModal();
+							$("#modal-stealth").hide();
+							break;
                         default:
                             ps_utilities.loadData(JSONProperties);
                             break;

@@ -122,14 +122,14 @@
                     	<div class="div_tweetsParent">
                         	<div status='enabled' class="div_upperArrow" id="div_upperArrow"></div>
                         	<div class="div_tweetsMain"></div>
-                        	<div status='enabled' class="div_downArrowModal" id="div_downArrow"></div>
+                        	<div status='enabled' class="div_downArrow" id="div_downArrow"></div>
                     	</div>
                 	</div>
                   	<div id="div_tweeterStream_admin" class="div_tweeterStream">
                     	<div class="div_tweetsParent">
                         	<div status='enabled' class="div_upperArrow" id="div_upperArrow_admin"></div>
                         	<div class="div_tweetsMain"></div>
-                        <div status='enabled' class="div_downArrowModal" id="div_downArrow_admin"></div>
+                        <div status='enabled' class="div_downArrow" id="div_downArrow_admin"></div>
                     </div>
                 </div>      
 				</div>

@@ -438,7 +438,10 @@
 		//Code goes here
     }
     
-    ps_graphDefinitions.buildTwitterStream = function (usersData, mentionData) {
+    ps_graphDefinitions.buildTwitterStream = function (usersData, mentionData, sElementName) {
+		ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
 		ps_twitterUtils.buildWidget(usersData, mentionData);
 		ps_twitterUtils.buildWidgetScroll();
         ps_twitterUtils.buildWidgetModal();
