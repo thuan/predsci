@@ -288,7 +288,7 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
- 
+ var widgetTwitterStream;
 $(function () {	
 	var widgetTwitterStream = {
 		title: 'Twitter Stream',
@@ -301,7 +301,7 @@ $(function () {
 		legend: false,
     	modal: {
 			title: "Twitter Stream",
-        	subtitle: "Tweets mentioning Verizon Wirelessssssssssss",
+        	subtitle: "Tweets mentioning Verizon Wireless",
 			tooltip: "A stream of tweets related to Verizon Wireless.",
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
