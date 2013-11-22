@@ -313,7 +313,8 @@ $(function () {
 		}
 };	
   	new ps_utilities.loadTwitterStream(widgetTwitterStream);
-	
+});
+$(function () {	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 60000);
