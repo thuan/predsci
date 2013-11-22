@@ -297,9 +297,9 @@ $(function () {
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
-    	legend: false,
-		tooltip:'Predefined Topic Volume',
     	id_div: 'twitterStream',
+		legend: false,
+		tooltip:'Predefined Topic Volume',
     	modal: {
 			title: "Twitter Stream",
         	subtitle: "Tweets mentioning Verizon Wireless",
