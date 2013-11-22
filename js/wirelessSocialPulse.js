@@ -288,9 +288,8 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-var widgetTwitterStream;
 $(function () {
-	 widgetTwitterStream = {
+	 var widgetTwitterStream = {
 		title: 'Twitter Stream',
     	subtitle: 'Tweets mentioning Verizon Wireless',
 		tooltip: 'A stream of tweets related to Verizon Wireless.',
