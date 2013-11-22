@@ -450,8 +450,6 @@
     ps_graphDefinitions.topTweets = function(response) {
     	ps_twitterUtils.topTweets(response);
     } // end topTweets
-        
-   
 	
 	/*
 	* Builds the Keyword Trending Widget

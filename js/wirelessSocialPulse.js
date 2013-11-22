@@ -294,7 +294,21 @@ $(function () {
     	subtitle: 'Subtitle of conversation volume',
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
 		function: ps_graphDefinitions.buildTwitterStream,
-		legend: false
+		div_location: 'div_tweeterStream_widget',
+    	legend: false,
+		tooltip:'Predefined Topic Volume',
+    	id_div: 'twitterStream'
+    	modal: {
+        	title: 'Predefined Topic Volume',
+        	subtitle: 'Subtitle of conversation volume',
+        	dataURL: [APIgettoptweets, APIgettweetsmentions],
+        	function: ps_graphDefinitions.buildTwitterStream,
+        	div_location: 'modal-widget-body',
+        	legend: true,
+        	tooltip:'Conversation Volume Tooltip Dashboard!',
+        	showInsights: false,
+        	showToggle2: false
+    }
 	};    
 	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
