@@ -216,7 +216,7 @@
 
 	ps_twitterUtils.buildWidgetModal = function () {
 		$("#modal_widget #modal-widget-body").empty();
-		$("#modal_widget #modal-heading").html("<div id='news_header' class='newsHeader'></div>");
+		$("#modal_widget #modal-widget-body").html("<div id='news_header' class='newsHeader'></div>");
 		//displaying the modal content
 		
 		$("#modal_widget #modal-widget-body").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
