@@ -296,6 +296,7 @@ var widgetTwitterStream = {
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
     	legend: false,
+		showInsights : false,
 		tooltip:'Predefined Topic Volume',
     	id_div: 'twitterStream',
     	modal: {
@@ -305,8 +306,7 @@ var widgetTwitterStream = {
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
         	legend: false,
-        	showInsights: false,
-        	showToggle2: false
+        	showInsights: false
 		}
 };   
 $(function () {	
