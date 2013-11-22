@@ -219,7 +219,7 @@
 		
 		//displaying the modal content
 		
-		$("#modal_widget #modal-widget-body").html("<div id='news_header_admin' class='newsHeaderAdmin'>" + "</div>" "<div id='news_header' class='newsHeader'></div>" + "<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
+		$("#modal_widget #modal-widget-body").html("<div id='news_header_admin' class='newsHeaderAdmin'>" + "</div>" + "<div id='news_header' class='newsHeader'></div>" + "<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 		$("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
 			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
 		});
