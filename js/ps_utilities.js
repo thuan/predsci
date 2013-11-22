@@ -42,36 +42,6 @@
             error: function(e) { console.log('Error making request'); },
         });
     };
-    
-    ps_utilities.loadTwitterStream = function (arrayData)
-    {
-		var usersURL = arrayData.dataURL[0];
-		var mentionsURL = arrayData.dataURL[1];
-		var usersData, mentionData;
-		$.when($.ajax({
-			url: usersURL,
-			dataType: "jsonp",
-			crossDomain: true,
-			async: false,
-			success: function(dataResponseUsers) {
-				usersData = dataResponseUsers;
-			},
-           	error: function(e) { console.log('Error making request'); },
-       	}),
-		
-		$.ajax({
-            url: mentionsURL,
-			dataType: "jsonp",
-            crossDomain: true,
-			async: false,
-            success: function(dataResponseMentions) {
-				mentionData = dataResponseMentions;
-            },
-            error: function(e) { console.log('Error making request'); },
-        })).then(function(){
-			arrayData.function(usersData, mentionData, arrayData)		
-		});		
-    };
 
     ps_utilities.processData = function (data) {
         var chartOpt = {};
