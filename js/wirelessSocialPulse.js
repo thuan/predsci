@@ -312,9 +312,7 @@ $(function () {
         	legend: false,
 		}
 };	
-  	var timerTwitter = window.setTimeout(function () {
-        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
-    }, 100);
+  	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      

@@ -445,8 +445,11 @@
 		ps_twitterUtils.buildWidget(usersData, mentionData);
 		ps_twitterUtils.buildWidgetScroll();
         ps_twitterUtils.buildWidgetModal();
-		ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
-		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);
+		var timerTwitter = window.setTimeout(function () {
+        	ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
+			ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);      
+    	}, 100);
+		
     }
 
 	/*
