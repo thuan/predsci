@@ -129,7 +129,7 @@ div.default {
 
 	.div_tweetsMain {
 		width:100%;
-		height:470px;
+		height:320px;
 		position: absolute;	
 		overflow: hidden;
 		color:#B1B1B1;
@@ -140,7 +140,7 @@ div.default {
 
 	.div_tweet {
         padding: 10px 10px 0px 10px;
-        height: 100px;
+        height: 80px;
         position: relative;
         clear: both;
         overflow: hidden;
