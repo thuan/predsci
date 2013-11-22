@@ -82,7 +82,20 @@ div.default {
 }
 
 /*Twitter Stream*/
+.newsHeaderAdmin {
+	float: left;
+	height: 100%;
+	width: 50%;
+	background: #232122;
+	border-bottom: 12px solid #7a2220;
+	font-size: 16px;
+	text-align: center;
+	padding: 12px 0;
+}
 .newsHeader {
+	float: right;
+	height: 100%;
+	width: 50%;
 	background: #232122;
 	border-bottom: 12px solid #7a2220;
 	font-size: 16px;
