@@ -292,36 +292,26 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-var widgetTwitterStream;
+var userStream = {
+    dataURL: APIgettoptweets,
+    function: ps_graphDefinitions.buildUsersTwitterStream,
+    legend: false
+};
+
+var mentionStream = {
+    dataURL: APIgettweetsmentions,
+    function: ps_graphDefinitions.buildMentionsTwitterStream,
+    legend: false
+};
+
 $(function () {
-	widgetTwitterStream = {
-		title: 'Twitter Stream',
-    	subtitle: 'Tweets mentioning Verizon Wireless',
-		tooltip: 'A stream of tweets related to Verizon Wireless.',
-		dataURL: [APIgettoptweets, APIgettweetsmentions],
-		function: ps_graphDefinitions.buildTwitterStream,
-		div_location: 'div_tweeterStream_widget',
-    	id_div: 'twitterStream',
-		legend: false,
-    	modal: {
-			title: "Twitter Stream",
-        	subtitle: "Tweets mentioning Verizon Wireless",
-			tooltip: "A stream of tweets related to Verizon Wireless.",
-        	function : "launch_twitter",
-        	div_location: 'modal-widget-body',
-			id_div_header: 'news_header',
-			id_div_header_admin: 'news_header_admin',
-			news_header: "Tweets mentioning Verizon Wireless",
-			news_header_admin: "Tweets from Verizon Wireless Handles",
-        	legend: false
-		}
-};	
-  	new ps_utilities.loadTwitterStream(widgetTwitterStream);
-	var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+    new ps_utilities.loadJsonpData(userStream);
+    new ps_utilities.loadJsonpData(mentionStream);
+    var getTweetDataTimer = window.setInterval(function () {
+        new ps_utilities.loadJsonpData(userStream);
+        new ps_utilities.loadJsonpData(mentionStream);
     }, 60000);
 });
-
 //End Twitter Stream Definitions
 
 

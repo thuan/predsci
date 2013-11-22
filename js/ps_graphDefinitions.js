@@ -431,15 +431,12 @@
 		//Code goes here
     }
 
-    ps_graphDefinitions.buildTwitterStream = function (usersData, mentionData, sElementName) {
-		ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
-        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
-        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
-		ps_twitterUtils.buildWidget(usersData, mentionData);
-		ps_twitterUtils.buildWidgetScroll();
-        ps_twitterUtils.buildWidgetModal();
-		ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
-		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);		
+    ps_graphDefinitions.buildMentionsTwitterStream = function (sElementName) {
+		ps_twitterUtils.getMentionsJsonData();
+    }
+
+    ps_graphDefinitions.buildUsersTwitterStream = function (sElementName) {
+		ps_twitterUtils.getUsersJsonData();
     }
 
 
