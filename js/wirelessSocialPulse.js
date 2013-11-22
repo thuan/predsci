@@ -302,14 +302,12 @@ $(function () {
 		tooltip:'Predefined Topic Volume',
     	modal: {
 			title: "Twitter Stream",
-        	subtitle: "Tweets mentioning Verizon Wireless",
+        	subtitle: "Tweets mentioning Verizon Wirelessssssssssss",
 			tooltip: "A stream of tweets related to Verizon Wireless.",
-			id_div_header: 'div_tweeterStream',
-			id_div_header_admin: 'div_tweeterStream_admin',
-			news_header: "Tweets mentioning Verizon Wireless",
-			news_header_admin: "Tweets from Verizon Wireless Handles",
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
+			news_header: "Tweets mentioning Verizon Wireless",
+			news_header_admin: "Tweets from Verizon Wireless Handles",
         	legend: false,
 		}
 };
