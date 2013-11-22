@@ -306,7 +306,7 @@ var widgetTwitterStream = {
         	function : "launch_twitter",
         	div_location: 'modal-widget-body',
         	legend: false,
-        	showInsights: false
+			showInsights : false
 		}
 };   
 $(function () {	
