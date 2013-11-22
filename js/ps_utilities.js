@@ -151,7 +151,7 @@
 	
 	ps_utilities.AddTwitterHeader = function(div, element)
     {
-        $("#" + div).text(element);
+        $("#" + div).html(element);
     }
 
     ps_utilities.multipleLoadData = function (arrayData)
