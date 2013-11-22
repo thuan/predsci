@@ -288,8 +288,7 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
-$(function () {
-	var widgetTwitterStream = {
+var widgetTwitterStream = {
 		title: 'Twitter Stream',
     	subtitle: 'Subtitle of conversation volume',
 		dataURL: [APIgettoptweets, APIgettweetsmentions],
@@ -309,7 +308,8 @@ $(function () {
         	showInsights: false,
         	showToggle2: false
 		}
-    };   
+};   
+$(function () {	
 	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
