@@ -288,9 +288,7 @@ $(function () {
 //End Twitter Activity Map Definitions
 
 //Begin Twitter Stream Definitions
- var widgetTwitterStream;
-$(function () {	
-	var widgetTwitterStream = {
+ var widgetTwitterStream = {
 		title: 'Twitter Stream',
     	subtitle: 'Tweets mentioning Verizon Wireless',
 		tooltip: 'A stream of tweets related to Verizon Wireless.',
@@ -312,10 +310,12 @@ $(function () {
         	legend: false,
 		}
 };
-	new ps_utilities.loadTwitterStream(widgetTwitterStream);
+
+$(function () {	
+	new ps_utilities.loadTwitterStream(this.widgetTwitterStream);
 	
 	var getTweetDataTimer = window.setTimeout(function () {
-        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+        new ps_utilities.loadTwitterStream(this.widgetTwitterStream);      
     }, 60000);
 });
 //End Twitter Stream Definitions
