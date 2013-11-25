@@ -470,15 +470,15 @@
     } // end buildKeywordTrending
 
     ps_graphDefinitions.buildLinkedInRecommendations = function (sElementName) {
+        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+        
         var view, API, id, limit
         view = sElementName.view;
         API = sElementName.api;
         id = sElementName.id;
-        limit = sElementName.limit;
-        
-        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
-        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
-        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+        limit = sElementName.limit;        
         
         $("#" + id + " .newrow").remove();
         var i = 1;

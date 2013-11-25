@@ -135,42 +135,7 @@
                 </div>
                 <div class="timelabel">7 days</div>
             </div>
-
-            <div class="widget_container_holder" id="twitterStream">
-                <div class="widget_label">
-                    <h3 class="pull-left">
-                        <span></span>
-                        <small></small>
-                    </h3>
-                    <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
-                            <i class="icon-info-sign icon-white"></i>
-                        </a>
-                        <a href="javascript:ps_modals.launch(widgetTwitterStream.modal)" id="launch-app">
-                            <i class="icon-resize-full icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="widget_holder" id="div_tweeterStream_widget">
-                    <div id="div_tweeterStream" class="div_tweeterStream">
-
-                        <div class="div_tweetsParent">
-                            <div status='enabled' class="div_upperArrow" id="div_upperArrow"></div>
-                            <div class="div_tweetsMain"></div>
-                            <div status='enabled' class="div_downArrow" id="div_downArrow"></div>
-                        </div>
-                    </div>
-                    <div id="div_tweeterStream_admin" class="div_tweeterStream">
-
-                        <div class="div_tweetsParent">
-                            <div status='enabled' class="div_upperArrow" id="div_upperArrow_admin"></div>
-                            <div class="div_tweetsMain"></div>
-                            <div status='enabled' class="div_downArrow" id="div_downArrow_admin"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+            <!-- Linkedin Recommendations -->
             <div class="widget_container_holder" id="linkedinRecommendations">
             	<div class="widget_label">
                     <h3 class="pull-left">
@@ -178,7 +143,7 @@
                         <small></small>
                     </h3>
                     <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="">
                             <i class="icon-info-sign icon-white"></i>
                         </a>
                         <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
