@@ -43,21 +43,21 @@
             thisWeek: responseSentiment.data[0].positive.end.value,
             lastWeek: responseSentiment.data[0].positive.start.value,
             wowChange: responseSentiment.data[0].positive.end.value_velocity,
-            wowChangePercentage: responseSentiment.data[0].positive.end.value_velocity_as_percent,
+            wowChangePercentage: responseSentiment.data[0].positive.end.value_velocity_as_percent
         },
         {
             category: "Negative Sentiment",
             thisWeek: responseSentiment.data[0].negative.end.value,
             lastWeek: responseSentiment.data[0].negative.start.value,
             wowChange: responseSentiment.data[0].negative.end.value_velocity,
-            wowChangePercentage: responseSentiment.data[0].negative.end.value_velocity_as_percent,
+            wowChangePercentage: responseSentiment.data[0].negative.end.value_velocity_as_percent
         },
         {
             category: "Neutral Sentiment",
             thisWeek: responseSentiment.data[0].neutral.end.value,
             lastWeek: responseSentiment.data[0].neutral.start.value,
             wowChange: responseSentiment.data[0].neutral.end.value_velocity,
-            wowChangePercentage: responseSentiment.data[0].neutral.end.value_velocity_as_percent,
+            wowChangePercentage: responseSentiment.data[0].neutral.end.value_velocity_as_percent
         }
         );
 
@@ -83,7 +83,7 @@
                 thisWeek: conversationVolume[1].value,
                 lastWeek: conversationVolume[0].value,
                 wowChange: conversationVolume[1].value_velocity,
-                wowChangePercentage: conversationVolume[1].value_velocity_as_percent,
+                wowChangePercentage: conversationVolume[1].value_velocity_as_percent
             }
             );
 
@@ -317,15 +317,15 @@
         objChart.getGalleryAttributes().setTemplate("BarBasic");
         objChart.getAllSeries().setStackedStyle(cfx.Stacked.Normal);
         objChart.getLegendBox().setVisible( sElementName.legend );
-        
+
         var data = ps_graphDefinitions.jsonData.data;
         var dataSort = _.sortBy(data, function(val){return val.display;});
         data = ps_utilities.processData(dataSort);
-        
+
         objChart.setDataSource(data);
         var divHolder = document.getElementById( sElementName.div_location );
         divHolder.innerHTML = "";
-        
+
         if(sElementName.showMenuDropdown == undefined)
         {
             $( "#volumeAndSentiment" ).append('<div class="timelabel">'+sElementName.timelabel+'</div>');
@@ -349,26 +349,15 @@
         }
 
         objChart.create(divHolder);
-        
-        var contentTemplate = ''+
-        '<DataTemplate>' +
-            '<DockPanel Orientation="Horizontal" Margin="3,0,3,0">' +
-                '<TextBlock Text="{Binding Path=Macro %s:}" Margin="0,0,4,0"/>' +
-                '<TextBlock Text="{Binding Path=Macro %v (%P%%)}" FontWeight="Bold" HorizontalAlignment="Right"/>' +
-            '</DockPanel>' +
-        '</DataTemplate>';
-          
-        objChart.getToolTips().setContentTemplate(contentTemplate);
-        objChart.getToolTips().setAllSeries(false);
 
         ps_utilities.RemoveWidgetGradient();
-        
+
         $(divHolder).mousemove(function(e) {
             $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
             $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
         });
     };
-    
+
     ps_graphDefinitions.buildSentimentCompetitors = function (sElementName) {
 
         var objChart;
@@ -390,17 +379,6 @@
         var divHolder = document.getElementById( sElementName.div_location );
         divHolder.innerHTML = "";
         objChart.create(divHolder);
-        
-        var contentTemplate = ''+
-        '<DataTemplate>' +
-            '<DockPanel Orientation="Horizontal" Margin="3,0,3,0">' +
-                '<TextBlock Text="{Binding Path=Macro %s:}" Margin="0,0,4,0"/>' +
-                '<TextBlock Text="{Binding Path=Macro %v (%P%%)}" FontWeight="Bold" HorizontalAlignment="Right"/>' +
-            '</DockPanel>' +
-        '</DataTemplate>';
-          
-        objChart.getToolTips().setContentTemplate(contentTemplate);
-        objChart.getToolTips().setAllSeries(false);
 
         if(sElementName.showVolumeAndSentimentMenu == undefined)
         {
@@ -408,7 +386,7 @@
         }
 
         ps_utilities.RemoveWidgetGradient();
-        
+
         $(divHolder).mousemove(function(e) {
             $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
             $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
@@ -426,29 +404,24 @@
         objChart.setGallery(sElementName.gallery);
         objChart.getGalleryAttributes().setTemplate(sElementName.template);
         objChart.getLegendBox().setVisible(sElementName.legend);
-        
         objChart.getLegendBox().setWidth(100);
-        objChart.getLegendBox().setHeight(300);
+        objChart.getLegendBox().setHeight(100);
         objChart.getLegendBox().sizeToFit();
-        objChart.getLegendBox().setDock(cfx.DockArea.Right);
-        
         objChart.getAxisX().setMinorStep(1);
         objChart.getAxisX().getGrids().getMinor().setVisible(true);
         objChart.getAnimations().getLoad().setEnabled(true);
-        
-        var dataSort = _.sortBy(sElementName.jsonData.data, function(val){return val.display;});
-        var data = ps_utilities.processData(dataSort);
-        objChart.setDataSource(data);
-        
         objChart.getToolTips().setContentTemplate(ps_utilities.getContentTemplateTooltip());
         objChart.getToolTips().setAllSeries(false);
 
-        
-        var  divHolder = document.getElementById(sElementName.div_location);
+        var dataSort = _.sortBy(sElementName.jsonData.data, function(val){return val.display;});
+        var data = ps_utilities.processData(dataSort);
+        objChart.setDataSource(data);
+
+        var divHolder = document.getElementById(sElementName.div_location);
         divHolder.innerHTML = '';
         objChart.create(divHolder);
 
-        
+
         ps_utilities.RemoveWidgetGradient();
         ps_utilities.RemoveLogo();
         ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
@@ -470,11 +443,11 @@
 		ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
         ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+        ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
+		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);
 		ps_twitterUtils.buildWidget(usersData, mentionData);
 		ps_twitterUtils.buildWidgetScroll();
         ps_twitterUtils.buildWidgetModal();
-        ps_utilities.AddTwitterHeader(sElementName.id_div_header, sElementName.modal.news_header);
-		ps_utilities.AddTwitterHeader(sElementName.id_div_header_admin, sElementName.modal.news_header_admin);
     }
 
 

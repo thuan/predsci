@@ -181,18 +181,18 @@ $(function () {
         widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
         new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
     });
-    
-    
-    
+
+
+
     $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
         e.preventDefault();
-              
-              var arrData;  
+
+              var arrData;
               if(this.id == 'predefinedTopicVolumeLegend'){
-                  arrData = widgetPredefinedTopicVolume; 
+                  arrData = widgetPredefinedTopicVolume;
               }else if(this.id == 'conversationVolumeLegend'){
                   arrData = widgetConversationVolume;
-              } 
+              }
                var text = this.text;
                     // Show the chart
                     if (text == "Show legend") {
@@ -207,7 +207,7 @@ $(function () {
 			$(this).text("Show legend");
                         $('#' + this.id).hide();
                         $('#' + this.id).show();
-                       
+
                     }
               arrData.function(arrData);
     });
@@ -380,9 +380,9 @@ $(function () {
     var widget = {
         dataURL: APIgettoptweets,
         function: ps_graphDefinitions.topTweets
-    };    
+    };
     new ps_utilities.loadJsonpData(widget);
-    
+
 }); //End Top Tweets
 
 
@@ -432,6 +432,7 @@ $(function () {
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
     	id_div: 'twitterStream',
+		legend: false,
     	modal: {
 			title: "Twitter Stream",
         	subtitle: "Tweets mentioning Verizon Wireless",
@@ -441,13 +442,31 @@ $(function () {
 			id_div_header: 'news_header',
 			id_div_header_admin: 'news_header_admin',
 			news_header: "Tweets mentioning Verizon Wireless",
-			news_header_admin: "Tweets from Verizon Wireless Handles"
+			news_header_admin: "Tweets from Verizon Wireless Handles",
+        	legend: false
 		}
-};	
+};
   	new ps_utilities.loadTwitterStream(widgetTwitterStream);
 	var getTweetDataTimer = window.setInterval(function () {
-        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);
     }, 60000);
 });
 
 //End Twitter Stream Definitions
+
+/* Trending Terms */
+$(function () {
+    var widget_trending = {
+        title: "Trending Terms",
+        subtitle: "Terms Trending On Twitter This Hour",
+        url_trending_terms: APItrendingterms,
+        url_selectable_topics: APIselectabletopics,
+        id: 'trending_terms_list',
+        category: '',
+        type: '',
+        callback: '',
+        view: 'datagrid'
+    }
+    new ps_trendingterms.loadData(widget_trending);
+
+});

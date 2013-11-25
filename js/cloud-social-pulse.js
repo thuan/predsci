@@ -189,6 +189,35 @@ var widget_pie = {
     }
 };
 
+/*
+ * Predefined Topic Volume
+ */
+var widgetPredefinedTopicVolume = {
+    title: 'Predefined Topic Volume',
+    subtitle: 'by Volume',
+    dataURL: APItrendingtopics,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv2',
+    legend: false,
+    tooltip:'Predefined Topic Volume',
+    id_div: 'predefinedTopicVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Predefined Topic Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APItrendingtopics,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showInsights: true,
+        showToggle2: true
+    }
+}
+
 
 $(function(){
     $('body').tooltip( { selector: "a"});
@@ -236,10 +265,37 @@ $(function(){
     // SHARE OF VOICE - begin
     new ps_utilities.loadData(widget_pie);
     // SHARE OF VOICE - end
-
-
-});
-
-	
+    
+    //Predefined Topic Volume
+    new ps_utilities.loadData(widgetPredefinedTopicVolume)
+    
+    $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
+        e.preventDefault();
+              
+              var arrData;  
+              if(this.id == 'predefinedTopicVolumeLegend'){
+                  arrData = widgetPredefinedTopicVolume; 
+              }else if(this.id == 'conversationVolumeLegend'){
+                  arrData = widgetConversationVolume;
+              } 
+               var text = this.text;
+                    // Show the chart
+                    if (text == "Show legend") {
+                        arrData.legend = true;
+			$(this).text("Hide legend");
+			$('#' + this.id).hide();
+                        $('#' + this.id).show();
+                    }
+                    // Hide the chart
+                    else {
+                        arrData.legend = false;
+			$(this).text("Show legend");
+                        $('#' + this.id).hide();
+                        $('#' + this.id).show();
+                       
+                    }
+              arrData.function(arrData);
+    });
+});	
 //END: Function Def
 	

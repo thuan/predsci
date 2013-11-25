@@ -5,36 +5,36 @@
 
 *{margin:0; padding:0;}
 body {
-	background: #e41b23;
-	background: -moz-radial-gradient(center, ellipse cover, #e41b23 0%, #96151A 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#e41b23), color-stop(100%,#96151A)); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* IE10+ */
-	background: radial-gradient(ellipse at center, #e41b23 0%,#96151A 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e41b23', endColorstr='#96151A',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #e41b23;
+    background: -moz-radial-gradient(center, ellipse cover, #e41b23 0%, #96151A 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#e41b23), color-stop(100%,#96151A)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #e41b23 0%,#96151A 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #e41b23 0%,#96151A 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e41b23', endColorstr='#96151A',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .box{
-	overflow:hidden;
+    overflow:hidden;
 }
 .box.full{
-	width:1071px;
+    width:1071px;
 }
 .box h3{
-	padding:0 10px; 
-	color: #fff; 
-	font-size: 1.6em; 
-	font-weight: normal;
+    padding:0 10px;
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: normal;
 }
 .box small{
-	   white-space: nowrap;
-       font-size: .5em;
-       margin-top: -5px;
-       display: block;
+    white-space: nowrap;
+    font-size: .5em;
+    margin-top: -5px;
+    display: block;
 }
 div.default {
-	width:510px;
-	height:300px;
+    width:510px;
+    height:300px;
 }
 
 
@@ -55,9 +55,9 @@ div.default {
 #chartToolTipdiv_initialChart {display:none !important;}
 
 .span_modalIcon a {
-	width: 16px;
-	height: 16px;
-	background: url(images/bootstrap/glyphicons-halflings-white.png) -361px -97px no-repeat;
+    width: 16px;
+    height: 16px;
+    background: url(../images/bootstrap/glyphicons-halflings-white.png) -361px -97px no-repeat;
 }
 
 .select_filter {
@@ -76,41 +76,41 @@ div.default {
     width: auto;
 }
 .select_filter:focus {
-		border-color: #66AFE9;
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
-		outline: 0 none;
+    border-color: #66AFE9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
 }
 
 /*Twitter Stream*/
 .div_tweetsParent {
-	position:relative;
-	z-index:999;
+    position:relative;
+    z-index:999;
 }
-	.div_upperArrow,
-	.div_downArrow {
-		height: 20px;
-		cursor: pointer;
-		position: relative;
-		width: 100%;
-		background:no-repeat 50% 50%;
-	}
-	.div_upperArrow {background-image: url("../images/vscroller-up.png");}
-    #twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:345px;}
-    .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:250px;}
+.div_upperArrow,
+.div_downArrow {
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    background:no-repeat 50% 50%;
+}
+.div_upperArrow {background-image: url("../images/vscroller-up.png");}
+#twitterStreamModal .div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:345px;}
+.div_downArrow 	{background-image: url("../images/vscroller-down.png"); top:250px;}
 
 #twitterStreamModal .modal-body
 {
     padding: 0;
 }
 
-    #twitterStreamModal .div_tweetsMain {
+#twitterStreamModal .div_tweetsMain {
 
-        height: 370px;
-        position: absolute;
-        overflow: hidden;
-        color: #B1B1B1;
-        margin-top: -9px;
-    }
+    height: 370px;
+    position: absolute;
+    overflow: hidden;
+    color: #B1B1B1;
+    margin-top: -9px;
+}
 
 
 #twitterStreamModal #div_mentionTweet .div_tweet
@@ -119,51 +119,51 @@ div.default {
 }
 
 
-	.div_tweetsMain {
-		width:100%;
-		height:270px;
-		position: absolute;	
-		overflow: hidden;
-		color:#B1B1B1;
-	}
-		#div_tweeterStream_admin {
-			display:none;
-		}
+.div_tweetsMain {
+    width:100%;
+    height:270px;
+    position: absolute;
+    overflow: hidden;
+    color:#B1B1B1;
+}
+#div_tweeterStream_admin {
+    display:none;
+}
 
-	.div_tweet {
-        padding: 10px 10px 0px 10px;
-        height: 68px;
-        position: relative;
-        border-bottom: 1px solid #aaa;
-        clear: both;
-        overflow: hidden;
-	}
-		.div_tweetImage {
-			float:left;
-			margin:0 10px 0 0;
-		}
-			.img_dp {
-				border-radius: 8px;
-				border: 3px solid #aaaaaa;
-			}
-		.div_tweetDescription {
-			font-size:11px;
-			line-height:16px;
-		}
-			.div_tweetDescription h4{margin:0;}
-				.div_tweetDescription h4 a {
-					font-size:13px;
-					color:#ff0000 !important;
-					text-decoration:none;
-				}
-			.div_tweetDescription .div_tweetTime{
-				position:absolute;
-				right:10px;
-				top:5px;
-				font-size:10px;
-			}
-		
-#twitterStreamModal	{width: 700px!important; background: #000 url(images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
+.div_tweet {
+    padding: 10px 10px 0px 10px;
+    height: 68px;
+    position: relative;
+    border-bottom: 1px solid #aaa;
+    clear: both;
+    overflow: hidden;
+}
+.div_tweetImage {
+    float:left;
+    margin:0 10px 0 0;
+}
+.img_dp {
+    border-radius: 8px;
+    border: 3px solid #aaaaaa;
+}
+.div_tweetDescription {
+    font-size:11px;
+    line-height:16px;
+}
+.div_tweetDescription h4{margin:0;}
+.div_tweetDescription h4 a {
+    font-size:13px;
+    color:#ff0000 !important;
+    text-decoration:none;
+}
+.div_tweetDescription .div_tweetTime{
+    position:absolute;
+    right:10px;
+    top:5px;
+    font-size:10px;
+}
+
+#twitterStreamModal	{width: 700px!important; background: #000 url(../images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
 
 
 #twitterStreamModal	.modal-header #right-side
@@ -215,22 +215,22 @@ div.default {
 
 
 
-	#twitterStreamModal .headng{
-		overflow: hidden;
-		padding: 20px 0 0;
-	}
-		#twitterStreamModal .lft,
-		#twitterStreamModal .rht{font-weight: bold; color: #fff;}
-		#div_verizonTweet, #twitterStreamModal .lft{float: left;}
-		#div_mentionTweet, #twitterStreamModal .rht{float: right;}
-		
+#twitterStreamModal .headng{
+    overflow: hidden;
+    padding: 20px 0 0;
+}
+#twitterStreamModal .lft,
+#twitterStreamModal .rht{font-weight: bold; color: #fff;}
+#div_verizonTweet, #twitterStreamModal .lft{float: left;}
+#div_mentionTweet, #twitterStreamModal .rht{float: right;}
+
 #div_mentionTweet,
 #div_verizonTweet,
 #twitterStreamModal .lft,
 #twitterStreamModal .rht,
 #div_mentionTweet .div_tweetsMain,
 #div_verizonTweet .div_tweetsMain{
-	width:350px !important;
+    width:350px !important;
 }
 
 
@@ -238,20 +238,20 @@ div.default {
 /*Top Tweets*/
 #topTweets th, #twitter-feed-modal th{font-size:12px !important;}
 #topTweets td, #twitter-feed-modal td{font-size:11px !important;}
-.timelabel{ 
-	color:#fff; 
-	font-size:9px; 
-	float: right; 
-	margin-top: 1px; 
-	margin-right: 10px;
+.timelabel{
+    color:#fff;
+    font-size:9px;
+    float: right;
+    margin-top: 1px;
+    margin-right: 10px;
 }
 
-.widget_container_holder .timelabel{ 
-	color:#fff; 
-	font-size:9px; 
-	float: right; 
-	margin-top: -20px;
-	margin-right: 10px;
+.widget_container_holder .timelabel{
+    color:#fff;
+    font-size:9px;
+    float: right;
+    margin-top: -20px;
+    margin-right: 10px;
     position: relative;
 }
 
@@ -259,204 +259,297 @@ div.default {
 #klist, #klist > div > div {margin: 0; clear:both}
 #klist .klist-fe {float: left;}
 #klist ul.keywordlist{
-		color: #ffffff;
-		margin-left: 17px;
-		padding: 0;
-	}
-ul.keywordlist li.title{
-	background: none;
-	border-radius: 0;
-	font-size: 15px;
-	color: #fff;
+    color: #ffffff;
+    margin-left: 17px;
+    padding: 0;
 }
-ul.keywordlist li {
-	font: 11px/27px Arial, Helvetica, Sans-Serif;
-	list-style-type: none;
-	background-color: #602f2f;
-	border-radius: 4px;
-	height: 25px;
-	margin: 5px 2px;
-	padding: 3px 3px 3px 8px;
-	width: 100%;
-}
-ul.keywordlist > li:nth-child(2n) {background-color: #444444;}
-	ul.keywordlist li span {
-		background-color: #000;
-		color: #fff;
-		border-radius: 4px;
-		float: right;
-		font-size: 10px;
-		line-height: 20px;
-		padding: 2px 5px;
-	}				
+
+
 span.twitter-font {
-	font-size: 13px;
-	border-bottom: none;
+    font-size: 13px;
+    border-bottom: none;
 }
 .box .icon-resize-full {
     float: right;
-	cursor:pointer;
+    cursor:pointer;
     margin: -40px 10px 0 0;
 }
 
+ul.keywordlist {
+    color: #ffffff;
+    list-style-type: none;
+    /*width: 96%;*/
+    width: 33%;
+    float: left;
+}
+#klist .span4,
+#trending_terms_list .span4 {
+    margin-left: 0;
+}
+#klist ul.keywordlist,
+#trending_terms_list ul.keywordlist {
+    margin-left: 0
+}
+ul.keywordlist li, ul.keywordlist li.title {
+    background-color: #602f2f;
+    height: 25px;
+    margin: 5px 5px 5px 5px;
+    padding: 3px 3px 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    line-height: 27px;
+}
+ul.keywordlist > li:nth-child(even) { background-color: #444444; } /* updated to reflect low contrast displays */
+ul.keywordlist li.title {
+    font-size: 14px;
+    padding: 3px 10px 3px 5px;
+    display: inline-block;
+    background: none;
+}
+ul.keywordlist li span.keyword-term {
+    width: 65%;
+    display: block;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ul.keywordlist li span.keyword-value {
+    font-size: 10px;
+    float: right;
+    background-color: #000;
+    padding: 2px 5px;
+    line-height: 20px;
+    border-radius: 4px;
+}
+ul.keywordlist li a {
+    background-color: #111111;
+    padding: 0px 8px;
+    margin-right: 5px;
+    display: inline-block;
+    color: #333333;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #111111;
+}
+ul.keywordlist li a.active {
+    color: #ffffff;
+    background-color: #810909;
+}
+ul.keywordlist li a:hover { border: 1px solid #666666; }
+#klist .list,
+#trending_terms_list .list {
+    width: 33%;
+    float: left
+}
+#trending_terms_list ul.keywordlist {
+    width: 100%;
+}
+#trending_terms_list ul.keywordlist ul.sublist {
+    width: 49.5%;
+}
+#klist, #klist > div > div,
+#trending_terms_list, #trending_terms_list > div > div {
+    margin-top: 0px
+}
+.modal ul.keywordlist,
+.widget.has-selectable-topics.hidden-desktop ul.keywordlist {
+    margin: 10px 0 0 0;
+    width: 100%;
+}
+#trending_terms_list li.title,
+.modal ul.keywordlist li.title,
+.widget.has-selectable-topics.hidden-desktop li.title {
+    width: 100%;
+    display: block;
+    float: left;
+}
+.modal ul.keywordlist ul.sublist,
+.widget.has-selectable-topics.hidden-desktop ul.keywordlist ul.sublist {
+    width: 24.75%;
+    float: left;
+}
+
+/* Selectable topics */
+.has-selectable-topics ul.keywordlist li.flash:hover,
+.selectable-topics ul.keywordlist li.flash:hover {
+    background: #803E3E;
+    cursor: pointer;
+}
+.has-selectable-topics ul.keywordlist li.flash:nth-child(even):hover,
+.selectable-topics ul.keywordlist li.flash:nth-child(even):hover {
+    background: #5e5e5e;
+}
+.selectable-topics {
+    margin-top: 0;
+    height: 145px;
+}
+.has-selectable-topics + .modal .pull-right {
+    width: 165px;
+}
+
+
 
 /* Metric Ticker */
-	.metric-ticker {
-		background:#000;
-		border:1px solid #000;
-		border-radius: 7px;
-	    width: 100%;
-		margin:12px 15px 0;
-		position: relative;
-	}
-	.metric-ticker_100 {
-		background:#000;
-		border:1px solid #000;
-		border-radius: 7px;
-	    width: 100%;
-		margin:12px 15px 0;
-		position: relative;
-	}	
-	.metric-ticker .widget {
-		height: 40px;
-		max-height: 40px;
-		color: #fff;
-		overflow: hidden;
-	}
-	.metric-ticker ul {display: none;}
-	.metric-ticker h2 {
-		position: relative;
-		margin: 0;
-		padding:0;
-		font-size: 16px;
-		line-height:42px;
-		float: left;
-		font-weight: normal;
-		border-top-left-radius: 7px;
-		border-bottom-left-radius: 7px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		transition: background 0.25s;
-	}
-	.metric-ticker h2 span {display: block; padding: 0 25px;}
-	.metric-ticker li.metric-active h2 {color: #666;}
-	.metric-ticker li h2.category-active {
-		overflow: visible;
-		white-space: normal;
-		text-overflow: ellipsis;
-		font-weight: bold;
-		color: #fff;
-	}
-	.metric-ticker h2:before {
-		position: absolute;
-		content: "";
-		display: block;
-		float: left;
-		width: 120px;
-		height: 40px;
-		left: 85px;
-		background: #000;
-		background: -moz-linear-gradient(left, transparent 0%, #000 100%);
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(100%, #000));
-		background: -webkit-linear-gradient(left, transparent 0%, #000 100%);
-		background: -o-linear-gradient(left, transparent 0%, #000 100%);
-		background: -ms-linear-gradient(left, transparent 0%, #000 100%);
-		background: linear-gradient(to right, transparent 0%, #000 100%);
-	}
-			.metric-ticker li.metric-active h2:before {background: none;}
-	.metric-ticker li h2 + .arrow {
-		width: 0;
-		height: 0;
-		display: block;
-		float: left;
-		border-top: 20px solid transparent;
-		border-bottom: 20px solid transparent;
-		border-left: 20px solid transparent;
-		transition: border-left-color 0.25s;
-	}
+.metric-ticker {
+    background:#000;
+    border:1px solid #000;
+    border-radius: 7px;
+    width: 100%;
+    margin:12px 15px 0;
+    position: relative;
+}
+.metric-ticker_100 {
+    background:#000;
+    border:1px solid #000;
+    border-radius: 7px;
+    width: 100%;
+    margin:12px 15px 0;
+    position: relative;
+}
+.metric-ticker .widget {
+    height: 40px;
+    max-height: 40px;
+    color: #fff;
+    overflow: hidden;
+}
+.metric-ticker ul {display: none;}
+.metric-ticker h2 {
+    position: relative;
+    margin: 0;
+    padding:0;
+    font-size: 16px;
+    line-height:42px;
+    float: left;
+    font-weight: normal;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.25s;
+}
+.metric-ticker h2 span {display: block; padding: 0 25px;}
+.metric-ticker li.metric-active h2 {color: #666;}
+.metric-ticker li h2.category-active {
+    overflow: visible;
+    white-space: normal;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: #fff;
+}
+.metric-ticker h2:before {
+    position: absolute;
+    content: "";
+    display: block;
+    float: left;
+    width: 120px;
+    height: 40px;
+    left: 85px;
+    background: #000;
+    background: -moz-linear-gradient(left, transparent 0%, #000 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(100%, #000));
+    background: -webkit-linear-gradient(left, transparent 0%, #000 100%);
+    background: -o-linear-gradient(left, transparent 0%, #000 100%);
+    background: -ms-linear-gradient(left, transparent 0%, #000 100%);
+    background: linear-gradient(to right, transparent 0%, #000 100%);
+}
+.metric-ticker li.metric-active h2:before {background: none;}
+.metric-ticker li h2 + .arrow {
+    width: 0;
+    height: 0;
+    display: block;
+    float: left;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid transparent;
+    transition: border-left-color 0.25s;
+}
 .metric-ticker li h2.category-active + .arrow {border-left-color: #333;}
 .metric-ticker li h2.category-active {background: #333;}
-	.metric-ticker ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.metric-ticker li {
-		position: relative;
-		width: 12%;
-		float: left;
-		white-space: nowrap;
-		overflow: hidden;
-		line-height: 41px;
-		color: #666;
-	}
-	.metric-ticker li.metric-active {width: 83%; color: #fff;}
-	.metric-ticker .metric {
-		margin-left: 20px;
-		padding-left: 20px;
-		border-left: 1px solid #444;
-	}
+.metric-ticker ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.metric-ticker li {
+    position: relative;
+    width: 12%;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 41px;
+    color: #666;
+}
+.metric-ticker li.metric-active {width: 83%; color: #fff;}
+.metric-ticker .metric {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #444;
+}
 .metric-ticker .metric.first-child {margin: 0; border: none;}
-	.metric-ticker .controls {
-		position: absolute;
-		top:3px;
-		right: 0;
-		border-top-right-radius: 7px;
-		padding: 0 20px;
-		background: #000;
-	}
-		.metric-ticker .control {
-			position: relative;
-			font-size: 26px;
-			line-height:30px;
-			transition: opacity 0.25s;
-		}
-			.metric-ticker .control:first-child {margin-right: 0px;}
-		.metric-ticker .control:hover {cursor: pointer; opacity: 0.6;}
-		.metric-ticker .info-small {
-			position: relative;
-			top: 4px;
-			left: 7px;
-			width: 8px;
-			float: none;
-		}
-	.metric-ticker .wow-change {
-		position: relative;
-		top: 3px;
-		left: 4px;
-		width: 18px;
-		height: 16px;
-		display: inline-block;
-		background-image: url(images/bootstrap/glyphicons-halflings-white.png);
-		opacity: 0.8;
-	}
-	.metric-ticker .wow-change.positive {background-position: -287px -254px;}
-	.metric-ticker .wow-change.negative {background-position: -310px -254px;}
-	.presentation .metric-ticker 		{margin: 87px auto 0; width: 100%;}
-	.presentation .metric-ticker .widget{width: 98%; margin: 0 auto;}
-	
-	.phonetitle {
-		line-height: 40px;
-		height: 23px;
-		color: #ffffff;
-		font-size: 16px;
-		position: relative;
-		top: 18px;
-	}
-	
-	/* google maps */
-        .tooltip-maps { position:absolute;
-            width: 145px;
-            padding: 5px;
-            border: 1px solid gray;
-            font-size: 9pt;
-            font-family: Verdana;
-            background-color: #fff;
-            color: #000;
-        }	
-		
-	/* from main.css */
+.metric-ticker .controls {
+    position: absolute;
+    top:3px;
+    right: 0;
+    border-top-right-radius: 7px;
+    padding: 0 20px;
+    background: #000;
+}
+.metric-ticker .control {
+    position: relative;
+    font-size: 26px;
+    line-height:30px;
+    transition: opacity 0.25s;
+}
+.metric-ticker .control:first-child {margin-right: 0px;}
+.metric-ticker .control:hover {cursor: pointer; opacity: 0.6;}
+.metric-ticker .info-small {
+    position: relative;
+    top: 4px;
+    left: 7px;
+    width: 8px;
+    float: none;
+}
+.metric-ticker .wow-change {
+    position: relative;
+    top: 3px;
+    left: 4px;
+    width: 18px;
+    height: 16px;
+    display: inline-block;
+    background-image: url(../images/bootstrap/glyphicons-halflings-white.png);
+    opacity: 0.8;
+}
+.metric-ticker .wow-change.positive {background-position: -287px -254px;}
+.metric-ticker .wow-change.negative {background-position: -310px -254px;}
+.presentation .metric-ticker 		{margin: 87px auto 0; width: 100%;}
+.presentation .metric-ticker .widget{width: 98%; margin: 0 auto;}
+
+.phonetitle {
+    line-height: 40px;
+    height: 23px;
+    color: #ffffff;
+    font-size: 16px;
+    position: relative;
+    top: 18px;
+}
+
+/* google maps */
+.tooltip-maps { position:absolute;
+    width: 145px;
+    padding: 5px;
+    border: 1px solid gray;
+    font-size: 9pt;
+    font-family: Verdana;
+    background-color: #fff;
+    color: #000;
+}
+
+/* from main.css */
 body
 {
     border: 0;
@@ -582,7 +675,7 @@ body
 {
     font-family: 'Titillium Web', sans-serif;
     color: #fff;
-    background: url(images/page-title-bg.png) no-repeat;
+    background: url(../images/page-title-bg.png) no-repeat;
     width: 249px;
     height: 54px;
     display: block;
@@ -624,12 +717,12 @@ body
 
 #page_title #dashboard_new
 {
-    background: url(images/icon-dashboard.png) no-repeat 0 16px;
+    background: url(../images/icon-dashboard.png) no-repeat 0 16px;
 }
 
 #page_title #dashboard_lists
 {
-    background: url(images/icon-list.png) no-repeat 0 15px;
+    background: url(../images/icon-list.png) no-repeat 0 15px;
 }
 
 
@@ -865,8 +958,8 @@ body
 {
     width: 100%;
     height: 345px;
-    position: relative; 
-    background-color: #000; 
+    position: relative;
+    background-color: #000;
     overflow: hidden;
 }
 
@@ -876,7 +969,7 @@ body
     width: 415px;
     height: 430px;
     float: left;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -893,7 +986,7 @@ body
     width: 850px;
     height: 430px;
     float: left;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -908,7 +1001,7 @@ body
     width: 100%;
     height: 430px;
     float: left;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -923,7 +1016,7 @@ body
     width: 525px;
     height: 510px;
     float: left;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -938,7 +1031,7 @@ body
     width: 100%;
     height: 510px;
     float: left;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -965,7 +1058,7 @@ body
     width: 100%;
     height: 250px;
     overflow: hidden;
-    position: relative; 
+    position: relative;
     background-color: rgb(229, 227, 223);
 }
 
@@ -974,7 +1067,7 @@ body
     width: 100%;
     height: 320px;
     overflow: hidden;
-    position: relative; 
+    position: relative;
     background-color: rgb(229, 227, 223);
 }
 
@@ -990,16 +1083,16 @@ body
 
 #topTweets table thead th, #twitter-feed-modal table thead th
 {
-    background: #e9f3f8 url('images/bootstrap/sort_both.png') no-repeat center right;
+    background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right;
     color: #000;
 }
 
-#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('images/bootstrap/sort_both.png') no-repeat center right; }
-#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('images/bootstrap/sort_asc.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('images/bootstrap/sort_desc.png') no-repeat center right; }
+#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('/images/bootstrap/sort_asc.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('/images/bootstrap/sort_desc.png') no-repeat center right; }
 
-#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
 
 
 #topTweets table tbody td{
@@ -1066,7 +1159,7 @@ body
 .widget_label .pull-right
 {
     float: right;
-    margin: 10px 10px 0 0;
+    margin: 10px 0 0 0;
 }
 
 .widget_label .pull-right #launch-app{}
@@ -1230,10 +1323,10 @@ table.dataTable td
 
 #modal_widget
 {
-    width: 900px;
-    height: 560px;
-    margin-left: -450px;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    width: 810px;
+    height: 530px;
+    margin-left: -405px;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     border: 8px solid rgba(201, 29, 29, 0.5);
     color: #fff;
 }
@@ -1253,21 +1346,22 @@ table.dataTable td
 #modal_widget .modal-header
 {
     border: none;
-    width: 800px;
+    width: 780px;
     margin: 0 auto;
+    padding: 20px 1px 0 0;
 }
 
 
-#modal_widget .modal-header #right-side
+#modal_widget .modal-header #pull-right
 {
     float: right;
-    width: 115px;
 }
 
 
 #modal_widget .modal-header #right-side .label, #modal_widget .modal-header #right-side #icon-info
 {
     margin-right: 5px;
+    margin-top: -3px;
 }
 
 #modal_widget .modal-header #right-side .label
@@ -1292,8 +1386,8 @@ table.dataTable td
     color: #fff;
     opacity: 1;
     filter: alpha(opacity=100);
+    margin-top: 7px;
 }
-
 
 #modal_widget .modal-header .dropdown
 {
@@ -1355,7 +1449,7 @@ table.dataTable td
 #modal_widget #modal-widget-body
 {
     width: 800px;
-    height: 420px;
+    height: 400px;
     margin: 0 auto;
     z-index: 100;
     position: relative;
@@ -1383,7 +1477,7 @@ table.dataTable td
 #latest_insights_viewer
 {
     width: 750px;
-    margin: 150px 0 0 75px;
+    margin: 154px 0 0 25px;
     position: absolute;
     z-index: 1000;
 }
@@ -1442,7 +1536,7 @@ table.dataTable td
 
 #latest_insights_toggle_view
 {
-    background: #373737 url(images/close.png) 4px 4px no-repeat;
+    background: #373737 url(../images/close.png) 4px 4px no-repeat;
     float: right;
     color: #FFFFFF;
     top: 7px;
@@ -1455,11 +1549,11 @@ table.dataTable td
 }
 
 .open_toggle{
-    background: #373737 url(images/plus.png) 4px 4px no-repeat !important;
+    background: #373737 url(../images/plus.png) 4px 4px no-repeat !important;
 }
 
 .close_toggle{
-    background: #373737 url(images/close.png) 4px 4px no-repeat !important;
+    background: #373737 url(../images/close.png) 4px 4px no-repeat !important;
 }
 
 #latest_insights_content_holder strong
@@ -1484,7 +1578,7 @@ table.dataTable td
 #twitterModal
 {
     width: 700px!important;
-    background: #000 url(images/top_bkgd.jpg) repeat-x;
+    background: #000 url(../images/top_bkgd.jpg) repeat-x;
     border: 8px solid rgba(201, 29, 29, 0.5);
 }
 
@@ -1581,9 +1675,9 @@ table.dataTable td
 .active {background-color: #f26c5b !important;}
 
 .gm-style-iw div {overflow:visible !important;
-            font-size:11px;
-            color: #333333;
-        }
+    font-size:11px;
+    color: #333333;
+}
 
 input.chart-query[type="text"] {
     border-radius: 20px;
@@ -1616,44 +1710,33 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     opacity: 0.6;
 }
 
-/* Compact table cells */
-th[data-compact="true"],
-td[data-compact="true"] {
-	width: 35%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-td[data-compact="true"]:hover {
-	white-space: normal;
-}
-
 
 .icon.line-swap {
     background-position: 0 0;
 }
 .icon {
-    background: url("images/glyphicons-halflings-white.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../images/glyphicons-halflings-white.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     float: left;
     height: 20px;
     transition: opacity 0.5s ease 0s;
-    margin-top: 4px;
+    margin-top: 9px;
+    margin-right: 10px;
     width: 20px;
 }
 
 
 /* Toggle legend */
 .toggle-legend {
-	/*margin: 1px 10px 0 0;
-	float: right;
-	font-size: 9px;*/
-	color: #fff;
+    /*margin: 1px 10px 0 0;
+    float: right;
+    font-size: 9px;*/
+    color: #fff;
     text-decoration: none;
 }
 
 .toggle-legend:hover{
-	color: #fff;
+    color: #fff;
 }
 
 .toggle-legend:focus {
@@ -1662,21 +1745,16 @@ td[data-compact="true"]:hover {
 }
 
 #legend {
-   color:#fff; 
-   font-size:9px; 
-   float: right; 
-   margin-top: -20px;
-   margin-right: 55px;
-   position: relative;     
+    color:#fff;
+    font-size:9px;
+    float: right;
+    margin-top: -20px;
+    margin-right: 55px;
+    position: relative;
 }
 
 
 g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
-
-#C1s{
-    z-index: 99999999;
-    left: 1px;
-}
 
 
 #latest_insights_content_holder:hover {
@@ -1688,7 +1766,7 @@ g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
 
 #latest_insights_content_holder .latest_insights_content .insight-full {
     display: none;
-   opacity: 1;
+    opacity: 1;
 }
 
 #latest_insights_content_holder .toggle-view:hover {
@@ -1702,4 +1780,42 @@ g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
 #latest_insights_content_holder p.date {
     font-size: 11px;
     line-height: 16px;
+}
+
+
+.timelabel-expand, .info-small {
+    color: #FFFFFF;
+    float: right;
+    font-size: 9px;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 15px;
+    margin-top: 5px !important;
+    padding: 5px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    margin-right: 10px;
+    margin-top: 7px;
+    vertical-align: text-top;
+    width: 14px;
+}
+.icon-white, .nav-pills > .active > a > [class^="icon-"], .nav-pills > .active > a > [class*=" icon-"], .nav-list > .active > a > [class^="icon-"], .nav-list > .active > a > [class*=" icon-"], .navbar-inverse .nav > .active > a > [class^="icon-"], .navbar-inverse .nav > .active > a > [class*=" icon-"], .dropdown-menu > li > a:hover > [class^="icon-"], .dropdown-menu > li > a:focus > [class^="icon-"], .dropdown-menu > li > a:hover > [class*=" icon-"], .dropdown-menu > li > a:focus > [class*=" icon-"], .dropdown-menu > .active > a > [class^="icon-"], .dropdown-menu > .active > a > [class*=" icon-"], .dropdown-submenu:hover > a > [class^="icon-"], .dropdown-submenu:focus > a > [class^="icon-"], .dropdown-submenu:hover > a > [class*=" icon-"], .dropdown-submenu:focus > a > [class*=" icon-"] {
+    background-image: url("../images/bootstrap/glyphicons-halflings-white.png");
+}
+
+#icon-info{
+    margin: 5px 10px 0 0;
+}
+
+#insight_container .btn{
+    width: 150px;
+    text-align: left !important;
+}
+
+#insight_container .btn .caret{
+    float: right;
 }

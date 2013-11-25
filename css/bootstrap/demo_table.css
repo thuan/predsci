@@ -186,20 +186,20 @@ table.display td.center {
 }
 
 .sorting_desc {
-	background: url('/images/sort_desc.png') no-repeat center right;
+	background: url('../images/sort_desc.png') no-repeat center right;
 }
 
 .sorting {
-	background: url('/images/sort_both.png') #e9f3f8 no-repeat center right;
+	background: url('../images/sort_both.png') #e9f3f8 no-repeat center right;
 }
 
 
 .sorting_asc_disabled {
-	background: url('/images/sort_asc_disabled.png') no-repeat center right;
+	background: url('../images/sort_asc_disabled.png') no-repeat center right;
 }
 
 .sorting_desc_disabled {
-	background: url('/images/sort_desc_disabled.png') no-repeat center right;
+	background: url('../images/sort_desc_disabled.png') no-repeat center right;
 }
  
 table.display thead th:active,

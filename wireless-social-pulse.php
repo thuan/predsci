@@ -220,6 +220,29 @@
 					</div>
 					<div class="timelabel">last 24 hours</div>
 				</div>
+
+                <!-- Trending Terms Starts-->
+                <div class="widget_container_holder" id="trending_terms">
+                    <div class="widget_label">
+                        <h3 class="pull-left">Trending Terms<br>
+                            <small>Terms Trending On Twitter This Hour</small>
+                        </h3>
+                        <div class="pull-right">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.">
+                                <i class="icon-info-sign icon-white"></i></a>
+                            <a id="launch-app" href=""><i class="icon-resize-full icon-white"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="has-selectable-topics row-fluid" id="trending_terms_list">
+                        <div id="trending_terms_list-" class="">
+
+                        </div>
+                    </div>
+                    <div class="timelabel visible-desktop" style="margin-top: 0px">last hour</div>
+                </div>
+
+                <!-- END Trending Terms -->
 				
 			</div>
 
