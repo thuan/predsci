@@ -150,6 +150,11 @@
         $("#" + div + " .pull-right #tooltipp").attr("data-original-title",element);
         $('g.LegendItem').remove();
     }
+    
+    ps_utilities.AddTwitterHeader = function(div, element)
+    {
+        $("#" + div).text(element);
+    }
 
     ps_utilities.multipleLoadData = function (arrayData)
     {
