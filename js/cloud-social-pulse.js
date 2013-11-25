@@ -6,7 +6,8 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
-
+var APIgettoptweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=1&period=day&period_count=7&limit=20";
+var APIgettweetsmentions = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=verizon&limit=25&min_followers=10&include_replies=false";
 //global API calls converted to JS variables for use in transform functions (endpoints)
 	var PropertyID = "3";
 	var InsightID = "ves1";
