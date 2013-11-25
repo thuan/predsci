@@ -483,7 +483,7 @@
         $("#" + id + " .newrow").remove();
         var i = 1;
 
-        $.each(sElementName.data, function (j) {
+        $.each(sElementName.jsonpData.data, function (j) {
             if (i > limit) {
                 return;
             }
