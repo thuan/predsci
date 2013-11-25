@@ -283,7 +283,8 @@
 		});
 	};
 
-	ps_twitterUtils.buildWidgetModal = function () {	
+	ps_twitterUtils.buildWidgetModal = function () {
+        if ($("#modal-heading").text().indexOf("Twitter Stream") >= 0) { 
             //displaying the modal content
             $("#div_mentionTweet #div_verizonTweet").empty();
             $("#modal_widget #modal-widget-body").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
@@ -299,7 +300,7 @@
             $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
                 if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
             });
-        
+        }
 	};
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
