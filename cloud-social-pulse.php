@@ -2,13 +2,13 @@
     include_once ("inc/header.php");
     include_once ("inc/navigation.php");
 ?>
-	<script language="javascript" src="js/consumer-mass-social-pulse.js" type="text/javascript"></script>
+	<script language="javascript" src="js/cloud-social-pulse.js" type="text/javascript"></script>
 	<body id="dashboard_body">
 
 		<div id="content">
 
 			<div id="page_title">
-				<h1>Consumer & Mass Business Social Pulse</h1>
+				<h1>Enterprise Solutions - Cloud Social Pulse</h1>
 				<ul><li id="dashboard_lists"><a href="dashboard-all.php">View All Dashboards</a></li></ul>
 			</div>
 

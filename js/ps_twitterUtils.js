@@ -11,68 +11,133 @@
 /*global window:false, ps_graphDefinitions:false, jQuery:false, sessionStorage:false*/
 
 (function (ps_twitterUtils, $, undefined) {
+	
+	ps_twitterUtils.topTweets = function(response) {
+    	
+    	var date            = new Date();
+    	var response = ps_graphDefinitions.jsonpData;
+        var topTweets       = '<table class="table table-bordered" id="tableTopTweets"><thead><tr><th>Tweet</th><th>Handle</th><th>@Replies</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>';
+        var topTweetsModal  = '<table class="table table-bordered" id="tableTopTweetsModal"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>';
+        var userName        = response.groups[0].userName;
+        var tweetData       = response.groups[0].statuses;
+        var statusCount     = response.groups[0].statuses.length; 
+        var rank,screen_name,status_text,reply_count,status_time_str;
+        topTweets += '<tbody>';
+        for ( i = 0; i < 5; i++) {
+            
+            screen_name      = tweetData[i].screen_name;
+            status_text      = tweetData[i].status_text;
+            reply_count      = tweetData[i].reply_count;
+            retweet_count    = tweetData[i].retweet_count;
+            tweet_engagement =  reply_count + retweet_count;
+            status_time_str  = tweetData[i].status_time_str.split(" ");
+            status_time_str  = status_time_str[0].split("-");
+            status_time_str  = status_time_str[0] +"/"+status_time_str[1]+"/"+status_time_str[2];
 
-	ps_twitterUtils.topTweets = function (response) {
-
-		var date = new Date();
-		var response = ps_graphDefinitions.jsonpData;
-		var topTweets = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
-		var topTweetsModal = '<table class="table table-bordered"><thead><tr><th>Rank</th><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Date</th></tr></thead><tbody>';
-		var userName = response.groups[0].userName;
-		var tweetData = response.groups[0].statuses;
-		var statusCount = response.groups[0].statuses.length;
-		var rank, screen_name, status_text, reply_count, status_time_str;
-		for (i = 0; i < 5; i++) {
-			rank = tweetData[i].rank;
-			screen_name = tweetData[i].screen_name;
-			status_text = tweetData[i].status_text;
-			reply_count = tweetData[i].reply_count;
-			retweet_count = tweetData[i].retweet_count;
-			status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
-
-			topTweets += '<tr>';
-			topTweets += '<td>' + rank + '</td>';
-			topTweets += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
-			topTweets += '<td>@' + screen_name + '</td>';
-			topTweets += '<td>' + reply_count + '</td>';
-			topTweets += '<td>' + retweet_count + '</td>';
-			topTweets += '<td>' + status_time_str + '</td>';
-			topTweets += '</tr>';
-		}
-		var divIndex = 0;
-		for (i = 0; i < statusCount; i++) {
-			rank = tweetData[i].rank;
-			screen_name = tweetData[i].screen_name;
-			status_text = tweetData[i].status_text;
-			reply_count = tweetData[i].reply_count;
-			retweet_count = tweetData[i].retweet_count;
-			img_url = tweetData[i].img_url;
-			tweetTime = tweetData[i].status_time_str;
-			status_time_str = date.getDate(tweetData[i].status_time_str) + "/" + date.getMonth(tweetData[i].status_time_str) + "/" + date.getFullYear(tweetData[i].status_time_str);
-
-
-			topTweetsModal += '<tr>';
-			topTweetsModal += '<td>' + rank + '</td>';
-			topTweetsModal += '<td>' + ps_twitterUtils.addlinks(status_text) + '</td>';
-			topTweetsModal += '<td>@' + screen_name + '</td>';
-			topTweetsModal += '<td>' + reply_count + '</td>';
-			topTweetsModal += '<td>' + retweet_count + '</td>';
-			topTweetsModal += '<td>' + status_time_str + '</td>';
-			topTweetsModal += '</tr>';
-			if (divIndex === 0) {
-				sessionStorage.presentTopTweetIndex = 0;
-				sessionStorage.presentTopTweetIndex_admin = 0;
-			}
-
-			divIndex += 1;
-		}
+            
+            topTweets += "<tr class='newrow'>";
+            topTweets += "<td  data-compact='true'>"+ps_twitterUtils.addlinks(status_text)+'</td>';
+            topTweets += '<td id ="handle_'+i+'">@'+screen_name+'</td>';
+            topTweets += '<td>'+reply_count+'</td>';
+            topTweets += '<td>'+retweet_count+'</td>';
+            topTweets += '<td>'+tweet_engagement+'</td>';
+            topTweets += '<td id ="date_'+i+'">'+status_time_str+'</td>';
+            topTweets += '</tr>';
+            
+        }
+        	topTweets += '</tbody>';
+        	topTweetsModal += '<tbody>';
+        var divIndex=0;
+        for ( i = 0; i < statusCount; i++) {
+            
+            screen_name      = tweetData[i].screen_name;
+            status_text      = tweetData[i].status_text;
+            reply_count      = tweetData[i].reply_count;
+            retweet_count    = tweetData[i].retweet_count;
+            tweet_engagement =  reply_count + retweet_count;
+            img_url          = tweetData[i].img_url;
+            tweetTime        = tweetData[i].status_time_str;
+            status_time_str  = tweetData[i].status_time_str.split(" ");
+            status_time_str  = status_time_str[0].split("-");
+            status_time_str  = status_time_str[0] +"/"+status_time_str[1]+"/"+status_time_str[2];
 
 
-		topTweets += '</tbody></table>';
-		$('#topTweets').html(topTweets);
-		$('#twitter-feed-modal').html(topTweetsModal);
+            topTweetsModal  += '<tr>';
+            topTweetsModal  += '<td data-compact="true">'+ps_twitterUtils.addlinks(status_text)+'</td>';
+            topTweetsModal  += '<td>@'+screen_name+'</td>';
+            topTweetsModal  += '<td>'+reply_count+'</td>';
+            topTweetsModal  += '<td>'+retweet_count+'</td>';
+            topTweetsModal  += '<td>'+tweet_engagement+'</td>';
+            topTweetsModal  += '<td>'+status_time_str+'</td>';
+            topTweetsModal  += '</tr>';
+            if ( divIndex === 0 ) {
+                sessionStorage.presentTopTweetIndex = 0;
+                sessionStorage.presentTopTweetIndex_admin=0;
+            }
+            
+            divIndex+=1;
+        }
+        
+        topTweetsModal += '</tbody>';
+        
+        
+        topTweets += '</table>';
+        $('#topTweets').html(topTweets);
+        $('#twitter-feed-modal').html(topTweetsModal);
+        $('#tableTopTweets').dataTable({ 
+        	iDisplayLength: 100,
+        	"aaSorting": [[4, "desc"]],
+            "aoColumns": [
+                          {"bSortable": false},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true}
+                         ],
+        	"bPaginate": false,
+    		"bJQueryUI": false,
+    		"bFilter": false
+    		
 
-	};
+    	});
+        
+        $('#tableTopTweets').tableoverflow();
+       
+        
+        $('td[id^="handle_"], td[id^="date_"]').css({
+            'overflow': '',
+            'text-overflow': ''
+        });
+        
+        
+        $('#tableTopTweetsModal').dataTable({ 
+        	iDisplayLength: 100,
+        	"aaSorting": [[4, "desc"]],
+            "aoColumns": [
+                          {"bSortable": false},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true},
+                          {"bSortable": true}
+                         ],
+        	"bPaginate": false,
+    		"bJQueryUI": false,
+    		"bFilter": false
+    		
+
+    	});
+        $(".dataTables_info").remove();
+        $('#topTweets div div').remove();
+        $('#tableTopTweets thead tr th:eq(0)').css('background', '#e9f3f8');
+        $('#tableTopTweetsModal thead tr th:eq(0)').css('background', '#e9f3f8');
+        $(".dataTables_length").remove();
+
+        
+      
+    }
+	
 
 	ps_twitterUtils.timeDifference = function (start) {
 		var startDate, endDate, diff, hours, minutes;
@@ -219,7 +284,7 @@
 		
 		//displaying the modal content
 		
-		$("#modal_widget #modal-widget-body").html("<div id='news_header_admin' class='newsHeaderAdmin'>" + "</div>" + "<div id='news_header' class='newsHeader'></div>" + "<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
+		//$("#modal_widget #modal-widget-body").html("<div id='news_header_admin' class='newsHeaderAdmin'>" + "</div>" + "<div id='news_header' class='newsHeader'></div>" + "<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
 		$("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
 			if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
 		});
@@ -234,4 +299,5 @@
 			if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
 		});
 	};
+
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));

@@ -27,22 +27,22 @@ var APItwitterfollowers = "/livecache/vzw_twitter_followers_1d.json";
 
 var APIgetInsightsSOV = {name: "ShareOfVoice",
     tag: "twitter_insights_sov",
-    url: "/livecache/vzw_twitter_topic_locations_share_of_voice_1d.json",
-    insightUrl: "/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json",
+    url: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_locations_share_of_voice_1d.json",
+    insightUrl: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_share_of_voice_summary_1d.json",
     insightTitle:"Share of Voice",
     insightSubtitle: "Share of Voice on Twitter by City",
     insightDataCard: "A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."};
 
 var APIgetInsightsFollowers = {name: "Followers",
-    url: "/livecache/vzw_twitter_locations_followers_1d.json?key=52812a364dd25",
-    insightUrl: "/livecache/vzw_twitter_followers_summary_1d.json",
+    url: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_locations_followers_1d.json",
+    insightUrl: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_followers_summary_1d.json",
     insightTitle:"Followers",
     insightSubtitle: "Followers on Twitter by City",
     insightDataCard: "A United States map displaying volume of new Twitter followers for all Verizon Wireless Twitter handles. @verizonwirelss @vznews @vzwsupport @vzwdeals @vzwb2b"};
 
 var APIgetInsightsVolume = {name: "Volume",
-    url: "/livecache/vzw_twitter_topic_locations_volume_1d.json",
-    insightUrl: "/livecache/vzw_twitter_topic_volume_summary_1d.json",
+    url: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_locations_volume_1d.json",
+    insightUrl: "http://socialpulse.w2oservices.com/livecache/vzw_twitter_topic_volume_summary_1d.json",
     insightTitle:"Volume",
     insightSubtitle: "Wireless Volume on Twitter by City",
     insightDataCard: "A United States map showing cities with the most Twitter volume related to Verizon Wireless."};
@@ -88,12 +88,12 @@ var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drill
 /*Definitions Conversation Volume*/
 var widgetConversationVolume = {
     title: 'Conversation Volume',
-    subtitle: 'Subtitle of conversation volume',
+    subtitle: 'by Media Type',
     dataURL: APIconversationvolume,
     function: ps_graphDefinitions.buildLineChart,
     div_location: 'lineChartDiv',
     legend: false,
-    tooltip:'Conversation Volume Tooltip Dashboard!',
+    tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
     id_div: 'conversationVolume',
     template: 'LineBasic',
     gallery: cfx.Gallery.Lines,
@@ -104,7 +104,8 @@ var widgetConversationVolume = {
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
         legend: true,
-        tooltip:'Conversation Volume Tooltip Dashboard!',
+        tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
+        class: 'conversationVolume',
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showQueryForm: true,
@@ -117,23 +118,24 @@ var widgetConversationVolume = {
 
 var widgetConversationVolumeTemp = {
     title: 'Conversation Volume',
-    subtitle: 'Subtitle of conversation volume',
+    subtitle: 'by Media Type',
     dataURL: APIconversationvolume,
     function: ps_graphDefinitions.buildLineChart,
     div_location: 'lineChartDiv',
     legend: false,
-    tooltip:'Conversation Volume Tooltip Dashboard!',
+    tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
     id_div: 'conversationVolume',
     template: 'LineBasic',
     gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
-        subtitle: 'Subtitle of conversation volume',
+        subtitle: 'by Media Type',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
         legend: true,
-        tooltip:'Conversation Volume Tooltip Dashboard!',
+        tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
+        class: 'conversationVolume',
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showQueryForm: true,
@@ -163,7 +165,9 @@ var widgetPredefinedTopicVolume = {
         template: 'LineBasic',
         gallery: cfx.Gallery.Lines,
         showInsights: true,
-        showToggle2: true
+        showToggle2: true,
+        showInsightsDropdown:true,
+        insight_url: 'http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=predefined_topic_volume&business=vzw&limit=100'
     }
 }
 
@@ -287,30 +291,32 @@ $(function () {
 
 //End Twitter Activity Map Definitions
 
-
-
-
 /*
  * Volume & Sentiment
  */
 var widget_volumeandsentiment = {
     title: "Volume & Sentiment",
-    subtitle: "",
+    subtitle: "Daily Volume & Sentiment",
     timelabel: "7 days",
+    tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
+    legend: true,
+    expandedView: true,
     dataURL: APIvolumeandsentiment,
     function: ps_graphDefinitions.buildBarChart,
     div_location: "barChartDiv",
-    legend: false,
     modal: {
         title: "Volume & Sentiment",
         subtitle: "Daily Volume & Sentiment",
         tooltip : "Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5.",
         div_location: "modal-widget-body",
+        class: "barChartVS",
+        dashboard: "verizon/wireless",
         showVolumeAndSentimentMenu: true,
         function: ps_graphDefinitions.buildBarChart,
         showInsightsDropdown: false,
         showMenuDropdown: true,
         insight_url: "http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=volume_sentiment&business=ves_security&limit=100",
+        legend: true,
         dataURL: APIvolumeandsentiment
     }
 }
@@ -320,8 +326,11 @@ var widget_volumeandsentiment = {
  */
 var widget_sentimentCompetitors = {
     title: "Volume & Sentiment",
-    subtitle: "",
+    subtitle: "With Key Competitors",
+    tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
     timelabel: "7 days",
+    legend: true,
+    expandedView: true,
     dataURL: APIsentimentcompetitors,
     function: ps_graphDefinitions.buildSentimentCompetitors,
     div_location: "sentimentCompetitorsDiv",
@@ -329,7 +338,10 @@ var widget_sentimentCompetitors = {
         title: "Volume & Sentiment",
         subtitle: "With Key Competitors",
         tooltip : "Volume of positive, negative, and neutral sentiment for Verizon Wireless and key competitors.",
+        timelabel: "7 days",
+        legend: true,
         div_location: "modal-widget-body",
+        class: "barChartVS",
         showInsightsDropdown: false,
         function: ps_graphDefinitions.buildSentimentCompetitors,
         dataURL: APIsentimentcompetitors
@@ -368,8 +380,9 @@ $(function () {
     var widget = {
         dataURL: APIgettoptweets,
         function: ps_graphDefinitions.topTweets
-    };
+    };    
     new ps_utilities.loadJsonpData(widget);
+    
 }); //End Top Tweets
 
 
@@ -397,7 +410,9 @@ var widget_pie = {
         function: ps_graphDefinitions.buildPieChart,
         dataURL: APIshareofvoiceCrosstab,
         insight_url : APIinsedeShareofVoice,
-        showMenu : true
+        showMenu : true,
+        showInsights:true,
+        showInsightsDropdown: true
     }
 }
 
@@ -431,7 +446,7 @@ $(function () {
 		}
 };	
   	new ps_utilities.loadTwitterStream(widgetTwitterStream);
-	var getTweetDataTimer = window.setTimeout(function () {
+	var getTweetDataTimer = window.setInterval(function () {
         new ps_utilities.loadTwitterStream(widgetTwitterStream);      
     }, 60000);
 });

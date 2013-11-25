@@ -46,18 +46,23 @@ var ps_googlemaps = ps_googlemaps || {};
 
         var googleMapsOptions = {
             zoom: definitions.zoom_amount,
-            center: definitions.generalMap,
-            disableDefaultUI: true,
-            scrollwheel: false,
-            mapTypeControlOptions: {
-                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'predictive_science']
-            }
+
+            center: new google.maps.LatLng(39.8097,-98.5553),
+            mapTypeControl: false,
+            panControl: false,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.LEFT_CENTER
+            },
+            navigationControl: false,
+            scrollwheel: true,
+            streetViewControl: false
         }
 
         var map = new google.maps.Map(document.getElementById(definitions.div_location), googleMapsOptions);
 
         ps_googlemaps.loadData(map, arrayAPIActivityMap[feedNumber]);
-        map.mapTypes.set('predictive_science', googleMapsStyledMapConf);
+        //map.mapTypes.set('predictive_science', googleMapsStyledMapConf);
 
     }
 
@@ -313,6 +318,7 @@ var ps_googlemaps = ps_googlemaps || {};
 
         $('#modal_widget .modal-header h3').html("Twitter Activity Map - "+iFeed.insightTitle);
         $('#modal_widget .modal-header small').html(iFeed.insightSubtitle);
+        $("#modal_widget #icon-info").attr("data-original-title",iFeed.insightDataCard);
 
         $.ajax({
             url : taburl,

@@ -1616,6 +1616,18 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     opacity: 0.6;
 }
 
+/* Compact table cells */
+th[data-compact="true"],
+td[data-compact="true"] {
+	width: 35%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+td[data-compact="true"]:hover {
+	white-space: normal;
+}
+
 
 .icon.line-swap {
     background-position: 0 0;
