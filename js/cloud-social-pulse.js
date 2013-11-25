@@ -181,24 +181,25 @@ $(function(){
 var linkedinRecommendations = {
     view: "table",
     API: APIlinkedinrecommendations,
-    id: "containerLinkedinRecommendations",
+    id: "linkedinRecommendations",
     limit: 6,
     title: "LinkedIn Recommendations",
     subtitle: "Verizon Enterprise Solutions Company Page",
     tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
     dataURL: APIlinkedinrecommendations,
     function: ps_graphDefinitions.buildLinkedInRecommendations,
+    id_div: 'containerLinkedinRecommendations',
     div_location: 'widgetLinkedinRecommendations',
     modal: {
         view: "table",
         API: APIlinkedinrecommendations,
-        id: "modal-widget-body",
+        id: "linkedinRecommendationsModal",
         limit: 20,
         title: "LinkedIn Recommendations",
         subtitle: "Verizon Enterprise Solutions Company Page",
         tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
         div_location: "modal-widget-body",
-        dataURL: APIlinkedinrecommendations,
+        
         function: ps_graphDefinitions.buildLinkedInRecommendations
     }
 };
@@ -207,7 +208,38 @@ $(function(){
     new ps_utilities.loadJsonpData(linkedinRecommendations);
 });
 
+//Begin Twitter Stream Definitions
+var widgetTwitterStream;
+$(function () {
+	widgetTwitterStream = {
+		title: 'Twitter Stream',
+    	subtitle: 'Tweets mentioning Verizon Wireless',
+		tooltip: 'A stream of tweets related to Verizon Wireless.',
+		dataURL: [APIgettoptweets, APIgettweetsmentions],
+		function: ps_graphDefinitions.buildTwitterStream,
+		div_location: 'div_tweeterStream_widget',
+    	id_div: 'twitterStream',
+		legend: false,
+    	modal: {
+			title: "Twitter Stream",
+        	subtitle: "Tweets mentioning Verizon Wireless",
+			tooltip: "A stream of tweets related to Verizon Wireless.",
+        	function : "launch_twitter",
+        	div_location: 'modal-widget-body',
+			id_div_header: 'news_header',
+			id_div_header_admin: 'news_header_admin',
+			news_header: "Tweets mentioning Verizon Wireless",
+			news_header_admin: "Tweets from Verizon Wireless Handles",
+        	legend: false
+		}
+};	
+  	new ps_utilities.loadTwitterStream(widgetTwitterStream);
+	var getTweetDataTimer = window.setInterval(function () {
+        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
+    }, 60000);
+});
 
+//End Twitter Stream Definitions
 
 	
 //END: Function Def

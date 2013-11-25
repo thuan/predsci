@@ -473,7 +473,7 @@
         ps_utilities.AddTitle(sElementName.id, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id, sElementName.subtitle);
         ps_utilities.AddTooltip(sElementName.id, sElementName.tooltip);
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>@Replies</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>@Replies</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead><tbody></tbody></table>');
         $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>');
                 
         $("#" + sElementName.id + " .newrow").remove();
