@@ -136,7 +136,7 @@
                 <div class="timelabel">7 days</div>
             </div>
             <!-- Linkedin Recommendations -->
-            <div class="widget_container_holder" id="divLinkedinRecommendations">
+            <div class="widget_container_holder" id="containerLinkedinRecommendations">
                 <div class="widget_label">
                     <h3 class="pull-left">
                         <span></span>
@@ -151,17 +151,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="widget_holder">
-                    <table id="linkedinRecommendations" class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="essential persist">Service</th>
-                                <th class="optional hidden-phone">Total</th>
-                                <th class="optional hidden-phone">Last 7 Days</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="widget_holder" id="widgetLinkedinRecommendations">
+                    
                 </div>
             </div>
             <!-- Top Tweets -->

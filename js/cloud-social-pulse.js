@@ -181,22 +181,23 @@ $(function(){
 var linkedinRecommendations = {
     view: "table",
     API: APIlinkedinrecommendations,
-    id: "linkedinRecommendations",
+    id: "containerLinkedinRecommendations",
     limit: 6,
     title: "LinkedIn Recommendations",
     subtitle: "Verizon Enterprise Solutions Company Page",
     tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
     dataURL: APIlinkedinrecommendations,
     function: ps_graphDefinitions.buildLinkedInRecommendations,
-    id_div: 'divLinkedinRecommendations',
+    div_location: 'widgetLinkedinRecommendations',
     modal: {
         view: "table",
         API: APIlinkedinrecommendations,
-        id: "linkedinRecommendations",
-        limit: 6,
+        id: "modal-widget-body",
+        limit: 20,
         title: "LinkedIn Recommendations",
         subtitle: "Verizon Enterprise Solutions Company Page",
         tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+        div_location: "modal-widget-body",
         dataURL: APIlinkedinrecommendations,
         function: ps_graphDefinitions.buildLinkedInRecommendations
     }
