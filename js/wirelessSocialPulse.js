@@ -432,7 +432,6 @@ $(function () {
 		function: ps_graphDefinitions.buildTwitterStream,
 		div_location: 'div_tweeterStream_widget',
     	id_div: 'twitterStream',
-		legend: false,
     	modal: {
 			title: "Twitter Stream",
         	subtitle: "Tweets mentioning Verizon Wireless",
@@ -442,8 +441,7 @@ $(function () {
 			id_div_header: 'news_header',
 			id_div_header_admin: 'news_header_admin',
 			news_header: "Tweets mentioning Verizon Wireless",
-			news_header_admin: "Tweets from Verizon Wireless Handles",
-        	legend: false
+			news_header_admin: "Tweets from Verizon Wireless Handles"
 		}
 };	
   	new ps_utilities.loadTwitterStream(widgetTwitterStream);
