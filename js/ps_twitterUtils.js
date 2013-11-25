@@ -284,9 +284,9 @@
 	};
 
 	ps_twitterUtils.buildWidgetModal = function () {
-		if ($("#modal-heading").text().indexOf("Twitter Stream") >= 0) {
+		
             //displaying the modal content
-            $("#modal_widget #modal-widget-body").empty();
+            
             $("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
                 if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
             });
@@ -299,7 +299,7 @@
             $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
                 if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
             });
-        }
+        
 	};
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
