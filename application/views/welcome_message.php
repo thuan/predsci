@@ -136,7 +136,7 @@
                 <div class="timelabel">7 days</div>
             </div>
             <!-- Linkedin Recommendations -->
-            <div class="widget_container_holder" id="linkedinRecommendations">
+            <div class="widget_container_holder">
                 <div class="widget_label">
                     <h3 class="pull-left">
                         <span></span>
@@ -152,7 +152,7 @@
                     </div>
                 </div>
                 <div class="widget_holder">
-                    <table id="linkedinRecommendations" class="table table-striped table-bordered linkedin_recommendations">
+                    <table id="linkedinRecommendations" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th class="essential persist">Service</th>
