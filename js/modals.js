@@ -96,10 +96,10 @@
                         case "launch_maps":
                             ps_googlemaps.Initialize(JSONProperties, 0);
                             $("#modal-stealth").hide();
+                            break;
                         case "launch_twitter":
 							ps_twitterUtils.buildWidgetModal();
 							$("#modal-stealth").hide();
-							break;
                             break;
                         default:
                             ps_utilities.loadData(JSONProperties);
