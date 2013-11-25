@@ -188,11 +188,17 @@ var linkedinRecommendations = {
     tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
     dataURL: APIlinkedinrecommendations,
     function: ps_graphDefinitions.buildLinkedInRecommendations,
-    id_div: 'linkedinRecommendations',
+    id_div: 'divLinkedinRecommendations',
     modal: {
+        view: "table",
+        API: APIlinkedinrecommendations,
+        id: "linkedinRecommendations",
+        limit: 6,
         title: "LinkedIn Recommendations",
         subtitle: "Verizon Enterprise Solutions Company Page",
-        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn"
+        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+        dataURL: APIlinkedinrecommendations,
+        function: ps_graphDefinitions.buildLinkedInRecommendations
     }
 };
 

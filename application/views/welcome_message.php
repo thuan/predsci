@@ -136,7 +136,7 @@
                 <div class="timelabel">7 days</div>
             </div>
             <!-- Linkedin Recommendations -->
-            <div class="widget_container_holder">
+            <div class="widget_container_holder" id="divLinkedinRecommendations">
                 <div class="widget_label">
                     <h3 class="pull-left">
                         <span></span>
