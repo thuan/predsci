@@ -137,7 +137,7 @@
             </div>
             <!-- Linkedin Recommendations -->
             <div class="widget_container_holder" id="linkedinRecommendations">
-            	<div class="widget_label">
+                <div class="widget_label">
                     <h3 class="pull-left">
                         <span></span>
                         <small></small>
@@ -151,7 +151,19 @@
                         </a>
                     </div>
                 </div>
-			</div>
+                <div class="widget_holder">
+                    <table id="linkedinRecommendations" class="table table-striped table-bordered linkedin_recommendations">
+                        <thead>
+                            <tr>
+                                <th class="essential persist">Service</th>
+                                <th class="optional hidden-phone">Total</th>
+                                <th class="optional hidden-phone">Last 7 Days</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
             <!-- Top Tweets -->
             <div class="widget_container_holder_long">
                 <div class="widget_label">
