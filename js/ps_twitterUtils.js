@@ -304,8 +304,7 @@
     };
 
     ps_twitterUtils.buildWidgetModal = function () {
-        var modals = $('#modal-heading').text().indexOf('Twitter Stream');
-        if (modals >= 0) {
+       
             //displaying the modal content
             $("#modal_widget #modal-widget-body").empty();
             $("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
@@ -320,7 +319,7 @@
             $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
                 if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
             });
-        }
+       
     };
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
