@@ -135,7 +135,25 @@
                     	</div>
                     </div>
                 </div>      
-			</div>                
+			</div>
+    
+            <div class="widget_container_holder" id="linkedinRecommendations">
+            	<div class="widget_label">
+                    <h3 class="pull-left">
+                        <span></span>
+                        <small></small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                            <i class="icon-info-sign icon-white"></i>
+                        </a>
+                        <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
+                            <i class="icon-resize-full icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+				     
+			</div>                 
     
 			<!-- Top Tweets -->
             <div class="widget_container_holder_long">

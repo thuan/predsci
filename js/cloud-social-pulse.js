@@ -178,6 +178,29 @@ $(function(){
     // VOLUME AND SENTIMENT - end
 });
 
+var linkedinRecommendations = {
+    view: "table",
+    API: APIlinkedinrecommendations,
+    id: "linkedin_recommendations",
+    limit: 6,
+    title: "LinkedIn Recommendations",
+    subtitle: "Verizon Enterprise Solutions Company Page",
+    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+    dataURL: APIlinkedinrecommendations,
+    function: ps_graphDefinitions.buildLinkedInRecommendations,
+        modal: {
+    }
+};
+
+$(function(){
+    new ps_utilities.loadData(linkedinRecommendations);
+    getlinkedinrecommendations("table", APIlinkedinrecommendations, "linkedin_recommendations",6);
+		$('#expand_linkedin_recommendations').click(function() {
+			$('#modal-linkedin_recommendations').on('shown', function() {
+				getlinkedinrecommendations("table", APIlinkedinrecommendations, "linkedin_recommendations_lg",20);
+			});
+	});
+});
 
 
 
