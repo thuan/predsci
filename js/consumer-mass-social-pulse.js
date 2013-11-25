@@ -459,31 +459,3 @@ $(function () {
 });
 
 //End Twitter Stream Definitions
-
-var linkedinRecommendations = {
-    view: "table",
-    API: APIlinkedinrecommendations,
-    id: "linkedinRecommendations",
-    limit: 6,
-    title: "LinkedIn Recommendations",
-    subtitle: "Verizon Enterprise Solutions Company Page",
-    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
-    dataURL: APIlinkedinrecommendations,
-    function: ps_graphDefinitions.buildLinkedInRecommendations,
-    id_div: 'linkedinRecommendations',
-    modal: {
-        title: "LinkedIn Recommendations",
-        subtitle: "Verizon Enterprise Solutions Company Page",
-        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn"
-    }
-};
-
-$(function(){
-    new ps_utilities.loadJsonpData(linkedinRecommendations);
-    //getlinkedinrecommendations("table", APIlinkedinrecommendations, "linkedin_recommendations",6);
-		/*$('#expand_linkedin_recommendations').click(function() {
-			$('#modal-linkedin_recommendations').on('shown', function() {
-				getlinkedinrecommendations("table", APIlinkedinrecommendations, "linkedin_recommendations_lg",20);
-			});
-	   });*/
-});

@@ -304,19 +304,19 @@
     };
 
     ps_twitterUtils.buildWidgetModal = function () {
-        
-            $("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
-                if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
-            });
-            $("#modal_widget #modal-widget-body div#div_downArrow").click(function () {
-                if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
-            });
-            $("#modal_widget #modal-widget-body div#div_upperArrow_admin").click(function () {
-                if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetForwordByOne_admin();
-            });
-            $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
-                if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
-            });
+
+        $("#modal_widget #modal-widget-body div#div_upperArrow").click(function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetForwordByOne();
+        });
+        $("#modal_widget #modal-widget-body div#div_downArrow").click(function () {
+            if ($(this).attr('status') !== "disabled" && $(".div_tweetsMain").html() !== "") ps_twitterUtils.moveTweetBackByOne();
+        });
+        $("#modal_widget #modal-widget-body div#div_upperArrow_admin").click(function () {
+            if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetForwordByOne_admin();
+        });
+        $("#modal_widget #modal-widget-body div#div_downArrow_admin").click(function () {
+            if ($(".div_tweetsMain_admin").html() !== "") ps_twitterUtils.moveTweetBackByOne_admin();
+        });
     };
 
 }(window.ps_twitterUtils = window.ps_twitterUtils || {}, jQuery));
