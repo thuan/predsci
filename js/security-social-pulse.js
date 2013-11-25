@@ -163,6 +163,34 @@ var widget_sentimentCompetitors = {
     }
 };
 
+
+var widget_pie = {
+    title: "Share of Voice",
+    subtitle: "With Key Competitors",
+    tooltip : "Share of Voice by media type for Verizon Wireless and key competitors.",
+    timelabel: "7 days",
+    legend: true,
+    expandedView: true,
+    dataURL: APIshareofvoice,
+    function: ps_graphDefinitions.buildPieChart,
+    div_location: "div_pie_chart",
+    modal: {
+        source               : "",
+        title                : "Share of Voice",
+        subtitle             : "With Key Competitors",
+        tooltip              : "Share of Voice by media type for Verizon Wireless and key competitors.",
+        timelabel            : "7 days",
+        legend               : true,
+        div_location         : "modal-widget-body",
+        class                : "",
+        showInsightsDropdown : false,
+        function             : ps_graphDefinitions.buildPieChart,
+        dataURL              : APIshareofvoiceCrosstab,
+        showMenu             : true
+    }
+};
+
+
 $(function(){
     $('body').tooltip( { selector: "a"});
     new ps_utilities.loadData(widgetConversationVolume);
@@ -172,11 +200,44 @@ $(function(){
         widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
         new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
     });
+
+    $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
+        e.preventDefault();
+
+        var arrData;
+        if(this.id == 'predefinedTopicVolumeLegend'){
+            arrData = widgetPredefinedTopicVolume;
+        }else if(this.id == 'conversationVolumeLegend'){
+            arrData = widgetConversationVolume;
+        }
+        var text = this.text;
+        // Show the chart
+        if (text == "Show legend") {
+            arrData.legend = true;
+            $(this).text("Hide legend");
+            $('#' + this.id).hide();
+            $('#' + this.id).show();
+        }
+        // Hide the chart
+        else {
+            arrData.legend = false;
+            $(this).text("Show legend");
+            $('#' + this.id).hide();
+            $('#' + this.id).show();
+
+        }
+        arrData.function(arrData);
+    });
     
     // VOLUME AND SENTIMENT - begin
     new ps_utilities.loadData(widget_volumeandsentiment);
     new ps_utilities.loadData(widget_sentimentCompetitors);
     // VOLUME AND SENTIMENT - end
+
+    // SHARE OF VOICE - begin
+    new ps_utilities.loadData(widget_pie);
+    // SHARE OF VOICE - end
+
 });
 	
 //END: Function Def

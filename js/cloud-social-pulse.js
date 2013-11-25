@@ -6,8 +6,7 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
-var APIgettoptweets = "http://vzw.glassfish.w2oservices.com:8080/rest_api_9/twitter/group/statuses/top?groups=1&period=day&period_count=7&limit=20";
-var APIgettweetsmentions = "http://vzw.glassfish.w2oservices.com:8080/rest_api_dev/twitter/topic/statuses?tags=verizon&limit=25&min_followers=10&include_replies=false";
+
 //global API calls converted to JS variables for use in transform functions (endpoints)
 	var PropertyID = "3";
 	var InsightID = "ves1";
@@ -163,6 +162,34 @@ var widget_sentimentCompetitors = {
     }
 };
 
+
+var widget_pie = {
+    title: "Share of Voice",
+    subtitle: "With Key Competitors",
+    tooltip : "Share of Voice by media type for Verizon Wireless and key competitors.",
+    timelabel: "7 days",
+    legend: true,
+    expandedView: true,
+    dataURL: APIshareofvoice,
+    function: ps_graphDefinitions.buildPieChart,
+    div_location: "div_pie_chart",
+    modal: {
+        source               : "",
+        title                : "Share of Voice",
+        subtitle             : "With Key Competitors",
+        tooltip              : "Share of Voice by media type for Verizon Wireless and key competitors.",
+        timelabel            : "7 days",
+        legend               : true,
+        div_location         : "modal-widget-body",
+        class                : "",
+        showInsightsDropdown : false,
+        function             : ps_graphDefinitions.buildPieChart,
+        dataURL              : APIshareofvoiceCrosstab,
+        showMenu             : true
+    }
+};
+
+
 $(function(){
     $('body').tooltip( { selector: "a"});
     new ps_utilities.loadData(widgetConversationVolume);
@@ -172,75 +199,46 @@ $(function(){
         widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume + '&query=' + $(this).find( "input" ).val();
         new ps_utilities.loadData(widgetConversationVolumeTemp.modal);
     });
+
+    $("#predefinedTopicVolumeLegend, #conversationVolumeLegend").unbind().on("click", function(e) {
+        e.preventDefault();
+
+        var arrData;
+        if(this.id == 'predefinedTopicVolumeLegend'){
+            arrData = widgetPredefinedTopicVolume;
+        }else if(this.id == 'conversationVolumeLegend'){
+            arrData = widgetConversationVolume;
+        }
+        var text = this.text;
+        // Show the chart
+        if (text == "Show legend") {
+            arrData.legend = true;
+            $(this).text("Hide legend");
+            $('#' + this.id).hide();
+            $('#' + this.id).show();
+        }
+        // Hide the chart
+        else {
+            arrData.legend = false;
+            $(this).text("Show legend");
+            $('#' + this.id).hide();
+            $('#' + this.id).show();
+
+        }
+        arrData.function(arrData);
+    });
     
     // VOLUME AND SENTIMENT - begin
     new ps_utilities.loadData(widget_volumeandsentiment);
     new ps_utilities.loadData(widget_sentimentCompetitors);
     // VOLUME AND SENTIMENT - end
+
+    // SHARE OF VOICE - begin
+    new ps_utilities.loadData(widget_pie);
+    // SHARE OF VOICE - end
+
+
 });
-
-var linkedinRecommendations = {
-    view: "table",
-    API: APIlinkedinrecommendations,
-    id: "linkedinRecommendations",
-    limit: 6,
-    title: "LinkedIn Recommendations",
-    subtitle: "Verizon Enterprise Solutions Company Page",
-    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
-    dataURL: APIlinkedinrecommendations,
-    function: ps_graphDefinitions.buildLinkedInRecommendations,
-    id_div: 'containerLinkedinRecommendations',
-    div_location: 'widgetLinkedinRecommendations',
-    modal: {
-        view: "table",
-        API: APIlinkedinrecommendations,
-        id: "linkedinRecommendationsModal",
-        limit: 20,
-        title: "LinkedIn Recommendations",
-        subtitle: "Verizon Enterprise Solutions Company Page",
-        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
-        div_location: "modal-widget-body",
-        
-        function: ps_graphDefinitions.buildLinkedInRecommendations
-    }
-};
-
-$(function(){
-    new ps_utilities.loadJsonpData(linkedinRecommendations);
-});
-
-//Begin Twitter Stream Definitions
-var widgetTwitterStream;
-$(function () {
-	widgetTwitterStream = {
-		title: 'Twitter Stream',
-    	subtitle: 'Tweets mentioning Verizon Wireless',
-		tooltip: 'A stream of tweets related to Verizon Wireless.',
-		dataURL: [APIgettoptweets, APIgettweetsmentions],
-		function: ps_graphDefinitions.buildTwitterStream,
-		div_location: 'div_tweeterStream_widget',
-    	id_div: 'twitterStream',
-		legend: false,
-    	modal: {
-			title: "Twitter Stream",
-        	subtitle: "Tweets mentioning Verizon Wireless",
-			tooltip: "A stream of tweets related to Verizon Wireless.",
-        	function : "launch_twitter",
-        	div_location: 'modal-widget-body',
-			id_div_header: 'news_header',
-			id_div_header_admin: 'news_header_admin',
-			news_header: "Tweets mentioning Verizon Wireless",
-			news_header_admin: "Tweets from Verizon Wireless Handles",
-        	legend: false
-		}
-};	
-  	new ps_utilities.loadTwitterStream(widgetTwitterStream);
-	var getTweetDataTimer = window.setInterval(function () {
-        new ps_utilities.loadTwitterStream(widgetTwitterStream);      
-    }, 60000);
-});
-
-//End Twitter Stream Definitions
 
 	
 //END: Function Def

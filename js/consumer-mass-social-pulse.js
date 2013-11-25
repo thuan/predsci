@@ -6,7 +6,6 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
-var APIlinkedinrecommendations = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/products?company=1094&period=day&period_count=7&timezone=-5&boundary=day";
 
 var PropertyID = "2";
 var InsightID = "cmb";

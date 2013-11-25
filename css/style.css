@@ -57,7 +57,7 @@ div.default {
 .span_modalIcon a {
 	width: 16px;
 	height: 16px;
-	background: url(../images/bootstrap/glyphicons-halflings-white.png) -361px -97px no-repeat;
+	background: url(images/bootstrap/glyphicons-halflings-white.png) -361px -97px no-repeat;
 }
 
 .select_filter {
@@ -163,7 +163,7 @@ div.default {
 				font-size:10px;
 			}
 		
-#twitterStreamModal	{width: 700px!important; background: #000 url(../images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
+#twitterStreamModal	{width: 700px!important; background: #000 url(images/top_bkgd.jpg) repeat-x; border: 8px solid rgba(201, 29, 29, 0.5);}
 
 
 #twitterStreamModal	.modal-header #right-side
@@ -428,7 +428,7 @@ span.twitter-font {
 		width: 18px;
 		height: 16px;
 		display: inline-block;
-		background-image: url(../images/bootstrap/glyphicons-halflings-white.png);
+		background-image: url(images/bootstrap/glyphicons-halflings-white.png);
 		opacity: 0.8;
 	}
 	.metric-ticker .wow-change.positive {background-position: -287px -254px;}
@@ -582,7 +582,7 @@ body
 {
     font-family: 'Titillium Web', sans-serif;
     color: #fff;
-    background: url(../images/page-title-bg.png) no-repeat;
+    background: url(images/page-title-bg.png) no-repeat;
     width: 249px;
     height: 54px;
     display: block;
@@ -624,12 +624,12 @@ body
 
 #page_title #dashboard_new
 {
-    background: url(../images/icon-dashboard.png) no-repeat 0 16px;
+    background: url(images/icon-dashboard.png) no-repeat 0 16px;
 }
 
 #page_title #dashboard_lists
 {
-    background: url(../images/icon-list.png) no-repeat 0 15px;
+    background: url(images/icon-list.png) no-repeat 0 15px;
 }
 
 
@@ -876,7 +876,7 @@ body
     width: 415px;
     height: 430px;
     float: left;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -893,7 +893,7 @@ body
     width: 850px;
     height: 430px;
     float: left;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -908,7 +908,7 @@ body
     width: 100%;
     height: 430px;
     float: left;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -923,7 +923,7 @@ body
     width: 525px;
     height: 510px;
     float: left;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -938,7 +938,7 @@ body
     width: 100%;
     height: 510px;
     float: left;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     margin-left: 20px;
     margin-top: 20px;
     margin-right: 0px;
@@ -990,16 +990,16 @@ body
 
 #topTweets table thead th, #twitter-feed-modal table thead th
 {
-    background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right;
+    background: #e9f3f8 url('images/bootstrap/sort_both.png') no-repeat center right;
     color: #000;
 }
 
-#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right; }
-#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('/images/bootstrap/sort_asc.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('/images/bootstrap/sort_desc.png') no-repeat center right; }
+#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('images/bootstrap/sort_both.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('images/bootstrap/sort_asc.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('images/bootstrap/sort_desc.png') no-repeat center right; }
 
-#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
 
 
 #topTweets table tbody td{
@@ -1233,7 +1233,7 @@ table.dataTable td
     width: 900px;
     height: 560px;
     margin-left: -450px;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     border: 8px solid rgba(201, 29, 29, 0.5);
     color: #fff;
 }
@@ -1442,7 +1442,7 @@ table.dataTable td
 
 #latest_insights_toggle_view
 {
-    background: #373737 url(../images/close.png) 4px 4px no-repeat;
+    background: #373737 url(images/close.png) 4px 4px no-repeat;
     float: right;
     color: #FFFFFF;
     top: 7px;
@@ -1455,11 +1455,11 @@ table.dataTable td
 }
 
 .open_toggle{
-    background: #373737 url(../images/plus.png) 4px 4px no-repeat !important;
+    background: #373737 url(images/plus.png) 4px 4px no-repeat !important;
 }
 
 .close_toggle{
-    background: #373737 url(../images/close.png) 4px 4px no-repeat !important;
+    background: #373737 url(images/close.png) 4px 4px no-repeat !important;
 }
 
 #latest_insights_content_holder strong
@@ -1484,7 +1484,7 @@ table.dataTable td
 #twitterModal
 {
     width: 700px!important;
-    background: #000 url(../images/top_bkgd.jpg) repeat-x;
+    background: #000 url(images/top_bkgd.jpg) repeat-x;
     border: 8px solid rgba(201, 29, 29, 0.5);
 }
 
@@ -1633,7 +1633,7 @@ td[data-compact="true"]:hover {
     background-position: 0 0;
 }
 .icon {
-    background: url("../images/glyphicons-halflings-white.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("images/glyphicons-halflings-white.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     float: left;
     height: 20px;
@@ -1703,4 +1703,3 @@ g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
     font-size: 11px;
     line-height: 16px;
 }
-

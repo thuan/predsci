@@ -39,7 +39,7 @@
                 ps_graphDefinitions.jsonpData = dataResponse;
                 arrayData.function(arrayData);
             },
-            error: function(e) { console.log('Error making request'); },
+            error: function(e) { console.log('Error making request'); }
         });
     };
     
@@ -56,7 +56,7 @@
 			success: function(dataResponseUsers) {
 				usersData = dataResponseUsers;
 			},
-           	error: function(e) { console.log('Error making request'); },
+           	error: function(e) { console.log('Error making request'); }
        	}),
 		
 		$.ajax({
@@ -67,7 +67,7 @@
             success: function(dataResponseMentions) {
 				mentionData = dataResponseMentions;
             },
-            error: function(e) { console.log('Error making request'); },
+            error: function(e) { console.log('Error making request'); }
         })).then(function(){
 			arrayData.function(usersData, mentionData, arrayData)		
 		});		
@@ -131,13 +131,21 @@
 
     ps_utilities.RemoveLogo = function()
     {
-        $('g.AxisText').html('');
-        $('g.LegendItem').remove();
+        //$('g.AxisText').html('');
+        //$('g.LegendItem').remove();
+        $('svg#chart > g').remove();
+        $('svg#C1s > g').remove();
+        
     }
 
     ps_utilities.AddTitle = function(div, element)
     {
         $("#" + div + " .pull-left span").text(element);
+    }
+    
+    ps_utilities.AddTwitterHeader = function(div, element)
+    {
+    	$('#'+ div).text(element);
     }
 
     ps_utilities.AddSubTitle = function(div, element)
@@ -149,11 +157,6 @@
     {
         $("#" + div + " .pull-right #tooltipp").attr("data-original-title",element);
         $('g.LegendItem').remove();
-    }
-    
-    ps_utilities.AddTwitterHeader = function(div, element)
-    {
-        $("#" + div).text(element);
     }
 
     ps_utilities.multipleLoadData = function (arrayData)
@@ -317,6 +320,27 @@
         });
         return total;
     }
+    
+    ps_utilities.changeGraph = function(arrayData) {
+        var idDiv = arrayData.div_location;
+        $("#"+idDiv).remove();
+        
+       if(idDiv == "modal-widget-body"){
+         if($("#predefined_t_typeLine").is(":checked")){
+            widgetPredefinedTopicVolume.modal.typeWidget = 'bar';
+         }else {
+            widgetPredefinedTopicVolume.modal.typeWidget = 'line';
+         }
+         ps_utilities.loadData(widgetPredefinedTopicVolume.modal);  
+       }else {
+         if($("#predefined_t_typeLine").is(":checked")){
+           widgetPredefinedTopicVolume.typeWidget = 'bar';
+         }else {
+           widgetPredefinedTopicVolume.typeWidget = 'line';
+         }
+         ps_utilities.loadData(widgetPredefinedTopicVolume);   
+       }
+    }
 
     ps_utilities.toggleBarLine = function(obj){
         if(obj.template == 'LineBasic'){
@@ -366,6 +390,27 @@
         });
         //return results;
         return _.sortBy(results, function(val){return val.display;});
+    }
+    
+    /*
+     * Funcao para modificar o tooltip
+     */
+    ps_utilities.getContentTemplateTooltip = function(){
+       var contentTemplate = '<DataTemplate>' +
+
+                            '<DockPanel Orientation="Vertical">' +
+                               
+                              '<TextBlock Text="{Binding Path=Macro %s}" FontWeight="Bold" HorizontalAlignment="Center"/>' +
+                              
+                              '<TextBlock Text="{Binding Path=Macro %v}" FontWeight="Bold" HorizontalAlignment="Center"/>' +
+                              
+                              '<TextBlock Text="{Binding Path=Macro %l}" FontWeight="Bold" HorizontalAlignment="Center"/>' +
+                                
+                            '</DockPanel>' +
+                            
+                        '</DataTemplate>';
+                
+        return contentTemplate;
     }
 
 

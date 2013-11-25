@@ -2,12 +2,12 @@
 <div id="modal_widget" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <div class="modal-header">
-        <div id="right-side">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="timelabel-expand label">7 Days</div>
+        <div id="pull-right">
             <a id="toggle1" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetConversationVolumeTemp.modal)"><i class="icon line-swap"></i></a>
             <a id="toggle2" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetPredefinedTopicVolume.modal)"><i class="icon line-swap"></i></a>
             <a id="icon-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
-            <div class="label label-inverse">7 Days</div>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         </div>
 
         <div id="modal-heading" class="pull-left">

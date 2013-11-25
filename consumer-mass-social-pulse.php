@@ -55,6 +55,7 @@
                         </div>
 					</div>
 					<div class="widget_holder" id="div_pie_chart"></div>
+                    <div class="timelabel">7 days</div>
 				</div>
 				
                                 <!-- Volume & Sentiment -->
@@ -216,7 +217,9 @@
 							<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Top keywords for Verizon Wireless network by volume of conversation."><i class="icon-info-sign icon-white"></i></a>
 						</div>
 					</div>
-					<div id="klist"></div>
+					<div class="row-fluid">
+						<div id="klist"></div>
+					</div>
 					<div class="timelabel">last 24 hours</div>
 					
 				</div>

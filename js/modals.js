@@ -9,7 +9,7 @@
         if(JSONProperties.showMenu === true){
             var social = ps_utilities.showMenuSocial(JSONProperties.dataURL);
             var menu = '<div id="socialmenu"><ul class="buttonUl">';
-            menu += '<li class="tab_button"><span data="" class="social active">All</span></li>';
+            menu += '<li class="tab_button"><span data="" class="social active">All Media</span></li>';
             social.forEach(function(val){
                 menu += '<li class="tab_button"><span data="'+val.id+'" class="social">'+val.display+'</span></li>';
             });
@@ -121,6 +121,7 @@
                     $('#toggle1').hide();
                     $('#toggle2').hide();
                     $('#modal_widget').removeClass(JSONProperties.class);
+                    widgetConversationVolumeTemp.modal.dataURL = APIconversationvolume;
                 }
             });
         } catch( e ) {

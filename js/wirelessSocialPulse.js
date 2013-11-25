@@ -398,6 +398,7 @@ var widget_pie = {
     subTitle: "",
     dataURL: APIshareofvoiceCrosstab,
     function: ps_graphDefinitions.buildPieChart,
+    timelabel: "7 days",
     div_location: "div_pie_chart",
     legend: false,
     modal: {
