@@ -284,7 +284,7 @@
 	};
 
 	ps_twitterUtils.buildWidgetModal = function () {
-        if ($('#modal-heading h3:textIs(Twitter Stream)')) { 
+        if ($("#modal-heading").text().indexOf("Twitter Stream") >= 0) { 
             //displaying the modal content
             $("#div_mentionTweet #div_verizonTweet").empty();
             $("#modal_widget #modal-widget-body").html("<div id='div_mentionTweet'>" + $("#div_tweeterStream .div_tweetsParent").html() + "</div>" + "<div id='div_verizonTweet'>" + $("#div_tweeterStream_admin .div_tweetsParent").html() + "</div>");
