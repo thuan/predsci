@@ -6,6 +6,7 @@
  * @license		GPLv3
  * @author		Ifactory Solutions <informacao@ifactory.com.br>
  */
+var APIlinkedinrecommendations = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/products?company=1094&period=day&period_count=7&timezone=-5&boundary=day";
 
 var PropertyID = "2";
 var InsightID = "cmb";
@@ -478,7 +479,7 @@ var linkedinRecommendations = {
 };
 
 $(function(){
-    new ps_utilities.loadData(linkedinRecommendations);
+    new ps_utilities.loadJsonpData(linkedinRecommendations);
     //getlinkedinrecommendations("table", APIlinkedinrecommendations, "linkedin_recommendations",6);
 		/*$('#expand_linkedin_recommendations').click(function() {
 			$('#modal-linkedin_recommendations').on('shown', function() {
