@@ -102,8 +102,8 @@
 							$("#modal-stealth").hide();
                             break;
                         case "launch_linkedin":
-                            ps_graphDefinitions.buildLinkedInRecommendationsModal(JSONProperties);
-                            ps_utilities.loadJsonpData(JSONProperties);
+                            var aux = ps_graphDefinitions.buildLinkedInRecommendationsModal(JSONProperties);
+                            ps_utilities.loadJsonpData(aux);
                             $("#modal-stealth").hide();
                             break;
                         default:
