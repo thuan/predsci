@@ -325,3 +325,20 @@ var linkedinRecommendations = {
 $(function(){
     new ps_utilities.loadJsonpData(linkedinRecommendations);
 });
+
+var linkedinRecommendationsModal = {
+    view: "table",
+    API: APIlinkedinrecommendations,
+    id: "linkedinRecommendationsModal",
+    limit: 20,
+    title: "LinkedIn Recommendations",
+    subtitle: "Verizon Enterprise Solutions Company Page",
+    tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+    div_location: "modal-widget-body",
+    dataURL: APIlinkedinrecommendations,
+    function: ps_graphDefinitions.buildLinkedInRecommendationsModal
+};
+
+$(function(){
+    new ps_utilities.loadJsonpData(linkedinRecommendationsModal);
+});
