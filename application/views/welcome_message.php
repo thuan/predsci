@@ -143,7 +143,7 @@
                     </h3>
 
                     <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn">
                             <i class="icon-info-sign icon-white"></i>
                         </a>
                         <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
