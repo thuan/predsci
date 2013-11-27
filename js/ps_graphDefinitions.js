@@ -560,7 +560,7 @@
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
-        $.each(sElementName.jsonpData.data, function (j) {
+        $.each(sElementName.jsonData.data, function (j) {
             if (i > sElementName.limit) {
                 return;
             }
@@ -578,7 +578,7 @@
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
-        $.each(sElementName.jsonpData.data, function (j) {
+        $.each(sElementName.jsonData.data, function (j) {
             if (i > sElementName.limit) {
                 return;
             }
