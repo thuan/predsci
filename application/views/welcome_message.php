@@ -153,24 +153,14 @@
                             <i class="icon-resize-full icon-white"></i>
                         </a>
                     </div>
+                </div>
+                <div class="widget_holder" id="divLinkedinRecommendations">
                     <table id="linkedinRecommendations" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Service</th>
                                 <th>Total</th>
                                 <th>Last 7 Days</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <div class="widget_holder" id="divLinkedinRecommendations">
-                    <table id="linkedinRecommendationsModal" class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Services</th>
-                                <th>Total Recommendations</th>
-                                <th>Recommendations in Last 7 Days</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
