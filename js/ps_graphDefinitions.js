@@ -592,17 +592,17 @@
             ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
         }
         if (sElementName.modal.limit === 20) {
-            $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-striped table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody></tbody></table>');
-            $("#" + sElementName.id).remove();
+            $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-striped table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody></tbody></table>');
+            $("#" + sElementName.modal.id).remove();
             var i = 1;
             // limit = 20
-            $.each(sElementName.jsonData.data, function (j) {
+            $.each(sElementName.modal.jsonData.data, function (j) {
                 if (i > sElementName.limit) {
                     return;
                 }
                 i++;
                 var newrow = "<tr>" + "<td>" + this.name + "</td>" + "<td>" + this.lifetime_recommendations + "</td>" + "<td>" + this.period_recommendations + "</td>" + "</tr>";
-                $("#" + sElementName.id).append(newrow);
+                $("#" + sElementName.modal.id).append(newrow);
             });
         }
     }
