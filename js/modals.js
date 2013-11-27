@@ -102,7 +102,18 @@
 							$("#modal-stealth").hide();
                             break;
                         case "launch_linkedinRecommendations":
-                            ps_graphDefinitions.buildLinkedInRecommendations();
+                            $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>');        
+        $("#" + sElementName.id + " .newrow").remove();
+        var i = 1;
+
+        $.each(sElementName.jsonpData.data, function (j) {
+            if (i > sElementName.limit) {
+                return;
+            }
+            i++;
+            var newrow = "<tr class='newrow'>" + "<td id='MediaTable-0-mediaTableCol-1' class='essential persist'>" + this.name + "</td>" + "<td id='MediaTable-0-mediaTableCol-2' class='optional hidden-phone' >" + this.lifetime_recommendations + "</td>" + "<td id='MediaTable-0-mediaTableCol-3' class='optional hidden-phone'>" + this.period_recommendations + "</td>" + "</tr>";
+            $("#" + sElementName.id).append(newrow);
+        });
                             $("#modal-stealth").hide();
                         default:
                             ps_utilities.loadData(JSONProperties);
