@@ -326,4 +326,5 @@ var linkedinRecommendations = {
 };
 $(function(){
     new ps_utilities.loadJsonpData(linkedinRecommendations);
+    new ps_utilities.loadJsonpData(linkedinRecommendations.modal);
 });
