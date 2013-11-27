@@ -567,7 +567,7 @@
     } //end line chart
     
     ps_graphDefinitions.buildLinkedInRecommendations = function (sElementName) {
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-striped table-bordered table-fixed linkedinTable"><thead><tr><th>Service</th><th>Total</th><th>Last 7 Days</th></thead><tbody class="linkedinTable"></tbody></table>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="linkedinTable table-striped table-bordered table-fixed linkedinTable"><thead><tr><th>Service</th><th>Total</th><th>Last 7 Days</th></thead><tbody class="linkedinTable"></tbody></table>');
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
@@ -586,7 +586,7 @@
     }
 
     ps_graphDefinitions.buildLinkedInRecommendationsModal = function (sElementName) {
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered linkedinTable"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody class="linkedinTable"></tbody></table>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="linkedinTable table-striped table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody class="linkedinTable"></tbody></table>');
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
