@@ -137,18 +137,17 @@
             <!-- LinkedIn Recommendations -->
             <div class="widget_container_holder" id="containerLinkedinRecommendations">
                 <div class="widget_label">
-
-                    <h3 class="pull-left">LinkedIn Recommendations
-                        <br>
-                        <small>Verizon Enterprise Solutions Company Page</small>
+                    <h3 class="pull-left">
+                        <span></span>
+                        <small></small>
                     </h3>
 
                     <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies.">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="">
                             <i class="icon-info-sign icon-white"></i>
                         </a>
                         <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
-                            <i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i>
+                            <i class="icon-resize-full icon-white" data-toggle="modal"></i>
                         </a>
                     </div>
                 </div>
