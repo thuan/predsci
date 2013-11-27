@@ -310,7 +310,7 @@ var linkedinRecommendations = {
     dataURL: APIlinkedinrecommendations,
     function: ps_graphDefinitions.buildLinkedInRecommendations,
     id_div: 'containerLinkedinRecommendations',
-    div_location: 'topTweets',
+    div_location: 'divLinkedinRecommendations',
     modal: {
         view: "table",
         API: APIlinkedinrecommendations,

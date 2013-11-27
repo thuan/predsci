@@ -349,12 +349,23 @@
         }
 
         objChart.create(divHolder);
+        
+        var contentTemplate = ''+
+        '<DataTemplate>' +
+            '<DockPanel Orientation="Horizontal" Margin="3,0,3,0">' +
+                '<TextBlock Text="{Binding Path=Macro %s:}" Margin="0,0,4,0"/>' +
+                '<TextBlock Text="{Binding Path=Macro %v (%P%%)}" FontWeight="Bold" HorizontalAlignment="Right"/>' +
+            '</DockPanel>' +
+        '</DataTemplate>';
+          
+        objChart.getToolTips().setContentTemplate(contentTemplate);
+        objChart.getToolTips().setAllSeries(false);
 
         ps_utilities.RemoveWidgetGradient();
 
         $(divHolder).mousemove(function(e) {
-            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
-            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 75 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 80 - $(this).offset().top);
         });
     };
 
@@ -379,6 +390,17 @@
         var divHolder = document.getElementById( sElementName.div_location );
         divHolder.innerHTML = "";
         objChart.create(divHolder);
+        
+        var contentTemplate = ''+
+        '<DataTemplate>' +
+            '<DockPanel Orientation="Horizontal" Margin="3,0,3,0">' +
+                '<TextBlock Text="{Binding Path=Macro %s:}" Margin="0,0,4,0"/>' +
+                '<TextBlock Text="{Binding Path=Macro %v (%P%%)}" FontWeight="Bold" HorizontalAlignment="Right"/>' +
+            '</DockPanel>' +
+        '</DataTemplate>';
+          
+        objChart.getToolTips().setContentTemplate(contentTemplate);
+        objChart.getToolTips().setAllSeries(false);
 
         if(sElementName.showVolumeAndSentimentMenu == undefined)
         {
@@ -388,8 +410,8 @@
         ps_utilities.RemoveWidgetGradient();
 
         $(divHolder).mousemove(function(e) {
-            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
-            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 120 - $(this).offset().top);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 75 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 80 - $(this).offset().top);
         });
     };
     //end bar chart
@@ -434,6 +456,117 @@
         });
 
     } //end line chart
+    
+    /*
+	* Builds the Line Chart LinkedIn Followers
+	*/
+    ps_graphDefinitions.buildLinkedinFollowers = function (sElementName) {
+        var objChart;
+       
+
+        objChart = new cfx.Chart();
+        objChart.setGallery(sElementName.gallery);
+        objChart.getGalleryAttributes().setTemplate(sElementName.template);
+        objChart.getLegendBox().setVisible(sElementName.legend);
+        objChart.getDataGrid().setWidth(100);
+        objChart.getDataGrid().setHeight(100);
+        objChart.getLegendBox().sizeToFit();
+        objChart.getAxisX().setMinorStep(1);
+        objChart.getAxisX().getGrids().getMinor().setVisible(true);
+        objChart.getAnimations().getLoad().setEnabled(true);
+
+        var dataSort = sElementName.jsonData.data;
+        	 
+        var data = ps_utilities.processDataLinkedinFollowers(dataSort);
+        objChart.getAxisY().setMin(dataSort[0].num_followers - 600);
+        objChart.getAxisY().setMax(dataSort[dataSort.length-1].num_followers + 400);
+        objChart.getAxisY().setMinorStep(0);
+        objChart.getAxisY().setStep(200);
+
+        objChart.setDataSource(data);
+        
+       
+        objChart.getToolTips().setContentTemplate(ps_utilities.getContentTemplateTooltip());
+        
+        var  divHolder = document.getElementById(sElementName.div_location);
+        divHolder.innerHTML = "";
+        objChart.create(divHolder);
+
+        
+        ps_utilities.RemoveWidgetGradient();
+        ps_utilities.RemoveLogo();
+        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+        
+      
+        $(divHolder).mousemove(function(e) {
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 195 - $(this).offset().top);
+        });
+
+    } //end line chart
+
+    /*
+     * Builds the Line Chart LinkedIn Likes
+     */
+    ps_graphDefinitions.buildLinkedinLikes = function (sElementName) {
+        var objChart;
+
+        objChart = new cfx.Chart();
+        objChart.setGallery(sElementName.gallery);
+        objChart.getGalleryAttributes().setTemplate(sElementName.template);
+        objChart.getLegendBox().setVisible(sElementName.legend);
+        objChart.getDataGrid().setWidth(100);
+        objChart.getDataGrid().setHeight(100);
+        objChart.getLegendBox().sizeToFit();
+        objChart.getAxisX().setMinorStep(1);
+        objChart.getAxisX().getGrids().getMinor().setVisible(true);
+        objChart.getAnimations().getLoad().setEnabled(true);
+
+        var data = ps_utilities.processDataLinkedinLikes(sElementName.jsonData.data);
+
+        objChart.setDataSource(data);
+
+        objChart.getToolTips().setContentTemplate(ps_utilities.getContentTemplateTooltip());
+
+        var  divHolder = document.getElementById(sElementName.div_location);
+        divHolder.innerHTML = '';
+        objChart.create(divHolder);
+
+        ps_utilities.RemoveWidgetGradient();
+        ps_utilities.RemoveLogo();
+        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
+
+
+        $(divHolder).mousemove(function(e) {
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('left', e.pageX - 60 - $(this).offset().left);
+            $('#'+sElementName.div_location+' #chartToolTip'+sElementName.div_location).css('top', e.pageY - 195 - $(this).offset().top);
+        });
+
+    } //end line chart
+    
+    ps_graphDefinitions.buildLinkedInRecommendations = function (sElementName) {
+        ps_utilities.AddTitle(sElementName.id, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id, sElementName.tooltip);
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>@Replies</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead><tbody></tbody></table>');
+        $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>');
+                
+        $("#" + sElementName.id + " .newrow").remove();
+        var i = 1;
+
+        $.each(sElementName.jsonpData.data, function (j) {
+            if (i > sElementName.limit) {
+                return;
+            }
+            i++;
+            var newrow = "<tr class='newrow'>" + "<td id='MediaTable-0-mediaTableCol-1' class='essential persist'>" + this.name + "</td>" + "<td id='MediaTable-0-mediaTableCol-2' class='optional hidden-phone' >" + this.lifetime_recommendations + "</td>" + "<td id='MediaTable-0-mediaTableCol-3' class='optional hidden-phone'>" + this.period_recommendations + "</td>" + "</tr>";
+            $("#" + sElementName.id).append(newrow);
+        });
+    }
 
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
 		//Code goes here

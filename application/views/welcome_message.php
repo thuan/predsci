@@ -152,7 +152,7 @@
                         </a>
                     </div>
                 </div>
-                <div id="topTweets"></div>
+                <div class="widget_holder" id="divLinkedinRecommendations"></div>
                 <div class="timelabel timelabel-toptweets">7 days</div>
             </div>
 
