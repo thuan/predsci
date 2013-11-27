@@ -574,7 +574,7 @@
     }
 
     ps_graphDefinitions.buildLinkedInRecommendationsModal = function (sElementName) {
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Tweet</th><th>Handle</th><th>Reply</th><th>Retweets</th><th>Engagement</th><th>Date</th></tr></thead>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead>');
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
