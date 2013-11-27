@@ -12,7 +12,7 @@
             cache: true,
             data: "",
             url: arrayData.dataURL,
-            dataType: 'json',
+            dataType: arrayData.dataType == undefined ? 'json' : arrayData.dataType,
             json: 'json',
             success: function(dataResponse) {
                 if(dataResponse.data.length){

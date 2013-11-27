@@ -321,7 +321,7 @@ var linkedinRecommendations = {
         tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
         div_location: "modal-widget-body",
         dataURL: APIlinkedinrecommendations,
-        function: "launch_linkedin"
+        function: ps_graphDefinitions.buildLinkedInRecommendationsModal
     }    
 };
 

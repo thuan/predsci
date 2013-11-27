@@ -101,11 +101,6 @@
 							ps_twitterUtils.buildWidgetModal();
 							$("#modal-stealth").hide();
                             break;
-                        case "launch_linkedin":
-                            var aux = ps_graphDefinitions.buildLinkedInRecommendationsModal(JSONProperties);
-                            ps_utilities.loadJsonpData(aux);
-                            $("#modal-stealth").hide();
-                            break;
                         default:
                             ps_utilities.loadData(JSONProperties);
                             break;
