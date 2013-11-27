@@ -143,7 +143,7 @@
                     </h3>
 
                     <div class="pull-right">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="">
+                        <a href="#" data-toggle="tooltip" data-placement="top">
                             <i class="icon-info-sign icon-white"></i>
                         </a>
                         <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
