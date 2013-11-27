@@ -362,10 +362,11 @@ var linkedinRecommendations = {
 	        title: "LinkedIn Recommendations",
 	        subtitle: "Verizon Enterprise Solutions Company Page",
 	        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+            id_div: "divLinkedinRecommendations",
 	        div_location: "modal-widget-body",
 	        dataURL: APIlinkedinrecommendations,
 	        dataType: 'jsonp',
-	        function: ps_graphDefinitions.buildLinkedInRecommendationsModal
+	        function: ps_graphDefinitions.buildLinkedInRecommendations
 	    }
 };
 $(function(){
