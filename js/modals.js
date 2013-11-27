@@ -102,7 +102,7 @@
 							$("#modal-stealth").hide();
                             break;
                         default:
-                            ps_utilities.loadData(JSONProperties);
+                            ps_utilities.loadJsonpData(JSONProperties);
                             break;
                     }
                 }
