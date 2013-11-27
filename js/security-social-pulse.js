@@ -8,45 +8,108 @@
  */
 
 //global API calls converted to JS variables for use in transform functions (endpoints)
-	var PropertyID = "4";
-	var InsightID = "ves2";
-	var PropertyTitle = "Enterprise Solutions - Security Social Pulse";
-	var userID = "6";
-	var EndpointHostDS = "http://wcg-verizon-api-alpha.herokuapp.com";
-	
-	var APINotifications = "http://dashboard-api.herokuapp.com/rest/Topics/All/Recent/Alerts";
-	
-	//Trending Volume
-	var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/topics/multitime?period=day&period_count=7&limit=5";
-	
-	//Volume & Sentiment
-	var APIvolumeandsentiment = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/sentiment/multitime?period=day&period_count=7&limit=5";
-	
-	//Conversation
-	var APIconversationvolume = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/conversationvolume/multitime?period=day&period_count=7&limit=5";
-	
-	//Share of Voice
-	var APIshareofvoice = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/shareofvoice/aggregate?period=week";
-	var APIshareofvoiceCrosstab = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/shareofvoice/crosstab?period=week";
-	
-	// LinkedIn
-	var APIlinkedinfollowers = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/history?company=1094&period=day&period_count=7&timezone=-5&boundary=day&include_top=false";
-	var APIlinkedinrecommendations = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/products?company=1094&period=day&period_count=7&timezone=-5&boundary=day";
-	var APIlinkedinlikes = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/update/engagement/history?company=1094&period=day&period_count=7&timezone=0&boundary=day";
-	
-	// Sentiment
-	var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitorsentiment/crosstab?limit=5";
-	
-	// Trending Terms
-	var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/trending?limit=10&target=content&filters=sources.twitter";
-	
-	// Selectable Topics
-	var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/conversationvolume/multitime?limit=10";
+var PropertyID = "4";
+var InsightID = "ves2";
+var PropertyTitle = "Enterprise Solutions - Security Social Pulse";
+var userID = "6";
+var EndpointHostDS = "http://wcg-verizon-api-alpha.herokuapp.com";
+
+var APINotifications = "http://dashboard-api.herokuapp.com/rest/Topics/All/Recent/Alerts";
+
+//Trending Volume
+var APItrendingtopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/topics/multitime?period=day&period_count=7&limit=5";
+
+//Volume & Sentiment
+var APIvolumeandsentiment = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/sentiment/multitime?period=day&period_count=7&limit=5";
+
+//Conversation
+var APIconversationvolume = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/conversationvolume/multitime?period=day&period_count=7&limit=5";
+
+//Share of Voice
+var APIshareofvoice = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/shareofvoice/aggregate?period=week";
+var APIshareofvoiceCrosstab = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/shareofvoice/crosstab?period=week";
+
+// LinkedIn
+var APIlinkedinfollowers = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/history?company=1094&period=day&period_count=7&timezone=-5&boundary=day&include_top=false";
+var APIlinkedinrecommendations = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/products?company=1094&period=day&period_count=7&timezone=-5&boundary=day";
+var APIlinkedinlikes = "http://vzw.glassfish.w2oservices.com:8080/kendo_api/linkedin/company/update/engagement/history?company=1094&period=day&period_count=7&timezone=0&boundary=day";
+
+// Sentiment
+var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitorsentiment/crosstab?limit=5&period=day&period_count=7";
+
+// Trending Terms
+var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/trending?limit=10&target=content&filters=sources.twitter";
+
+// Selectable Topics
+var APIselectabletopics = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/ves/security/competitors/verizon/conversationvolume/multitime?limit=10";
 //END: Variable Definition
 	
 //START: Function Def
 
 /*Definitions*/
+	
+	/*LinkedIn Followers*/
+	var widgetLinkedinFollowers = {
+	    title: 'LinkedIn Followers',
+	    subtitle: 'Verizon Enterprise Solutions Company Page',
+	    dataURL: APIlinkedinfollowers,
+	    function: ps_graphDefinitions.buildLinkedinFollowers,
+	    div_location: 'lineChartDivLinkedin',
+	    legend: false,
+	    tooltip:'Volume of followers over time for the Verizon Enterprise Solutions company page on LinkedIn.',
+	    id_div: 'linkedinFollowers',
+	    template: 'LineBasic',
+	    gallery: cfx.Gallery.Lines,
+	    dataType: 'jsonp',
+	    modal: {
+	        title: 'LinkedIn Followers',
+	        subtitle: 'Verizon Enterprise Solutions Company Page',
+	        dataURL: APIlinkedinfollowers,
+	        function: ps_graphDefinitions.buildLinkedinFollowers,
+	        div_location: 'modal-widget-body',
+	        legend: false,
+	        tooltip:'Volume of followers over time for the Verizon Enterprise Solutions company page on LinkedIn.',
+	        class: 'linkedinFollowers',
+	        dataType: 'jsonp',
+	        template: 'LineBasic',
+	        gallery: cfx.Gallery.Lines,
+	        showQueryForm: false,
+	        showToggle3: true,
+	        showInsightsDropdown: false,
+	        showInsights: false
+
+
+	    }
+	}
+
+/*LinkedIn Likes*/
+var widgetLinkedinLikes = {
+    title: 'LinkedIn Likes',
+    subtitle: 'Verizon Enterprise Solutions Company Page',
+    dataURL: APIlinkedinlikes,
+    function: ps_graphDefinitions.buildLinkedinLikes,
+    div_location: 'linkedInLikesDiv',
+    legend: false,
+    tooltip:'Volume of status update Likes over time for the Verizon Enterprise Solutions company page on LinkedIn.',
+    id_div: 'linkedInLikes',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    dataType: 'jsonp',
+    modal: {
+        title: 'LinkedIn Likes',
+        subtitle: 'Verizon Enterprise Solutions Company Page',
+        dataURL: APIlinkedinlikes,
+        function: ps_graphDefinitions.buildLinkedinLikes,
+        div_location: 'modal-widget-body',
+        legend: false,
+        tooltip:'Volume of status update Likes over time for the Verizon Enterprise Solutions company page on LinkedIn.',
+        class: 'linkedInLikes',
+        dataType: 'jsonp',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showToggle4: true
+    }
+}
 
 /*Definitions Conversation Volume*/
 var widgetConversationVolume = {
@@ -62,7 +125,7 @@ var widgetConversationVolume = {
     gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
-        subtitle: 'Subtitle of conversation volume',
+        subtitle: 'by Media Type',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
@@ -190,10 +253,56 @@ var widget_pie = {
     }
 };
 
+/*
+ * Predefined Topic Volume
+ */
+var widgetPredefinedTopicVolume = {
+    title: 'Predefined Topic Volume',
+    subtitle: 'by Volume',
+    dataURL: APItrendingtopics,
+    function: ps_graphDefinitions.buildLineChart,
+    div_location: 'lineChartDiv2',
+    legend: false,
+    tooltip:'Predefined Topic Volume',
+    id_div: 'predefinedTopicVolume',
+    template: 'LineBasic',
+    gallery: cfx.Gallery.Lines,
+    modal: {
+        title: 'Predefined Topic Volume',
+        subtitle: 'Subtitle of conversation volume',
+        dataURL: APItrendingtopics,
+        function: ps_graphDefinitions.buildLineChart,
+        div_location: 'modal-widget-body',
+        legend: true,
+        tooltip:'Conversation Volume Tooltip Dashboard!',
+        template: 'LineBasic',
+        gallery: cfx.Gallery.Lines,
+        showInsights: true,
+        showToggle2: true
+    }
+}
 
 $(function(){
     $('body').tooltip( { selector: "a"});
+
+    //CONVERSATION VOLUME
     new ps_utilities.loadData(widgetConversationVolume);
+
+    //Predefined Topic Volume
+    new ps_utilities.loadData(widgetPredefinedTopicVolume);
+
+    // VOLUME AND SENTIMENT - begin
+    new ps_utilities.loadData(widget_volumeandsentiment);
+    new ps_utilities.loadData(widget_sentimentCompetitors);
+
+    // SHARE OF VOICE - begin
+    new ps_utilities.loadData(widget_pie);
+
+    //LINKEDIN FOLLOWERS
+    new ps_utilities.loadData(widgetLinkedinFollowers);
+
+    //LINKEDIN LIKES
+    new ps_utilities.loadData(widgetLinkedinLikes);
 
     $("#conversation_volume_query").submit(function(e) {
         e.preventDefault();
@@ -228,17 +337,37 @@ $(function(){
         }
         arrData.function(arrData);
     });
-    
-    // VOLUME AND SENTIMENT - begin
-    new ps_utilities.loadData(widget_volumeandsentiment);
-    new ps_utilities.loadData(widget_sentimentCompetitors);
-    // VOLUME AND SENTIMENT - end
-
-    // SHARE OF VOICE - begin
-    new ps_utilities.loadData(widget_pie);
-    // SHARE OF VOICE - end
 
 });
 	
 //END: Function Def
-	
+var linkedinRecommendations = {
+	    view: "table",
+	    API: APIlinkedinrecommendations,
+	    id: "linkedinRecommendations",
+	    limit: 6,
+	    title: "LinkedIn Recommendations",
+	    subtitle: "Verizon Enterprise Solutions Company Page",
+	    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+	    dataURL: APIlinkedinrecommendations,
+	    id_div: 'containerLinkedinRecommendations',
+	    div_location: 'divLinkedinRecommendations',
+	    dataType: 'jsonp',
+	    function: ps_graphDefinitions.buildLinkedInRecommendations,
+	    modal: {
+	        view: "table",
+	        API: APIlinkedinrecommendations,
+	        id: "linkedinRecommendationsModal",
+	        limit: 20,
+	        title: "LinkedIn Recommendations",
+	        subtitle: "Verizon Enterprise Solutions Company Page",
+	        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+	        div_location: "modal-widget-body",
+	        dataURL: APIlinkedinrecommendations,
+	        dataType: 'jsonp',
+	        function: ps_graphDefinitions.buildLinkedInRecommendationsModal
+	    }
+};
+$(function(){
+    new ps_utilities.loadData(linkedinRecommendations);
+});	

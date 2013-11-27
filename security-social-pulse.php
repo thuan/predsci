@@ -91,20 +91,22 @@
 						<div class="timelabel">7 days</div>
 				</div>
 
-				<!-- LinkedIn Followers -->
-				<div class="widget_container_holder">
+				<!-- LinkedIn Followers --> 
+				<div  id="linkedinFollowers" class="widget_container_holder linkedinFollowers">
 					<div class="widget_label">
 
-						<h3 class="pull-left">LinkedIn Followers<br>
-							<small>Verizon Enterprise Solutions Company Page</small>
+						<h3 class="pull-left">
+							<span></span>
+							<small></small>
 						</h3>
 
 						<div class="pull-right">
-							<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
-							<a href="#" id="launch-app"><i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i></a>
+							<a href="javascript:ps_utilities.toggleBarLine(widgetLinkedinFollowers)"><i class="icon line-swap"></i></a>
+							<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Volume of followers over time for the Verizon Enterprise Solutions company page on LinkedIn."><i class="icon-info-sign icon-white"></i></a>
+							<a id="launch-app" href="javascript:ps_modals.launch(widgetLinkedinFollowers.modal)"><i class="icon-resize-full icon-white"></i></a>
 						</div>
 					</div>
-					<div id="topTweets"></div>
+					<div class="widget_holder" id="lineChartDivLinkedin"></div>
 					<div class="timelabel timelabel-toptweets">7 days</div>
 				</div>
 				
@@ -125,22 +127,22 @@
 					<div class="timelabel timelabel-toptweets">7 days</div>
 				</div>
 
-				<!-- LinkedIn Likes -->
-				<div class="widget_container_holder">
-					<div class="widget_label">
-
-						<h3 class="pull-left">LinkedIn Likes<br>
-							<small>Verizon Enterprise Solutions Company Page</small>
-						</h3>
-
-						<div class="pull-right">
-							<a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
-							<a href="#" id="launch-app"><i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i></a>
-						</div>
-					</div>
-					<div id="topTweets"></div>
-					<div class="timelabel timelabel-toptweets">7 days</div>
-				</div>
+                <!-- LinkedIn Likes -->
+                <div  id="linkedInLikes" class="widget_container_holder linkedInLikes">
+                    <div class="widget_label">
+                        <h3 class="pull-left">
+                            <span></span>
+                            <small></small>
+                        </h3>
+                        <div class="pull-right">
+                            <a href="javascript:ps_utilities.toggleBarLine(widgetLinkedinLikes)"><i class="icon line-swap"></i></a>
+                            <a id="tooltipp" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+                            <a id="launch-app" href="javascript:ps_modals.launch(widgetLinkedinLikes.modal)"><i class="icon-resize-full icon-white"></i></a>
+                        </div>
+                    </div>
+                    <div class="widget_holder" id="linkedInLikesDiv"></div>
+                    <div class="timelabel timelabel-toptweets">7 days</div>
+                </div>
 				
 				<!-- Sentiment Competitors -->
 				<div class="widget_container_holder barChartVS" id="sentimentCompetitors">

@@ -1,12 +1,28 @@
 <!-- Modal -->
 <div id="modal_widget" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <div class="timelabel-expand label">7 Days</div>
+
+
         <div id="pull-right">
+
+            <div id="date-range-selector" class="btn-group date-range-selector open">
+                <button class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" data-period="hour" data-period-count="24">
+                    24 hours<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a data-period="hour" data-period-count="24">24 hours</a></li>
+                    <li><a data-period="day" data-period-count="7">7 days</a></li>
+                    <li><a data-period="day" data-period-count="30">30 days</a></li>
+                    <li><a data-period="day" data-period-count="90">90 days</a></li>
+                </ul>
+            </div>
+
             <a id="toggle1" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetConversationVolumeTemp.modal)"><i class="icon line-swap"></i></a>
             <a id="toggle2" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetPredefinedTopicVolume.modal)"><i class="icon line-swap"></i></a>
+            <a id="toggle3" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetLinkedinFollowers.modal)"><i class="icon line-swap"></i></a>
+            <a id="toggle4" class="hide" href="javascript:ps_utilities.toggleBarLineModal(widgetLinkedinLikes.modal)"><i class="icon line-swap"></i></a>
             <a id="icon-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
         </div>
 
@@ -53,12 +69,10 @@
                 <button class="btn insights-history-see-more btn-inverse">See more</button>
             </div>
         </div>
-
-
-
-
     </div>
     <div class="modal-body">
         <div id="modal-widget-body"></div>
+        <div id='trending_terms_selectable_topics' class='selectable-topics'></div>
     </div>
+
 </div>

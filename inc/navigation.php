@@ -17,6 +17,12 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="dashboard-build.php">Create New Dashboard</a></li>
                                     <li><a href="dashboard-all.php">View All Dashboards</a></li>
+                                    <li><a href="wireless-social-pulse.php">Wireless Social Pulse</a></li>
+                                    <li><a href="consumer-mass-social-pulse.php">Consumer & Mass Social Pulse</a></li>	
+                                    <li><a href="cloud-social-pulse.php">Cloud Social Pulse</a></li>	
+                                    <li><a href="security-social-pulse.php">Security Social Pulse</a></li>
+                                    <li><a href="m2m-social-pulse.php">M2M Social Pulse</a></li>	
+                                    <li><a href="telematics-social-pulse.php">Telematics Social Pulse</a></li>										
                                 </ul>
                             </li>
 

@@ -82,7 +82,7 @@
 #expandedview { display: block; }
 }
  @media (max-width: 1279px) {
-5 .search_page .box_view .search_item {
+.search_page .box_view .search_item {
  width: 49%
 }
 }

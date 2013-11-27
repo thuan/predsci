@@ -77,7 +77,7 @@ var APIinsedeShareofVoice  = "http://vzw.glassfish.w2oservices.com:8080/rest_api
 
 
 // Sentiment
-var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitorsentiment/crosstab?limit=5";
+var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitorsentiment/crosstab?limit=5&period=day&period_count=7";
 
 // Trending Terms
 var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/wireless/competitors/verizon/trending?limit=10&target=content&filters=sources.twitter";
@@ -99,7 +99,7 @@ var widgetConversationVolume = {
     gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
-        subtitle: 'Subtitle of conversation volume',
+        subtitle: 'by Media Type',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',
@@ -455,8 +455,9 @@ $(function () {
 //End Twitter Stream Definitions
 
 /* Trending Terms */
+var widget_trending ='';
 $(function () {
-    var widget_trending = {
+    widget_trending = {
         title: "Trending Terms",
         subtitle: "Terms Trending On Twitter This Hour",
         url_trending_terms: APItrendingterms,
@@ -465,8 +466,25 @@ $(function () {
         category: '',
         type: '',
         callback: '',
-        view: 'datagrid'
+        view: 'datagrid',
+        modal: {
+            title: "Trending Terms",
+            subtitle: "Terms Trending On Twitter This Hour",
+            dataURL: '',
+            function: ps_graphDefinitions.buildLineChart,
+            div_location: 'modal-widget-body',
+            legend: true,
+            tooltip:'Volume of online conversation for all media types for Verizon Wireless.',
+            class: 'conversationVolume',
+            template: 'LineBasic',
+            gallery: cfx.Gallery.Lines,
+            showQueryForm: false,
+            showToggle1: false,
+            showInsightsDropdown: false,
+            showInsights: false,
+            trending: true,
+            insight_url: 'http://vzw.glassfish.w2oservices.com:8080/rest_api_9a/analyst/insights?tag=conversation_volume&business=vzw&limit=100'
+        }
     }
     new ps_trendingterms.loadData(widget_trending);
-
 });

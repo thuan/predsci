@@ -43,6 +43,8 @@
     <script language="javascript" src="js/modals.js" type="text/javascript"></script>
     <script language="javascript" src="js/insights.js" type="text/javascript"></script>
     <script language="javascript" src="js/ps_trendingterms.js" type="text/javascript"></script>
+    <script language="javascript" src="js/ps_selectabletopic.js" type="text/javascript"></script>
+    <script language="javascript" src="js/date_range_selector.js" type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css"  href="css/style.css" />
     <link href="css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet" />

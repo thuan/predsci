@@ -385,7 +385,6 @@ ul.keywordlist li a:hover { border: 1px solid #666666; }
 }
 .selectable-topics {
     margin-top: 0;
-    height: 145px;
 }
 .has-selectable-topics + .modal .pull-right {
     width: 165px;
@@ -1083,16 +1082,16 @@ body
 
 #topTweets table thead th, #twitter-feed-modal table thead th
 {
-    background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right;
+    background: #e9f3f8 url('../images/bootstrap/sort_both.png') no-repeat center right;
     color: #000;
 }
 
-#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('/images/bootstrap/sort_both.png') no-repeat center right; }
-#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('/images/bootstrap/sort_asc.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('/images/bootstrap/sort_desc.png') no-repeat center right; }
+#topTweets table thead th.sorting, #twitter-feed-modal table thead th.sorting { background: #e9f3f8 url('../images/bootstrap/sort_both.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc, #twitter-feed-modal table thead th.sorting_asc { background: #e9f3f8 url('../images/bootstrap/sort_asc.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc, #twitter-feed-modal table thead th.sorting_desc { background: #e9f3f8 url('../images/bootstrap/sort_desc.png') no-repeat center right; }
 
-#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
-#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('/images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_asc_disabled, #twitter-feed-modal table thead th.sorting_asc_disabled { background: #e9f3f8 url('../images/bootstrap/sort_asc_disabled.png') no-repeat center right; }
+#topTweets table thead th.sorting_desc_disabled, #twitter-feed-modal table thead th.sorting_desc_disabled { background: #e9f3f8 url('../images/bootstrap/sort_desc_disabled.png') no-repeat center right; }
 
 
 #topTweets table tbody td{
@@ -1818,4 +1817,44 @@ g.AxisText, g.AxisY_Text, g.AxisY0_Text, g.LegendItem { display: none; }
 
 #insight_container .btn .caret{
     float: right;
+}
+
+/* Compact table cells */
+th[data-compact="true"],
+td[data-compact="true"] {
+    width: 35%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td[data-compact="true"]:hover {
+    white-space: normal;
+}
+
+
+#modal_widget #pull-right .dropdown-menu
+{
+    padding: 10px 15px;
+    width: 100px;
+    background: #222;
+    color: #fff;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+#modal_widget #pull-right .dropdown-menu > li > a {
+    color: #fff;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+.btn-group.open .btn.dropdown-toggle {
+    background: rgba(255, 255, 255, 0.17);
+}
+.btn-group:hover {
+    cursor: pointer;
+}
+#modal_widget #pull-right .dropdown
+{
+    margin: 0px 0px;
+    float: left;
 }

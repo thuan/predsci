@@ -102,6 +102,64 @@
         return result;
     }
     
+    ps_utilities.processDataLinkedinFollowers = function (data) {
+        var chartOpt = {};
+        var result = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (!chartOpt[data[i].date]) {
+                chartOpt[data[i].date] = {};
+            }
+            if (!chartOpt[data[i].date][data[i].name]) {
+                chartOpt[data[i].date][data[i].name] = 0;
+            }
+            chartOpt[data[i].date][data[i].name] = data[i].num_followers;
+        }
+
+        for (var dt in chartOpt) {
+            var temp = {};
+            var dtTmp = dt.split('/');
+            dtTmp = dtTmp[0] + '/' + dtTmp[1]
+
+            temp['date'] = dtTmp;
+            for (var display in chartOpt[dt]){
+                temp[display] = chartOpt[dt][display];
+            }
+            result.push(temp);
+        }
+
+        return result;
+    }
+
+    ps_utilities.processDataLinkedinLikes = function (data) {
+        var chartOpt = {};
+        var result = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (!chartOpt[data[i].date]) {
+                chartOpt[data[i].date] = {};
+            }
+            if (!chartOpt[data[i].date][data[i].name]) {
+                chartOpt[data[i].date][data[i].name] = 0;
+            }
+            chartOpt[data[i].date][data[i].name] = data[i].num_likes;
+        }
+
+        for (var dt in chartOpt) {
+            var temp = {};
+            var dtTmp = dt.split('/');
+            dtTmp = dtTmp[0] + '/' + dtTmp[1]
+
+            temp['date'] = dtTmp;
+            for (var display in chartOpt[dt]){
+                temp[display] = chartOpt[dt][display];
+            }
+            result.push(temp);
+        }
+
+        return result;
+    }
+    
     ps_utilities.dataSentimentCompetitors = function (data) {
         var chartOpt = {};
         var result = [];
@@ -350,8 +408,14 @@
             obj.template = 'LineBasic';
             obj.gallery = cfx.Gallery.Lines;
         }
+        
+        if(obj.typeJson == 'jsonp'){
+        	new ps_utilities.loadJsonpData(obj);
+        } else {
+        	 new ps_utilities.loadData(obj);
+        }
 
-        new ps_utilities.loadData(obj);
+       
     }
 
     ps_utilities.toggleBarLineModal = function(obj){
@@ -363,7 +427,11 @@
             obj.gallery = cfx.Gallery.Lines;
         }
 
-        new ps_utilities.loadData(obj);
+        if(obj.typeJson == 'jsonp'){
+        	new ps_utilities.loadJsonpData(obj);
+        } else {
+        	 new ps_utilities.loadData(obj);
+        }
     }
 
     ps_utilities.showMenuSocial = function(datasource){

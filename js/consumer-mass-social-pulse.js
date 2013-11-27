@@ -60,8 +60,8 @@ var APIshareofvoice = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable
 var APIshareofvoiceCrosstab = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/shareofvoice/crosstab?period=week&limit=100";
 
 // Sentiment
-var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=5";
-var APIsentimentcompetitors2 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=20";
+var APIsentimentcompetitors = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=5&period=day&period_count=7";
+var APIsentimentcompetitors2 = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitorsentiment/crosstab?limit=20&period=day&period_count=7";
 
 // Trending Terms
 var APItrendingterms = "http://wcg-verizon-api-alpha.herokuapp.com/rest/drillable/verizon/cmb/competitors/verizon/trending?limit=10&target=content&filters=sources.twitter";
@@ -87,7 +87,7 @@ var widgetConversationVolume = {
     gallery: cfx.Gallery.Lines,
     modal: {
         title: 'Conversation Volume',
-        subtitle: 'Subtitle of conversation volume',
+        subtitle: 'by Media Type',
         dataURL: APIconversationvolume,
         function: ps_graphDefinitions.buildLineChart,
         div_location: 'modal-widget-body',

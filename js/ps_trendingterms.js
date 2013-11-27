@@ -1,29 +1,26 @@
 var ps_trendingterms = ps_trendingterms || {};
 
-
 (function () {
 
     ps_trendingterms.loadData = function (widget_trending_terms) {
         if (widget_trending_terms.view == "datagrid") {
+
             var url = widget_trending_terms.url_trending_terms;
+
             var jsontype = (url.toLowerCase().indexOf("http") >= 0) ? "JSONP" : "JSON";
-            var start = new Date().getTime() / 1000;
+
             var id = widget_trending_terms.id;
             var klist = 'trending_terms_list-' + widget_trending_terms.category.substr(0, 2);
+
+            console.log("Trending Terms "+ widget_trending_terms.url_trending_terms)
 
             $.ajax({
                 url: url,
                 dataType: jsontype,
-                beforeSend: function (data) {
-                },
-                error: function (data) {
-                },
                 success: function (response) {
                     var current = new Array();
-                    if (widget_trending_terms.type != "reload") {
-                    } else {
-                        current = $('#' + klist + ' ul li').not('.title');
-                    }
+
+                    current = $('#' + klist + ' ul li').not('.title');
 
                     jQuery.fn.sort = function () {
                         return this.pushStack([].sort.apply(this, arguments), []);
@@ -90,10 +87,10 @@ var ps_trendingterms = ps_trendingterms || {};
                             keywordFlash($("#" + klist + " ul li")[rand]);
                         }
                     } else {
-                        $("#" + id + " div:first").empty().append(rowdata);
+                        $("#" + id).empty().append(rowdata);
 
                         if (widget_trending_terms.callback) {
-                            //widget_trending_terms.callback();
+                            widget_trending_terms.callback();
                         }
                     }
 
@@ -132,11 +129,13 @@ var ps_trendingterms = ps_trendingterms || {};
                     function getRandomInt(min, max) {
                         return Math.floor(Math.random() * (max - min + 1)) + min;
                     }
+                    if (widget_trending_terms.callback) {
+                        widget_trending_terms.callback();
+                    }
                 }
             });
         }
     }
-
 })();
 
     

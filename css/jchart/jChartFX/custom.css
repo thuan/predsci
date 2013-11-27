@@ -67,20 +67,36 @@
 /* BAR CHART */
 .barChartVS .jchartfx .Attribute0 {
     fill: #FF0000;
-    stroke: #4281A4;
-    stroke-width: 0;
+    stroke: #FF0000;
+    stroke-width: 1;
 }
 .barChartVS .jchartfx .Attribute1 {
     fill: #BEBEBE;
-    stroke: #4281A4;
-    stroke-width: 0;
+    stroke: #BEBEBE;
+    stroke-width: 1;
 }
 .barChartVS .jchartfx .Attribute2 {
     fill: #006400;
-    stroke: #4281A4;
-    stroke-width: 0;
+    stroke: #006400;
+    stroke-width: 1;
 }
 /* END BAR CHART */
+
+/*LINKEDIN LIKES*/
+.linkedInLikes .jchartfx .Attribute0Line, 
+.linkedinFollowers .jchartfx .Attribute0Line {
+    stroke: #e61e26;
+    fill: #e61e26;
+    stroke-width: 2;
+}
+
+.linkedInLikes .jchartfx .Attribute0,
+.linkedinFollowers .jchartfx .Attribute0 {
+    fill: #e61e26;
+    stroke: #e61e26;
+    stroke-width: 1;
+}
+/* END LINKEDIN LIKES*/
 
 /*LINE CHART*/
 .conversationVolume .jchartfx .Attribute0Line {
