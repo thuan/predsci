@@ -135,7 +135,7 @@
             </div>
 
             <!-- LinkedIn Recommendations -->
-            <div class="widget_container_holder" id="containerLinkedinRecommendations">
+            <div class="widget_container_holder" id="linkedinRecommendations">
                 <div class="widget_label">
                     <h3 class="pull-left">
                         <span></span>
