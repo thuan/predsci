@@ -567,7 +567,7 @@
     } //end line chart
     
     ps_graphDefinitions.buildLinkedInRecommendations = function (sElementName) {
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-striped table-bordered table-fixed topTweets dataTable"><thead><tr><th>Service</th><th>Total</th><th>Last 7 Days</th></thead><tbody></tbody></table>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-striped table-bordered table-fixed linkedinTable"><thead><tr><th>Service</th><th>Total</th><th>Last 7 Days</th></thead><tbody class="linkedinTable"></tbody></table>');
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
@@ -576,16 +576,17 @@
                 return;
             }
             i++;
-            var newrow = "<tr class='newrow'>" + "<td id='MediaTable-0-mediaTableCol-1' class='essential persist'>" + this.name + "</td>" + "<td id='MediaTable-0-mediaTableCol-2' class='optional hidden-phone' >" + this.lifetime_recommendations + "</td>" + "<td id='MediaTable-0-mediaTableCol-3' class='optional hidden-phone'>" + this.period_recommendations + "</td>" + "</tr>";
+            var newrow = "<tr>" + "<td>" + this.name + "</td>" + "<td>" + this.lifetime_recommendations + "</td>" + "<td>" + this.period_recommendations + "</td>" + "</tr>";
             $("#" + sElementName.id).append(newrow);
         });
+        
         ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
         ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
         ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
     }
 
     ps_graphDefinitions.buildLinkedInRecommendationsModal = function (sElementName) {
-        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead>');
+        $('#' + sElementName.div_location).html('<table id="linkedinRecommendationsModal" class="table table-bordered linkedinTable"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody class="linkedinTable"></tbody></table>');
         $("#" + sElementName.id + " .newrow").remove();
         var i = 1;
 
@@ -594,7 +595,7 @@
                 return;
             }
             i++;
-            var newrow = "<tr class='newrow'>" + "<td id='MediaTable-0-mediaTableCol-1' class='essential persist'>" + this.name + "</td>" + "<td id='MediaTable-0-mediaTableCol-2' class='optional hidden-phone' >" + this.lifetime_recommendations + "</td>" + "<td id='MediaTable-0-mediaTableCol-3' class='optional hidden-phone'>" + this.period_recommendations + "</td>" + "</tr>";
+            var newrow = "<tr>" + "<td>" + this.name + "</td>" + "<td>" + this.lifetime_recommendations + "</td>" + "<td>" + this.period_recommendations + "</td>" + "</tr>";
             $("#" + sElementName.id).append(newrow);
         });
     }

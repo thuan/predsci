@@ -1858,3 +1858,17 @@ td[data-compact="true"]:hover {
     margin: 0px 0px;
     float: left;
 }
+
+.linkedinTable table thead th
+{
+    background: #e9f3f8 url('../images/bootstrap/sort_both.png') no-repeat center right;
+    color: #000;
+    font-size:12px !important;
+}
+
+.linkedinTable table tbody td
+{
+    background: #fff;
+    color: #000;
+    font-size:11px !important;
+}
