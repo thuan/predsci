@@ -575,7 +575,6 @@
 
     ps_graphDefinitions.buildLinkedInRecommendations = function (sElementName) {
         if (sElementName.limit === 6) {
-            $('#' + sElementName.div_location).html('<table id="linkedinRecommendations" class="table table-striped table-bordered"><thead><tr><th>Service</th><th>Total</th><th>Last 7 Days</th></thead><tbody></tbody></table>');
             $("#" + sElementName.id + " #newrow").remove();
             var i = 1;
             // limit = 6
@@ -587,13 +586,9 @@
                 var newrow = "<tr id='newrow'>" + "<td>" + this.name + "</td>" + "<td>" + this.lifetime_recommendations + "</td>" + "<td>" + this.period_recommendations + "</td>" + "</tr>";
                 $("#" + sElementName.id).append(newrow);
             });
-            ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
-            ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
-            ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
         }
         if (sElementName.limit === 20) {
-            $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-striped table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody></tbody></table>');
-            $("#" + sElementName.modal.id + " #newrow").remove();
+            $("#" + sElementName.id + " #newrow").remove();
             var i = 1;
             // limit = 20
             $.each(sElementName.jsonData.data, function (j) {
@@ -602,9 +597,12 @@
                 }
                 i++;
                 var newrow = "<tr id='newrow'>" + "<td>" + this.name + "</td>" + "<td>" + this.lifetime_recommendations + "</td>" + "<td>" + this.period_recommendations + "</td>" + "</tr>";
-                $("#" + sElementName.modal.id).append(newrow);
+                $("#" + sElementName.id).append(newrow);
             });
         }
+        ps_utilities.AddTitle(sElementName.id_div, sElementName.title);
+        ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
+        ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
     }
 
     ps_graphDefinitions.buildTwitterActivityMap = function (sElementName) {
