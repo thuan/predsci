@@ -591,7 +591,7 @@
             ps_utilities.AddSubTitle(sElementName.id_div, sElementName.subtitle);
             ps_utilities.AddTooltip(sElementName.id_div, sElementName.tooltip);
         }
-        if (sElementName.modal.limit === 20) {
+        if (sElementName.limit === 20) {
             $('#' + sElementName.modal.div_location).html('<table id="linkedinRecommendationsModal" class="table table-striped table-bordered"><thead><tr><th>Services</th><th>Total Recommendations</th><th>Recommendations in Last 7 Days</th></tr></thead><tbody></tbody></table>');
             $("#" + sElementName.modal.id + " #newrow").remove();
             var i = 1;
