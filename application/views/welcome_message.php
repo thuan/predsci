@@ -146,8 +146,8 @@
                         <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn">
                             <i class="icon-info-sign icon-white"></i>
                         </a>
-                        <a href="javascript:ps_modals.launch(linkedinRecommendations.modal)" id="launch-app">
-                            <i class="icon-resize-full icon-white" data-toggle="modal"></i>
+                        <a id="launch-app" href="javascript:ps_modals.launch(linkedinRecommendations.modal)">
+                            <i class="icon-resize-full icon-white"></i>
                         </a>
                     </div>
                 </div>
