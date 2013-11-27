@@ -11,7 +11,6 @@
             type: 'GET',
             cache: true,
             data: "",
-            crossDomain: true,
             url: arrayData.dataURL,
             dataType: arrayData.dataType == undefined ? 'json' : arrayData.dataType,
             json: 'json',

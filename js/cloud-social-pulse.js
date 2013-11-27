@@ -310,6 +310,7 @@ var linkedinRecommendations = {
     dataURL: APIlinkedinrecommendations,
     id_div: 'containerLinkedinRecommendations',
     div_location: 'divLinkedinRecommendations',
+    dataType: 'jsonp',
     function: ps_graphDefinitions.buildLinkedInRecommendations,
     modal: {
         view: "table",
@@ -321,10 +322,11 @@ var linkedinRecommendations = {
         tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
         div_location: "modal-widget-body",
         dataURL: APIlinkedinrecommendations,
+        dataType: 'jsonp',
         function: ps_graphDefinitions.buildLinkedInRecommendationsModal
     }    
 };
 
 $(function(){
-    new ps_utilities.loadJsonpData(linkedinRecommendations);
+    new ps_utilities.loadData(linkedinRecommendations);
 });
