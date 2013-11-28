@@ -281,6 +281,34 @@ var widgetPredefinedTopicVolume = {
     }
 }
 
+var linkedinRecommendations = {
+	    view: "table",
+	    API: APIlinkedinrecommendations,
+	    id: "linkedinRecommendations",
+	    limit: 6,
+	    title: "LinkedIn Recommendations",
+	    subtitle: "Verizon Enterprise Solutions Company Page",
+	    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+	    dataURL: APIlinkedinrecommendations,
+	    id_div: 'containerLinkedinRecommendations',
+	    div_location: 'divLinkedinRecommendations',
+	    dataType: 'jsonp',
+	    function: ps_graphDefinitions.buildLinkedInRecommendations,
+	    modal: {
+	        view: "table",
+	        API: APIlinkedinrecommendations,
+	        id: "linkedinRecommendationsModal",
+	        limit: 20,
+	        title: "LinkedIn Recommendations",
+	        subtitle: "Verizon Enterprise Solutions Company Page",
+	        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
+            id_div: "divLinkedinRecommendations",
+	        div_location: "modal-widget-body",
+	        dataURL: APIlinkedinrecommendations,
+	        dataType: 'jsonp',
+	        function: ps_graphDefinitions.buildLinkedInRecommendations
+	    }
+}
 
 $(function(){
     $('body').tooltip( { selector: "a"});
@@ -303,6 +331,9 @@ $(function(){
 
     //LINKEDIN LIKES
     new ps_utilities.loadData(widgetLinkedinLikes);
+    
+    //LINKEDIN RECOMMENDATIONS
+    new ps_utilities.loadData(linkedinRecommendations);
 
     $("#conversation_volume_query").submit(function(e) {
         e.preventDefault();
@@ -340,35 +371,4 @@ $(function(){
 
 });
 
-//END: Function Def
-
-var linkedinRecommendations = {
-	    view: "table",
-	    API: APIlinkedinrecommendations,
-	    id: "linkedinRecommendations",
-	    limit: 6,
-	    title: "LinkedIn Recommendations",
-	    subtitle: "Verizon Enterprise Solutions Company Page",
-	    tooltip : "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
-	    dataURL: APIlinkedinrecommendations,
-	    id_div: 'containerLinkedinRecommendations',
-	    div_location: 'divLinkedinRecommendations',
-	    dataType: 'jsonp',
-	    function: ps_graphDefinitions.buildLinkedInRecommendations,
-	    modal: {
-	        view: "table",
-	        API: APIlinkedinrecommendations,
-	        id: "linkedinRecommendationsModal",
-	        limit: 20,
-	        title: "LinkedIn Recommendations",
-	        subtitle: "Verizon Enterprise Solutions Company Page",
-	        tooltip: "Volume of recommendations for the services on the Verizon Enterprise Solutions company page on LinkedIn",
-	        div_location: "modal-widget-body",
-	        dataURL: APIlinkedinrecommendations,
-	        dataType: 'jsonp',
-	        function: ps_graphDefinitions.buildLinkedInRecommendationsModal
-	    }
-	};
-	$(function(){
-	    new ps_utilities.loadData(linkedinRecommendations);
-	});
+//END: Function Def	
