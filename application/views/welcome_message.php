@@ -11,30 +11,30 @@
     <title>Enterprise Solutions - Security Social Pulse</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/responsive/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="responsive/css/bootstrap/bootstrap.css" rel="stylesheet">
 
     <!-- custom -->
     <!--link rel="stylesheet" type="text/css"  href="css/style.css" /-->
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700" rel="stylesheet" type="text/css">
     <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css">
-    <link href="/responsive/css/app_style.css" rel="stylesheet">
+    <link href="responsive/css/app_style.css" rel="stylesheet">
 
     <!-- dataTables -->
-    <link rel="stylesheet" type="text/css" href="/responsive/css/bootstrap/jquery.dataTables.css"  />
+    <link rel="stylesheet" type="text/css" href="responsive/css/bootstrap/jquery.dataTables.css"  />
 
     <!-- jChartFX -->
-    <link rel="stylesheet" type="text/css" href="/responsive/css/jchart/jChartFX/jchartfx.css" />
-    <link rel="stylesheet" type="text/css" href="/responsive/css/jchart/jChartFX/custom.css" />
+    <link rel="stylesheet" type="text/css" href="responsive/css/jchart/jChartFX/jchartfx.css" />
+    <link rel="stylesheet" type="text/css" href="responsive/css/jchart/jChartFX/custom.css" />
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]-->
-    <script src="/responsive/js/ie8-responsive-file-warning.js"></script>
+    <script src="responsive/js/ie8-responsive-file-warning.js"></script>
     <!--[endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]-->
-    <script src="/responsive/js/html5shiv.js"></script>
-    <script src="/responsive/js/respond.min.js"></script>
+    <script src="responsive/js/html5shiv.js"></script>
+    <script src="responsive/js/respond.min.js"></script>
     <!--[endif]-->
 </head>
 
