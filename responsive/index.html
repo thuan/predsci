@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+
+    <title>Consumer & Mass Business Social Pulse</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <!-- Google -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700" rel="stylesheet" type="text/css">
+    <!--link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css"-->
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/jquery.dataTables.css"/>
+    <link href="css/jchart/jChartFX/custom.css" type="text/css" rel="stylesheet"/>
+
+    <!-- JChart -->
+    <link rel="stylesheet" type="text/css" href="css/jchart/jChartFX/jchartfx.css"/>
+
+    <style type="text/css">
+        /* Google Map */
+        .gm-style-iw div {
+            overflow: visible !important;
+            font-size: 11px;
+            color: #333333;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+        <script src="js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body class="sidebar_hidden" id="dashboard_body">
+<div id="main-container" class="clearfix">
+<div id="loading_layer" style="display:none"><img src="images/ajax_loader.gif" alt=""/></div>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#"><img src="images/logo.png" width="126" height="65" alt="Verizon"></a>
+    </div>
+    <div class="navbar-collapse collapse"><span class="propertytitle">Consumer &amp; Mass Business Social Pulse</span></div>
+    <!--/.navbar-collapse -->
+</div>
+
+<div class="main-content">
+<!-- Metric Widget -->
+    <div class="row">
+        <div class="metric-ticker col-lg-12" id="metricticker">
+            <div class="widget" id="metric"></div>
+        </div>
+    </div>
+
+    <!-- 1st Widget Row -->
+    <div class="row">
+
+        <!-- START: Twitter Activity -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Twitter Activity Map<br>
+                        <small>Share of Voice on Twitter by City</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                           data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i
+                                class="icon-info-sign icon-white"></i></a>
+                        <a id="launch-app2" href="javascript:ps_googlemaps.loadMap(definitions, true);"><i
+                                class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="maps_widget"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Twitter Activity -->
+            </div>
+        </div>
+
+        <!-- START: Share of Voice -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Share of Voice<br>
+                        <small>With key Competitors</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Share of Voice by media type for Verizon Wireless and key competitors."><i class="icon-info-sign icon-white"></i></a> <a id="div_Chart2" data-toggle="modal" data-target="#modal_widget">
+                        <i class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="div_pie_chart"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Share of Voice -->
+            </div>
+        </div>
+
+        <!-- START: Volume & Sentiment -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Volume &amp; Sentiment<br>
+                        <small>Daily Volume &amp; Sentiment</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sentiment of conversation for all Verizon Wireless data. Sentiment analysis conducted by Clarabridge with a score between -5 and +5."><i class="icon-info-sign icon-white"></i></a> <a id="div_Chart1" data-toggle="modal" data-target="#modal_widget">
+                        <i class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="barChartDiv"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Volume & Sentiment -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2nd row -->
+    <div class="row">
+
+        <!-- START: Conversation Volume -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Conversation Volume<br>
+                        <small>by Media Type</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="javascript:ps_utilities.toggleBarLine(widgetConversationVolume)"><i class="icon line-swap"></i></a>
+                        <a id="tooltipp" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+                        <a id="launch-app1" href="javascript:ps_modals.launch(widgetConversationVolume.modal)"><i class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="lineChartDiv"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Conversation Volume -->
+            </div>
+        </div>
+
+        <!-- START: Predefined Topic Volume -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">
+                        Predefined Topic Volume<br>
+                        <small>With key Competitors</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="javascript:ps_utilities.toggleBarLine(widgetPredefinedTopicVolume)"><i class="icon line-swap"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+                        <a id="launch-app3" href="javascript:ps_modals.launch(widgetPredefinedTopicVolume.modal)"><i class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="lineChartDiv2"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Predefined Topic Volume -->
+            </div>
+        </div>
+
+        <!-- START: Twitter Stream -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Twitter Stream<br>
+                        <small>Tweets mentioning Verizon Wireless</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A stream of tweets related to Verizon Wireless.">
+                            <i class="icon-info-sign icon-white"></i>
+                        </a>
+                        <a href="#" id="launch-app">
+                            <i isclicked="0" class="icon-resize-full icon-white" id="div_tweeterStream" data-toggle="modal" data-target="#twitterStreamModal"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="div_tweeterStream1" class="div_tweeterStream">
+                    <div class="div_tweetsParent">
+                        <div status="enabled" class="div_upperArrow" id="div_upperArrow"></div>
+                        <div class="div_tweetsMain"></div>
+                        <div status="enabled" class="div_downArrow" id="div_downArrow"></div>
+                    </div>
+                </div>
+
+                <div id="div_tweeterStream_admin" class="div_tweeterStream">
+                    <div class="div_tweetsParent">
+                        <div status="enabled" class="div_upperArrow" id="div_upperArrow_admin"></div>
+                        <div class="div_tweetsMain"></div>
+                        <div status="enabled" class="div_downArrow" id="div_downArrow_admin"></div>
+                    </div>
+                </div>
+                <!-- END: tweeter stream -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 3rd row -->
+    <div class="row">
+
+        <!-- START: Volume & Sentiment -->
+        <div class="col-lg-4">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">
+                        Volume &amp; Sentiment<br>
+                        <small>With Key Competitors</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="javascript:ps_utilities.toggleBarLine(widgetPredefinedTopicVolume)"><i class="icon line-swap"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="A United States map displaying Share of Voice by city for Verizon Wireless and key competitors. The color of a circle indicates the leading competitor for that city."><i class="icon-info-sign icon-white"></i></a>
+                        <a id="launch-app4" href="javascript:ps_modals.launch(widgetPredefinedTopicVolume.modal)"><i class="icon-resize-full icon-white"></i></a>
+                    </div>
+                </div>
+                <div class="widget-chart" id="lineChartDiv21"></div>
+                <div class="widget-footing roundlow"></div>
+                <div class="widget-timelabel">7 days</div>
+                <!-- END: Predefined Topic Volume -->
+            </div>
+        </div>
+
+        <!-- Top Tweets -->
+        <div class="col-lg-8">
+            <div class="widget-container-holder">
+                <div class="widget-label">
+                    <h3 class="pull-left">Top Tweets<br>
+                        <small>Most Engaging Verizon Wireless Tweets</small>
+                    </h3>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="The most engaging Tweets from the Verizon Wireless Twitter handles. Engagement is based on Retweets and @Replies."><i class="icon-info-sign icon-white"></i></a>
+                        <a href="#" id="launch-app5"><i class="icon-resize-full icon-white" data-toggle="modal" data-target=".twitterModal"></i></a>
+                    </div>
+                </div>
+                <div id="topTweets"></div>
+                <div class="timelabel timelabel-toptweets">7 days</div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- end widgets rows -->
+</div>
+<!-- /main-content -->
+</div>
+
+    <script language="javascript" src="lib/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script language="javascript" src="lib/jquery/jquery-ui.js" type="text/javascript"></script>
+    <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=drawing"
+            type="text/javascript"></script>
+
+    <script type="text/javascript" src="lib/jchart/jchartfx.system.js"></script>
+    <script type="text/javascript" src="lib/jchart/jchartfx.coreVector.js"></script>
+    <script type="text/javascript" src="lib/jchart/jchartfx.animation.js"></script>
+    <script type="text/javascript" src="lib/jchart/jchartfx.advanced.js"></script>
+    <script type="text/javascript" src="lib/jchart/jchartfx.vectorTemplates.js"></script>
+    <script type="text/javascript" src="lib/jchart/jchartfx.handdrawn.js"></script>
+    <script type="text/javascript" src="lib/underscore-min.js"></script>
+
+    <script language="javascript" src="js/ps_utilities.js" type="text/javascript"></script>
+    <script language="javascript" src="js/ps_graphDefinitions.js" type="text/javascript"></script>
+    <script language="javascript" src="js/ps_googlemaps.js" type="text/javascript"></script>
+    <script language="javascript" src="js/ps_twitterUtils.js" type="text/javascript"></script>
+
+    <script language="javascript" src="lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+    <script language="javascript" src="lib/bootstrap/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script language="javascript" src="lib/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script language="javascript" src="lib/timeago/jquery.timeago.js" type="text/javascript"></script>
+
+    <script language="javascript" src="js/modals.js" type="text/javascript"></script>
+    <script language="javascript" src="js/insights.js" type="text/javascript"></script>
+
+    <script language="javascript" src="js/wirelessSocialPulse.js" type="text/javascript"></script>
+
+</body>
+</html>
